@@ -15,6 +15,7 @@ class BuildOnboardingPageIndicatorsWidget
           activeShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0.r),
           ),
+          activeColor: context.colors.primary,
         ),
       );
     });

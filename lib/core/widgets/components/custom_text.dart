@@ -140,14 +140,14 @@ enum CustomTextStyle {
       };
 
   FontWeight get fontWeight => switch (this) {
-        displayLarge => FontWeight.w400,
-        displayMedium => FontWeight.w400,
-        displaySmall => FontWeight.w400,
-        headlineLarge => FontWeight.w400,
-        headlineMedium => FontWeight.w400,
-        headlineSmall => FontWeight.w400,
-        titleLarge => FontWeight.w400,
-        titleMedium => FontWeight.w500,
+        displayLarge => FontWeight.w800,
+        displayMedium => FontWeight.w800,
+        displaySmall => FontWeight.w800,
+        headlineLarge => FontWeight.w800,
+        headlineMedium => FontWeight.w800,
+        headlineSmall => FontWeight.w800,
+        titleLarge => FontWeight.w700,
+        titleMedium => FontWeight.w700,
         titleSmall => FontWeight.w500,
         bodyLarge => FontWeight.w400,
         bodyMedium => FontWeight.w400,

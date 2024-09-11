@@ -7,28 +7,29 @@ class OnBoardingController extends GetxController {
   final isCompleted = false.obs;
 
   final pages = <OnBoarding>[
-    OnBoarding(
-      title: AppTrans.firstBoardingTitle,
-      subtitle: AppTrans.firstBoardingSubTitle,
-      lottieAsset: Assets.animations.firstBoardingAnimation,
-    ),
-    OnBoarding(
+    OnBoarding.imageAsset(
       title: AppTrans.secondBoardingTitle,
       subtitle: AppTrans.secondBoardingSubTitle,
-      lottieAsset: Assets.animations.secondBoardingAnimation,
+      imageAsset: Assets.images.arabicOnboarding2,
+      // lottieAsset: Assets.animations.secondBoardingAnimation,
     ),
-    OnBoarding(
+    OnBoarding.imageAsset(
+      title: AppTrans.firstBoardingTitle,
+      subtitle: AppTrans.firstBoardingSubTitle,
+      imageAsset: Assets.images.arabicOnboarding1,
+      // lottieAsset: Assets.animations.firstBoardingAnimation,
+    ),
+    OnBoarding.imageAsset(
       title: AppTrans.thirdBoardingTitle,
       subtitle: AppTrans.thirdBoardingSubTitle,
-      lottieAsset: Assets.animations.thirdBoardingAnimation,
+      imageAsset: Assets.images.communityOnboarding,
+      // lottieAsset: Assets.animations.thirdBoardingAnimation,
     ),
   ];
 
   Future<void> handleNextOrSkip() async {
     if (isCompleted.value) {
-      MyPreferenceManger.instance.saveOnBoardingShown();
-
-      AppNavigation.navigateFromOnBoardingToLogin();
+      handleSkip();
     } else {
       pageController.animateToPage(
         currentIndex.value + 1,
@@ -41,5 +42,10 @@ class OnBoardingController extends GetxController {
   void onPageChanged(int value) {
     currentIndex.value = value;
     isCompleted.value = value == pages.length - 1;
+  }
+
+  void handleSkip() {
+    MyPreferenceManger.instance.saveOnBoardingShown();
+    AppNavigation.navigateFromOnBoardingToLogin();
   }
 }

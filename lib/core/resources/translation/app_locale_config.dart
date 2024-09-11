@@ -9,7 +9,8 @@ const _supportedLocales = [
 ];
 PlayxLocaleConfig createLocaleConfig() => PlayxLocaleConfig(
       supportedLocales: _supportedLocales,
-      fallbackLocale: _supportedLocales[0],
+      fallbackLocale: _supportedLocales[1],
+      startLocale: _supportedLocales[1],
     );
 
 String get fontFamily => PlayxLocalization.isCurrentLocaleArabic()

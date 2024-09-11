@@ -83,3 +83,10 @@ flutter:
     - assets/fonts/cairo/
     - assets/fonts/poppins/
     - assets/icons/
+    - assets/svg/
+    - assets/images/png/
+    - assets/images/png/1.5x/
+    - assets/images/png/2.0x/
+    - assets/images/png/3.0x/
+    - assets/images/png/4.0x/
+    - assets/images/svg/

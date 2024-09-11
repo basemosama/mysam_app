@@ -29,6 +29,6 @@ abstract class Constants {
 
   static const bool shouldUseBiometricAuth = true;
 
-  static String auth0ClientId = '';
+  static String auth0ClientId = 'ftS1Q0WhVSo5cxvl1SQgCllOnQPMjz5W';
   static String auth0Domain = 'sourcya.eu.auth0.com';
 }

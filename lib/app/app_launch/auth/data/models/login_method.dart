@@ -20,8 +20,8 @@ enum LoginMethod {
   IconInfo get icon => switch (this) {
         auth0Web => IconInfo.icon(Icons.login),
         email => IconInfo.icon(Icons.email),
-        google => IconInfo.svg(Assets.images.google),
-        apple => IconInfo.svg(Assets.images.apple),
+        google => IconInfo.svg(Assets.icons.google),
+        apple => IconInfo.svg(Assets.icons.apple),
       };
 
   String get loginLabel => switch (this) {
