@@ -19,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? disabledBackground;
   final Widget? child;
   final BorderRadius? borderRadius;
+  final OutlinedBorder? shape;
 
   final double? width;
 
@@ -34,6 +35,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.child,
     this.borderRadius,
     this.width = double.infinity,
+    this.shape,
     this.labelFont,
     this.color,
   });
@@ -70,9 +72,10 @@ class CustomElevatedButton extends StatelessWidget {
                   horizontal: 8.w,
                   vertical: 18.h,
                 ),
-            shape: RoundedRectangleBorder(
-              borderRadius: borderRadius ?? Style.buttonBorderRadius,
-            ),
+            shape: shape ??
+                RoundedRectangleBorder(
+                  borderRadius: borderRadius ?? Style.buttonBorderRadius,
+                ),
             backgroundColor: color ?? context.colors.primary,
           ),
         ),
@@ -110,7 +113,7 @@ class CustomElevatedButton extends StatelessWidget {
       children: [
         AnimatedOpacity(
           opacity: isLoading ? 0 : 1,
-          duration: const Duration(milliseconds: 150),
+          duration: 150.milliseconds,
           child: CustomText(
             label ?? '',
             color: isEnabled
@@ -124,7 +127,7 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         AnimatedOpacity(
           opacity: isLoading ? 1 : 0,
-          duration: const Duration(milliseconds: 150),
+          duration: 150.milliseconds,
           child: SizedBox(
             height: 20.r,
             width: 20.r,

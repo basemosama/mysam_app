@@ -19,7 +19,14 @@ class BuildLoginMethodButton extends GetView<LoginController> {
           controller.loginBy(method: method);
         },
         margin: EdgeInsets.zero,
-        color: context.colors.primary,
+        color: context.colors.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: Style.buttonBorderRadius,
+          side: BorderSide(
+            color: method.backgroundColor(context) ?? context.colors.primary,
+            width: 2.r,
+          ),
+        ),
         child: Row(
           children: [
             SizedBox(width: 16.r),
@@ -35,7 +42,7 @@ class BuildLoginMethodButton extends GetView<LoginController> {
               method.loginLabel,
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
-              color: method.onBackground(context),
+              color: context.colors.onSurface,
             ),
             SizedBox(width: 10.r),
           ],

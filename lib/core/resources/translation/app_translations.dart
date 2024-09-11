@@ -156,4 +156,8 @@ abstract class AppTrans {
   static const loginWithAppleLabel = 'loginWithAppleLabel';
 
   static const loggingOutText = 'loggingOutText';
+
+  static const loginPrompt = 'loginPrompt';
+
+  static const loginTitle = 'loginTitle';
 }

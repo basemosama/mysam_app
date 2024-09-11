@@ -71,7 +71,7 @@ class LoginController extends GetxController {
     if (!isFormValid()) return;
     FocusManager.instance.primaryFocus?.unfocus();
     isLoading.value = true;
-    final result = await authRepository.login(
+    final result = await authRepository.loginViaEmailAndPassword(
       email: emailController.text,
       password: passwordController.text,
     );

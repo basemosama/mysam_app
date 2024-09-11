@@ -61,12 +61,13 @@ class AuthRepository {
     return null;
   }
 
-  Future<NetworkResult<ApiUser>> login({
+  Future<NetworkResult<ApiUser>> loginViaEmailAndPassword({
     required String email,
     required String password,
   }) async {
-    final NetworkResult<ApiUser> result = await _dataSource.login(
-      email: email,
+    final NetworkResult<ApiUser> result =
+        await _auth0DataSource.loginByEmailAndPassword(
+      userNameOrEmail: email,
       password: password,
     );
     return handleSavingUser(result);

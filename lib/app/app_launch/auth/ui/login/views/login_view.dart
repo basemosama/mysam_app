@@ -7,54 +7,69 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          OptimizedScrollView(
-            child: SafeArea(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 5,
-                ),
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const BuildLoginLottieAnimation(),
-                    const BuildLoginTitleWidget(),
-                    Obx(() {
-                      return AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 350),
-                        child: controller.currentLoginMethod.value ==
-                                LoginMethod.email
-                            ? const BuildLoginWithEmailWidget()
-                            : const BuildChooseLoginMethodWidget(),
-                      );
-                    }),
-                    const Spacer(),
-                    Container(
-                      alignment: Alignment.bottomCenter,
-                      child: AppVersion(
-                        textStyle: TextStyle(
-                          color: context.colors.onSurface,
-                          fontSize: 12.sp,
-                          fontFamily: fontFamily,
-                        ),
+      body: OptimizedScrollView(
+        child: SafeArea(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 4.r,
+                        horizontal: 4.r,
+                      ),
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          // const BuildLoginSubtitleWidget(),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 4.0.r),
+                            child: const BuildLoginLottieAnimation(),
+                          ),
+
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const BuildLoginTitleWidget(),
+                                const BuildLoginPromptWidget(),
+                                SizedBox(height: 4.r),
+                                Obx(() {
+                                  return AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 350),
+                                    child: controller
+                                                .currentLoginMethod.value ==
+                                            LoginMethod.email
+                                        ? const BuildLoginWithEmailWidget()
+                                        : const BuildChooseLoginMethodWidget(),
+                                  );
+                                }),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 12.r),
-                  ],
-                ),
+                  ),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    child: AppVersion(
+                      textStyle: TextStyle(
+                        color: context.colors.onSurface,
+                        fontSize: 12.sp,
+                        fontFamily: fontFamily,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 12.r),
+                ],
               ),
-            ),
+              const BuildLoginLoadingOverlay(),
+            ],
           ),
-          Obx(() {
-            return LoadingOverlay(
-              isLoading: controller.isLoading.value,
-              loadingText: AppTrans.loggingInText,
-            );
-          }),
-        ],
+        ),
       ),
     );
   }

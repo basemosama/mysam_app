@@ -32,8 +32,8 @@ enum LoginMethod {
       };
 
   Color? backgroundColor(BuildContext context) => switch (this) {
-        auth0Web => context.colors.primary,
-        email => context.colors.primary,
+        auth0Web => context.colors.primary.withOpacity(.6),
+        email => context.colors.primary.withOpacity(.6),
         google => context.colors.primary.withOpacity(.6),
         apple => context.colors.primary.withOpacity(.6),
       };
@@ -46,8 +46,8 @@ enum LoginMethod {
       };
 
   Color? iconColor(BuildContext context) => switch (this) {
-        auth0Web => context.colors.onPrimary,
-        email => context.colors.onPrimary,
+        auth0Web => context.colors.primary,
+        email => context.colors.primary,
         google => null,
         apple => null,
       };

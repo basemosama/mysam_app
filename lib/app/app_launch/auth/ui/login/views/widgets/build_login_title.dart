@@ -16,8 +16,8 @@ class BuildLoginTitleWidget extends GetView<LoginController> {
             ),
             width: double.infinity,
             child: CustomText(
-              AppTrans.loginText.tr(context: context),
-              fontSize: 40.sp,
+              AppTrans.loginTitle,
+              fontSize: 30.sp,
             ),
           ),
         ),
