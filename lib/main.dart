@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_boilerplate/core/navigation/app_pages.dart';
+import 'package:mysam_app/core/navigation/app_pages.dart';
 import 'package:playx/playx.dart';
 
 import 'core/config/app_config.dart';

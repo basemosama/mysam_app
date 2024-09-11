@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/app_launch/auth/data/repo/auth_repository.dart';
-import 'package:flutter_boilerplate/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/app/app_launch/auth/data/repo/auth_repository.dart';
+import 'package:mysam_app/core/navigation/app_navigation.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:playx/playx.dart';
-import 'package:playx_navigation/playx_navigation.dart';
 
-import '../../../../../core/navigation/app_navigation.dart';
 import '../../../../../core/preferences/preference_manger.dart';
 import '../../../../../core/resources/assets/assets.dart';
 import '../../../../../core/resources/translation/app_locale_config.dart';

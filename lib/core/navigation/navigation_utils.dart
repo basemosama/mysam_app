@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_boilerplate/core/navigation/app_pages.dart';
+import 'package:mysam_app/core/navigation/app_pages.dart';
 import 'package:playx_navigation/playx_navigation.dart';
 
 import '../utils/app_utils.dart';

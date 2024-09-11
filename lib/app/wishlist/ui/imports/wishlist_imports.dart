@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/wishlist/data/model/ui/wishlist.dart';
+import 'package:mysam_app/app/wishlist/data/model/ui/wishlist.dart';
+import 'package:mysam_app/core/data_state/models/data_error.dart';
 import 'package:playx/playx.dart';
-import 'package:playx_navigation/playx_navigation.dart';
 
-import '../../../../core/data_state/models/data_error.dart';
 import '../../../../core/data_state/models/data_state.dart';
 import '../../../../core/data_state/widgets/rx_data_state_widget.dart';
 import '../../../../core/navigation/app_routes.dart';

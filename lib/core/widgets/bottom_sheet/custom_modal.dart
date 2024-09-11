@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/core/resources/colors/app_colors.dart';
-import 'package:flutter_boilerplate/core/resources/translation/app_translations.dart';
-import 'package:flutter_boilerplate/core/utils/app_utils.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/utils/app_utils.dart';
 import 'package:playx/playx.dart';
 
 import 'widgets/build_modal_close_button.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/core/resources/assets/icons/icons.dart';
+import 'package:mysam_app/core/resources/assets/icons/icons.dart';
 
 import 'animation/animations.dart';
 import 'images/images.dart';

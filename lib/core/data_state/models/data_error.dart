@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
 
 /// This is base class for handling different types of error.

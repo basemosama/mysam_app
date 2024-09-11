@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/core/resources/colors/app_colors.dart';
-import 'package:flutter_boilerplate/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
 import 'package:playx_navigation/playx_navigation.dart';
 

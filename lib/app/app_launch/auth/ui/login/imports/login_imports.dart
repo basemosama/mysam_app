@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/core/widgets/components/custom_elevated_button.dart';
-import 'package:flutter_boilerplate/core/widgets/loading_overlay.dart';
+import 'package:mysam_app/core/navigation/app_navigation.dart';
+import 'package:mysam_app/core/widgets/components/custom_elevated_button.dart';
+import 'package:mysam_app/core/widgets/loading_overlay.dart';
 import 'package:playx/playx.dart';
-import 'package:playx_navigation/playx_navigation.dart';
 
-import '../../../../../../core/navigation/app_navigation.dart';
 import '../../../../../../core/resources/assets/assets.dart';
 import '../../../../../../core/resources/colors/app_colors.dart';
 import '../../../../../../core/resources/translation/app_locale_config.dart';
