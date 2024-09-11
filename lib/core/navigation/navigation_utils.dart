@@ -8,14 +8,15 @@ class NavigationUtils {
   NavigationUtils._();
 
   static List<String> get mainRoutes => [
-        Routes.dashboard,
-        Routes.settings,
+        Routes.home,
+        Routes.profile,
+        Routes.contributions,
       ];
 
   static List<String> get routesBottomNav => [
-        Routes.dashboard,
-        Routes.settings,
-        Routes.wishlist,
+        Routes.home,
+        Routes.profile,
+        Routes.contributions,
       ];
 
   static bool get showBottomNav =>

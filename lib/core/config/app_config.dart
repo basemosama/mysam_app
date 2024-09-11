@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mysam_app/app/wishlist/data/datasource/db/local_wishlist_data_source.dart';
-import 'package:mysam_app/core/database/app_database.dart';
 import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/preferences/env_manger.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
@@ -22,16 +19,12 @@ class AppConfig extends PlayXAppConfig {
     final PlayxNetworkClient client = await ApiClient.createApiClient();
     Get.put<PlayxNetworkClient>(client);
 
-    final database = await AppDatabase.create();
-
-    if (kDebugMode) {
-      database.runTestWebApp();
-    }
-
-    final localWishlistDataSource =
-        LocalWishlistDataSource(wishlistDao: database.wishlistDao);
-    Get.put<AppDatabase>(database);
-    Get.put<LocalWishlistDataSource>(localWishlistDataSource);
+    // final database = await AppDatabase.create();
+    //
+    // if (kDebugMode) {
+    //   database.runTestWebApp();
+    // }
+    //
     Get.put<CustomNavigationDrawerController>(
       CustomNavigationDrawerController(),
     );

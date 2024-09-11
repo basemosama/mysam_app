@@ -65,7 +65,7 @@ class RegisterController extends GetxController {
       result.when(
         success: (ApiUser user) async {
           isLoading.value = false;
-          AppNavigation.navigateFromRegisterToDashboard();
+          AppNavigation.navigateFromRegisterToHome();
         },
         error: (NetworkException exception) {
           isLoading.value = false;
@@ -86,7 +86,7 @@ class RegisterController extends GetxController {
     );
     result.when(
       success: (ApiUser user) {
-        AppNavigation.navigateFromRegisterToDashboard();
+        AppNavigation.navigateFromRegisterToHome();
       },
       error: (NetworkException exception) {
         Alert.error(message: exception.message);

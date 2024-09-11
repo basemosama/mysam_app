@@ -56,7 +56,7 @@ class LoginController extends GetxController {
       result.when(
         success: (ApiUser user) async {
           isLoading.value = false;
-          AppNavigation.navigateFromLoginToDashboard();
+          AppNavigation.navigateFromLoginToHome();
         },
         error: (NetworkException exception) {
           isLoading.value = false;
@@ -77,7 +77,7 @@ class LoginController extends GetxController {
     result.when(
       success: (ApiUser user) async {
         isLoading.value = false;
-        AppNavigation.navigateFromLoginToDashboard();
+        AppNavigation.navigateFromLoginToHome();
       },
       error: (NetworkException exception) {
         isLoading.value = false;

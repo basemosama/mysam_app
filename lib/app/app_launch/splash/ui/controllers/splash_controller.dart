@@ -31,7 +31,7 @@ class SplashController extends FullLifeCycleController with FullLifeCycleMixin {
       return;
     }
 
-    AppNavigation.navigateFormSplashToDashboard();
+    AppNavigation.navigateFormSplashToHome();
   }
 
   // Future<void> handleAppUpdate() async {
