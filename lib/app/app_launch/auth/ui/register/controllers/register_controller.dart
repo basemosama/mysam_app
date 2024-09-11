@@ -28,6 +28,12 @@ class RegisterController extends GetxController {
 
   final authRepository = AuthRepository();
 
+  final Rxn<LoginMethod> currentLoginMethod = Rxn();
+  final loginMethods = <LoginMethod>[
+    LoginMethod.google,
+    LoginMethod.apple,
+  ];
+
   Worker? _validationWorker;
   @override
   void onInit() {
@@ -49,6 +55,27 @@ class RegisterController extends GetxController {
 
       isFormValid.value = isValid;
     });
+  }
+
+  Future<void> registerBy({required LoginMethod method}) async {
+    currentLoginMethod.value = method;
+    if (method == LoginMethod.email) {
+      currentLoginMethod.value = LoginMethod.email;
+    } else {
+      currentLoginMethod.value = null;
+      isLoading.value = true;
+      final result = await authRepository.loginViaAuth0(method: method);
+      result.when(
+        success: (ApiUser user) async {
+          isLoading.value = false;
+          AppNavigation.navigateFromRegisterToDashboard();
+        },
+        error: (NetworkException exception) {
+          isLoading.value = false;
+          Alert.error(message: exception.message);
+        },
+      );
+    }
   }
 
   Future<void> register() async {

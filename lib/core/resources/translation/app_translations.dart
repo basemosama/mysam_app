@@ -164,4 +164,8 @@ abstract class AppTrans {
   static const emailOrPasswordIncorrect = 'emailOrPasswordIncorrect';
 
   static const continueWithSocial = 'continueWithSocial';
+
+  static const registerSubtitle = 'registerSubtitle';
+
+  static const registerTitle = 'registerTitle';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysam_app/app/app_launch/auth/ui/login/imports/login_imports.dart';
+import 'package:mysam_app/app/app_launch/auth/ui/register/imports/register_imports.dart';
 import 'package:mysam_app/app/app_launch/onboarding/ui/imports/onboarding_imports.dart';
 import 'package:mysam_app/app/app_launch/splash/ui/imports/splash_imports.dart';
 import 'package:mysam_app/app/dashboard/ui/imports/dashboard_imports.dart';
@@ -97,6 +98,12 @@ class AppPages {
       name: Routes.login,
       builder: (context, state) => const LoginView(),
       binding: LoginBinding(),
+    ),
+    PlayxRoute(
+      path: Paths.register,
+      name: Routes.register,
+      builder: (context, state) => const RegisterView(),
+      binding: RegisterBinding(),
     ),
     PlayxRoute(
       path: Paths.onboarding,

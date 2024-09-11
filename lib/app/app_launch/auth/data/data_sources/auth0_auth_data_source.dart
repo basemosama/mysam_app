@@ -39,7 +39,7 @@ class Auth0AuthDataSource {
       );
 
       return _client.get(
-        Endpoints.login,
+        Endpoints.loginViaAuth0,
         query: {
           'access_token': credentials.accessToken,
         },
