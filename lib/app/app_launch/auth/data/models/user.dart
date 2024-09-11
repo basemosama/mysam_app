@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_dynamic_calls
 
-import 'role.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/role.dart';
 
 class User {
   final bool? confirmed;

@@ -1,5 +1,5 @@
-import '../../../../../../core/database/objectbox.g.dart';
-import '../../../model/db/database_wishlist_item.dart';
+import 'package:mysam_app/app/wishlist/data/model/db/database_wishlist_item.dart';
+import 'package:mysam_app/core/database/objectbox.g.dart';
 
 class WishlistDao {
   final Box<DatabaseWishlistItem> box;

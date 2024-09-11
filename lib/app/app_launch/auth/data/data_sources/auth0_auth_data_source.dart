@@ -1,12 +1,11 @@
 import 'package:auth0_flutter/auth0_flutter.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api_user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/auth0Exception.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/login_method.dart';
+import 'package:mysam_app/core/config/constant.dart';
+import 'package:mysam_app/core/network/endpoints/endpoints.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
-
-import '../../../../../core/config/constant.dart';
-import '../../../../../core/network/endpoints/endpoints.dart';
-import '../../../../../core/resources/translation/app_translations.dart';
-import '../models/api_user.dart';
-import '../models/auth0Exception.dart';
-import '../models/login_method.dart';
 
 class Auth0AuthDataSource {
   static final Auth0AuthDataSource _instance = Auth0AuthDataSource._internal();

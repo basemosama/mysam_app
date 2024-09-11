@@ -1,7 +1,7 @@
-import '../../network/models/api_meta.dart';
-import '../../network/models/api_response.dart';
-import '../data_wrapper.dart';
-import '../page_info.dart';
+import 'package:mysam_app/core/models/data_wrapper.dart';
+import 'package:mysam_app/core/models/page_info.dart';
+import 'package:mysam_app/core/network/models/api_meta.dart';
+import 'package:mysam_app/core/network/models/api_response.dart';
 
 extension ApiResponseToDataWrapper<T> on ApiResponse<T> {
   DataWrapper<T> toDataWrapper() {

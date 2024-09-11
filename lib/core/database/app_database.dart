@@ -1,9 +1,8 @@
+import 'package:mysam_app/app/wishlist/data/datasource/db/dao/wishlist_dao.dart';
 import 'package:mysam_app/app/wishlist/data/model/db/database_wishlist_item.dart';
+import 'package:mysam_app/core/database/objectbox.g.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
-
-import '../../app/wishlist/data/datasource/db/dao/wishlist_dao.dart';
-import 'objectbox.g.dart';
 
 class AppDatabase {
   /// The Store of this app.

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:playx/playx.dart';
-
-import 'app_colors.dart';
 
 class CustomGradientThemeColors extends AppColors {
   CustomGradientThemeColors()

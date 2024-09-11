@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:mysam_app/core/navigation/navigation_utils.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/utils/app_utils.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:playx/playx.dart';
-
-import 'components/custom_text.dart';
 
 enum AppBarLeadingType {
   none,

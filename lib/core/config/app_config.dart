@@ -1,14 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mysam_app/app/wishlist/data/datasource/db/local_wishlist_data_source.dart';
+import 'package:mysam_app/core/database/app_database.dart';
+import 'package:mysam_app/core/network/api_client.dart';
+import 'package:mysam_app/core/preferences/env_manger.dart';
+import 'package:mysam_app/core/preferences/preference_manger.dart';
+import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
+import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
-
-import '../../app/wishlist/data/datasource/db/local_wishlist_data_source.dart';
-import '../database/app_database.dart';
-import '../network/api_client.dart';
-import '../preferences/env_manger.dart';
-import '../preferences/preference_manger.dart';
-import '../widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
-import '../widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 
 /// This class contains app configuration like playx configuration.
 class AppConfig extends PlayXAppConfig {

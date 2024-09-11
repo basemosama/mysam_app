@@ -1,7 +1,6 @@
+import 'package:mysam_app/core/data_state/models/data_error.dart';
+import 'package:mysam_app/core/data_state/models/data_state.dart';
 import 'package:playx/playx.dart';
-
-import 'data_error.dart';
-import 'data_state.dart';
 
 class RxDataState<T> extends Rx<DataState<T>> {
   RxDataState(super.initial);

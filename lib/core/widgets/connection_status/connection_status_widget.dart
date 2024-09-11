@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/utils/alert.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:playx/playx.dart';
-
-import '../../resources/translation/app_translations.dart';
-import '../../utils/alert.dart';
-import '../components/custom_text.dart';
 
 class ConnectionStatusWidget extends StatefulWidget {
   final Widget child;

@@ -1,6 +1,5 @@
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
-
-import '../../../../../core/resources/translation/app_translations.dart';
 
 class Auth0exception extends ApiException {
   final String errorCode;

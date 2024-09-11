@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/utils/app_utils.dart';
+import 'package:mysam_app/core/widgets/bottom_sheet/widgets/build_modal_close_button.dart';
+import 'package:mysam_app/core/widgets/bottom_sheet/widgets/build_modal_next_button.dart';
+import 'package:mysam_app/core/widgets/bottom_sheet/widgets/build_modal_previous_button.dart';
+import 'package:mysam_app/core/widgets/bottom_sheet/widgets/build_modal_title_widget.dart';
 import 'package:playx/playx.dart';
-
-import 'widgets/build_modal_close_button.dart';
-import 'widgets/build_modal_next_button.dart';
-import 'widgets/build_modal_previous_button.dart';
-import 'widgets/build_modal_title_widget.dart';
 
 enum StickyActionBarStatus {
   none,

@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/navigation/app_routes.dart';
+import 'package:mysam_app/core/navigation/navigation_utils.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/widgets/loading_overlay.dart';
+import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
+import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
-import 'package:playx_navigation/playx_navigation.dart';
-
-import '../../navigation/app_routes.dart';
-import '../../navigation/navigation_utils.dart';
-import '../../resources/colors/app_colors.dart';
-import '../../resources/translation/app_translations.dart';
-import '../loading_overlay.dart';
-import 'bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
-import 'navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 
 class CustomPageScaffold extends StatelessWidget {
   final StatefulNavigationShell navigationShell;

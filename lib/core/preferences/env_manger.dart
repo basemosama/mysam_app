@@ -30,5 +30,5 @@ class EnvManger {
 
   Future<String> get testWishlistEnv =>
       PlayxEnv.getString('test_wishlist_env_key',
-          fallback: 'Wishlist Env Fallback');
+          fallback: 'Wishlist Env Fallback',);
 }

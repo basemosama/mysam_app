@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mysam_app/core/config/app_config.dart';
 import 'package:mysam_app/core/navigation/app_pages.dart';
+import 'package:mysam_app/core/resources/theme/theme.dart';
+import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
-
-import 'core/config/app_config.dart';
-import 'core/resources/theme/theme.dart';
-import 'core/resources/translation/app_locale_config.dart';
-import 'core/resources/translation/app_translations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

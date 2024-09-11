@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/models/icon_info.dart';
+import 'package:mysam_app/core/resources/assets/assets.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
-
-import '../../../../../core/resources/assets/assets.dart';
-import '../../../../../core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 
 enum LoginMethod {
   auth0Web,

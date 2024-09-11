@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/style/style.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:playx/playx.dart';
-
-import '../../resources/colors/app_colors.dart';
-import '../../resources/style/style.dart';
-import 'custom_text.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final EdgeInsetsGeometry? margin;

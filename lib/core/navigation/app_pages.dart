@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/app/app_launch/auth/ui/login/imports/login_imports.dart';
+import 'package:mysam_app/app/app_launch/onboarding/ui/imports/onboarding_imports.dart';
+import 'package:mysam_app/app/app_launch/splash/ui/imports/splash_imports.dart';
+import 'package:mysam_app/app/dashboard/ui/imports/dashboard_imports.dart';
+import 'package:mysam_app/app/settings/ui/imports/settings_imports.dart';
+import 'package:mysam_app/app/wishlist/ui/imports/wishlist_imports.dart';
+import 'package:mysam_app/core/navigation/app_routes.dart';
+import 'package:mysam_app/core/navigation/navigation_utils.dart';
+import 'package:mysam_app/core/widgets/navigation/custom_page.dart';
 import 'package:playx/playx.dart';
-
-import '../../app/app_launch/auth/ui/login/imports/login_imports.dart';
-import '../../app/app_launch/onboarding/ui/imports/onboarding_imports.dart';
-import '../../app/app_launch/splash/ui/imports/splash_imports.dart';
-import '../../app/dashboard/ui/imports/dashboard_imports.dart';
-import '../../app/settings/ui/imports/settings_imports.dart';
-import '../../app/wishlist/ui/imports/wishlist_imports.dart';
-import '../widgets/navigation/custom_page.dart';
-import 'app_routes.dart';
-import 'navigation_utils.dart';
 
 /// contains all possible routes for the application.
 class AppPages {

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/resources/assets/assets.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/utils/app_utils.dart';
+import 'package:mysam_app/core/widgets/components/custom_elevated_button.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
+import 'package:mysam_app/core/widgets/orientation_widget.dart';
 import 'package:playx/playx.dart';
-
-import '../resources/assets/assets.dart';
-import '../resources/colors/app_colors.dart';
-import '../resources/translation/app_translations.dart';
-import '../utils/app_utils.dart';
-import 'components/custom_elevated_button.dart';
-import 'components/custom_text.dart';
-import 'orientation_widget.dart';
 
 class ErrorDataWidget extends OrientationWidget {
   final VoidCallback? onRetryClicked;

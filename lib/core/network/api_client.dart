@@ -1,10 +1,8 @@
+import 'package:mysam_app/core/navigation/app_navigation.dart';
+import 'package:mysam_app/core/network/endpoints/endpoints.dart';
+import 'package:mysam_app/core/network/exception/custom_exception_message.dart';
+import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:playx/playx.dart';
-import 'package:sentry_dio/sentry_dio.dart';
-
-import '../navigation/app_navigation.dart';
-import '../preferences/preference_manger.dart';
-import 'endpoints/endpoints.dart';
-import 'exception/custom_exception_message.dart';
 
 abstract class ApiClient {
   ApiClient._();
