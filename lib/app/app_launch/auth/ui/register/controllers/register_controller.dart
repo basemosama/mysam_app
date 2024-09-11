@@ -43,16 +43,13 @@ class RegisterController extends GetxController {
 
   void listenToValidationState() {
     _validationWorker = everAll([
-      isUsernameValid,
       isEmailValid,
       isPasswordValid,
       isConfirmPasswordValid,
     ], (callback) {
-      final isValid = isUsernameValid.value &&
-          isEmailValid.value &&
+      final isValid = isEmailValid.value &&
           isPasswordValid.value &&
           isConfirmPasswordValid.value;
-
       isFormValid.value = isValid;
     });
   }

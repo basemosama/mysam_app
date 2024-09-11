@@ -168,4 +168,6 @@ abstract class AppTrans {
   static const registerSubtitle = 'registerSubtitle';
 
   static const registerTitle = 'registerTitle';
+
+  static const registeringText = 'registeringText';
 }

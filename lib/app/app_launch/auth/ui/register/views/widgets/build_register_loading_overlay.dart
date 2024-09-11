@@ -11,7 +11,7 @@ class BuildRegisterLoadingOverlay extends GetView<RegisterController> {
 
       return LoadingOverlay(
         isLoading: isLoading,
-        loadingText: AppTrans.loggingInText,
+        loadingText: AppTrans.registeringText,
       );
     });
   }
