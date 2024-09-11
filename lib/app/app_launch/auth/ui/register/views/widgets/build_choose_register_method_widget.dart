@@ -1,7 +1,7 @@
-part of '../../imports/login_imports.dart';
+part of '../../imports/register_imports.dart';
 
-class BuildChooseLoginMethodWidget extends GetView<LoginController> {
-  const BuildChooseLoginMethodWidget();
+class BuildChooseRegisterMethodWidget extends GetView<RegisterController> {
+  const BuildChooseRegisterMethodWidget();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -11,13 +11,13 @@ class BuildChooseLoginMethodWidget extends GetView<LoginController> {
           controller.loginMethods.length,
           (i) => Padding(
             padding: EdgeInsets.symmetric(vertical: 4.0.r),
-            child: BuildLoginMethodButton(
+            child: BuildRegisterMethodButton(
               method: controller.loginMethods[i],
             ),
           ),
         ),
         SizedBox(height: 4.r),
-        // const BuildLoginRegisterNowWidget(),
+        // const BuildRegisterRegisterNowWidget(),
       ],
     );
   }

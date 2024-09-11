@@ -39,7 +39,7 @@ class Auth0AuthDataSource {
       );
 
       return _client.get(
-        Endpoints.login,
+        Endpoints.loginViaAuth0,
         query: {
           'access_token': credentials.accessToken,
         },
@@ -59,47 +59,6 @@ class Auth0AuthDataSource {
         ),
       );
     } on Exception catch (e) {
-      Sentry.captureException(e);
-      return const NetworkResult.error(
-        UnexpectedErrorException(errorMessage: AppTrans.unexpectedError),
-      );
-    }
-  }
-
-  Future<NetworkResult<ApiUser>> loginByEmailAndPassword({
-    required String userNameOrEmail,
-    required String password,
-  }) async {
-    try {
-      final credentials = await _auth0.api.login(
-        usernameOrEmail: userNameOrEmail,
-        password: password,
-        connectionOrRealm: 'Username-Password-Authentication',
-      );
-
-      return _client.get(
-        Endpoints.login,
-        query: {
-          'access_token': credentials.accessToken,
-        },
-        fromJson: (json) => ApiUser.fromJsonAndCredentials(
-          json: json,
-          credentials: credentials,
-        ),
-        attachCustomHeaders: false,
-      );
-    } on WebAuthenticationException catch (e) {
-      Fimber.e('LOGIN ERORR :', ex: e);
-      Sentry.captureException(e);
-      return NetworkResult.error(
-        Auth0exception(
-          errorCode: e.code,
-          auth0ErrorMessage: e.message,
-          errorDetails: e.details,
-        ),
-      );
-    } on Exception catch (e) {
-      Fimber.e('LOGIN ERORR :', ex: e);
       Sentry.captureException(e);
       return const NetworkResult.error(
         UnexpectedErrorException(errorMessage: AppTrans.unexpectedError),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/dimens/dimens.dart';
 import 'package:mysam_app/core/resources/style/style.dart';
+import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:playx/playx.dart';
 
 /// This is a custom text field to have same behavior on whole application.
@@ -47,6 +48,7 @@ class CustomTextField extends StatefulWidget {
   final EdgeInsets? scrollPadding;
 
   final Iterable<String>? autoFillHints;
+  final EdgeInsets? contentPadding;
 
   const CustomTextField({
     this.hint,
@@ -86,6 +88,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.scrollPadding,
     this.autoFillHints,
+    this.contentPadding,
   });
 
   @override
@@ -103,7 +106,7 @@ class _CustomFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return OptimizedTextField(
-      hint: widget.hint,
+      hint: widget.hint?.tr(context: context),
       maxLines: widget.maxLines,
       minLines: widget.minLines,
       onChanged: widget.onChanged,
@@ -162,17 +165,20 @@ class _CustomFieldState extends State<CustomTextField> {
       style: TextStyle(
         fontSize: Dimens.fieldTextSize,
         color: widget.textColor ?? context.colors.onSurface,
+        fontFamily: fontFamily,
       ),
       labelStyle: TextStyle(
         color: widget.labelColor ?? context.colors.onSurface,
         fontSize: Dimens.fieldTextSize,
+        fontFamily: fontFamily,
       ),
-      contentPadding: EdgeInsets.only(
-        top: 15.0.h,
-        bottom: 15.0.h,
-        right: 15.0.w,
-        left: 15.0.w,
-      ),
+      contentPadding: widget.contentPadding ??
+          EdgeInsets.only(
+            top: 15.0.r,
+            bottom: 15.0.r,
+            right: 15.0.r,
+            left: 15.0.r,
+          ),
       hintColor: widget.hintColor ?? PlayxColors.grey,
       enabledBorder: OutlineInputBorder(
         borderRadius: Style.fieldBorderRadius,

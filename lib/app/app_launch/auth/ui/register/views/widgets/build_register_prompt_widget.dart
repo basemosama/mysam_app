@@ -1,7 +1,7 @@
 part of '../../imports/register_imports.dart';
 
-class BuildRegisterTitleWidget extends StatelessWidget {
-  const BuildRegisterTitleWidget();
+class BuildRegisterPromptWidget extends StatelessWidget {
+  const BuildRegisterPromptWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +12,8 @@ class BuildRegisterTitleWidget extends StatelessWidget {
         bottom: 8.r,
       ),
       width: double.infinity,
-      child: CustomText(
-        AppTrans.registerTitle,
+      child: const CustomText(
+        AppTrans.loginPrompt,
         style: CustomTextStyle.titleMedium,
         textAlign: TextAlign.center,
       ),

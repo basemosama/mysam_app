@@ -21,6 +21,7 @@ part '../controllers/login_controller.dart';
 part '../views/login_view.dart';
 part '../views/widgets/build_choose_login_method_widget.dart';
 part '../views/widgets/build_login_button.dart';
+part '../views/widgets/build_login_continue_with_social.dart';
 part '../views/widgets/build_login_email_field.dart';
 part '../views/widgets/build_login_loading_overlay.dart';
 part '../views/widgets/build_login_lottie_animation.dart';

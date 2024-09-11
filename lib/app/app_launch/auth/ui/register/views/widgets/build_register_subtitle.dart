@@ -1,7 +1,7 @@
-part of '../../imports/login_imports.dart';
+part of '../../imports/register_imports.dart';
 
-class BuildLoginSubtitleWidget extends StatelessWidget {
-  const BuildLoginSubtitleWidget();
+class BuildRegisterSubtitleWidget extends StatelessWidget {
+  const BuildRegisterSubtitleWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class BuildLoginSubtitleWidget extends StatelessWidget {
       ),
       width: double.infinity,
       child: const CustomText(
-        AppTrans.loginSubtitle,
+        AppTrans.registerSubtitle,
         style: CustomTextStyle.titleMedium,
         textAlign: TextAlign.center,
       ),

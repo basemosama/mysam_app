@@ -33,19 +33,14 @@ class LoginView extends GetView<LoginController> {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                const BuildLoginTitleWidget(),
-                                const BuildLoginPromptWidget(),
+                                // const BuildLoginTitleWidget(),
+                                const BuildLoginSubtitleWidget(),
                                 SizedBox(height: 4.r),
-                                Obx(() {
-                                  return AnimatedSwitcher(
-                                    duration: const Duration(milliseconds: 350),
-                                    child: controller
-                                                .currentLoginMethod.value ==
-                                            LoginMethod.email
-                                        ? const BuildLoginWithEmailWidget()
-                                        : const BuildChooseLoginMethodWidget(),
-                                  );
-                                }),
+                                const BuildLoginWithEmailWidget(),
+                                SizedBox(height: 4.r),
+                                const BuildLoginContinueWithSocial(),
+                                SizedBox(height: 4.r),
+                                const BuildChooseLoginMethodWidget(),
                               ],
                             ),
                           ),
@@ -53,6 +48,8 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                   ),
+                  const BuildLoginRegisterNowWidget(),
+                  SizedBox(height: 4.r),
                   Container(
                     alignment: Alignment.bottomCenter,
                     child: AppVersion(
@@ -63,7 +60,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 12.r),
+                  SizedBox(height: 8.r),
                 ],
               ),
               const BuildLoginLoadingOverlay(),

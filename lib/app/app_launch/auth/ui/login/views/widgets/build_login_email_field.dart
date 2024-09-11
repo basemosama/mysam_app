@@ -7,30 +7,48 @@ class BuildLoginEmailFieldWidget extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 10.w,
-        vertical: 5.h,
+        horizontal: 8.r,
+        vertical: 4.r,
       ),
-      child: CustomTextField(
-        label: AppTrans.emailOrUsernameLabel.tr(context: context),
-        hint: AppTrans.emailHint.tr(context: context),
-        controller: controller.emailController,
-        type: TextInputType.emailAddress,
-        validator: qValidator([
-          IsRequired(AppTrans.emailRequired.tr(context: context)),
-        ]),
-        prefix: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0.w),
-          child: Icon(
-            Icons.email,
-            color: context.colors.primary,
-            size: 20.r,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.0.r),
+            child: CustomText(
+              AppTrans.emailOrUsernameLabel,
+              fontWeight: FontWeight.w700,
+              fontSize: 16.sp,
+            ),
           ),
-        ),
-        shouldAutoValidate: true,
-        onValidationChanged: (isValid) {
-          controller.isEmailValid.value = isValid;
-        },
-        textInputAction: TextInputAction.next,
+          SizedBox(height: 4.r),
+          CustomTextField(
+            hint: AppTrans.emailHint,
+            controller: controller.emailController,
+            type: TextInputType.emailAddress,
+            validator: qValidator([
+              IsRequired(AppTrans.emailRequired.tr(context: context)),
+            ]),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 14.r,
+              vertical: 14.r,
+            ),
+            prefix: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+              child: Icon(
+                Icons.email,
+                color: context.colors.primary,
+                size: 20.r,
+              ),
+            ),
+            shouldAutoValidate: true,
+            onValidationChanged: (isValid) {
+              controller.isEmailValid.value = isValid;
+            },
+            textInputAction: TextInputAction.next,
+          ),
+        ],
       ),
     );
   }
