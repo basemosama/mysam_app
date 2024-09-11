@@ -18,7 +18,6 @@ class LoginController extends GetxController {
 
   final Rxn<LoginMethod> currentLoginMethod = Rxn();
   final loginMethods = <LoginMethod>[
-    LoginMethod.email,
     LoginMethod.google,
     LoginMethod.apple,
   ];

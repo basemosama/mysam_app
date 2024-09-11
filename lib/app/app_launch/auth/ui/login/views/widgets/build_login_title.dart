@@ -5,36 +5,18 @@ class BuildLoginTitleWidget extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.only(
-              right: 10.w,
-              left: 10.w,
-              bottom: 10.h,
-            ),
-            width: double.infinity,
-            child: CustomText(
-              AppTrans.loginTitle,
-              fontSize: 30.sp,
-            ),
-          ),
-        ),
-        Obx(() {
-          if (controller.currentLoginMethod.value == LoginMethod.email) {
-            return IconButton(
-              icon: const Icon(
-                Icons.close,
-              ),
-              onPressed: () {
-                controller.currentLoginMethod.value = null;
-              },
-            );
-          }
-          return const SizedBox.shrink();
-        }),
-      ],
+    return Container(
+      padding: EdgeInsets.only(
+        right: 8.r,
+        left: 8.r,
+        bottom: 8.r,
+      ),
+      width: double.infinity,
+      child: const CustomText(
+        AppTrans.loginTitle,
+        style: CustomTextStyle.titleMedium,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

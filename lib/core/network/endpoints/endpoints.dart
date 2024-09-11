@@ -1,7 +1,7 @@
 /// contains network endpoints.
 abstract class Endpoints {
   static const baseUrl =
-      "https://mysam-service-545469892583.europe-west1.run.app";
+      "https://mysam-service-545469892583.europe-west1.run.app/api";
 
   /// `POST`
   static const loginViaAuth0 = '/auth/auth0/callback';

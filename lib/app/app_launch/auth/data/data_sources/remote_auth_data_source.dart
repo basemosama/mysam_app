@@ -1,5 +1,6 @@
 import 'package:mysam_app/app/app_launch/auth/data/models/api_user.dart';
 import 'package:mysam_app/core/network/endpoints/endpoints.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
 
 ///This class is responsible of retrieving data from the network.
@@ -28,6 +29,18 @@ class RemoteAuthDataSource {
       },
       fromJson: ApiUser.fromJson,
     );
+    if (res is NetworkError<ApiUser>) {
+      final error = res.error;
+      if (error is ApiException &&
+          error.message == 'Invalid identifier or password') {
+        return NetworkResult.error(
+          ApiException(
+            errorMessage: AppTrans.emailOrPasswordIncorrect,
+            statusCode: 400,
+          ),
+        );
+      }
+    }
     return res;
   }
 

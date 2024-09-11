@@ -160,4 +160,8 @@ abstract class AppTrans {
   static const loginPrompt = 'loginPrompt';
 
   static const loginTitle = 'loginTitle';
+
+  static const emailOrPasswordIncorrect = 'emailOrPasswordIncorrect';
+
+  static const continueWithSocial = 'continueWithSocial';
 }
