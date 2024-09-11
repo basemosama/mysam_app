@@ -1,7 +1,7 @@
 {
   "accessDeniedErrorMessage": "Access was denied by the resource server per OAuth2 specification.",
   "andText": " and ",
-  "appName": "Sourcya App",
+  "appName": "Mysam",
   "badRequest": "Sorry, The API request is invalid or improperly formed.",
   "bioCanAuthenticate": "Can't authenticate with biometric",
   "bioCancelText": "No thanks",
