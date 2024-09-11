@@ -15,7 +15,9 @@ class CustomNavigationDrawer extends GetView<CustomNavigationDrawerController> {
         indicatorColor: context.colors.primary,
         onDestinationSelected: (index) {
           controller.handleItemChanged(
-              index: index, navigationShell: navigationShell,);
+            index: index,
+            navigationShell: navigationShell,
+          );
         },
         children: [
           Padding(

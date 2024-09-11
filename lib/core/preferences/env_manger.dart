@@ -28,7 +28,8 @@ class EnvManger {
   Future<String> get googleSignWebInClientId =>
       PlayxEnv.getString(_googleSignWebInClientId);
 
-  Future<String> get testWishlistEnv =>
-      PlayxEnv.getString('test_wishlist_env_key',
-          fallback: 'Wishlist Env Fallback',);
+  Future<String> get testWishlistEnv => PlayxEnv.getString(
+        'test_wishlist_env_key',
+        fallback: 'Wishlist Env Fallback',
+      );
 }
