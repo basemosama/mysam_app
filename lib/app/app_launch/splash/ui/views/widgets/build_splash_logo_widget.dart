@@ -9,7 +9,7 @@ class _BuildSplashLogoWidget extends GetView<SplashController> {
       width: context.width * .6,
       height: context.height * .6,
       child: SvgPicture.asset(
-        Assets.images.logo,
+        Assets.images.logoBasedOnTheme,
       ),
     )
         .animate(

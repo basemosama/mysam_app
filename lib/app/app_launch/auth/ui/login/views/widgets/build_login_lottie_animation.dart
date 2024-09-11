@@ -11,7 +11,7 @@ class BuildLoginLottieAnimation extends StatelessWidget {
         radius: context.height * .075,
         backgroundColor: context.colors.surface,
         child: ImageViewer.svgAsset(
-          Assets.images.logo,
+          Assets.images.logoBasedOnTheme,
           width: context.height * .15,
           height: context.height * .15,
           fit: BoxFit.cover,

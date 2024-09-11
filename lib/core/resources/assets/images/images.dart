@@ -1,3 +1,5 @@
+import 'package:mysam_app/core/utils/app_utils.dart';
+
 class Images {
   static final Images _instance = Images._internal();
 
@@ -8,6 +10,9 @@ class Images {
   Images._internal();
 
   final String logo = 'assets/images/svg/logo.svg';
+  final String logoDark = 'assets/images/svg/logo-dark.svg';
+
+  String get logoBasedOnTheme => AppUtils.isDarkMode() ? logo : logoDark;
 
   final String placeholder = 'assets/images/placeholder.svg';
   final String profilePlaceholder = 'assets/images/profile_placeholder.svg';
