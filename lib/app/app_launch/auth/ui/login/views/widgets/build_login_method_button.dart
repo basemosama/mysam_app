@@ -16,14 +16,16 @@ class BuildLoginMethodButton extends GetView<LoginController> {
       ),
       child: CustomIconButton(
         iconInfo: method.icon,
-        width: context.width * 0.08,
-        height: context.width * 0.08,
+        width: context.width * 0.075,
+        height: context.width * 0.075,
         backgroundColor: context.colors.surface,
         borderSide: BorderSide(
           color: context.colors.primary,
           width: 1.r,
         ),
-        onPressed: () {},
+        onPressed: () {
+          controller.loginBy(method: method);
+        },
       ),
     );
   }

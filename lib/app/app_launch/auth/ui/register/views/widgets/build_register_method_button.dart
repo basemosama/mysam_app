@@ -2,6 +2,7 @@ part of '../../imports/register_imports.dart';
 
 class BuildRegisterMethodButton extends GetView<RegisterController> {
   final LoginMethod method;
+
   const BuildRegisterMethodButton({
     required this.method,
     super.key,
@@ -11,42 +12,21 @@ class BuildRegisterMethodButton extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 10.r,
-        vertical: 4.r,
+        horizontal: 6.r,
+        vertical: 6.r,
       ),
-      child: CustomElevatedButton(
+      child: CustomIconButton(
+        iconInfo: method.icon,
+        width: context.width * 0.075,
+        height: context.width * 0.075,
+        backgroundColor: context.colors.surface,
+        borderSide: BorderSide(
+          color: context.colors.primary,
+          width: 1.r,
+        ),
         onPressed: () {
           controller.registerBy(method: method);
         },
-        margin: EdgeInsets.zero,
-        color: context.colors.surface,
-        shape: RoundedRectangleBorder(
-          borderRadius: Style.buttonBorderRadius,
-          side: BorderSide(
-            color: method.backgroundColor(context) ?? context.colors.primary,
-            width: 2.r,
-          ),
-        ),
-        child: Row(
-          children: [
-            SizedBox(width: 16.r),
-            SizedBox(
-              width: 20.r,
-              height: 20.r,
-              child: method.icon.buildIconWidget(
-                color: method.iconColor(context),
-              ),
-            ),
-            SizedBox(width: 10.r),
-            CustomText(
-              method.loginLabel,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
-              color: context.colors.onSurface,
-            ),
-            SizedBox(width: 10.r),
-          ],
-        ),
       ),
     );
   }

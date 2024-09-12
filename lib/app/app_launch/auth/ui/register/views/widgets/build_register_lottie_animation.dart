@@ -8,7 +8,7 @@ class BuildRegisterLottieAnimation extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4.0.r),
       child: CircleAvatar(
-        radius: context.height * .075,
+        radius: context.height * .07,
         backgroundColor: context.colors.surface,
         child: ImageViewer.svgAsset(
           Assets.images.logoBasedOnTheme,
