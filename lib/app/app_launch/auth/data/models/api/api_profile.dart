@@ -1,3 +1,4 @@
+import 'package:mysam_app/app/app_launch/auth/data/models/api/role.dart';
 import 'package:mysam_app/core/models/media_item.dart';
 import 'package:playx/playx.dart';
 
@@ -33,8 +34,7 @@ class ApiProfile {
   // 2024-08-29T11:32:10.449Z
   final String? updatedAt;
 
-  // false
-  final bool newUser;
+  final ApiRole? role;
 
   ApiProfile({
     required this.id,
@@ -49,12 +49,13 @@ class ApiProfile {
     this.blocked,
     this.createdAt,
     this.updatedAt,
-    required this.newUser,
+    this.role,
   });
 
+  /// TODO(1): UPDATE asString to not fallback to empty string and create new method asStringOr to fallback to a value
   factory ApiProfile.fromJson(dynamic json) => ApiProfile(
-        id: asInt(json as Map<String, dynamic>, 'id'),
-        documentId: asString(json, 'documentId'),
+        id: asIntOrNull(json as Map<String, dynamic>, 'id')!,
+        documentId: asStringOrNull(json, 'documentId')!,
         username: asString(json, 'username'),
         email: asString(json, 'email'),
         firstName: asStringOrNull(json, 'firstName'),
@@ -67,7 +68,8 @@ class ApiProfile {
         blocked: asBoolOrNull(json, 'blocked'),
         createdAt: asStringOrNull(json, 'createdAt'),
         updatedAt: asStringOrNull(json, 'updatedAt'),
-        newUser: asBool(json, 'newUser'),
+        role:
+            json['role'] == null ? null : ApiRole.fromJson(asMap(json, 'role')),
       );
 
   Map<String, dynamic> toJson() => {
@@ -83,6 +85,6 @@ class ApiProfile {
         'blocked': blocked,
         'createdAt': createdAt,
         'updatedAt': updatedAt,
-        'newUser': newUser,
+        'role': role?.toJson(),
       };
 }

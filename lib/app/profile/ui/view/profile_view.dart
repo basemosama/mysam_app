@@ -6,8 +6,9 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return const CustomScaffold(
-        child: Center(
-      child: CustomText('Profile'),
-    ));
+      child: Center(
+        child: CustomText('Profile'),
+      ),
+    );
   }
 }

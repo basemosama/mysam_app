@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_dynamic_calls
 
-import 'package:mysam_app/app/app_launch/auth/data/models/api/role.dart';
 import 'package:mysam_app/core/models/media_item.dart';
 import 'package:playx/playx.dart';
 
@@ -15,7 +14,6 @@ class ApiUserInfo {
   final String? provider;
   final String? createdAt;
   final String? updatedAt;
-  final ApiRole? role;
   final bool? confirmed;
   final bool? blocked;
 
@@ -32,7 +30,6 @@ class ApiUserInfo {
     this.updatedAt,
     this.confirmed,
     this.blocked,
-    this.role,
   });
 
   String? getFullName({
@@ -74,7 +71,6 @@ class ApiUserInfo {
       updatedAt: asStringOrNull(map, 'updatedAt'),
       confirmed: asBoolOrNull(map, 'confirmed'),
       blocked: asBoolOrNull(map, 'blocked'),
-      role: map['role'] != null ? ApiRole.fromJson(map['role']) : null,
     );
   }
 
@@ -92,15 +88,13 @@ class ApiUserInfo {
     map['updatedAt'] = updatedAt;
     map['confirmed'] = confirmed;
     map['blocked'] = blocked;
-    if (role != null) {
-      map['role'] = role?.toJson();
-    }
     return map;
   }
 
   @override
   String toString() {
-    return 'User{ id: $id, username: $username, email: $email, firstName: $firstName, lastName: $lastName, imageUrl: ${image?.url}, provider: $provider, createdAt: $createdAt, updatedAt: $updatedAt, confirmed: $confirmed, blocked: $blocked, role: $role}';
+    return 'User{ id: $id, username: $username, email: $email, firstName: $firstName, lastName: $lastName, '
+        'imageUrl: ${image?.url}, provider: $provider, createdAt: $createdAt, updatedAt: $updatedAt, confirmed: $confirmed, blocked: $blocked,}';
   }
 
   ApiUserInfo copyWith({
@@ -116,7 +110,6 @@ class ApiUserInfo {
     String? updatedAt,
     bool? confirmed,
     bool? blocked,
-    ApiRole? role,
   }) {
     return ApiUserInfo(
       id: id ?? this.id,
@@ -131,7 +124,6 @@ class ApiUserInfo {
       updatedAt: updatedAt ?? this.updatedAt,
       confirmed: confirmed ?? this.confirmed,
       blocked: blocked ?? this.blocked,
-      role: role ?? this.role,
     );
   }
 }

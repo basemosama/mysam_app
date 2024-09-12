@@ -1,39 +1,53 @@
-/// _id : "615ba74c2994816bb3a68"
-/// name : "Authenticated"
-/// description : "Default role given to authenticated user."
-/// type : "authenticated"
-/// __v : 0
-library;
+import 'package:playx/playx.dart';
 
 class ApiRole {
-  String? id;
-  String? name;
-  String? description;
-  String? type;
-  int? v;
+  // 1
+  final int id;
+  // tsggss
+  final String documentId;
+  // Authenticated
+  final String name;
+  // Default role given to authenticated user.
+  final String? description;
+  // authenticated
+  final String type;
+  // 2024-09-10T13:10:32.075Z
+  final String? createdAt;
+  // 2024-09-11T23:22:05.628Z
+  final String? updatedAt;
+  // 2024-09-10T13:10:32.075Z
+  final String? publishedAt;
 
   ApiRole({
-    this.id,
-    this.name,
+    required this.id,
+    required this.documentId,
+    required this.name,
     this.description,
-    this.type,
-    this.v,
+    required this.type,
+    this.createdAt,
+    this.updatedAt,
+    this.publishedAt,
   });
 
-  ApiRole.fromJson(dynamic json) {
-    id = json['_id'] as String?;
-    name = json['name'] as String?;
-    description = json['description'] as String?;
-    type = json['type'] as String?;
-    v = json['__v'] as int?;
-  }
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['_id'] = id;
-    map['name'] = name;
-    map['description'] = description;
-    map['type'] = type;
-    map['__v'] = v;
-    return map;
-  }
+  factory ApiRole.fromJson(dynamic json) => ApiRole(
+        id: asIntOrNull(json as Map<String, dynamic>, 'id')!,
+        documentId: asStringOrNull(json, 'documentId')!,
+        name: asStringOrNull(json, 'name')!,
+        description: asStringOrNull(json, 'description'),
+        type: asStringOrNull(json, 'type')!,
+        createdAt: asStringOrNull(json, 'createdAt'),
+        updatedAt: asStringOrNull(json, 'updatedAt'),
+        publishedAt: asStringOrNull(json, 'publishedAt'),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'documentId': documentId,
+        'name': name,
+        'description': description,
+        'type': type,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'publishedAt': publishedAt,
+      };
 }
