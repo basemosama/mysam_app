@@ -12,7 +12,7 @@ abstract class Endpoints {
   static const upload = '/upload';
 
   static const profile = '/users/me';
-  static const updateUser = '/users/update-user';
+  static const updateUser = '/users/edit-profile';
 
 //   **** create  contributions
 //

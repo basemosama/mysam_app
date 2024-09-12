@@ -16,14 +16,26 @@ class BuildRootsItemWidget extends StatelessWidget {
             ),
           ),
           FeatureChip(
-            label: root.status.name,
-            backgroundColor: [
-              Colors.green,
-              Colors.orange,
-              Colors.red,
-            ][root.status.index],
-            color: Colors.white,
-            icon: Icons.edit,
+            label: root.contributionsCount.toLocalizedArabicOrEnglishNumber(),
+            backgroundColor: root.status.backgroundColor(context),
+            color: root.status.onBackgroundColor(context),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomText(
+                  root.contributionsCount.toLocalizedArabicOrEnglishNumber(),
+                  color: root.status.onBackgroundColor(context),
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+                SizedBox(width: 8.0.r),
+                Icon(
+                  Icons.edit_outlined,
+                  color: root.status.onBackgroundColor(context),
+                  size: 16.r,
+                ),
+              ],
+            ),
           ),
         ],
       ),

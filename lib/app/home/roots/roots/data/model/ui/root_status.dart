@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+
 enum RootStatus {
   raw,
   hasConfirmedContribution,
@@ -15,6 +18,18 @@ enum RootStatus {
         throw Exception('Unknown status: $status');
     }
   }
+
+  Color backgroundColor(BuildContext context) => switch (this) {
+        raw => context.colors.outlineVariant,
+        hasConfirmedContribution => Colors.green,
+        hasNonConfirmedContribution => Colors.yellow,
+      };
+
+  Color onBackgroundColor(BuildContext context) => switch (this) {
+        raw => Colors.white,
+        hasConfirmedContribution => Colors.white,
+        hasNonConfirmedContribution => Colors.black,
+      };
 
   String toShortString() {
     switch (this) {

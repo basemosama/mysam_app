@@ -8,11 +8,20 @@ class LightColors extends AppColors {
   // );
 
   static final ColorScheme scheme = SeedColorScheme.fromSeeds(
-    primaryKey: Colors.white,
+    primaryKey: Colors.black,
     tones: FlexTones.chroma(Brightness.light)
         .onMainsUseBW()
         .onSurfacesUseBW()
         .surfacesUseBW(),
+  ).copyWith(
+    primary: Colors.black,
+    secondary: Colors.grey[800],
+    surface: Colors.white,
+    onPrimary: Colors.white,
+    onSecondary: Colors.white,
+    onSurface: Colors.black,
+    outline: Colors.grey[400],
+    primaryContainer: Colors.black,
   );
 
   LightColors() : super(colorScheme: scheme);
