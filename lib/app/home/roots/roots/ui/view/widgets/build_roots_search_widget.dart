@@ -1,6 +1,6 @@
-part of '../../imports/home_imports.dart';
+part of '../../imports/roots_imports.dart';
 
-class BuildHomeSearchWidget extends GetView<HomeController> {
+class BuildHomeSearchWidget extends GetView<RootsController> {
   const BuildHomeSearchWidget();
 
   @override

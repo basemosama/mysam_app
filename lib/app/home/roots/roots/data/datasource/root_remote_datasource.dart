@@ -1,4 +1,4 @@
-import 'package:mysam_app/app/home/data/model/api/api_root.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/api/api_root.dart';
 import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/network/endpoints/endpoints.dart';
 import 'package:mysam_app/core/network/models/api_response.dart';

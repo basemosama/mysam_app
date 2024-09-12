@@ -1,7 +1,7 @@
-part of '../imports/home_imports.dart';
+part of '../imports/roots_imports.dart';
 
-class HomeController extends GetxController {
-  final _repository = HomeRepository();
+class RootsController extends GetxController {
+  final _repository = RootsRepository();
 
   final TextEditingController searchController = TextEditingController();
 

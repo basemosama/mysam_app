@@ -1,6 +1,6 @@
-import 'package:mysam_app/app/home/data/model/api/api_root.dart';
-import 'package:mysam_app/app/home/data/model/ui/root.dart';
-import 'package:mysam_app/app/home/data/model/ui/root_status.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/api/api_root.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root_status.dart';
 
 extension ApiRootToRootMapper on ApiRoot {
   Root toRoot() {

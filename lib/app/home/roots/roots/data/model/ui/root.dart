@@ -1,4 +1,4 @@
-import 'package:mysam_app/app/home/data/model/ui/root_status.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root_status.dart';
 
 class Root {
   final int id;

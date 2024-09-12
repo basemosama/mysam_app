@@ -1,6 +1,6 @@
-part of '../../imports/home_imports.dart';
+part of '../../imports/roots_imports.dart';
 
-class BuildRootsListWidget extends GetView<HomeController> {
+class BuildRootsListWidget extends GetView<RootsController> {
   const BuildRootsListWidget();
 
   @override

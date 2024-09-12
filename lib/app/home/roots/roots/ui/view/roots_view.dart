@@ -1,7 +1,7 @@
-part of '../imports/home_imports.dart';
+part of '../imports/roots_imports.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+class RootsView extends GetView<RootsController> {
+  const RootsView({super.key});
 
   @override
   Widget build(BuildContext context) {
