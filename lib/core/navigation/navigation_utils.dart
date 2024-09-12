@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mysam_app/core/navigation/app_pages.dart';
 import 'package:mysam_app/core/navigation/app_routes.dart';
 import 'package:mysam_app/core/utils/app_utils.dart';
-import 'package:playx_navigation/playx_navigation.dart';
+import 'package:playx/playx.dart';
 
 class NavigationUtils {
   NavigationUtils._();
@@ -11,12 +11,14 @@ class NavigationUtils {
         Routes.home,
         Routes.profile,
         Routes.contributions,
+        Routes.settings,
       ];
 
   static List<String> get routesBottomNav => [
         Routes.home,
         Routes.profile,
         Routes.contributions,
+        Routes.settings,
       ];
 
   static bool get showBottomNav =>

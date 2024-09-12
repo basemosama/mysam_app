@@ -86,15 +86,19 @@ Widget _buildProfileImage(
     backgroundColor: controller.currentIndex == 3
         ? context.colors.primary
         : context.colors.onSurface,
-    child: Container(
-      padding: EdgeInsets.all(1.r),
-      child: ClipOval(
+    child: ClipOval(
+      child: Container(
+        padding: EdgeInsets.all(1.5.r),
+        color: context.colors.surface,
         child: Obx(() {
-          // final user = controller.userInfo.value;
+          final user = controller.userInfo.value;
           return ImageViewer.cachedNetwork(
-            // user?.image?.url ?? '',
-            '',
+            user?.image?.url ?? '',
             errorBuilder: (context, error) => PlaceholderImageWidget(
+              path: Assets.images.profilePlaceholder,
+              padding: EdgeInsets.zero,
+            ),
+            placeholderBuilder: (context) => PlaceholderImageWidget(
               path: Assets.images.profilePlaceholder,
               padding: EdgeInsets.zero,
             ),

@@ -56,7 +56,8 @@ class LoginController extends GetxController {
       result.when(
         success: (User user) async {
           isLoading.value = false;
-          AppNavigation.navigateFromLoginToHome();
+
+          _navigateToHome();
         },
         error: (NetworkException exception) {
           isLoading.value = false;
@@ -77,13 +78,18 @@ class LoginController extends GetxController {
     result.when(
       success: (User user) async {
         isLoading.value = false;
-        AppNavigation.navigateFromLoginToHome();
+        _navigateToHome();
       },
       error: (NetworkException exception) {
         isLoading.value = false;
         Alert.error(message: exception.message);
       },
     );
+  }
+
+  void _navigateToHome() {
+    Get.find<CustomBottomNavigationController>().getUserInfo();
+    AppNavigation.navigateFromLoginToHome();
   }
 
   void navigateToRegister() {

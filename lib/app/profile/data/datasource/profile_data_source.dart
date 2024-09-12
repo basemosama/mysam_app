@@ -20,15 +20,20 @@ class ProfileDataSource {
   }) async {
     final token = jwtToken ?? await MyPreferenceManger.instance.token;
 
+    if (token == null) {
+      return const NetworkResult.error(
+        UnexpectedErrorException(
+          errorMessage: 'Token is null',
+        ),
+      );
+    }
+
     final res = await client.get<ApiProfile>(
       Endpoints.profile,
       fromJson: ApiProfile.fromJson,
-      query: {
-        'populate[invitations][0][space][populate][0]': 'baseInfo',
-      },
       attachCustomHeaders: false,
       headers: {
-        if (token != null) 'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer $token',
       },
     );
     return res;

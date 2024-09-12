@@ -64,8 +64,7 @@ class RegisterController extends GetxController {
       final result = await authRepository.loginViaAuth0(method: method);
       result.when(
         success: (User user) async {
-          isLoading.value = false;
-          AppNavigation.navigateFromRegisterToHome();
+          _navigateToHome();
         },
         error: (NetworkException exception) {
           isLoading.value = false;
@@ -86,13 +85,21 @@ class RegisterController extends GetxController {
     );
     result.when(
       success: (User user) {
-        AppNavigation.navigateFromRegisterToHome();
+        _navigateToHome();
       },
       error: (NetworkException exception) {
         Alert.error(message: exception.message);
       },
     );
     isLoading.value = false;
+  }
+
+
+  void _navigateToHome() {
+    isLoading.value = false;
+    Get.find<CustomBottomNavigationController>().getUserInfo();
+
+    AppNavigation.navigateFromRegisterToHome();
   }
 
   void changeHidePasswordState() {

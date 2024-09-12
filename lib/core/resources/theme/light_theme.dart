@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/light_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
 
@@ -11,7 +12,7 @@ class LightTheme {
 
   static LightColors colors = LightColors();
 
-  static ThemeData get themeData => ThemeData(
+  static ThemeData _themeData({Locale? locale}) => ThemeData(
         brightness: Brightness.light,
         appBarTheme: const AppBarTheme(
           centerTitle: true,
@@ -30,16 +31,18 @@ class LightTheme {
         sliderTheme: const SliderThemeData(
           showValueIndicator: ShowValueIndicator.always,
         ),
+        fontFamily:
+            locale?.isEnglish == true ? englishFontFamily : arabicFontFamily,
       );
 
   static XTheme get theme => XTheme.builder(
         id: lightThemeId,
         name: lightThemeNameKey,
         colors: colors,
-        initialTheme: themeData,
-        themeBuilder: (locale) => themeData,
+        initialTheme: _themeData(),
+        themeBuilder: (locale) => _themeData(locale: locale),
         cupertinoThemeBuilder: (locale) => MaterialBasedCupertinoThemeData(
-          materialTheme: themeData,
+          materialTheme: _themeData(locale: locale),
         ),
       );
 }

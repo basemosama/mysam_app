@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/profile_info.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
+import 'package:mysam_app/app/profile/data/repository/profile_repository.dart';
 import 'package:mysam_app/core/resources/assets/assets.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';

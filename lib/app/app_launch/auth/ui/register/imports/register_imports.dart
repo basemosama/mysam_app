@@ -18,6 +18,7 @@ import 'package:mysam_app/core/widgets/components/custom_elevated_button.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:mysam_app/core/widgets/components/text_field.dart';
 import 'package:mysam_app/core/widgets/loading_overlay.dart';
+import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
 import 'package:playx/playx.dart';
 
 part '../bindings/register_binding.dart';
