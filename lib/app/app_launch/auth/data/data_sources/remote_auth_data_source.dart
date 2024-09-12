@@ -1,4 +1,4 @@
-import 'package:mysam_app/app/app_launch/auth/data/models/api_user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user.dart';
 import 'package:mysam_app/core/network/endpoints/endpoints.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
@@ -33,7 +33,7 @@ class RemoteAuthDataSource {
       final error = res.error;
       if (error is ApiException &&
           error.message == 'Invalid identifier or password') {
-        return NetworkResult.error(
+        return const NetworkResult.error(
           ApiException(
             errorMessage: AppTrans.emailOrPasswordIncorrect,
             statusCode: 400,

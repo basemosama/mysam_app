@@ -51,4 +51,19 @@ enum LoginMethod {
         google => null,
         apple => null,
       };
+
+  String get value => switch (this) {
+        auth0Web => 'auth0Web',
+        email => 'email',
+        google => 'google',
+        apple => 'apple',
+      };
+
+  static LoginMethod? fromValue(String? value) => switch (value) {
+        'auth0Web' => auth0Web,
+        'email' => email,
+        'google' => google,
+        'apple' => apple,
+        _ => null
+      };
 }

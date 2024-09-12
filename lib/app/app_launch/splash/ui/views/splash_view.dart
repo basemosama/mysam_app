@@ -12,7 +12,7 @@ class SplashView extends GetView<SplashController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(child: _BuildSplashLogoWidget()),
-            BuildSplashAppTitleWidget(),
+            // BuildSplashAppTitleWidget(),
             BuildSplashAppVersionWidget(),
           ],
         ),

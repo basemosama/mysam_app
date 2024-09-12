@@ -5,14 +5,14 @@
 /// __v : 0
 library;
 
-class Role {
+class ApiRole {
   String? id;
   String? name;
   String? description;
   String? type;
   int? v;
 
-  Role({
+  ApiRole({
     this.id,
     this.name,
     this.description,
@@ -20,7 +20,7 @@ class Role {
     this.v,
   });
 
-  Role.fromJson(dynamic json) {
+  ApiRole.fromJson(dynamic json) {
     id = json['_id'] as String?;
     name = json['name'] as String?;
     description = json['description'] as String?;

@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:mysam_app/app/app_launch/auth/data/models/api_user.dart';
-import 'package:mysam_app/app/app_launch/auth/data/models/login_method.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/login_method.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user.dart';
 import 'package:mysam_app/app/app_launch/auth/data/repo/auth_repository.dart';
-import 'package:mysam_app/app/app_launch/auth/ui/login/imports/login_imports.dart';
 import 'package:mysam_app/core/navigation/app_navigation.dart';
 import 'package:mysam_app/core/resources/assets/assets.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';

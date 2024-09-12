@@ -1,24 +1,24 @@
 import 'package:auth0_flutter/auth0_flutter.dart';
-
-import 'package:mysam_app/app/app_launch/auth/data/models/user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart';
+import 'package:mysam_app/core/models/media_item.dart';
 
 /// Api user model.
 class ApiUser {
-  final String? jwt;
-  final User? user;
+  final String jwt;
+  final ApiUserInfo userInfo;
 
   ApiUser({
-    this.jwt,
-    this.user,
+    required this.jwt,
+    required this.userInfo,
   });
 
   factory ApiUser.fromJson(dynamic json) {
     final map = json as Map<String, dynamic>;
-    final jwt = map['jwt'] as String?;
-    final user = map['user'] != null ? User.fromJson(map['user']) : null;
+    final jwt = map['jwt'] as String;
+    final user = ApiUserInfo.fromJson(map['user']);
     return ApiUser(
       jwt: jwt,
-      user: user,
+      userInfo: user,
     );
   }
 
@@ -37,10 +37,10 @@ class ApiUser {
     final imageUrl = credentials.user.pictureUrl.toString();
     final user = ApiUser(
       jwt: apiUser.jwt,
-      user: apiUser.user?.copyWith(
+      userInfo: apiUser.userInfo.copyWith(
         firstName: firstName,
         lastName: lastName,
-        imageUrl: imageUrl,
+        image: MediaItem(url: imageUrl),
       ),
     );
     return user;
@@ -49,9 +49,7 @@ class ApiUser {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['jwt'] = jwt;
-    if (user != null) {
-      map['user'] = user?.toJson();
-    }
+    map['user'] = userInfo.toJson();
     return map;
   }
 }

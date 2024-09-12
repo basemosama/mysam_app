@@ -63,7 +63,7 @@ class RegisterController extends GetxController {
       isLoading.value = true;
       final result = await authRepository.loginViaAuth0(method: method);
       result.when(
-        success: (ApiUser user) async {
+        success: (User user) async {
           isLoading.value = false;
           AppNavigation.navigateFromRegisterToHome();
         },
@@ -85,7 +85,7 @@ class RegisterController extends GetxController {
       password: passwordController.text,
     );
     result.when(
-      success: (ApiUser user) {
+      success: (User user) {
         AppNavigation.navigateFromRegisterToHome();
       },
       error: (NetworkException exception) {
