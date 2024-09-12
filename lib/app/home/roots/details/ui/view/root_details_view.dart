@@ -10,7 +10,7 @@ class RootDetailsView extends GetView<RootDetailsController> {
       leading: AppBarLeadingType.back,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.contributeToRoot();
+          controller.contributeToRoot(context: context);
         },
         child: Icon(
           Icons.edit_outlined,

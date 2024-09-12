@@ -22,6 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
   final OutlinedBorder? shape;
 
   final double? width;
+  final FontWeight? fontWeight;
 
   const CustomElevatedButton({
     this.margin,
@@ -38,6 +39,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.shape,
     this.labelFont,
     this.color,
+    this.fontWeight,
   });
 
   @override
@@ -118,7 +120,7 @@ class CustomElevatedButton extends StatelessWidget {
                 ? context.colors.onPrimary
                 : context.colors.subtitleTextColor,
             fontSize: fontSize,
-            fontWeight: FontWeight.w400,
+            fontWeight: fontWeight ?? FontWeight.w400,
             font: labelFont,
             isTranslatable: isLabelTranslatable,
           ),

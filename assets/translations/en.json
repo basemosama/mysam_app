@@ -15,7 +15,18 @@
   "bluePurpleGradientTheme": "Twilight Hues",
   "browserNotAvailableErrorMessage": "No browser app is installed to handle the web authentication.",
   "confirm": "Confirm",
-  "confirmPasswordHint": "Reenter your password",
+
+  "chooseContributionType": "Choose Contribution Type",
+  "qaContribution": "Question Contribution",
+  "poemContribution": "Poem Contribution",
+  "idiomContribution": "Idiom Contribution",
+  "synonymsContribution": "Synonyms Contribution",
+  "modernMeaningContribution": "Modern Meaning Contribution",
+  "slangContribution": "Slang Contribution",
+  "photoContribution": "Photo Contribution",
+
+
+"confirmPasswordHint": "Reenter your password",
   "confirmPasswordLabel": "Confirm password",
   "confirmPasswordMatchError": "Passwords do not match.",
   "confirmPasswordRequiredError": "Confirm password is required.",

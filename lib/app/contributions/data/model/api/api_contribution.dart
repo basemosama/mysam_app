@@ -1,3 +1,4 @@
+import 'package:mysam_app/app/home/roots/roots/data/model/api/api_root.dart';
 import 'package:playx/playx.dart';
 
 class ApiContribution {
@@ -9,6 +10,7 @@ class ApiContribution {
   final String contributionStatus;
   // موهوب
   final String relatedWord;
+  final ApiRoot? root;
   // qa
   final String type;
   final Data? data;
@@ -25,23 +27,35 @@ class ApiContribution {
     required this.contributionStatus,
     required this.relatedWord,
     required this.type,
+    this.root,
     this.data,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,
   });
 
-  factory ApiContribution.fromJson(dynamic json) => ApiContribution(
-        id: asIntOrNull(json as Map<String, dynamic>, 'id')!,
-        documentId: asStringOrNull(json, 'documentId')!,
-        contributionStatus: asStringOrNull(json, 'contributionStatus')!,
-        relatedWord: asStringOrNull(json, 'relatedWord')!,
-        type: asStringOrNull(json, 'type')!,
-        data: Data.fromJson(asMap(json, 'data')),
-        createdAt: asStringOrNull(json, 'createdAt'),
-        updatedAt: asStringOrNull(json, 'updatedAt'),
-        publishedAt: asStringOrNull(json, 'publishedAt'),
-      );
+  factory ApiContribution.fromJson(dynamic json) {
+    final data = json['data'];
+    Data? dataObj;
+    if (data is List<String>) {
+      dataObj = Data(data: data);
+    } else if (data is Map<String, dynamic>) {
+      dataObj = Data.fromJson(data);
+    }
+
+    return ApiContribution(
+      id: asIntOrNull(json as Map<String, dynamic>, 'id')!,
+      documentId: asStringOrNull(json, 'documentId')!,
+      contributionStatus: asStringOrNull(json, 'contributionStatus')!,
+      relatedWord: asStringOrNull(json, 'relatedWord')!,
+      type: asStringOrNull(json, 'type')!,
+      data: dataObj,
+      root: json['root'] != null ? ApiRoot.fromJson(json['root']) : null,
+      createdAt: asStringOrNull(json, 'createdAt'),
+      updatedAt: asStringOrNull(json, 'updatedAt'),
+      publishedAt: asStringOrNull(json, 'publishedAt'),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -49,7 +63,8 @@ class ApiContribution {
         'contributionStatus': contributionStatus,
         'relatedWord': relatedWord,
         'type': type,
-        'data': data?.toJson(),
+        'data': data?.data != null ? data!.data : data?.toJson(),
+        'root': root?.toJson(),
         'createdAt': createdAt,
         'updatedAt': updatedAt,
         'publishedAt': publishedAt,
@@ -61,19 +76,35 @@ class Data {
   final String? answer;
   // موهوب
   final String? question;
+  final String? body;
+  final String? description;
+
+  final String? image;
+  final List<String>? data;
 
   Data({
-    required this.answer,
-    required this.question,
+    this.answer,
+    this.question,
+    this.body,
+    this.description,
+    this.image,
+    this.data,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         answer: asStringOrNull(json, 'answer'),
         question: asStringOrNull(json, 'question'),
+        body: asStringOrNull(json, 'body'),
+        description: asStringOrNull(json, 'description'),
+        image: asStringOrNull(json, 'image'),
+        data: asListStringOrNull(json, 'data'),
       );
 
   Map<String, dynamic> toJson() => {
         'answer': answer,
         'question': question,
+        'body': body,
+        'description': description,
+        'image': image,
       };
 }

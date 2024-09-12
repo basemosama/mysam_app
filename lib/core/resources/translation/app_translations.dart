@@ -5,6 +5,15 @@
 abstract class AppTrans {
   AppTrans._();
 
+  static const String chooseContributionType = 'chooseContributionType';
+  static const String qaContribution = 'qaContribution';
+  static const String poemContribution = 'poemContribution';
+  static const String idiomContribution = 'idiomContribution';
+  static const String synonymsContribution = 'synonymsContribution';
+  static const String modernMeaningContribution = 'modernMeaningContribution';
+  static const String slangContribution = 'slangContribution';
+  static const String photoContribution = 'photoContribution';
+
   static const appName = 'appName';
   static const requestCancelled = 'requestCancelled';
   static const unauthorizedRequest = 'unauthorizedRequest';
