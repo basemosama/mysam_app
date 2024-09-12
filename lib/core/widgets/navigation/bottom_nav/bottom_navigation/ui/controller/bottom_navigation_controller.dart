@@ -16,15 +16,17 @@ class CustomBottomNavigationController extends GetxController {
       userInfo.value = info.userInfo;
       return;
     }
-    final res = await ProfileRepository().getProfileInfo();
-    res.when(
-      success: (info) async {
-        userInfo.value = info.userInfo;
-      },
-      error: (error) {
-        userInfo.value = null;
-      },
-    );
+    userInfo.value = await MyPreferenceManger.instance.getSavedUser();
+    Fimber.d('User Info: ${userInfo.value}');
+    // final res = await ProfileRepository().getProfileInfo();
+    // res.when(
+    //   success: (info) async {
+    //     userInfo.value = info.userInfo;
+    //   },
+    //   error: (error) {
+    //     userInfo.value = null;
+    //   },
+    // );
   }
 
   void updateIndex(int index) {

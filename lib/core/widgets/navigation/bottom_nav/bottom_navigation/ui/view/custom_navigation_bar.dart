@@ -82,14 +82,14 @@ Widget _buildProfileImage(
     {required BuildContext context,
     required CustomBottomNavigationController controller}) {
   return CircleAvatar(
-    radius: 13,
+    radius: 14,
     backgroundColor: controller.currentIndex == 3
         ? context.colors.primary
         : context.colors.onSurface,
-    child: ClipOval(
-      child: Container(
-        padding: EdgeInsets.all(1.5.r),
-        color: context.colors.surface,
+    child: CircleAvatar(
+      radius: 13,
+      backgroundColor: context.colors.surface,
+      child: ClipOval(
         child: Obx(() {
           final user = controller.userInfo.value;
           return ImageViewer.cachedNetwork(

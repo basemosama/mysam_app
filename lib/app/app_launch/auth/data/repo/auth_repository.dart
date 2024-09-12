@@ -127,6 +127,7 @@ class AuthRepository {
   }) async {
     final String token = user.jwt;
     final ApiUserInfo info = user.userInfo;
+
     await _preferenceManger.saveToken(token);
     await _preferenceManger.saveUser(info);
     if (loginMethod != null) {

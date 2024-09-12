@@ -46,7 +46,12 @@ class Auth0AuthDataSource {
         query: {
           'access_token': credentials.accessToken,
         },
-        fromJson: ApiUser.fromJson,
+        fromJson: (json) => ApiUser.fromJson(
+          json,
+          image: MediaItem(
+            url: credentials.user.pictureUrl.toString(),
+          ),
+        ),
         attachCustomHeaders: false,
       );
 
@@ -115,7 +120,6 @@ class Auth0AuthDataSource {
   }) async {
     final token = jwtToken ?? MyPreferenceManger.instance.token;
 
-    // MediaItem? updatedImage = user.image;
     // bool isImageError = false;
     // if (updatedImage != null && updatedImage.id == null) {
     //   final uploadRes = await ApiHelper.instance.uploadImage(

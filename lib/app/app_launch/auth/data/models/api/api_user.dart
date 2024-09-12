@@ -15,10 +15,10 @@ class ApiUser {
     this.role,
   });
 
-  factory ApiUser.fromJson(dynamic json) {
+  factory ApiUser.fromJson(dynamic json, {MediaItem? image}) {
     final map = json as Map<String, dynamic>;
     final jwt = map['jwt'] as String;
-    final user = ApiUserInfo.fromJson(map['user']);
+    final user = ApiUserInfo.fromJson(map['user'], image: image);
     final role = map['role'] != null ? ApiRole.fromJson(map['role']) : null;
     return ApiUser(
       jwt: jwt,

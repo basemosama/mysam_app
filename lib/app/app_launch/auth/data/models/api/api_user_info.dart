@@ -54,7 +54,7 @@ class ApiUserInfo {
     return null;
   }
 
-  factory ApiUserInfo.fromJson(dynamic json) {
+  factory ApiUserInfo.fromJson(dynamic json, {MediaItem? image}) {
     final map = json as Map<String, dynamic>;
     return ApiUserInfo(
       documentId: asString(map, 'documentId'),
@@ -63,9 +63,10 @@ class ApiUserInfo {
       email: asStringOrNull(map, 'email'),
       firstName: asStringOrNull(json, 'firstName'),
       lastName: asStringOrNull(json, 'lastName'),
-      image: json['image'] == null
-          ? null
-          : MediaItem.fromJson(asMap(json, 'image')),
+      image: image ??
+          (json['image'] == null
+              ? null
+              : MediaItem.fromJson(asMap(json, 'image'))),
       provider: asStringOrNull(map, 'provider'),
       createdAt: asStringOrNull(map, 'createdAt'),
       updatedAt: asStringOrNull(map, 'updatedAt'),
@@ -82,7 +83,7 @@ class ApiUserInfo {
     map['email'] = email;
     map['firstName'] = firstName;
     map['lastName'] = lastName;
-    map['imageUrl'] = image?.toJson();
+    map['image'] = image?.toJson();
     map['provider'] = provider;
     map['createdAt'] = createdAt;
     map['updatedAt'] = updatedAt;
