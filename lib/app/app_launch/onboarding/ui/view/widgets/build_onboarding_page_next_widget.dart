@@ -8,7 +8,7 @@ class BuildOnboardingPageNextWidget extends GetView<OnBoardingController> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 12.r, horizontal: 24.r),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: controller.handleNextOrSkip,
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
           padding: EdgeInsets.all(16.r),
