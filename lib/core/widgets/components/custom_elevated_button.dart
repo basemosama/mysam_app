@@ -44,11 +44,9 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: margin ??
-          EdgeInsets.only(
-            right: 14.w,
-            left: 14.w,
-            top: 11.h,
-            bottom: 11.h,
+          EdgeInsets.symmetric(
+            horizontal: 12.r,
+            vertical: 12.r,
           ),
       width: width,
       child: PlatformElevatedButton(
@@ -60,8 +58,8 @@ class CustomElevatedButton extends StatelessWidget {
             : null,
         padding: padding ??
             EdgeInsets.symmetric(
-              horizontal: 8.w,
-              vertical: 16.h,
+              horizontal: 12.r,
+              vertical: 20.r,
             ),
         material: (ctx, _) => MaterialElevatedButtonData(
           style: ElevatedButton.styleFrom(
@@ -69,8 +67,8 @@ class CustomElevatedButton extends StatelessWidget {
                 context.colors.disabledButtonBackgroundColor,
             padding: padding ??
                 EdgeInsets.symmetric(
-                  horizontal: 8.w,
-                  vertical: 18.h,
+                  horizontal: 12.r,
+                  vertical: 20.r,
                 ),
             shape: shape ??
                 RoundedRectangleBorder(
@@ -85,8 +83,8 @@ class CustomElevatedButton extends StatelessWidget {
               context.colors.disabledButtonBackgroundColor,
           padding: padding ??
               EdgeInsets.symmetric(
-                horizontal: 8.w,
-                vertical: 18.h,
+                horizontal: 12.r,
+                vertical: 20.r,
               ),
           borderRadius: borderRadius ?? Style.buttonBorderRadius,
         ),

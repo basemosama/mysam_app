@@ -11,57 +11,59 @@ class LoginView extends GetView<LoginController> {
         child: SafeArea(
           child: Stack(
             children: [
-              Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 4.r,
-                        horizontal: 4.r,
-                      ),
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          // const BuildLoginSubtitleWidget(),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4.0.r),
-                            child: const BuildLoginLottieAnimation(),
-                          ),
-
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                // const BuildLoginTitleWidget(),
-                                const BuildLoginSubtitleWidget(),
-                                SizedBox(height: 4.r),
-                                const BuildLoginWithEmailWidget(),
-                                SizedBox(height: 4.r),
-                                const BuildLoginContinueWithSocial(),
-                                SizedBox(height: 4.r),
-                                const BuildChooseLoginMethodWidget(),
-                              ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0.r),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 4.r,
+                          horizontal: 4.r,
+                        ),
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 4.0.r),
+                              child: const BuildLoginLottieAnimation(),
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  const BuildLoginTitleWidget(),
+                                  const BuildLoginSubtitleWidget(),
+                                  SizedBox(height: 10.r),
+                                  const BuildLoginWithEmailWidget(),
+                                  SizedBox(height: 4.r),
+                                  const BuildLoginContinueWithSocial(),
+                                  SizedBox(height: 4.r),
+                                  const BuildChooseLoginMethodWidget(),
+                                  SizedBox(height: 4.r),
+                                  const BuildLoginRegisterNowWidget(),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  const BuildLoginRegisterNowWidget(),
-                  SizedBox(height: 4.r),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: AppVersion(
-                      textStyle: TextStyle(
-                        color: context.colors.onSurface,
-                        fontSize: 12.sp,
-                        fontFamily: fontFamily,
+                    SizedBox(height: 4.r),
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      child: AppVersion(
+                        textStyle: TextStyle(
+                          color: context.colors.onSurface,
+                          fontSize: 12.sp,
+                          fontFamily: fontFamily,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 8.r),
-                ],
+                    SizedBox(height: 8.r),
+                  ],
+                ),
               ),
               const BuildLoginLoadingOverlay(),
             ],

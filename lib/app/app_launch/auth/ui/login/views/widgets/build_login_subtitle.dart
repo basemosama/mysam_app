@@ -7,7 +7,7 @@ class BuildLoginSubtitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: 8.r,
+        vertical: 12.r,
         horizontal: 4.r,
       ),
       width: double.infinity,
