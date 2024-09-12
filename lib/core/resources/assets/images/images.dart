@@ -16,6 +16,7 @@ class Images {
 
   final String placeholder = 'assets/images/svg/placeholder.svg';
   final String profilePlaceholder = 'assets/images/svg/profile_placeholder.svg';
+  final String rootContributions = 'assets/images/svg/root_contributions.svg';
 
   final String arabicOnboarding1 = 'assets/images/png/arabic1.png';
   final String arabicOnboarding2 = 'assets/images/png/arabic2.png';

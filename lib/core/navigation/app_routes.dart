@@ -8,6 +8,7 @@ abstract class Routes {
   static const onboarding = 'onboarding';
   static const settings = 'settings';
   static const home = 'home';
+  static const rootDetails = 'rootDetails';
   static const contributions = 'contributions';
   static const profile = 'profile';
 }
@@ -19,6 +20,7 @@ abstract class Paths {
   static const register = '/register';
   static const onboarding = '/onboarding';
   static const settings = '/settings';
+  static const rootDetails = 'roots/:id';
   static const home = '/home';
   static const contributions = '/contributions';
   static const profile = '/profile';

@@ -47,6 +47,9 @@ class CustomScaffold extends StatelessWidget {
             leading: leading,
           ),
       body: useSafeArea ? SafeArea(child: scaffoldChild) : scaffoldChild,
+      material: (context, platform) => MaterialScaffoldData(
+        floatingActionButton: floatingActionButton,
+      ),
       backgroundColor: context.colors.surface,
     );
 

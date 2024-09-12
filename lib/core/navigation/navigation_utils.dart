@@ -19,6 +19,7 @@ class NavigationUtils {
         Routes.profile,
         Routes.contributions,
         Routes.settings,
+        Routes.rootDetails,
       ];
 
   static bool get showBottomNav =>

@@ -1,12 +1,15 @@
 part of '../../imports/roots_imports.dart';
 
-class BuildRootsItemWidget extends StatelessWidget {
+class BuildRootsItemWidget extends GetView<RootsController> {
   final Root root;
   const BuildRootsItemWidget({required this.root, super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
+      onPressed: () {
+        controller.handleRootClicked(root);
+      },
       child: Row(
         children: [
           Expanded(

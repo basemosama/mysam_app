@@ -73,6 +73,10 @@ class RootsController extends GetxController {
     );
   }
 
+  void handleRootClicked(Root root) {
+    AppNavigation.navigateToRootDetails(root);
+  }
+
   @override
   void onClose() {
     _debounceWorker?.dispose();

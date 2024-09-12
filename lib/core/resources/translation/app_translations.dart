@@ -180,4 +180,6 @@ abstract class AppTrans {
   static const searchRootsHint = 'searchRootsHint';
 
   static const noRootsFound = 'noRootsFound';
+
+  static const noRootContributionsYet = 'noRootContributionsYet';
 }

@@ -1,3 +1,4 @@
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/core/navigation/app_routes.dart';
 import 'package:playx_navigation/playx_navigation.dart';
 
@@ -48,5 +49,10 @@ abstract class AppNavigation {
 
   static void navigateToLogin() {
     PlayxNavigation.offAllNamed(Routes.login);
+  }
+
+  static void navigateToRootDetails(Root root) {
+    PlayxNavigation.toNamed(Routes.rootDetails,
+        extra: root, pathParameters: {'id': root.documentId});
   }
 }
