@@ -3,6 +3,8 @@
 /// for example we can get app name by using AppTrans.appName.tr
 // ignore: avoid_classes_with_only_static_members
 abstract class AppTrans {
+  AppTrans._();
+
   static const appName = 'appName';
   static const requestCancelled = 'requestCancelled';
   static const unauthorizedRequest = 'unauthorizedRequest';
@@ -174,4 +176,8 @@ abstract class AppTrans {
   static const contributions = 'contributions';
 
   static const profile = 'profile';
+
+  static const searchRootsHint = 'searchRootsHint';
+
+  static const noRootsFound = 'noRootsFound';
 }

@@ -1,0 +1,43 @@
+import 'package:mysam_app/app/home/data/model/api/api_root.dart';
+import 'package:mysam_app/app/home/data/model/ui/root.dart';
+import 'package:mysam_app/app/home/data/model/ui/root_status.dart';
+
+extension ApiRootToRootMapper on ApiRoot {
+  Root toRoot() {
+    return Root(
+      id: id,
+      documentId: documentId,
+      value: value,
+      status: RootStatus.fromString(rootStatus),
+      createdAt: createdAt != null ? DateTime.tryParse(createdAt!) : null,
+      updatedAt: updatedAt != null ? DateTime.tryParse(updatedAt!) : null,
+      publishedAt: publishedAt != null ? DateTime.tryParse(publishedAt!) : null,
+    );
+  }
+}
+
+extension RootToApiRootMapper on Root {
+  ApiRoot toApiRoot() {
+    return ApiRoot(
+      id: id,
+      documentId: documentId,
+      value: value,
+      rootStatus: status.toString(),
+      createdAt: createdAt?.toIso8601String(),
+      updatedAt: updatedAt?.toIso8601String(),
+      publishedAt: publishedAt?.toIso8601String(),
+    );
+  }
+}
+
+extension ApiRootListToRootListMapper on List<ApiRoot> {
+  List<Root> toRootList() {
+    return map((e) => e.toRoot()).toList();
+  }
+}
+
+extension RootListToApiRootListMapper on List<Root> {
+  List<ApiRoot> toApiRootList() {
+    return map((e) => e.toApiRoot()).toList();
+  }
+}
