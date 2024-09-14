@@ -186,4 +186,15 @@ class AuthRepository {
       );
     }
   }
+
+  Future<void> saveLoginInfo(
+      {required String email, required String password}) {
+    return _preferenceManger.saveLoginInfo(email: email, password: password);
+  }
+
+  Future<({String? email, String? password})> getLoginInfo() async {
+    final email = await _preferenceManger.getSavedEmail();
+    final password = await _preferenceManger.getSavedPassword();
+    return (email: email, password: password);
+  }
 }

@@ -191,4 +191,6 @@ abstract class AppTrans {
   static const noRootsFound = 'noRootsFound';
 
   static const noRootContributionsYet = 'noRootContributionsYet';
+
+  static String saveLoginInfo = 'saveLoginInfo';
 }

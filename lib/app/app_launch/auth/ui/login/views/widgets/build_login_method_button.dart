@@ -12,16 +12,28 @@ class BuildLoginMethodButton extends GetView<LoginController> {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 6.r,
-        vertical: 6.r,
       ),
-      child: CustomIconButton(
-        iconInfo: method.icon,
-        width: context.width * 0.075,
-        height: context.width * 0.075,
-        backgroundColor: context.colors.surface,
-        borderSide: BorderSide(
-          color: context.colors.primary,
-          width: 1.r,
+      child: CustomElevatedButton(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.0.r, vertical: 4.r),
+              child: CustomText(
+                method.loginLabel,
+                color: method.onBackground(context),
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            if (method.icon != null)
+              Padding(
+                padding: EdgeInsetsDirectional.only(start: 20.0.r),
+                child: method.icon!.buildIconWidget(
+                  size: 24.r,
+                ),
+              ),
+          ],
         ),
         onPressed: () {
           controller.loginBy(method: method);

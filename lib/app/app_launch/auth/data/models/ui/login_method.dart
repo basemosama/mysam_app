@@ -17,9 +17,9 @@ enum LoginMethod {
         apple => 'apple',
       };
 
-  IconInfo get icon => switch (this) {
+  IconInfo? get icon => switch (this) {
         auth0Web => IconInfo.icon(Icons.login),
-        email => IconInfo.icon(Icons.email),
+        email => null,
         google => IconInfo.svg(Assets.icons.google),
         apple => IconInfo.svg(Assets.icons.apple),
       };

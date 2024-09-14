@@ -5,13 +5,19 @@ class BuildLoginWithEmailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        BuildLoginEmailFieldWidget(),
-        BuildLoginPasswordFieldWidget(),
-        BuildLoginButtonWidget(),
-      ],
+    return Container(
+      color: context.colors.surface,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const BuildLoginSubtitleWidget(),
+          SizedBox(height: 14.r),
+          const BuildLoginEmailFieldWidget(),
+          const BuildLoginPasswordFieldWidget(),
+          const BuildLoginSaveLoginInfoWidget(),
+          const BuildLoginButtonWidget(),
+        ],
+      ),
     );
   }
 }

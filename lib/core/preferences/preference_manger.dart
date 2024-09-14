@@ -15,6 +15,8 @@ class MyPreferenceManger {
   final String _userKey = 'logged_in_user';
   final String _onBoardingKey = 'onboarding_key';
   final String _loginMethodKey = 'login_method';
+  final String _savedEmailKey = 'saved_email';
+  final String _savedPasswordKey = 'saved_password';
 
   Future<bool> get isLoggedIn async =>
       (await PlayxSecurePrefs.getString(_tokenKey)).isNotEmpty;
@@ -65,5 +67,27 @@ class MyPreferenceManger {
 
   Future<void> saveOnBoardingShown() async {
     return PlayxPrefs.setBool(_onBoardingKey, true);
+  }
+
+  Future<void> saveLoginInfo(
+      {required String email, required String password}) async {
+    await saveEmail(email: email);
+    return savePassword(password: password);
+  }
+
+  Future<void> saveEmail({required String email}) {
+    return PlayxSecurePrefs.setString(_savedEmailKey, email);
+  }
+
+  Future<void> savePassword({required String password}) {
+    return PlayxSecurePrefs.setString(_savedPasswordKey, password);
+  }
+
+  Future<String?> getSavedEmail() async {
+    return PlayxSecurePrefs.maybeGetString(_savedEmailKey);
+  }
+
+  Future<String?> getSavedPassword() async {
+    return PlayxSecurePrefs.maybeGetString(_savedPasswordKey);
   }
 }
