@@ -29,7 +29,29 @@ class DarkTheme {
           primaryContrastingColor: colors.primaryContainer,
           scaffoldBackgroundColor: colors.surface,
           brightness: Brightness.dark,
-          textTheme: CupertinoTextThemeData(primaryColor: colors.primary),
+          textTheme: CupertinoTextThemeData(
+            primaryColor: colors.primary,
+            tabLabelTextStyle: TextStyle(
+              color: colors.subtitleTextColor,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
+            (Set<WidgetState> states) => states.contains(WidgetState.selected)
+                ? TextStyle(
+                    color: colors.primary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  )
+                : TextStyle(
+                    color: colors.subtitleTextColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+          ),
         ),
         applyElevationOverlayColor: true,
         extensions: const [

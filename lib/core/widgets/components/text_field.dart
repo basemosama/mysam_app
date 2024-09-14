@@ -50,6 +50,8 @@ class CustomTextField extends StatefulWidget {
   final Iterable<String>? autoFillHints;
   final EdgeInsets? contentPadding;
   final TextStyle? hintStyle;
+  final BorderRadius? borderRadius;
+  final double? borderWidth;
 
   const CustomTextField({
     this.hint,
@@ -91,6 +93,8 @@ class CustomTextField extends StatefulWidget {
     this.scrollPadding,
     this.autoFillHints,
     this.contentPadding,
+    this.borderRadius,
+    this.borderWidth,
   });
 
   @override
@@ -184,25 +188,30 @@ class _CustomFieldState extends State<CustomTextField> {
           ),
       hintColor: widget.hintColor ?? PlayxColors.grey,
       enabledBorder: OutlineInputBorder(
-        borderRadius: Style.fieldBorderRadius,
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
         borderSide: BorderSide(
           color: widget.borderColor ?? PlayxColors.grey,
+          width: widget.borderWidth ?? 1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: widget.focusedBorderColor ?? PlayxColors.grey,
-          width: .5,
+          width: widget.borderWidth ?? 1,
         ),
-        borderRadius: Style.fieldBorderRadius,
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(color: widget.borderColor ?? PlayxColors.grey),
-        borderRadius: Style.fieldBorderRadius,
+        borderSide: BorderSide(
+          color: widget.borderColor ?? PlayxColors.grey,
+          width: widget.borderWidth ?? 1,
+        ),
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.red),
-        borderRadius: Style.fieldBorderRadius,
+        borderSide:
+            BorderSide(color: Colors.red, width: widget.borderWidth ?? 1),
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
     );
   }

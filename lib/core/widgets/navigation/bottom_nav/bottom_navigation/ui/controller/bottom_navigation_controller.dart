@@ -17,7 +17,6 @@ class CustomBottomNavigationController extends GetxController {
       return;
     }
     userInfo.value = await MyPreferenceManger.instance.getSavedUser();
-    Fimber.d('User Info: ${userInfo.value}');
     // final res = await ProfileRepository().getProfileInfo();
     // res.when(
     //   success: (info) async {

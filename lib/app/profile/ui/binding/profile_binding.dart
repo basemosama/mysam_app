@@ -10,9 +10,9 @@ class ProfileBinding extends PlayxBinding {
 
   @override
   Future<void> onExit(BuildContext context) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    if (Get.isRegistered<ProfileController>()) {
-      Get.delete<ProfileController>();
-    }
+    // await Future.delayed(const Duration(milliseconds: 500));
+    // if (Get.isRegistered<ProfileController>()) {
+    //   Get.delete<ProfileController>();
+    // }
   }
 }

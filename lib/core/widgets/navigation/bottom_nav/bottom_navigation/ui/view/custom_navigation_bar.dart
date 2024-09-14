@@ -19,14 +19,14 @@ PlatformNavBar buildCustomNavigationBar({
       return MaterialNavigationBarData(
         indicatorColor: context.colors.primary,
         // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        // backgroundColor: context.colors.surface,
+        backgroundColor: context.colors.surface,
         items: [
           NavigationDestination(
             icon: Icon(
               Icons.home,
               color: controller.currentIndex == 0
                   ? context.colors.onPrimary
-                  : context.colors.onSurface,
+                  : context.colors.subtitleTextColor,
             ),
             label: AppTrans.home.tr(context: context),
           ),
@@ -35,7 +35,7 @@ PlatformNavBar buildCustomNavigationBar({
               Icons.star,
               color: controller.currentIndex == 1
                   ? context.colors.onPrimary
-                  : context.colors.onSurface,
+                  : context.colors.subtitleTextColor,
             ),
             label: AppTrans.contributions.tr(context: context),
           ),
@@ -55,7 +55,7 @@ PlatformNavBar buildCustomNavigationBar({
               Icons.home,
               color: controller.currentIndex == 0
                   ? context.colors.primary
-                  : context.colors.onSurface,
+                  : context.colors.subtitleTextColor,
             ),
             label: AppTrans.home.tr(context: context),
           ),
@@ -64,7 +64,7 @@ PlatformNavBar buildCustomNavigationBar({
               Icons.star,
               color: controller.currentIndex == 1
                   ? context.colors.onPrimary
-                  : context.colors.onSurface,
+                  : context.colors.subtitleTextColor,
             ),
             label: AppTrans.contributions.tr(context: context),
           ),

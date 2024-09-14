@@ -11,6 +11,8 @@ class BuildHomeSearchWidget extends GetView<RootsController> {
         child: CustomTextField(
           hint: AppTrans.searchRootsHint,
           controller: controller.searchController,
+          borderColor: context.colors.onSurface,
+          borderRadius: BorderRadius.circular(24.r),
           onChanged: (value) {
             controller._searchText.value = value;
           },

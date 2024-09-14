@@ -10,9 +10,9 @@ class RootsBinding extends PlayxBinding {
 
   @override
   Future<void> onExit(BuildContext context) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    if (Get.isRegistered<RootsController>()) {
-      Get.delete<RootsController>();
-    }
+    // await Future.delayed(const Duration(milliseconds: 500));
+    // if (Get.isRegistered<RootsController>()) {
+    //   Get.delete<RootsController>();
+    // }
   }
 }
