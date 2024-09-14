@@ -99,12 +99,15 @@ class AuthRepository {
   }
 
   Future<NetworkResult<User>> register({
-    required String username,
+    required String firstName,
+    required String lastName,
     required String email,
     required String password,
   }) async {
     try {
       final res = await _remoteDataSource.register(
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: password,
       );

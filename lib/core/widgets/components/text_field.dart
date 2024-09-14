@@ -49,11 +49,13 @@ class CustomTextField extends StatefulWidget {
 
   final Iterable<String>? autoFillHints;
   final EdgeInsets? contentPadding;
+  final TextStyle? hintStyle;
 
   const CustomTextField({
     this.hint,
     this.maxLines = 1,
     this.minLines = 1,
+    this.hintStyle,
     this.onChanged,
     this.onTap,
     this.icon,
@@ -107,6 +109,7 @@ class _CustomFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return OptimizedTextField(
       hint: widget.hint?.tr(context: context),
+      hintStyle: widget.hintStyle,
       maxLines: widget.maxLines,
       minLines: widget.minLines,
       onChanged: widget.onChanged,
@@ -143,7 +146,7 @@ class _CustomFieldState extends State<CustomTextField> {
               ),
             )
           : widget.suffix,
-      label: widget.label,
+      label: widget.label?.tr(context: context),
       read: widget.read,
       obscureText: widget.obscureText,
       enabled: widget.enabled,

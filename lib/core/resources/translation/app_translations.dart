@@ -13,6 +13,16 @@ abstract class AppTrans {
   static const String modernMeaningContribution = 'modernMeaningContribution';
   static const String slangContribution = 'slangContribution';
   static const String photoContribution = 'photoContribution';
+  static const String nameLabel = 'nameLabel';
+  static const String nameHint = 'nameHint';
+  static const String nameRequired = 'nameRequired';
+  static const String firstNameLabel = 'firstNameLabel';
+  static const String firstNameHint = 'firstNameHint';
+  static const String firstNameRequired = 'firstNameRequired';
+
+  static const String lastNameLabel = 'lastNameLabel';
+  static const String lastNameHint = 'lastNameHint';
+  static const String lastNameRequired = 'lastNameRequired';
 
   static const appName = 'appName';
   static const requestCancelled = 'requestCancelled';
@@ -193,4 +203,6 @@ abstract class AppTrans {
   static const noRootContributionsYet = 'noRootContributionsYet';
 
   static String saveLoginInfo = 'saveLoginInfo';
+
+  static String agreeToTerms = 'agreeToTerms';
 }

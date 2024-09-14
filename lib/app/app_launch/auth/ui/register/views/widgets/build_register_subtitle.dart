@@ -7,14 +7,15 @@ class BuildRegisterSubtitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: 8.r,
+        vertical: 12.r,
         horizontal: 4.r,
       ),
       width: double.infinity,
-      child: const CustomText(
+      child: CustomText(
         AppTrans.registerSubtitle,
-        style: CustomTextStyle.titleMedium,
+        fontSize: 22.sp,
         textAlign: TextAlign.center,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

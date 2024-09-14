@@ -6,16 +6,16 @@ class BuildRegisterTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-        right: 8.r,
-        left: 8.r,
-        bottom: 8.r,
+      padding: EdgeInsets.symmetric(
+        vertical: 4.r,
+        horizontal: 4.r,
       ),
       width: double.infinity,
       child: CustomText(
         AppTrans.registerTitle,
-        style: CustomTextStyle.titleMedium,
+        fontSize: 24.sp,
         textAlign: TextAlign.center,
+        fontWeight: FontWeight.w700,
       ),
     );
   }

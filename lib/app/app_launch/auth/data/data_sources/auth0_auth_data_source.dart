@@ -3,10 +3,10 @@ import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/api/auth0Exception.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/login_method.dart';
+import 'package:mysam_app/app/profile/data/datasource/profile_data_source.dart';
 import 'package:mysam_app/core/config/constant.dart';
 import 'package:mysam_app/core/models/media_item.dart';
 import 'package:mysam_app/core/network/endpoints/endpoints.dart';
-import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
 
@@ -22,6 +22,7 @@ class Auth0AuthDataSource {
   final _auth0 = Auth0(Constants.auth0Domain, Constants.auth0ClientId);
 
   final PlayxNetworkClient _client = Get.find<PlayxNetworkClient>();
+  final _profileDataSource = ProfileDataSource();
 
   Future<bool> get hasValidCredentials async =>
       await _auth0.credentialsManager.hasValidCredentials();
@@ -99,8 +100,8 @@ class Auth0AuthDataSource {
           image: image,
         );
 
-        final updateUserRes =
-            await updateUser(user: updatedUser, jwtToken: token);
+        final updateUserRes = await _profileDataSource.updateUser(
+            user: updatedUser, jwtToken: token);
         if (updateUserRes is NetworkSuccess<ApiUserInfo> && token.isNotEmpty) {
           return NetworkSuccess(
             ApiUser(
@@ -112,43 +113,6 @@ class Auth0AuthDataSource {
       }
     }
     return res;
-  }
-
-  Future<NetworkResult<ApiUserInfo>> updateUser({
-    required ApiUserInfo user,
-    String? jwtToken,
-  }) async {
-    final token = jwtToken ?? MyPreferenceManger.instance.token;
-
-    // bool isImageError = false;
-    // if (updatedImage != null && updatedImage.id == null) {
-    //   final uploadRes = await ApiHelper.instance.uploadImage(
-    //     image: updatedImage,
-    //     jwtToken: token,
-    //   );
-    //   uploadRes.when(
-    //     success: (MediaItem success) {
-    //       updatedImage = success;
-    //     },
-    //     error: (NetworkException error) {
-    //       isImageError = true;
-    //     },
-    //   );
-    // }
-
-    return _client.put(
-      Endpoints.updateUser,
-      body: {
-        'firstName': user.firstName,
-        'lastName': user.lastName,
-        // if (!isImageError) 'image': updatedImage?.id,
-      },
-      headers: {
-        'Authorization': 'Bearer $token',
-      },
-      fromJson: ApiUserInfo.fromJson,
-      attachCustomHeaders: false,
-    );
   }
 
   Future<Credentials?> getCredentials() async {

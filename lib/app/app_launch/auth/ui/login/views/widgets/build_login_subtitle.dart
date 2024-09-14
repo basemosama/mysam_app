@@ -13,9 +13,9 @@ class BuildLoginSubtitleWidget extends StatelessWidget {
       width: double.infinity,
       child: CustomText(
         AppTrans.loginSubtitle,
-        fontSize: 22.sp,
+        fontSize: 24.sp,
         textAlign: TextAlign.center,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
       ),
     );
   }
