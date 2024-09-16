@@ -74,14 +74,18 @@ class ApiContribution {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'documentId': documentId,
+  Map<String, dynamic> toJson({
+    bool attachRoot = false,
+    bool attachIds = false,
+  }) =>
+      {
+        if (attachIds) 'id': id,
+        if (attachIds) 'documentId': documentId,
         'contributionStatus': contributionStatus,
         'relatedWord': relatedWord,
         'type': type,
         'data': data?.data != null ? data!.data : data?.toJson(),
-        'root': root?.toJson(),
+        if (attachRoot) 'root': root?.toJson(),
         'relatedWordType': relatedWordType,
         'relatedWordTypeMeta': relatedWordTypeMeta,
         'relatedWordWeight': relatedWordWeight,

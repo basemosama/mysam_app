@@ -16,15 +16,23 @@ class CreateContributionBinding extends PlayxBinding {
       return;
     }
 
-    if (!Get.isRegistered<CreateContributionController>()) {
-      Get.put(CreateContributionController(
-          root: root, contributionType: contributionType));
-    }
+    final controller = switch (contributionType) {
+      ContributionType.qa => CreateQaContributionController(root: root),
+      _ => CreateQaContributionController(
+          root: root,
+        )
+    };
+
+    Get.put<CreateContributionController>(controller);
+    Get.put<CreateQaContributionController>(controller);
   }
 
   @override
   Future<void> onExit(BuildContext context) async {
     await Future.delayed(const Duration(milliseconds: 500));
+    if (Get.isRegistered<CreateQaContributionController>()) {
+      Get.delete<CreateQaContributionController>();
+    }
     if (Get.isRegistered<CreateContributionController>()) {
       Get.delete<CreateContributionController>();
     }

@@ -20,6 +20,8 @@ abstract class AppTrans {
   static const String firstNameHint = 'firstNameHint';
   static const String firstNameRequired = 'firstNameRequired';
   static const String keywordTooltip = 'keywordTooltip';
+  static const String shouldContainRootLettersError =
+      'shouldContainRootLettersError';
 
   static const String lastNameLabel = 'lastNameLabel';
   static const String lastNameHint = 'lastNameHint';

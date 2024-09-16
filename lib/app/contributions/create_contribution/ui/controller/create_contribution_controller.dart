@@ -1,6 +1,9 @@
 part of '../imports/create_contribution_imports.dart';
 
-class CreateContributionController extends GetxController {
+sealed class CreateContributionController extends GetxController {
+  final _repository = CreateContributionRepository();
+  final pageController = PageController();
+
   final Root root;
   final ContributionType contributionType;
 
@@ -31,6 +34,8 @@ class CreateContributionController extends GetxController {
   RxBool isMainFormValid = false.obs;
 
   Worker? _mainFormValidator;
+
+  final isLoading = false.obs;
 
   bool get isNextOrFinishButtonEnabled {
     switch (currentStepIndex.value) {
@@ -70,15 +75,48 @@ class CreateContributionController extends GetxController {
 
   void handleNextOrFinish() {
     if (isLastStep) {
-      currentStepIndex.value = 0;
-
       createContribution();
     } else {
       currentStepIndex.value++;
+      pageController.animateToPage(
+        currentStepIndex.value,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
     }
   }
 
-  void createContribution() {}
+  void handleBack() {
+    if (currentStepIndex.value == 0) {
+      PlayxNavigation.pop();
+    } else {
+      currentStepIndex.value--;
+      pageController.animateToPage(
+        currentStepIndex.value,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.linear,
+      );
+    }
+  }
+
+  /// This method is used to create a contribution model
+  /// based on the contribution type.
+  /// Should be implemented in the child class.
+  Contribution createContributionModel();
+
+  Future<void> createContribution() async {
+    isLoading.value = true;
+    final contribution = createContributionModel();
+    final res =
+        await _repository.createContribution(contribution: contribution);
+    res.when(success: (contribution) {
+      Alert.success(message: 'Contribution created successfully');
+      isLoading.value = false;
+    }, error: (error) {
+      Alert.error(message: error.message);
+      isLoading.value = false;
+    });
+  }
 
   void addRelatedWordProperties() {
     final text = relatedWordPropertiesController.text;

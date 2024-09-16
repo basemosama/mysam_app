@@ -7,7 +7,10 @@ class CreateContributionView extends GetView<CreateContributionController> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: controller.contributionType.displayName,
-      leading: AppBarLeadingType.back,
+      leadingWidget: IconButton(
+        onPressed: controller.handleBack,
+        icon: const Icon(Icons.arrow_back_ios_new),
+      ),
       floatingActionButton: Obx(() {
         final isNextOrFinishButtonEnabled =
             controller.isNextOrFinishButtonEnabled;
@@ -34,14 +37,7 @@ class CreateContributionView extends GetView<CreateContributionController> {
             }),
             SizedBox(height: 8.r),
             Expanded(
-              child: AnimatedSwitcher(
-                duration: 300.milliseconds,
-                child: controller.currentStepIndex.value == 0
-                    ? BuildContributionMainForm(
-                        controller: controller,
-                      )
-                    : BuildContributionMainForm(controller: controller),
-              ),
+              child: BuildContributionByTypeForum(controller: controller),
             ),
           ],
         ),
