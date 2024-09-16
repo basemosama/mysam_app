@@ -25,22 +25,33 @@ class CreateContributionView extends GetView<CreateContributionController> {
           ),
         );
       }),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
-        child: Column(
-          children: [
-            Obx(() {
-              return BuildStepperWidget(
-                stepCount: controller.currentStepCount,
-                currentStepIndex: controller.currentStepIndex.value,
-              );
-            }),
-            SizedBox(height: 8.r),
-            Expanded(
-              child: BuildContributionByTypeForum(controller: controller),
+      child: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
+            child: Column(
+              children: [
+                Obx(() {
+                  return BuildStepperWidget(
+                    stepCount: controller.currentStepCount,
+                    currentStepIndex: controller.currentStepIndex.value,
+                  );
+                }),
+                SizedBox(height: 8.r),
+                Expanded(
+                  child: BuildContributionByTypeForum(controller: controller),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Obx(() {
+            final isLoading = controller.isLoading.value;
+            return LoadingOverlay(
+              isLoading: isLoading,
+              loadingText: AppTrans.loading,
+            );
+          }),
+        ],
       ),
     );
   }

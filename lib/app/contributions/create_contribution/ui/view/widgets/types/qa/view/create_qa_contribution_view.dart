@@ -14,9 +14,7 @@ class CreateQaContributionView extends StatelessWidget {
         BuildContributionMainForm(
           controller: controller,
         ),
-        Container(
-          color: Colors.red,
-        ),
+        const BuildQaContributionSecondStep(),
       ],
     );
   }

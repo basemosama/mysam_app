@@ -109,13 +109,19 @@ sealed class CreateContributionController extends GetxController {
     final contribution = createContributionModel();
     final res =
         await _repository.createContribution(contribution: contribution);
-    res.when(success: (contribution) {
-      Alert.success(message: 'Contribution created successfully');
-      isLoading.value = false;
-    }, error: (error) {
-      Alert.error(message: error.message);
-      isLoading.value = false;
-    });
+    res.when(
+      success: (contribution) {
+        Alert.success(
+            message: AppTrans.contributionCreatedSuccessfully
+                .tr(args: [contribution.relatedWord.word]));
+        isLoading.value = false;
+        PlayxNavigation.pop();
+      },
+      error: (error) {
+        Alert.error(message: error.message);
+        isLoading.value = false;
+      },
+    );
   }
 
   void addRelatedWordProperties() {

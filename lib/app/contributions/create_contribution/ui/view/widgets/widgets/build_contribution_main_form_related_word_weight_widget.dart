@@ -17,10 +17,6 @@ class BuildContributionMainFormRelatedWordWeightWidget extends StatelessWidget {
           IsRequired(
             AppTrans.keywordWeightRequiredError.tr(context: context),
           ),
-          ContainsLettersRule(
-            word: controller.root.value,
-            error: AppTrans.shouldContainRootLettersError.tr(context: context),
-          ),
         ]),
         shouldAutoValidate: true,
         onValidationChanged: (isValid) {

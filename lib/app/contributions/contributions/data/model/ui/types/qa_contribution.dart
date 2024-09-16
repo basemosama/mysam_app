@@ -9,12 +9,11 @@ class QAContribution extends Contribution {
     required super.documentId,
     required super.status,
     required super.relatedWord,
-    required super.type,
     super.createdAt,
     super.updatedAt,
     super.publishedAt,
     required this.question,
     required this.answer,
     super.root,
-  });
+  }) : super(type: ContributionType.qa);
 }

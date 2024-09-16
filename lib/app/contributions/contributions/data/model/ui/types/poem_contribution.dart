@@ -9,12 +9,11 @@ class PoemContribution extends Contribution {
     required super.documentId,
     required super.status,
     required super.relatedWord,
-    required super.type,
     super.createdAt,
     super.updatedAt,
     super.publishedAt,
     required this.body,
     this.description,
     super.root,
-  });
+  }) : super(type: ContributionType.poem);
 }

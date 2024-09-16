@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:mysam_app/app/home/roots/roots/data/model/api/api_root.dart';
+import 'package:mysam_app/core/models/media_item.dart';
 import 'package:playx/playx.dart';
 
 class ApiContribution {
@@ -14,14 +17,11 @@ class ApiContribution {
   // qa
   final String type;
   final Data? data;
-  // "relatedWordType": null,
-  // "relatedWordTypeMeta": null,
-  // "relatedWordWeight": null,
-  // "metaData": null
   final String? relatedWordType;
   final String? relatedWordTypeMeta;
   final String? relatedWordWeight;
   final List<String>? metaData;
+  final MediaItem? image;
 
   // 2024-09-11T09:03:19.200Z
   final String? createdAt;
@@ -42,6 +42,7 @@ class ApiContribution {
     this.relatedWordTypeMeta,
     this.relatedWordWeight,
     this.metaData,
+    this.image,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,
@@ -68,6 +69,7 @@ class ApiContribution {
       relatedWordTypeMeta: asStringOrNull(json, 'relatedWordTypeMeta'),
       relatedWordWeight: asStringOrNull(json, 'relatedWordWeight'),
       metaData: asListStringOrNull(json, 'metaData'),
+      image: json['image'] != null ? MediaItem.fromJson(json['image']) : null,
       createdAt: asStringOrNull(json, 'createdAt'),
       updatedAt: asStringOrNull(json, 'updatedAt'),
       publishedAt: asStringOrNull(json, 'publishedAt'),
@@ -75,25 +77,31 @@ class ApiContribution {
   }
 
   Map<String, dynamic> toJson({
-    bool attachRoot = false,
+    bool attachRoot = true,
     bool attachIds = false,
-  }) =>
-      {
-        if (attachIds) 'id': id,
-        if (attachIds) 'documentId': documentId,
-        'contributionStatus': contributionStatus,
-        'relatedWord': relatedWord,
-        'type': type,
-        'data': data?.data != null ? data!.data : data?.toJson(),
-        if (attachRoot) 'root': root?.toJson(),
-        'relatedWordType': relatedWordType,
-        'relatedWordTypeMeta': relatedWordTypeMeta,
-        'relatedWordWeight': relatedWordWeight,
-        'metaData': metaData,
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-        'publishedAt': publishedAt,
-      };
+    bool attachStatus = false,
+    MediaItem? image,
+  }) {
+    final map = {
+      if (attachIds) 'id': id,
+      if (attachIds) 'documentId': documentId,
+      if (attachStatus) 'contributionStatus': contributionStatus,
+      'relatedWord': relatedWord,
+      'type': type,
+      'data': data?.data != null ? data!.data : data?.toJson(image: image),
+      if (attachRoot) 'root': root?.value,
+      'relatedWordType': relatedWordType,
+      'relatedWordTypeMeta': relatedWordTypeMeta,
+      'relatedWordWeight': relatedWordWeight,
+      'metaData': metaData,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+      'publishedAt': publishedAt,
+    };
+    map.removeWhere((key, value) => value == null);
+    Fimber.d(jsonEncode(map));
+    return map;
+  }
 }
 
 class Data {
@@ -104,7 +112,7 @@ class Data {
   final String? body;
   final String? description;
 
-  final String? image;
+  final int? image;
   final List<String>? data;
 
   Data({
@@ -121,15 +129,16 @@ class Data {
         question: asStringOrNull(json, 'question'),
         body: asStringOrNull(json, 'body'),
         description: asStringOrNull(json, 'description'),
-        image: asStringOrNull(json, 'image'),
+        image: asIntOrNull(json, 'image'),
         data: asListStringOrNull(json, 'data'),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson({MediaItem? image}) => {
         if (answer != null) 'answer': answer,
         if (question != null) 'question': question,
         if (body != null) 'body': body,
         if (description != null) 'description': description,
-        if (description != null) 'image': image,
+        if (image != null || this.image != null)
+          'image': image?.id ?? this.image,
       };
 }

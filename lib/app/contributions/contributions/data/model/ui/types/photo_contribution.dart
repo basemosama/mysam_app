@@ -1,18 +1,17 @@
 part of '../contribution.dart';
 
 class PhotoContribution extends Contribution {
-  final String imageId;
+  final MediaItem? image;
 
   PhotoContribution({
     required super.id,
     required super.documentId,
     required super.status,
     required super.relatedWord,
-    required super.type,
     super.createdAt,
     super.updatedAt,
     super.publishedAt,
-    required this.imageId,
+    this.image,
     super.root,
-  });
+  }) : super(type: ContributionType.photo);
 }

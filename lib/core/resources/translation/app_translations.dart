@@ -4,6 +4,53 @@
 // ignore: avoid_classes_with_only_static_members
 abstract class AppTrans {
   AppTrans._();
+  static const String contributionCreatedSuccessfully =
+      'contributionCreatedSuccessfully';
+  static const cancel = 'cancel';
+  static const addImageLabel = 'addImageLabel';
+  static const captureImageLabel = 'captureImageLabel';
+  static const orLabel = 'orLabel';
+  static const addImageFromUrlLabel = 'addImageFromUrlLabel';
+  static const imageUrlHint = 'imageUrlHint';
+  static const imageUrlRequired = 'imageUrlRequired';
+  static const imagePickerFromUrlError = 'imagePickerFromUrlError';
+
+  static const String poemContributionDescriptionLabel =
+      'poemContributionDescriptionLabel';
+  static const String poemContributionHintLabel = 'poemContributionHintLabel';
+  static const String poemContributionDescriptionRequiredError =
+      'poemContributionDescriptionRequiredError';
+  static const String poemContributionBodyLabel = 'poemContributionBodyLabel';
+  static const String poemContributionBodyHint = 'poemContributionBodyHint';
+  static const String poemContributionBodyRequiredError =
+      'poemContributionBodyRequiredError';
+  static const String idiomContributionDescriptionLabel =
+      'idiomContributionDescriptionLabel';
+  static const String idiomContributionHintLabel = 'idiomContributionHintLabel';
+  static const String idiomContributionDescriptionRequiredError =
+      'idiomContributionDescriptionRequiredError';
+  static const String idiomContributionBodyLabel = 'idiomContributionBodyLabel';
+  static const String idiomContributionBodyHint = 'idiomContributionBodyHint';
+  static const String idiomContributionBodyRequiredError =
+      'idiomContributionBodyRequiredError';
+  static const String modernMeaningContributionLabel =
+      'modernMeaningContributionLabel';
+  static const String modernMeaningContributionHint =
+      'modernMeaningContributionHint';
+  static const String modernMeaningContributionRequiredError =
+      'modernMeaningContributionRequiredError';
+  static const String synonymsContributionLabel = 'synonymsContributionLabel';
+  static const String synonymsContributionHint = 'synonymsContributionHint';
+  static const String synonymsContributionRequiredError =
+      'synonymsContributionRequiredError';
+  static const String slangContributionLabel = 'slangContributionLabel';
+  static const String slangContributionHint = 'slangContributionHint';
+  static const String slangContributionRequiredError =
+      'slangContributionRequiredError';
+  static const String photoContributionLabel = 'photoContributionLabel';
+  static const String photoContributionRequiredError =
+      'photoContributionRequiredError';
+  static const String photoContributionHint = 'photoContributionHint';
 
   static const String chooseContributionType = 'chooseContributionType';
   static const String qaContribution = 'qaContribution';
@@ -22,6 +69,7 @@ abstract class AppTrans {
   static const String keywordTooltip = 'keywordTooltip';
   static const String shouldContainRootLettersError =
       'shouldContainRootLettersError';
+  static const String shouldContainsKeywordError = 'shouldContainsKeywordError';
 
   static const String lastNameLabel = 'lastNameLabel';
   static const String lastNameHint = 'lastNameHint';
@@ -242,4 +290,6 @@ abstract class AppTrans {
   static String saveLoginInfo = 'saveLoginInfo';
 
   static String agreeToTerms = 'agreeToTerms';
+
+  static const loading = 'loading';
 }

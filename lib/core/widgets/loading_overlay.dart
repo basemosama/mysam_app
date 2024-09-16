@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/widgets/components/custom_card.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:playx/playx.dart';
@@ -35,7 +36,7 @@ class LoadingOverlay extends StatelessWidget {
                     vertical: 8.r,
                   ),
                   child: CustomText(
-                    loadingText ?? '',
+                    loadingText ?? AppTrans.loading,
                     fontSize: 16.sp,
                     color: context.colors.onSurface,
                   ),

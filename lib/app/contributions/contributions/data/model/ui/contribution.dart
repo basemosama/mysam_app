@@ -2,6 +2,7 @@ import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribu
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/related_word.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
+import 'package:mysam_app/core/models/media_item.dart';
 
 part 'types/idiom_contribution.dart';
 part 'types/modern_meaning_contribution.dart';

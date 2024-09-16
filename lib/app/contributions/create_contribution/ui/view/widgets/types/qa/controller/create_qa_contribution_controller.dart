@@ -18,14 +18,32 @@ class CreateQaContributionController extends CreateContributionController {
 
   final isSecondStepValid = false.obs;
 
+  Worker? _secondStepValidationWorker;
+
   @override
   bool get isNextOrFinishButtonEnabled {
     switch (currentStepIndex.value) {
       case 0:
         return isMainFormValid.value;
-      default:
+      case 1:
         return isSecondStepValid.value;
+      default:
+        return false;
     }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _validateSecondStep();
+  }
+
+  void _validateSecondStep() {
+    _secondStepValidationWorker?.dispose();
+    _secondStepValidationWorker =
+        everAll([isQuestionValid, isAnswerValid], (_) {
+      isSecondStepValid.value = isQuestionValid.value && isAnswerValid.value;
+    });
   }
 
   @override
@@ -40,7 +58,6 @@ class CreateQaContributionController extends CreateContributionController {
         type: relatedWordType.value,
         metadata: relatedWordProperties,
       ),
-      type: ContributionType.qa,
       root: root,
       question: questionController.text,
       answer: answerController.text,

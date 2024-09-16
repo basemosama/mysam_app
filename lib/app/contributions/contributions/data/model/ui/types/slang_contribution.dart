@@ -8,11 +8,10 @@ class SlangContribution extends Contribution {
     required super.documentId,
     required super.status,
     required super.relatedWord,
-    required super.type,
     super.createdAt,
     super.updatedAt,
     super.publishedAt,
     required this.slangWords,
     super.root,
-  });
+  }) : super(type: ContributionType.slang);
 }
