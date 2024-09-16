@@ -30,6 +30,10 @@ class BuildContributionMainFormRelatedWordWidget extends StatelessWidget {
           IsRequired(
             AppTrans.keywordRequiredError.tr(context: context),
           ),
+          ContainsLettersRule(
+            word: controller.root.value,
+            error: AppTrans.shouldContainRootLettersError.tr(context: context),
+          ),
         ]),
         shouldAutoValidate: true,
         onValidationChanged: (isValid) {
