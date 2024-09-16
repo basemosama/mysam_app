@@ -14,6 +14,15 @@ class ApiContribution {
   // qa
   final String type;
   final Data? data;
+  // "relatedWordType": null,
+  // "relatedWordTypeMeta": null,
+  // "relatedWordWeight": null,
+  // "metaData": null
+  final String? relatedWordType;
+  final String? relatedWordTypeMeta;
+  final String? relatedWordWeight;
+  final List<String>? metaData;
+
   // 2024-09-11T09:03:19.200Z
   final String? createdAt;
   // 2024-09-12T11:21:20.458Z
@@ -29,6 +38,10 @@ class ApiContribution {
     required this.type,
     this.root,
     this.data,
+    this.relatedWordType,
+    this.relatedWordTypeMeta,
+    this.relatedWordWeight,
+    this.metaData,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,
@@ -51,6 +64,10 @@ class ApiContribution {
       type: asStringOrNull(json, 'type')!,
       data: dataObj,
       root: json['root'] != null ? ApiRoot.fromJson(json['root']) : null,
+      relatedWordType: asStringOrNull(json, 'relatedWordType'),
+      relatedWordTypeMeta: asStringOrNull(json, 'relatedWordTypeMeta'),
+      relatedWordWeight: asStringOrNull(json, 'relatedWordWeight'),
+      metaData: asListStringOrNull(json, 'metaData'),
       createdAt: asStringOrNull(json, 'createdAt'),
       updatedAt: asStringOrNull(json, 'updatedAt'),
       publishedAt: asStringOrNull(json, 'publishedAt'),
@@ -65,6 +82,10 @@ class ApiContribution {
         'type': type,
         'data': data?.data != null ? data!.data : data?.toJson(),
         'root': root?.toJson(),
+        'relatedWordType': relatedWordType,
+        'relatedWordTypeMeta': relatedWordTypeMeta,
+        'relatedWordWeight': relatedWordWeight,
+        'metaData': metaData,
         'createdAt': createdAt,
         'updatedAt': updatedAt,
         'publishedAt': publishedAt,
@@ -101,10 +122,10 @@ class Data {
       );
 
   Map<String, dynamic> toJson() => {
-        'answer': answer,
-        'question': question,
-        'body': body,
-        'description': description,
-        'image': image,
+        if (answer != null) 'answer': answer,
+        if (question != null) 'question': question,
+        if (body != null) 'body': body,
+        if (description != null) 'description': description,
+        if (description != null) 'image': image,
       };
 }
