@@ -1,5 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/ui/contribution.dart';
-import 'package:mysam_app/core/resources/translation/app_translations.dart';
+part of '../contribution.dart';
 
 class IdiomContribution extends Contribution {
   final String body;
@@ -18,6 +17,4 @@ class IdiomContribution extends Contribution {
     this.description,
     super.root,
   });
-
-  static String get displayName => AppTrans.idiomContribution;
 }

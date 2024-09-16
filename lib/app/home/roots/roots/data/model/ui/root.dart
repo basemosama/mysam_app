@@ -1,4 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/ui/contribution.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root_status.dart';
 
 class Root {

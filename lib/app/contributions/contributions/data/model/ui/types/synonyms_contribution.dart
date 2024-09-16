@@ -1,5 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/ui/contribution.dart';
-import 'package:mysam_app/core/resources/translation/app_translations.dart';
+part of '../contribution.dart';
 
 class SynonymsContribution extends Contribution {
   final List<String> synonyms;
@@ -16,6 +15,4 @@ class SynonymsContribution extends Contribution {
     required this.synonyms,
     super.root,
   });
-
-  static String get displayName => AppTrans.synonymsContribution;
 }

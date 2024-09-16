@@ -10,9 +10,9 @@ class ContributionsBinding extends PlayxBinding {
 
   @override
   Future<void> onExit(BuildContext context) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    if (Get.isRegistered<ContributionsController>()) {
-      Get.delete<ContributionsController>();
-    }
+    // await Future.delayed(const Duration(milliseconds: 500));
+    // if (Get.isRegistered<ContributionsController>()) {
+    //   Get.delete<ContributionsController>();
+    // }
   }
 }

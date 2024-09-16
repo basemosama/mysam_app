@@ -1,5 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/ui/contribution.dart';
-import 'package:mysam_app/core/resources/translation/app_translations.dart';
+part of '../contribution.dart';
 
 class ModernMeaningContribution extends Contribution {
   final List<String> modernMeanings;
@@ -16,6 +15,4 @@ class ModernMeaningContribution extends Contribution {
     required this.modernMeanings,
     super.root,
   });
-
-  static String get displayName => AppTrans.modernMeaningContribution;
 }

@@ -2,7 +2,7 @@ import 'package:mysam_app/app/app_launch/auth/ui/login/imports/login_imports.dar
 import 'package:mysam_app/app/app_launch/auth/ui/register/imports/register_imports.dart';
 import 'package:mysam_app/app/app_launch/onboarding/ui/imports/onboarding_imports.dart';
 import 'package:mysam_app/app/app_launch/splash/ui/imports/splash_imports.dart';
-import 'package:mysam_app/app/contributions/ui/imports/contributions_imports.dart';
+import 'package:mysam_app/app/contributions/contributions/ui/imports/contributions_imports.dart';
 import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
 import 'package:mysam_app/app/home/roots/roots/ui/imports/roots_imports.dart';
 import 'package:mysam_app/app/profile/ui/imports/profile_imports.dart';

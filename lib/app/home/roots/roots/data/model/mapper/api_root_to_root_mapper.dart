@@ -1,4 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/mapper/api_contribution_to_contribution_mapper.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/mapper/api_contribution_to_contribution_mapper.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/api/api_root.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root_status.dart';

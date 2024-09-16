@@ -1,4 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/api/api_contribution.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/api/api_contribution.dart';
 import 'package:playx/playx.dart';
 
 class ApiRoot {

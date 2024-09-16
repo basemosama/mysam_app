@@ -13,7 +13,17 @@ class RootDetailsController extends GetxController {
   Future<void> contributeToRoot({required BuildContext context}) async {
     await CustomModal.showPageModal(
       context: context,
-      pageBuilder: (ctx) => BuildChooseContributionTypeWidget.buildPage(ctx),
+      pageBuilder: (ctx) => BuildChooseContributionTypeWidget.buildPage(
+        context: ctx,
+        onTypeSelected: (type) {
+          handleContributionTypeSelected(type);
+        },
+      ),
     );
+  }
+
+  void handleContributionTypeSelected(ContributionType type) {
+    PlayxNavigation.pop();
+    Alert.success(message: type.displayName);
   }
 }

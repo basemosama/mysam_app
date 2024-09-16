@@ -1,5 +1,4 @@
-import 'package:mysam_app/app/contributions/data/model/ui/contribution.dart';
-import 'package:mysam_app/core/resources/translation/app_translations.dart';
+part of '../contribution.dart';
 
 class QAContribution extends Contribution {
   final String question;
@@ -18,6 +17,4 @@ class QAContribution extends Contribution {
     required this.answer,
     super.root,
   });
-
-  static String get displayName => AppTrans.qaContribution;
 }
