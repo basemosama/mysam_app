@@ -43,6 +43,8 @@ abstract class AppColors extends PlayxColors {
 
   Color get onBackgroundGradient;
 
+  Color get filledColor;
+
   static const Color blueGrey = Color(0xFF728295);
 
   ///Colors that needs to is used for each theme.

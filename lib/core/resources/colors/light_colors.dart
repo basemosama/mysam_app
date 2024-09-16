@@ -61,4 +61,7 @@ class LightColors extends AppColors {
 
   @override
   Color get onBackgroundGradient => onSurface;
+
+  @override
+  Color get filledColor => const Color(0xFFE5E5E5);
 }

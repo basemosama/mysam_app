@@ -4,14 +4,14 @@ enum ContributionRelatedWordType {
   noun,
   verb;
 
-  static ContributionRelatedWordType fromString(String? value) {
+  static ContributionRelatedWordType? fromString(String? value) {
     switch (value) {
       case 'noun':
         return ContributionRelatedWordType.noun;
       case 'verb':
         return ContributionRelatedWordType.verb;
       default:
-        throw ArgumentError('Invalid value: $value');
+        return null;
     }
   }
 

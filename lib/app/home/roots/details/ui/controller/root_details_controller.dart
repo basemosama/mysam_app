@@ -22,8 +22,9 @@ class RootDetailsController extends GetxController {
     );
   }
 
-  void handleContributionTypeSelected(ContributionType type) {
+  Future<void> handleContributionTypeSelected(ContributionType type) async {
     PlayxNavigation.pop();
-    Alert.success(message: type.displayName);
+    await Future.delayed(const Duration(milliseconds: 300));
+    AppNavigation.navigateToCreateContribution(root: root, type: type);
   }
 }

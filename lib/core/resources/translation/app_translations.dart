@@ -19,10 +19,45 @@ abstract class AppTrans {
   static const String firstNameLabel = 'firstNameLabel';
   static const String firstNameHint = 'firstNameHint';
   static const String firstNameRequired = 'firstNameRequired';
+  static const String keywordTooltip = 'keywordTooltip';
 
   static const String lastNameLabel = 'lastNameLabel';
   static const String lastNameHint = 'lastNameHint';
   static const String lastNameRequired = 'lastNameRequired';
+
+  static const String rootWordLabel = 'rootWordLabel';
+  static const String keywordLabel = 'keywordLabel';
+  static const String keywordWeightLabel = 'keywordWeightLabel';
+  static const String keywordTypeLabel = 'keywordTypeLabel';
+  static const String verbLabel = 'verbLabel';
+  static const String nounLabel = 'nounLabel';
+  static const String keywordPropertiesLabel = 'keywordPropertiesLabel';
+  static const String questionLabel = 'questionLabel';
+  static const String answerLabel = 'answerLabel';
+  static const String topicLabel = 'topicLabel';
+  static const String descriptionLabel = 'descriptionLabel';
+  static const String synonymsLabel = 'synonymsLabel';
+
+  static const String rootWordHint = 'rootWordHint';
+  static const String keywordHint = 'keywordHint';
+  static const String keywordWeightHint = 'keywordWeightHint';
+  static const String keywordTypeHint = 'keywordTypeHint';
+  static const String verbHint = 'verbHint';
+  static const String nounHint = 'nounHint';
+  static const String keywordPropertiesHint = 'keywordPropertiesHint';
+  static const String questionHint = 'questionHint';
+  static const String answerHint = 'answerHint';
+  static const String topicHint = 'topicHint';
+  static const String descriptionHint = 'descriptionHint';
+  static const String synonymsHint = 'synonymsHint';
+  static const String keywordRequiredError = 'keywordRequiredError';
+  static const String keywordWeightRequiredError = 'keywordWeightRequiredError';
+  static const String keywordTypeRequiredError = 'keywordTypeRequiredError';
+  static const String questionRequiredError = 'questionRequiredError';
+  static const String answerRequiredError = 'answerRequiredError';
+  static const String topicRequiredError = 'topicRequiredError';
+  static const String descriptionRequiredError = 'descriptionRequiredError';
+  static const String synonymsRequiredError = 'synonymsRequiredError';
 
   static const appName = 'appName';
   static const requestCancelled = 'requestCancelled';

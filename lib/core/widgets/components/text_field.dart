@@ -52,6 +52,7 @@ class CustomTextField extends StatefulWidget {
   final TextStyle? hintStyle;
   final BorderRadius? borderRadius;
   final double? borderWidth;
+  final void Function(String?)? onSubmitted;
 
   const CustomTextField({
     this.hint,
@@ -95,6 +96,7 @@ class CustomTextField extends StatefulWidget {
     this.contentPadding,
     this.borderRadius,
     this.borderWidth,
+    this.onSubmitted,
   });
 
   @override
@@ -126,6 +128,7 @@ class _CustomFieldState extends State<CustomTextField> {
       nextFocus: widget.nextFocus,
       scrollPadding: widget.scrollPadding,
       autoFillHints: widget.autoFillHints,
+      onSubmitted: widget.onSubmitted,
       prefix: widget.prefixIcon != null
           ? Padding(
               padding: EdgeInsets.symmetric(

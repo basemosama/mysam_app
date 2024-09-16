@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_related_word_type.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/utils/alert.dart';
+import 'package:mysam_app/core/widgets/components/custom_icon_button.dart';
+import 'package:mysam_app/core/widgets/components/custom_scaffold.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
+import 'package:mysam_app/core/widgets/components/filter_chip_selector.dart';
+import 'package:mysam_app/core/widgets/components/text_field.dart';
+import 'package:mysam_app/core/widgets/custom_app_bar.dart';
+import 'package:playx/playx.dart';
+
+part '../binding/create_contribution_binding.dart';
+part '../controller/create_contribution_controller.dart';
+part '../view/create_contribution_view.dart';
+part '../view/widgets/build_contribution_main_form.dart';
+part '../view/widgets/build_stepper_widget.dart';
+part '../view/widgets/common/build_contribution_field_widget.dart';
+part '../view/widgets/common/build_step_line_widget.dart';
+part '../view/widgets/widgets/build_contribution_main_form_related_word_properties_widget.dart';
+part '../view/widgets/widgets/build_contribution_main_form_related_word_type_widget.dart';
+part '../view/widgets/widgets/build_contribution_main_form_related_word_weight_widget.dart';
+part '../view/widgets/widgets/build_contribution_main_form_related_word_widget.dart';
+part '../view/widgets/widgets/build_contribution_main_form_root_widget.dart';
