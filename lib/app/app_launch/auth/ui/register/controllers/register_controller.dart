@@ -4,8 +4,10 @@ class RegisterController extends GetxController {
   final isLoading = false.obs;
   final hidePassword = true.obs;
   final hideConfirmPassword = true.obs;
+  final agreeToTerms = false.obs;
 
-  final usernameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
@@ -13,13 +15,16 @@ class RegisterController extends GetxController {
   /// This needed for text field that has complex ui like hide password button
   /// As using [TextInputAction.next] to move keyboard to next field won't work
   /// as the button will take focus so we need to manually add text field current and next focus node
+  final firstNameFocus = FocusNode();
+  final lastNameFocus = FocusNode();
   final emailFocus = FocusNode();
   final passwordFocus = FocusNode();
   final confirmPasswordFocus = FocusNode();
 
   final confirmPasswordFormKey = GlobalKey<FormState>();
 
-  final isUsernameValid = false.obs;
+  final isFirstNameValid = false.obs;
+  final isLastNameValid = false.obs;
   final isEmailValid = false.obs;
   final isPasswordValid = false.obs;
   final isConfirmPasswordValid = false.obs;
@@ -30,6 +35,7 @@ class RegisterController extends GetxController {
 
   final Rxn<LoginMethod> currentLoginMethod = Rxn();
   final loginMethods = <LoginMethod>[
+    LoginMethod.email,
     LoginMethod.google,
     LoginMethod.apple,
   ];
@@ -43,11 +49,17 @@ class RegisterController extends GetxController {
 
   void listenToValidationState() {
     _validationWorker = everAll([
+      agreeToTerms,
+      isFirstNameValid,
+      isLastNameValid,
       isEmailValid,
       isPasswordValid,
       isConfirmPasswordValid,
     ], (callback) {
-      final isValid = isEmailValid.value &&
+      final isValid = agreeToTerms.value &&
+          isFirstNameValid.value &&
+          isLastNameValid.value &&
+          isEmailValid.value &&
           isPasswordValid.value &&
           isConfirmPasswordValid.value;
       isFormValid.value = isValid;
@@ -63,9 +75,8 @@ class RegisterController extends GetxController {
       isLoading.value = true;
       final result = await authRepository.loginViaAuth0(method: method);
       result.when(
-        success: (ApiUser user) async {
-          isLoading.value = false;
-          AppNavigation.navigateFromRegisterToDashboard();
+        success: (User user) async {
+          _navigateToHome();
         },
         error: (NetworkException exception) {
           isLoading.value = false;
@@ -80,19 +91,27 @@ class RegisterController extends GetxController {
     isLoading.value = true;
 
     final result = await authRepository.register(
-      username: usernameController.text,
+      firstName: firstNameController.text,
+      lastName: lastNameController.text,
       email: emailController.text,
       password: passwordController.text,
     );
     result.when(
-      success: (ApiUser user) {
-        AppNavigation.navigateFromRegisterToDashboard();
+      success: (User user) {
+        _navigateToHome();
       },
       error: (NetworkException exception) {
         Alert.error(message: exception.message);
       },
     );
     isLoading.value = false;
+  }
+
+  void _navigateToHome() {
+    isLoading.value = false;
+    Get.find<CustomBottomNavigationController>().getUserInfo();
+
+    AppNavigation.navigateFromRegisterToHome();
   }
 
   void changeHidePasswordState() {
@@ -109,12 +128,13 @@ class RegisterController extends GetxController {
 
   @override
   void onClose() {
-    super.onClose();
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
-    usernameController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
     _validationWorker?.dispose();
     _validationWorker = null;
+    super.onClose();
   }
 }

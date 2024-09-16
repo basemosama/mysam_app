@@ -10,7 +10,7 @@ abstract class Style {
 
   static BorderRadius dialogBorderRadius = BorderRadius.circular(16.r);
 
-  static BorderRadius buttonBorderRadius = BorderRadius.circular(30.r);
+  static BorderRadius buttonBorderRadius = BorderRadius.circular(12.r);
 
   static RoundedRectangleBorder featureChipRoundedRectangleBorder =
       RoundedRectangleBorder(

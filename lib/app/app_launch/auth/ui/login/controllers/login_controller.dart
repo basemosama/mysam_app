@@ -16,8 +16,11 @@ class LoginController extends GetxController {
   final isFormValid = false.obs;
   Worker? _validationWorker;
 
+  final RxBool saveLoginInfo = false.obs;
+
   final Rxn<LoginMethod> currentLoginMethod = Rxn();
   final loginMethods = <LoginMethod>[
+    LoginMethod.email,
     LoginMethod.google,
     LoginMethod.apple,
   ];
@@ -33,6 +36,14 @@ class LoginController extends GetxController {
     }
     super.onInit();
     listenToValidationState();
+    checkLoginInfo();
+  }
+
+  Future<void> checkLoginInfo() async {
+    final loginInfo = await authRepository.getLoginInfo();
+    emailController.text = loginInfo.email ?? '';
+    passwordController.text = loginInfo.password ?? '';
+    saveLoginInfo.value = loginInfo.email != null && loginInfo.password != null;
   }
 
   void listenToValidationState() {
@@ -54,9 +65,10 @@ class LoginController extends GetxController {
       isLoading.value = true;
       final result = await authRepository.loginViaAuth0(method: method);
       result.when(
-        success: (ApiUser user) async {
+        success: (User user) async {
           isLoading.value = false;
-          AppNavigation.navigateFromLoginToDashboard();
+
+          _navigateToHome();
         },
         error: (NetworkException exception) {
           isLoading.value = false;
@@ -75,9 +87,15 @@ class LoginController extends GetxController {
       password: passwordController.text,
     );
     result.when(
-      success: (ApiUser user) async {
+      success: (User user) async {
         isLoading.value = false;
-        AppNavigation.navigateFromLoginToDashboard();
+        if (saveLoginInfo.value) {
+          await authRepository.saveLoginInfo(
+            email: emailController.text,
+            password: passwordController.text,
+          );
+        }
+        _navigateToHome();
       },
       error: (NetworkException exception) {
         isLoading.value = false;
@@ -86,15 +104,20 @@ class LoginController extends GetxController {
     );
   }
 
+  void _navigateToHome() {
+    Get.find<CustomBottomNavigationController>().getUserInfo();
+    AppNavigation.navigateFromLoginToHome();
+  }
+
   void navigateToRegister() {
     AppNavigation.navigateFromLoginToRegister();
   }
 
   @override
   void onClose() {
-    super.onClose();
     emailController.dispose();
     passwordController.dispose();
     _validationWorker?.dispose();
+    super.onClose();
   }
 }

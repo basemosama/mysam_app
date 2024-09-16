@@ -6,7 +6,7 @@ class BuildOnboardingPageSkipWidget extends GetView<OnBoardingController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.r, horizontal: 24.r),
+      padding: EdgeInsets.symmetric(vertical: 12.r, horizontal: 12.r),
       child: Obx(() {
         return AnimatedOpacity(
           opacity: controller.isCompleted.value ? 0.0 : 1.0,

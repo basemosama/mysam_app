@@ -37,6 +37,7 @@ class BuildLoginPasswordFieldWidget extends GetView<LoginController> {
                         ? Icons.visibility_off
                         : Icons.visibility,
                     size: 20.r,
+                    color: context.colors.primary,
                   ),
                   onPressed: () {
                     controller.hidePassword.value =
@@ -60,7 +61,7 @@ class BuildLoginPasswordFieldWidget extends GetView<LoginController> {
                 padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                 child: Icon(
                   Icons.lock,
-                  // color: context.colors.secondary,
+                  color: context.colors.primary,
                   size: 20.r,
                 ),
               ),

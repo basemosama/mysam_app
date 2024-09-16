@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:mysam_app/app/app_launch/auth/ui/login/imports/login_imports.dart';
 import 'package:mysam_app/app/app_launch/auth/ui/register/imports/register_imports.dart';
 import 'package:mysam_app/app/app_launch/onboarding/ui/imports/onboarding_imports.dart';
 import 'package:mysam_app/app/app_launch/splash/ui/imports/splash_imports.dart';
-import 'package:mysam_app/app/dashboard/ui/imports/dashboard_imports.dart';
+import 'package:mysam_app/app/contributions/contributions/ui/imports/contributions_imports.dart';
+import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
+import 'package:mysam_app/app/home/roots/roots/ui/imports/roots_imports.dart';
+import 'package:mysam_app/app/profile/ui/imports/profile_imports.dart';
 import 'package:mysam_app/app/settings/ui/imports/settings_imports.dart';
-import 'package:mysam_app/app/wishlist/ui/imports/wishlist_imports.dart';
 import 'package:mysam_app/core/navigation/app_routes.dart';
 import 'package:mysam_app/core/navigation/navigation_utils.dart';
 import 'package:mysam_app/core/widgets/navigation/custom_page.dart';
@@ -40,36 +41,27 @@ class AppPages {
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-            path: Paths.dashboard,
-            name: Routes.dashboard,
-            builder: (ctx, state) => DashboardView(),
-            binding: DashboardBinding(),
-          ),
+              path: Paths.home,
+              name: Routes.home,
+              builder: (ctx, state) => const RootsView(),
+              binding: RootsBinding(),
+              routes: [
+                PlayxRoute(
+                  path: Paths.rootDetails,
+                  name: Routes.rootDetails,
+                  builder: (ctx, state) => const RootDetailsView(),
+                  binding: RootDetailsBinding(),
+                ),
+              ]),
         ],
       ),
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-            path: Paths.wishlist,
-            name: Routes.wishlist,
-            builder: (ctx, state) {
-              return WishlistView();
-            },
-            binding: WishlistBinding(),
-            routes: [
-              PlayxRoute(
-                path: Paths.wishlistDetails,
-                name: Routes.wishlistDetails,
-                builder: (ctx, state) {
-                  return const Scaffold(
-                    body: Center(
-                      child: Text('Wishlist Details'),
-                    ),
-                  );
-                },
-                binding: WishlistDetailsBinding(),
-              ),
-            ],
+            path: Paths.contributions,
+            name: Routes.contributions,
+            builder: (ctx, state) => const ContributionsView(),
+            binding: ContributionsBinding(),
           ),
         ],
       ),
@@ -80,6 +72,12 @@ class AppPages {
             name: Routes.settings,
             builder: (ctx, state) => const SettingsView(),
             binding: SettingsBinding(),
+          ),
+          PlayxRoute(
+            path: Paths.profile,
+            name: Routes.profile,
+            builder: (ctx, state) => const ProfileView(),
+            binding: ProfileBinding(),
           ),
         ],
       ),

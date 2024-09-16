@@ -17,38 +17,34 @@ PlatformNavBar buildCustomNavigationBar({
     },
     material3: (context, platform) {
       return MaterialNavigationBarData(
-          indicatorColor: context.colors.primary,
-          // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-          // backgroundColor: context.colors.surface,
-          items: [
-            NavigationDestination(
-              icon: Icon(
-                Icons.dashboard,
-                color: controller.currentIndex == 0
-                    ? context.colors.onPrimary
-                    : context.colors.onSurface,
-              ),
-              label: AppTrans.dashboard.tr(context: context),
+        indicatorColor: context.colors.primary,
+        // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        backgroundColor: context.colors.surface,
+        items: [
+          NavigationDestination(
+            icon: Icon(
+              Icons.home,
+              color: controller.currentIndex == 0
+                  ? context.colors.onPrimary
+                  : context.colors.subtitleTextColor,
             ),
-            NavigationDestination(
-              icon: Icon(
-                Icons.favorite_border,
-                color: controller.currentIndex == 1
-                    ? context.colors.onPrimary
-                    : context.colors.onSurface,
-              ),
-              label: AppTrans.wishlist.tr(context: context),
+            label: AppTrans.home.tr(context: context),
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.star,
+              color: controller.currentIndex == 1
+                  ? context.colors.onPrimary
+                  : context.colors.subtitleTextColor,
             ),
-            NavigationDestination(
-              icon: Icon(
-                Icons.settings,
-                color: controller.currentIndex == 2
-                    ? context.colors.onPrimary
-                    : context.colors.onSurface,
-              ),
-              label: AppTrans.settings.tr(context: context),
-            ),
-          ]);
+            label: AppTrans.contributions.tr(context: context),
+          ),
+          NavigationDestination(
+            icon: _buildProfileImage(context: context, controller: controller),
+            label: AppTrans.profile.tr(context: context),
+          ),
+        ],
+      );
     },
     cupertino: (context, _) {
       return CupertinoTabBarData(
@@ -56,33 +52,59 @@ PlatformNavBar buildCustomNavigationBar({
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.dashboard,
+              Icons.home,
               color: controller.currentIndex == 0
                   ? context.colors.primary
-                  : context.colors.onSurface,
+                  : context.colors.subtitleTextColor,
             ),
-            label: AppTrans.dashboard.tr(context: context),
+            label: AppTrans.home.tr(context: context),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite_border,
+              Icons.star,
               color: controller.currentIndex == 1
                   ? context.colors.onPrimary
-                  : context.colors.onSurface,
+                  : context.colors.subtitleTextColor,
             ),
-            label: AppTrans.wishlist.tr(context: context),
+            label: AppTrans.contributions.tr(context: context),
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              color: controller.currentIndex == 2
-                  ? context.colors.primary
-                  : context.colors.onSurface,
-            ),
-            label: AppTrans.settings.tr(context: context),
+            icon: _buildProfileImage(context: context, controller: controller),
+            label: AppTrans.profile.tr(context: context),
           ),
         ],
       );
     },
+  );
+}
+
+Widget _buildProfileImage(
+    {required BuildContext context,
+    required CustomBottomNavigationController controller}) {
+  return CircleAvatar(
+    radius: 14,
+    backgroundColor: controller.currentIndex == 3
+        ? context.colors.primary
+        : context.colors.onSurface,
+    child: CircleAvatar(
+      radius: 13,
+      backgroundColor: context.colors.surface,
+      child: ClipOval(
+        child: Obx(() {
+          final user = controller.userInfo.value;
+          return ImageViewer.cachedNetwork(
+            user?.image?.url ?? '',
+            errorBuilder: (context, error) => PlaceholderImageWidget(
+              path: Assets.images.profilePlaceholder,
+              padding: EdgeInsets.zero,
+            ),
+            placeholderBuilder: (context) => PlaceholderImageWidget(
+              path: Assets.images.profilePlaceholder,
+              padding: EdgeInsets.zero,
+            ),
+          );
+        }),
+      ),
+    ),
   );
 }

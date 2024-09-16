@@ -28,7 +28,7 @@ class CustomNavigationDrawerController extends GetxController {
   Future<void> handleLogout() async {
     updateLoginStatus(isLoggingOut: true);
     try {
-      await AuthRepository().logout(logOutFromAuth0: false);
+      await ApiHelper.instance.logout();
     } catch (e) {
       Alert.error(message: e.toString());
     }

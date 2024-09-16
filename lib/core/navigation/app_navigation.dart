@@ -1,3 +1,4 @@
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/core/navigation/app_routes.dart';
 import 'package:playx_navigation/playx_navigation.dart';
 
@@ -6,8 +7,8 @@ import 'package:playx_navigation/playx_navigation.dart';
 abstract class AppNavigation {
   AppNavigation._();
 
-  static void navigateFormSplashToDashboard() {
-    PlayxNavigation.offAllNamed(Routes.dashboard);
+  static void navigateFormSplashToHome() {
+    PlayxNavigation.offAllNamed(Routes.home);
   }
 
   static void navigateFormSplashToLogin() {
@@ -18,16 +19,16 @@ abstract class AppNavigation {
     PlayxNavigation.toNamed(Routes.register);
   }
 
-  static void navigateFromLoginToDashboard() {
-    PlayxNavigation.offAllNamed(Routes.dashboard);
+  static void navigateFromLoginToHome() {
+    PlayxNavigation.offAllNamed(Routes.home);
   }
 
   static void navigateFromRegisterToLogin() {
     PlayxNavigation.offAllNamed(Routes.login);
   }
 
-  static void navigateFromRegisterToDashboard() {
-    PlayxNavigation.offAllNamed(Routes.dashboard);
+  static void navigateFromRegisterToHome() {
+    PlayxNavigation.offAllNamed(Routes.home);
   }
 
   static void navigateToSplash() {
@@ -42,19 +43,16 @@ abstract class AppNavigation {
     PlayxNavigation.offAllNamed(Routes.login);
   }
 
-  static void navigateFromVerifyOtpToDashboard() {
-    PlayxNavigation.offAllNamed(Routes.dashboard);
-  }
-
-  static void navigateFromLoginToVerifyPhone() {
-    PlayxNavigation.toNamed(Routes.verifyPhone);
-  }
-
   static void navigateFromSettingsToLogin() {
     PlayxNavigation.offAllNamed(Routes.login);
   }
 
   static void navigateToLogin() {
     PlayxNavigation.offAllNamed(Routes.login);
+  }
+
+  static void navigateToRootDetails(Root root) {
+    PlayxNavigation.toNamed(Routes.rootDetails,
+        extra: root, pathParameters: {'id': root.documentId});
   }
 }

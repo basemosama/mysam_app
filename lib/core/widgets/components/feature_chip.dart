@@ -10,6 +10,7 @@ class FeatureChip extends StatelessWidget {
   final Color? backgroundColor;
   final Color? color;
   final EdgeInsetsGeometry? padding;
+  final Widget? child;
 
   const FeatureChip({
     this.label,
@@ -19,6 +20,7 @@ class FeatureChip extends StatelessWidget {
     this.backgroundColor,
     this.padding,
     this.imageUrl,
+    this.child,
   });
 
   @override
@@ -32,52 +34,53 @@ class FeatureChip extends StatelessWidget {
             ),
         child: Chip(
           shape: Style.featureChipRoundedRectangleBorder,
-          label: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (icon != null ||
-                  svgIcon?.isNotEmpty == true ||
-                  imageUrl?.isNotEmpty == true) ...[
-                SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: icon != null
-                      ? IconViewer(
-                          icon: icon,
-                          iconColor: color,
-                          width: 16,
-                          height: 16,
-                          iconSize: 18,
-                        )
-                      : svgIcon?.isNotEmpty == true
-                          ? IconViewer.svg(svgIcon: svgIcon)
-                          : imageUrl?.isNotEmpty == true
-                              ? Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                      image: CachedNetworkImageProvider(
-                                        imageUrl!,
+          label: child ??
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (icon != null ||
+                      svgIcon?.isNotEmpty == true ||
+                      imageUrl?.isNotEmpty == true) ...[
+                    SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: icon != null
+                          ? IconViewer(
+                              icon: icon,
+                              iconColor: color,
+                              width: 16,
+                              height: 16,
+                              iconSize: 18,
+                            )
+                          : svgIcon?.isNotEmpty == true
+                              ? IconViewer.svg(svgIcon: svgIcon)
+                              : imageUrl?.isNotEmpty == true
+                                  ? Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                        image: DecorationImage(
+                                          image: CachedNetworkImageProvider(
+                                            imageUrl!,
+                                          ),
+                                          fit: BoxFit.contain,
+                                        ),
                                       ),
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                ),
-                SizedBox(
-                  width: 4.w,
-                ),
-              ],
-              Text(
-                label ?? '',
-                style: TextStyle(color: color),
+                                    )
+                                  : const SizedBox.shrink(),
+                    ),
+                    SizedBox(
+                      width: 4.w,
+                    ),
+                  ],
+                  Text(
+                    label ?? '',
+                    style: TextStyle(color: color),
+                  ),
+                ],
               ),
-            ],
-          ),
           backgroundColor: backgroundColor,
           padding: EdgeInsets.symmetric(
             horizontal: 4.w,

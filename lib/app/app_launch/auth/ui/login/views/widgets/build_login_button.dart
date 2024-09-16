@@ -8,10 +8,6 @@ class BuildLoginButtonWidget extends GetView<LoginController> {
     return Obx(() {
       return CustomElevatedButton(
         onPressed: controller.isFormValid.value ? controller.login : null,
-        padding: EdgeInsets.symmetric(
-          vertical: 17.r,
-          horizontal: 8.r,
-        ),
         child: CustomText(
           AppTrans.loginText,
           fontSize: 18.sp,

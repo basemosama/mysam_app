@@ -6,16 +6,16 @@ class BuildLoginTitleWidget extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-        right: 8.r,
-        left: 8.r,
-        bottom: 8.r,
+      padding: EdgeInsets.symmetric(
+        vertical: 12.r,
+        horizontal: 4.r,
       ),
       width: double.infinity,
-      child: const CustomText(
+      child: CustomText(
         AppTrans.loginTitle,
-        style: CustomTextStyle.titleMedium,
+        fontSize: 22.sp,
         textAlign: TextAlign.center,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/dark_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:playx/playx.dart';
 
@@ -11,7 +12,7 @@ class DarkTheme {
 
   static DarkColors colors = DarkColors();
 
-  static ThemeData get themeData => ThemeData(
+  static ThemeData _themeData({Locale? locale}) => ThemeData(
         brightness: Brightness.dark,
         appBarTheme: const AppBarTheme(
           centerTitle: true,
@@ -28,7 +29,29 @@ class DarkTheme {
           primaryContrastingColor: colors.primaryContainer,
           scaffoldBackgroundColor: colors.surface,
           brightness: Brightness.dark,
-          textTheme: CupertinoTextThemeData(primaryColor: colors.primary),
+          textTheme: CupertinoTextThemeData(
+            primaryColor: colors.primary,
+            tabLabelTextStyle: TextStyle(
+              color: colors.subtitleTextColor,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
+            (Set<WidgetState> states) => states.contains(WidgetState.selected)
+                ? TextStyle(
+                    color: colors.primary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  )
+                : TextStyle(
+                    color: colors.subtitleTextColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+          ),
         ),
         applyElevationOverlayColor: true,
         extensions: const [
@@ -36,16 +59,18 @@ class DarkTheme {
             modalElevation: 4,
           ),
         ],
+        fontFamily:
+            locale?.isEnglish == true ? englishFontFamily : arabicFontFamily,
       );
 
   static XTheme get theme => XTheme.builder(
         id: darkThemeId,
         name: darkThemeName,
         colors: DarkColors(),
-        initialTheme: themeData,
-        themeBuilder: (locale) => themeData,
-        cupertinoThemeBuilder: (locale) =>
-            MaterialBasedCupertinoThemeData(materialTheme: themeData),
+        initialTheme: _themeData(),
+        themeBuilder: (locale) => _themeData(locale: locale),
+        cupertinoThemeBuilder: (locale) => MaterialBasedCupertinoThemeData(
+            materialTheme: _themeData(locale: locale)),
         isDark: true,
       );
 }

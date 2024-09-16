@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
+import 'package:mysam_app/app/home/roots/roots/data/repository/roots_repository.dart';
+import 'package:mysam_app/core/navigation/app_navigation.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
+import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/widgets/components/custom_card.dart';
+import 'package:mysam_app/core/widgets/components/custom_scaffold.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
+import 'package:mysam_app/core/widgets/components/feature_chip.dart';
+import 'package:mysam_app/core/widgets/components/text_field.dart';
+import 'package:mysam_app/core/widgets/custom_loading.dart';
+import 'package:mysam_app/core/widgets/empty_data_widget.dart';
+import 'package:playx/playx.dart';
+
+part '../binding/roots_binding.dart';
+part '../controller/roots_controller.dart';
+part '../view/roots_view.dart';
+part '../view/widgets/build_roots_item_widget.dart';
+part '../view/widgets/build_roots_list_widget.dart';
+part '../view/widgets/build_roots_search_widget.dart';

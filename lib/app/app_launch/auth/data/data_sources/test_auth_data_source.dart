@@ -1,5 +1,5 @@
-import 'package:mysam_app/app/app_launch/auth/data/models/api_user.dart';
-import 'package:mysam_app/app/app_launch/auth/data/models/user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart';
 import 'package:playx/playx.dart';
 
 ///This class is responsible of retrieving data from the network.
@@ -20,10 +20,11 @@ class TestAuthDataSource {
     return NetworkResult.success(
       ApiUser(
         jwt: 'sasdfasfafa',
-        user: User(
+        userInfo: ApiUserInfo(
+          documentId: 'sdas',
           username: 'mohamed.ahmed',
           email: 'mohamed.ahmed@gmail.com',
-          id: '121',
+          id: 122,
         ),
       ),
     );
@@ -36,10 +37,11 @@ class TestAuthDataSource {
     return NetworkResult.success(
       ApiUser(
         jwt: 'sasdfasfafa',
-        user: User(
+        userInfo: ApiUserInfo(
+          documentId: 'sdas',
           username: 'mohamed.ahmed',
           email: 'mohamed.ahmed@gmail.com',
-          id: '121',
+          id: 122,
         ),
       ),
     );
@@ -50,10 +52,11 @@ class TestAuthDataSource {
     return NetworkResult.success(
       ApiUser(
         jwt: 'sasdfasfafa',
-        user: User(
+        userInfo: ApiUserInfo(
+          documentId: 'sdas',
           username: 'mohamed.ahmed',
           email: 'mohamed.ahmed@gmail.com',
-          id: '121',
+          id: 122,
         ),
       ),
     );
@@ -67,10 +70,11 @@ class TestAuthDataSource {
     return NetworkResult.success(
       ApiUser(
         jwt: 'sasdfasfafa',
-        user: User(
+        userInfo: ApiUserInfo(
+          documentId: 'sdas',
           username: 'mohamed.ahmed',
           email: 'mohamed.ahmed@gmail.com',
-          id: '121',
+          id: 122,
         ),
       ),
     );

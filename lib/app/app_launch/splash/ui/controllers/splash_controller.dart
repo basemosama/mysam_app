@@ -26,12 +26,13 @@ class SplashController extends FullLifeCycleController with FullLifeCycleMixin {
       return;
     }
 
-    if (!await AuthRepository().isLoggedIn(checkAuth0Credentials: false)) {
+    final isLoggedOut = await ApiHelper.instance.isLoggedOut();
+    if (isLoggedOut) {
       AppNavigation.navigateFormSplashToLogin();
       return;
     }
 
-    AppNavigation.navigateFormSplashToDashboard();
+    AppNavigation.navigateFormSplashToHome();
   }
 
   // Future<void> handleAppUpdate() async {

@@ -1,7 +1,7 @@
 import 'package:playx/playx.dart';
 
-const String _arabicFontFamily = 'Cairo';
-const String _englishFontFamily = 'Poppins';
+const String arabicFontFamily = 'Cairo';
+const String englishFontFamily = 'Poppins';
 
 const _supportedLocales = [
   XLocale(id: 'en', name: 'English', languageCode: 'en'),
@@ -14,12 +14,12 @@ PlayxLocaleConfig createLocaleConfig() => PlayxLocaleConfig(
     );
 
 String get fontFamily => PlayxLocalization.isCurrentLocaleArabic()
-    ? _arabicFontFamily
-    : _englishFontFamily;
+    ? arabicFontFamily
+    : englishFontFamily;
 
 String fontFamilyBasedOnText(String text) {
   if (text.isEmpty) {
     return fontFamily;
   }
-  return text.isArabic ? _arabicFontFamily : _englishFontFamily;
+  return text.isArabic ? arabicFontFamily : englishFontFamily;
 }

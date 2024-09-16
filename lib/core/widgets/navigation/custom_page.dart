@@ -36,7 +36,7 @@ class CustomPageScaffold extends StatelessWidget {
 
     final canPop = !(NavigationUtils.mainRoutes
             .contains(PlayxNavigation.currentRouteName) &&
-        PlayxNavigation.currentRouteName != Routes.dashboard);
+        PlayxNavigation.currentRouteName != Routes.home);
 
     // Manage back button press for home routes
     // As it should navigate to home when pressed back button pressed on home routes
@@ -47,7 +47,7 @@ class CustomPageScaffold extends StatelessWidget {
         if (didPop) {
           return;
         }
-        PlayxNavigation.offAllNamed(Routes.dashboard);
+        PlayxNavigation.offAllNamed(Routes.home);
       },
       child: Obx(() {
         final bottomNavController =
