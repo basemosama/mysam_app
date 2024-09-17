@@ -33,7 +33,7 @@ class LightColors extends AppColors {
   Color? get chipBackgroundColor => Colors.grey;
 
   @override
-  Color? get subtitleTextColor => Colors.grey[600];
+  Color? get subtitleTextColor => const Color(0xFF808080);
 
   @override
   Color? get buttonBackgroundColor => primary;
@@ -64,4 +64,22 @@ class LightColors extends AppColors {
 
   @override
   Color get filledColor => const Color(0xFFE5E5E5);
+
+  @override
+  Color get pendingBackgroundColor => const Color(0xFFFDE047);
+
+  @override
+  Color get confirmedBackgroundColor => const Color(0xFF22C55E);
+
+  @override
+  Color get declinedBackgroundColor => Colors.red[300]!;
+
+  @override
+  Color get onPendingBackgroundColor => Colors.black;
+
+  @override
+  Color get onConfirmedBackgroundColor => Colors.black;
+
+  @override
+  Color get onDeclinedBackgroundColor => Colors.black;
 }

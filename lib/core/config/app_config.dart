@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/preferences/env_manger.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
+import 'package:mysam_app/core/utils/app_utils.dart';
 import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
 import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
@@ -19,6 +20,7 @@ class AppConfig extends PlayXAppConfig {
     final PlayxNetworkClient client = await ApiClient.createApiClient();
     Get.put<PlayxNetworkClient>(client);
 
+    AppUtils.setupTimeAgoMessages();
     // final database = await AppDatabase.create();
     //
     // if (kDebugMode) {

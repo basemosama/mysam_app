@@ -1,7 +1,7 @@
 import 'package:mysam_app/app/app_launch/auth/data/models/mapper/api_profile_to_profile_mapper.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/profile_info.dart';
 import 'package:mysam_app/app/profile/data/datasource/profile_data_source.dart';
-import 'package:mysam_app/core/utils/mapper_utilites.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 class ProfileRepository {
@@ -13,9 +13,7 @@ class ProfileRepository {
 
   ProfileRepository._internal();
 
-
   final ProfileDataSource _profileDataSource = ProfileDataSource();
-
 
   Future<NetworkResult<ProfileInfo>> getProfileInfo({
     String? jwtToken,
@@ -27,8 +25,4 @@ class ProfileRepository {
       },
     );
   }
-
-
-
-
 }

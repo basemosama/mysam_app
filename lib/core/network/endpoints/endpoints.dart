@@ -51,6 +51,7 @@ abstract class Endpoints {
 //
 
   static const roots = '/roots';
+  static String rootDetails(String documentId) => '$roots/$documentId';
   static const contribute = '/contributions/contribute';
   static const contributions = '/contributions';
 

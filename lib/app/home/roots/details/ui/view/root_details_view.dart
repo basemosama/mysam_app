@@ -6,20 +6,24 @@ class RootDetailsView extends GetView<RootDetailsController> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: controller.root.value,
-      leading: AppBarLeadingType.back,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.contributeToRoot(context: context);
-        },
-        child: Icon(
-          Icons.edit_outlined,
-          color: context.colors.onPrimary,
+        title: controller.root.value,
+        leading: AppBarLeadingType.back,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            controller.contributeToRoot(context: context);
+          },
+          child: Icon(
+            Icons.edit_outlined,
+            color: context.colors.onPrimary,
+          ),
         ),
-      ),
-      child: controller.root.contributionsCount == 0
-          ? const BuildEmptyRouteContributionsWidget()
-          : const BuildEmptyRouteContributionsWidget(),
-    );
+        child: RefreshIndicator(
+          onRefresh: controller.refreshRoot,
+          child: RxDataStateWidget(
+            rxData: controller.dataState,
+            onSuccess: (root) => BuildRootDetailsContent(root: root),
+            onEmpty: (e) => const BuildEmptyRouteContributionsWidget(),
+          ),
+        ));
   }
 }
