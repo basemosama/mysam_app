@@ -44,6 +44,9 @@ class LoginController extends GetxController {
     emailController.text = loginInfo.email ?? '';
     passwordController.text = loginInfo.password ?? '';
     saveLoginInfo.value = loginInfo.email != null && loginInfo.password != null;
+    isEmailValid.value =true;
+    isPasswordValid.value =true;
+    isFormValid.value =true;
   }
 
   void listenToValidationState() {

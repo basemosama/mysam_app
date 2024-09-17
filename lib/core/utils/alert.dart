@@ -99,8 +99,14 @@ abstract class Alert {
     bool isMessageTranslatable = true,
   }) {
     final context = NavigationUtils.navigationContext;
+     EdgeInsetsGeometry? margin;
+    if(PlayxPlatform.isCupertino ){
+      margin = EdgeInsets.only(bottom: 60.r);
+    }
+    Fimber.d('MArgin :$margin :${PlayxNavigation.currentRouteName} => ${NavigationUtils.showBottomNav}');
     if (context != null) {
       final snackBar = SnackBar(
+        margin:margin,
         content: CustomText(
           message,
           color: Colors.white,
@@ -109,6 +115,7 @@ abstract class Alert {
         backgroundColor: color,
         behavior: SnackBarBehavior.floating,
         duration: duration,
+
       );
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         ScaffoldMessenger.of(context).removeCurrentSnackBar();

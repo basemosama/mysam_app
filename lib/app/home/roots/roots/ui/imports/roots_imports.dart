@@ -5,7 +5,6 @@ import 'package:mysam_app/app/home/roots/roots/data/repository/roots_repository.
 import 'package:mysam_app/core/navigation/app_navigation.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
-import 'package:mysam_app/core/widgets/components/custom_card.dart';
 import 'package:mysam_app/core/widgets/components/custom_scaffold.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:mysam_app/core/widgets/components/feature_chip.dart';
