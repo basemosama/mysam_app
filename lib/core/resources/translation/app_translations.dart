@@ -299,4 +299,6 @@ abstract class AppTrans {
   static const unknown = 'unknown';
 
   static const contributionDetailsLabel = 'contributionDetailsLabel';
+
+  static String contributionReceived = 'contributionReceived';
 }

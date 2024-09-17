@@ -21,4 +21,7 @@ class Images {
   final String arabicOnboarding1 = 'assets/images/png/arabic1.png';
   final String arabicOnboarding2 = 'assets/images/png/arabic2.png';
   final String communityOnboarding = 'assets/images/png/community.png';
+
+  final String contributionSuccess =
+      'assets/images/svg/contribution_success.svg';
 }

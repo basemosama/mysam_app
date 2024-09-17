@@ -11,7 +11,11 @@ sealed class CreateContributionController extends GetxController {
 
   final currentStepCount = 2;
 
+  /// Check if the current step is the last step
+  /// Last page is the page before the last step
   bool get isLastStep => currentStepIndex.value == currentStepCount - 1;
+
+  final isReceivedContributionStep = false.obs;
 
   final TextEditingController rootWordController = TextEditingController();
   final TextEditingController relatedWordController = TextEditingController();
@@ -87,8 +91,11 @@ sealed class CreateContributionController extends GetxController {
   }
 
   void handleBack() {
-    if (currentStepIndex.value == 0) {
+    if (currentStepIndex.value == 0 || isReceivedContributionStep.value) {
       PlayxNavigation.pop();
+      if (Get.isRegistered<RootDetailsController>()) {
+        Get.find<RootDetailsController>().refreshRoot();
+      }
     } else {
       currentStepIndex.value--;
       pageController.animateToPage(
@@ -115,7 +122,8 @@ sealed class CreateContributionController extends GetxController {
             message: AppTrans.contributionCreatedSuccessfully
                 .tr(args: [contribution.relatedWord.word]));
         isLoading.value = false;
-        PlayxNavigation.pop();
+
+        isReceivedContributionStep.value = true;
       },
       error: (error) {
         Alert.error(message: error.message);
