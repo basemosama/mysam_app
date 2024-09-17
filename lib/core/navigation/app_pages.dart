@@ -53,7 +53,7 @@ class AppPages {
                   builder: (ctx, state) => const RootDetailsView(),
                   binding: RootDetailsBinding(),
                 ),
-              ]),
+              ],),
         ],
       ),
       StatefulShellBranch(

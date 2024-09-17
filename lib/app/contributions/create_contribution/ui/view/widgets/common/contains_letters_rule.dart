@@ -6,7 +6,7 @@ class ContainsLettersRule extends TextValidationRule {
   final String word;
   ContainsLettersRule(
       {String? error = AppTrans.shouldContainRootLettersError,
-      required this.word})
+      required this.word,})
       : super(error);
 
   @override

@@ -191,7 +191,7 @@ class AuthRepository {
   }
 
   Future<void> saveLoginInfo(
-      {required String email, required String password}) {
+      {required String email, required String password,}) {
     return _preferenceManger.saveLoginInfo(email: email, password: password);
   }
 

@@ -70,7 +70,7 @@ class MyPreferenceManger {
   }
 
   Future<void> saveLoginInfo(
-      {required String email, required String password}) async {
+      {required String email, required String password,}) async {
     await saveEmail(email: email);
     return savePassword(password: password);
   }

@@ -17,7 +17,7 @@ class RootDetailsDatasource {
   final _client = ApiClient.client;
 
   Future<NetworkResult<ApiResponse<ApiRoot>>> getRootDetails(
-      String documentId) async {
+      String documentId,) async {
     final query = {
       'populate[contributions][populate][0]': 'user',
       'populate[contributions][populate][1]': 'image',
