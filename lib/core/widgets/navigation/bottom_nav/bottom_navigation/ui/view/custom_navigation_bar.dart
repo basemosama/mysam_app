@@ -17,15 +17,15 @@ PlatformNavBar buildCustomNavigationBar({
     },
     material3: (context, platform) {
       return MaterialNavigationBarData(
-        indicatorColor: context.colors.primary,
+        indicatorColor: const Color(0XFFE8DEF8),
         // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         backgroundColor: context.colors.surface,
         items: [
           NavigationDestination(
             icon: Icon(
-              Icons.home,
+              Icons.home_outlined,
               color: controller.currentIndex == 0
-                  ? context.colors.onPrimary
+                  ? Colors.black
                   : context.colors.subtitleTextColor,
             ),
             label: AppTrans.home.tr(context: context),
@@ -34,7 +34,7 @@ PlatformNavBar buildCustomNavigationBar({
             icon: Icon(
               Icons.star,
               color: controller.currentIndex == 1
-                  ? context.colors.onPrimary
+                  ? Colors.black
                   : context.colors.subtitleTextColor,
             ),
             label: AppTrans.contributions.tr(context: context),
@@ -48,13 +48,13 @@ PlatformNavBar buildCustomNavigationBar({
     },
     cupertino: (context, _) {
       return CupertinoTabBarData(
-        activeColor: context.colors.primary,
+        activeColor: const Color(0XFFE8DEF8),
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
               color: controller.currentIndex == 0
-                  ? context.colors.primary
+                  ? Colors.black
                   : context.colors.subtitleTextColor,
             ),
             label: AppTrans.home.tr(context: context),
@@ -63,7 +63,7 @@ PlatformNavBar buildCustomNavigationBar({
             icon: Icon(
               Icons.star,
               color: controller.currentIndex == 1
-                  ? context.colors.onPrimary
+                  ? Colors.black
                   : context.colors.subtitleTextColor,
             ),
             label: AppTrans.contributions.tr(context: context),
@@ -84,7 +84,7 @@ Widget _buildProfileImage(
   return CircleAvatar(
     radius: 14,
     backgroundColor: controller.currentIndex == 3
-        ? context.colors.primary
+        ? const Color(0XFFE8DEF8)
         : context.colors.onSurface,
     child: CircleAvatar(
       radius: 13,

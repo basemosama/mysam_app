@@ -5,6 +5,9 @@ class RootDetailsView extends GetView<RootDetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    if (!Get.isRegistered<RootDetailsController>()) {
+      return const CustomScaffold(child: SizedBox.shrink());
+    }
     return CustomScaffold(
         title: controller.root.value,
         leading: AppBarLeadingType.back,

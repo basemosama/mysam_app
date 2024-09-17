@@ -7,7 +7,6 @@ class SettingsView extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: AppTrans.settings,
-      leading: AppBarLeadingType.drawerOrRail,
       child: CustomScrollView(
         slivers: [
           SliverList(
