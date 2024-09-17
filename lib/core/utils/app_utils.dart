@@ -32,8 +32,10 @@ class AppUtils {
     if (time == null) {
       return '';
     }
-    return timeago.format(time,
-        locale: PlayxLocalization.currentLocale.toLanguageTag(),);
+    return timeago.format(
+      time,
+      locale: PlayxLocalization.currentLocale.toLanguageTag(),
+    );
   }
 
   static void setupTimeAgoMessages() {

@@ -85,7 +85,9 @@ class RemoteAuthDataSource {
       );
 
       final updateUserRes = await _profileDataSource.updateUser(
-          user: updatedUser, jwtToken: token,);
+        user: updatedUser,
+        jwtToken: token,
+      );
       if (updateUserRes is NetworkSuccess<ApiUserInfo> && token.isNotEmpty) {
         return NetworkSuccess(
           ApiUser(

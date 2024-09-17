@@ -69,8 +69,10 @@ class MyPreferenceManger {
     return PlayxPrefs.setBool(_onBoardingKey, true);
   }
 
-  Future<void> saveLoginInfo(
-      {required String email, required String password,}) async {
+  Future<void> saveLoginInfo({
+    required String email,
+    required String password,
+  }) async {
     await saveEmail(email: email);
     return savePassword(password: password);
   }

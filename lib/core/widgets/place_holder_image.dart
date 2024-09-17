@@ -6,8 +6,12 @@ class PlaceholderImageWidget extends StatelessWidget {
   final String? path;
   final EdgeInsetsGeometry? padding;
   final Color? color;
-  const PlaceholderImageWidget(
-      {super.key, this.path, this.padding, this.color,});
+  const PlaceholderImageWidget({
+    super.key,
+    this.path,
+    this.padding,
+    this.color,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(

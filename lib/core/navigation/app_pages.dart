@@ -42,18 +42,19 @@ class AppPages {
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-              path: Paths.home,
-              name: Routes.home,
-              builder: (ctx, state) => const RootsView(),
-              binding: RootsBinding(),
-              routes: [
-                PlayxRoute(
-                  path: Paths.rootDetails,
-                  name: Routes.rootDetails,
-                  builder: (ctx, state) => const RootDetailsView(),
-                  binding: RootDetailsBinding(),
-                ),
-              ],),
+            path: Paths.home,
+            name: Routes.home,
+            builder: (ctx, state) => const RootsView(),
+            binding: RootsBinding(),
+            routes: [
+              PlayxRoute(
+                path: Paths.rootDetails,
+                name: Routes.rootDetails,
+                builder: (ctx, state) => const RootDetailsView(),
+                binding: RootDetailsBinding(),
+              ),
+            ],
+          ),
         ],
       ),
       StatefulShellBranch(

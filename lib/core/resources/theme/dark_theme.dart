@@ -70,7 +70,8 @@ class DarkTheme {
         initialTheme: _themeData(),
         themeBuilder: (locale) => _themeData(locale: locale),
         cupertinoThemeBuilder: (locale) => MaterialBasedCupertinoThemeData(
-            materialTheme: _themeData(locale: locale),),
+          materialTheme: _themeData(locale: locale),
+        ),
         isDark: true,
       );
 }
