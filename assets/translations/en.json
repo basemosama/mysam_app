@@ -32,6 +32,7 @@
   "conflict": "Sorry, The request wasn't completed due to a conflict.",
   "continueWithSocial": "Continue With",
   "contributionCreatedSuccessfully": "The contribution for {} was created successfully.",
+  "contributionDetailsLabel": "Contribution",
   "contributions": "Contributions",
   "darkTheme": "Dark",
   "dashboard": "Dashboard",

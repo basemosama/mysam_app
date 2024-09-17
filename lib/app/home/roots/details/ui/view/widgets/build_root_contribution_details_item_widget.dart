@@ -1,0 +1,62 @@
+part of '../../imports/root_details_imports.dart';
+
+class BuildRootContributionDetailsItemWidget
+    extends GetView<RootDetailsController> {
+  final String label;
+  final Widget? endLabelWidget;
+  final String? subtitle;
+  final Widget? child;
+  final bool includeSeparator;
+
+  const BuildRootContributionDetailsItemWidget({
+    required this.label,
+    this.subtitle,
+    this.child,
+    this.endLabelWidget,
+    this.includeSeparator = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 8.r,
+        vertical: 8.r,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.0.r),
+                  child: CustomText(
+                    '${label.tr(context: context)}${includeSeparator ? ':' : ''}',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14.sp,
+                    isTranslatable: false,
+                  ),
+                ),
+              ),
+              if (endLabelWidget != null) endLabelWidget!,
+            ],
+          ),
+          SizedBox(height: 8.r),
+          if (subtitle?.isNotEmpty == true)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.0.r),
+              child: CustomText(
+                subtitle?.isNotEmpty == true ? subtitle! : '',
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
+                color: context.colors.subtitleTextColor,
+              ),
+            ),
+          if (child != null) child!,
+        ],
+      ),
+    );
+  }
+}

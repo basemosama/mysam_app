@@ -24,9 +24,11 @@ import 'package:playx/playx.dart';
 
 part '../binding/root_details_binding.dart';
 part '../controller/root_details_controller.dart';
+part '../view/root_details_contribution_details_view.dart';
 part '../view/root_details_view.dart';
 part '../view/widgets/build_choose_contribution_type_widget.dart';
 part '../view/widgets/build_empty_route_contributions_widget.dart';
+part '../view/widgets/build_root_contribution_details_item_widget.dart';
 part '../view/widgets/build_root_details_content.dart';
 part '../view/widgets/build_root_details_contribution_item_widget.dart';
 part '../view/widgets/build_root_details_contribution_user_widget.dart';

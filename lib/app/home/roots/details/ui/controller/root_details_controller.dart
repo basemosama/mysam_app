@@ -53,4 +53,18 @@ class RootDetailsController extends GetxController {
     await Future.delayed(const Duration(milliseconds: 300));
     AppNavigation.navigateToCreateContribution(root: root, type: type);
   }
+
+  void handleContributionTap({
+    required BuildContext context,
+    required Contribution contribution,
+  }) {
+    CustomModal.showPageModal(
+      context: context,
+      pageBuilder: (ctx) => RootDetailsContributionDetailsView.buildPage(
+        context: ctx,
+        root: root,
+        contribution: contribution,
+      ),
+    );
+  }
 }

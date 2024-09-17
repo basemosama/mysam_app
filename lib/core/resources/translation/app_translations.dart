@@ -297,4 +297,6 @@ abstract class AppTrans {
   static const loading = 'loading';
 
   static const unknown = 'unknown';
+
+  static const contributionDetailsLabel = 'contributionDetailsLabel';
 }

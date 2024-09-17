@@ -58,12 +58,15 @@ sealed class Contribution {
   });
 
   String get title => switch (this) {
-        QAContribution _ => (this as QAContribution).question,
-        IdiomContribution _ => (this as IdiomContribution).body,
+        QAContribution _ =>
+          '${(this as QAContribution).question}\n${(this as QAContribution).answer}',
+        IdiomContribution _ =>
+          '${(this as IdiomContribution).body}\n${(this as IdiomContribution).description}',
         PhotoContribution _ => (this as PhotoContribution).relatedWord.word,
         SlangContribution _ =>
           (this as SlangContribution).slangWords.join(', '),
-        PoemContribution _ => (this as PoemContribution).body,
+        PoemContribution _ =>
+          '${(this as PoemContribution).body}\n${(this as PoemContribution).description}',
         SynonymsContribution _ =>
           (this as SynonymsContribution).synonyms.join(', '),
         ModernMeaningContribution _ =>

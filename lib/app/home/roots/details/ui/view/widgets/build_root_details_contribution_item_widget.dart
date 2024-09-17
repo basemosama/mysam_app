@@ -1,6 +1,7 @@
 part of '../../imports/root_details_imports.dart';
 
-class BuildRootDetailsContributionItemWidget extends StatelessWidget {
+class BuildRootDetailsContributionItemWidget
+    extends GetView<RootDetailsController> {
   final Contribution contribution;
   const BuildRootDetailsContributionItemWidget({
     required this.contribution,
@@ -11,6 +12,8 @@ class BuildRootDetailsContributionItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       padding: EdgeInsets.symmetric(vertical: 16.r, horizontal: 12.r),
+      onPressed: () => controller.handleContributionTap(
+          contribution: contribution, context: context),
       child: Row(
         children: [
           Expanded(
