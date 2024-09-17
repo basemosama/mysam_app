@@ -93,7 +93,6 @@ class CustomModal {
   }) {
     final showTopBar = showModalTopBar?.value ?? true;
 
-    Fimber.d('onPreviousPressed :$onPreviousPressed');
     final modalBody = onPreviousPressed == null
         ? body
         : PopScope(

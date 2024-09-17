@@ -4,6 +4,7 @@ import 'package:playx/playx.dart';
 
 class MediaItem {
   final int? id;
+  final String? documentId;
   final String? url;
   final String? name;
   final String? type;
@@ -14,6 +15,7 @@ class MediaItem {
 
   MediaItem({
     this.id,
+    this.documentId,
     this.url,
     this.name,
     this.type,
@@ -27,6 +29,7 @@ class MediaItem {
     final map = json as Map<String, dynamic>;
     return MediaItem(
       id: asIntOrNull(map, 'id'),
+      documentId: asStringOrNull(map, 'documentId'),
       url: asStringOrNull(map, 'url'),
       name: asStringOrNull(map, 'name'),
       type: asStringOrNull(map, 'type'),
@@ -39,6 +42,7 @@ class MediaItem {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
+    map['documentId'] = documentId;
     map['url'] = url;
     map['name'] = name;
     map['type'] = type;

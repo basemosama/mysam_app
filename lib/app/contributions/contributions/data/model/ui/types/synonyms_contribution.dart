@@ -8,11 +8,10 @@ class SynonymsContribution extends Contribution {
     required super.documentId,
     required super.status,
     required super.relatedWord,
-    required super.type,
     super.createdAt,
     super.updatedAt,
     super.publishedAt,
     required this.synonyms,
     super.root,
-  });
+  }) : super(type: ContributionType.synonyms);
 }

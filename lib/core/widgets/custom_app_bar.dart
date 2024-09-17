@@ -90,12 +90,13 @@ enum AppBarLeadingType {
 PlatformAppBar buildAppBar({
   required String title,
   AppBarLeadingType leading = AppBarLeadingType.drawerOrRail,
+  Widget? leadingWidget,
   required BuildContext context,
 }) {
   return PlatformAppBar(
     // toolbarHeight: dimens.appBarHeight,
     automaticallyImplyLeading: false,
-    leading: leading.buildWidget(context),
+    leading: leadingWidget ?? leading.buildWidget(context),
     title: CustomText(
       title,
       fontSize: 16,

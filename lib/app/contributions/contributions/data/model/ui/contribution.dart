@@ -1,6 +1,8 @@
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_status.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/related_word.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
+import 'package:mysam_app/core/models/media_item.dart';
 
 part 'types/idiom_contribution.dart';
 part 'types/modern_meaning_contribution.dart';
@@ -22,7 +24,7 @@ sealed class Contribution {
   final ContributionStatus status;
 
   // موهوب
-  final String relatedWord;
+  final ContributionRelatedWord relatedWord;
 
   // qa
   final ContributionType type;
@@ -41,9 +43,9 @@ sealed class Contribution {
     required this.id,
     required this.documentId,
     required this.status,
-    required this.relatedWord,
     required this.type,
     this.root,
+    required this.relatedWord,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,

@@ -1,7 +1,10 @@
 import 'package:mysam_app/app/contributions/contributions/data/model/api/api_contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_related_word_type.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_status.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/related_word.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
+import 'package:mysam_app/app/home/roots/roots/data/model/mapper/api_root_to_root_mapper.dart';
 
 extension ApiContributionToContributionMapper on ApiContribution {
   DateTime? get contributionCreatedAt =>
@@ -10,6 +13,14 @@ extension ApiContributionToContributionMapper on ApiContribution {
       updatedAt != null ? DateTime.tryParse(updatedAt!) : null;
   DateTime? get contributionPublishedAt =>
       publishedAt != null ? DateTime.tryParse(publishedAt!) : null;
+
+  ContributionRelatedWord get relatedWordObj => ContributionRelatedWord(
+        word: relatedWord,
+        type: ContributionRelatedWordType.fromString(relatedWordType),
+        typeMeta: relatedWordTypeMeta,
+        weight: relatedWordWeight,
+        metadata: metaData,
+      );
 
   Contribution toContribution() {
     final type = ContributionType.fromString(this.type);
@@ -38,8 +49,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.qa,
+      relatedWord: relatedWordObj,
       question: data?.question ?? '',
       answer: data?.answer ?? '',
       createdAt: contributionCreatedAt,
@@ -53,8 +63,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.poem,
+      relatedWord: relatedWordObj,
       body: data?.body ?? '',
       description: data?.description ?? '',
       createdAt: contributionCreatedAt,
@@ -68,8 +77,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.idiom,
+      relatedWord: relatedWordObj,
       body: data?.body ?? '',
       description: data?.description ?? '',
       createdAt: contributionCreatedAt,
@@ -83,9 +91,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.photo,
-      imageId: data?.image ?? '',
+      relatedWord: relatedWordObj,
+      image: image,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -97,8 +104,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.synonyms,
+      relatedWord: relatedWordObj,
       synonyms: data?.data ?? [],
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
@@ -111,8 +117,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.modernMeaning,
+      relatedWord: relatedWordObj,
       modernMeanings: data?.data ?? [],
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
@@ -125,8 +130,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.slang,
+      relatedWord: relatedWordObj,
       slangWords: data?.data ?? [],
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
@@ -139,8 +143,7 @@ extension ApiContributionToContributionMapper on ApiContribution {
       id: id,
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
-      relatedWord: relatedWord,
-      type: ContributionType.unknown,
+      relatedWord: relatedWordObj,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -169,7 +172,7 @@ extension ContributionToApiContributionMapper on Contribution {
         );
       case PhotoContribution _:
         data = Data(
-          image: (this as PhotoContribution).imageId,
+          image: (this as PhotoContribution).image?.id,
         );
       case SynonymsContribution _:
         data = Data(
@@ -191,9 +194,17 @@ extension ContributionToApiContributionMapper on Contribution {
       id: id,
       documentId: documentId,
       contributionStatus: status.toShortString(),
-      relatedWord: relatedWord,
+      relatedWord: relatedWord.word,
+      relatedWordType: relatedWord.type?.toShortString(),
+      relatedWordWeight: relatedWord.weight,
+      relatedWordTypeMeta: relatedWord.typeMeta,
+      metaData: relatedWord.metadata,
+      root: root?.toApiRoot(),
       type: type.toShortString(),
       data: data,
+      image: (this is PhotoContribution)
+          ? (this as PhotoContribution).image
+          : null,
       createdAt: createdAt?.toIso8601String(),
       updatedAt: updatedAt?.toIso8601String(),
       publishedAt: publishedAt?.toIso8601String(),

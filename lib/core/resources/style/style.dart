@@ -4,7 +4,7 @@ import 'package:playx/playx.dart';
 abstract class Style {
   Style._();
 
-  static BorderRadius featureChipBorderRadius = BorderRadius.circular(16.r);
+  static BorderRadius featureChipBorderRadius = BorderRadius.circular(8.r);
 
   static BorderRadius fieldBorderRadius = BorderRadius.circular(16.r);
 
