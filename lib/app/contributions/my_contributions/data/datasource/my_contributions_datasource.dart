@@ -29,7 +29,6 @@ class MyContributionsDatasource {
     final query = {
       'page': page,
       'pageSize': pageSize,
-      if (search != null) 'search': search,
       if (status != null && status != ContributionStatus.all)
         'filters[contributionStatus]': status.toShortString(),
       'populate': '*',
