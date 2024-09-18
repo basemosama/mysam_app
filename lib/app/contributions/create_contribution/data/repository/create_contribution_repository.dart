@@ -1,7 +1,7 @@
 import 'package:mysam_app/app/contributions/contributions/data/model/mapper/api_contribution_to_contribution_mapper.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/contributions/create_contribution/data/datasource/create_contribution_datasource.dart';
-import 'package:mysam_app/core/utils/mapper_utilites.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 class CreateContributionRepository {

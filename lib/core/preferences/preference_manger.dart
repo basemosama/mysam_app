@@ -4,7 +4,7 @@ import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart
 import 'package:mysam_app/app/app_launch/auth/data/models/mapper/api_user_info_to_user_info_mapper.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/login_method.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
-import 'package:mysam_app/core/utils/mapper_utilites.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 /// This class is responsible for saving key/value pairs in shared preferences.
@@ -69,8 +69,10 @@ class MyPreferenceManger {
     return PlayxPrefs.setBool(_onBoardingKey, true);
   }
 
-  Future<void> saveLoginInfo(
-      {required String email, required String password}) async {
+  Future<void> saveLoginInfo({
+    required String email,
+    required String password,
+  }) async {
     await saveEmail(email: email);
     return savePassword(password: password);
   }

@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/api/api_root.dart';
 import 'package:mysam_app/core/models/media_item.dart';
 import 'package:playx/playx.dart';
@@ -7,13 +6,17 @@ import 'package:playx/playx.dart';
 class ApiContribution {
   // 1
   final int id;
+
   // g7s423kbj23qlpt9peeuwu6q
   final String documentId;
+
   // declined
   final String contributionStatus;
+
   // موهوب
   final String relatedWord;
   final ApiRoot? root;
+
   // qa
   final String type;
   final Data? data;
@@ -22,11 +25,15 @@ class ApiContribution {
   final String? relatedWordWeight;
   final List<String>? metaData;
   final MediaItem? image;
+  final ApiUserInfo? user;
+  final ApiUserInfo? reviewedBy;
 
   // 2024-09-11T09:03:19.200Z
   final String? createdAt;
+
   // 2024-09-12T11:21:20.458Z
   final String? updatedAt;
+
   // 2024-09-12T11:21:20.431Z
   final String? publishedAt;
 
@@ -43,6 +50,8 @@ class ApiContribution {
     this.relatedWordWeight,
     this.metaData,
     this.image,
+    this.user,
+    this.reviewedBy,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,
@@ -50,11 +59,14 @@ class ApiContribution {
 
   factory ApiContribution.fromJson(dynamic json) {
     final data = json['data'];
+
     Data? dataObj;
     if (data is List<String>) {
       dataObj = Data(data: data);
     } else if (data is Map<String, dynamic>) {
-      dataObj = Data.fromJson(data);
+      dataObj = Data.fromJson(
+        data,
+      );
     }
 
     return ApiContribution(
@@ -70,6 +82,10 @@ class ApiContribution {
       relatedWordWeight: asStringOrNull(json, 'relatedWordWeight'),
       metaData: asListStringOrNull(json, 'metaData'),
       image: json['image'] != null ? MediaItem.fromJson(json['image']) : null,
+      user: json['user'] != null ? ApiUserInfo.fromJson(json['user']) : null,
+      reviewedBy: json['reviewedBy'] != null
+          ? ApiUserInfo.fromJson(json['reviewedBy'])
+          : null,
       createdAt: asStringOrNull(json, 'createdAt'),
       updatedAt: asStringOrNull(json, 'updatedAt'),
       publishedAt: asStringOrNull(json, 'publishedAt'),
@@ -94,12 +110,11 @@ class ApiContribution {
       'relatedWordTypeMeta': relatedWordTypeMeta,
       'relatedWordWeight': relatedWordWeight,
       'metaData': metaData,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      'publishedAt': publishedAt,
+      // 'createdAt': createdAt,
+      // 'updatedAt': updatedAt,
+      // 'publishedAt': publishedAt,
     };
     map.removeWhere((key, value) => value == null);
-    Fimber.d(jsonEncode(map));
     return map;
   }
 }
@@ -107,6 +122,7 @@ class ApiContribution {
 class Data {
   // موهوب
   final String? answer;
+
   // موهوب
   final String? question;
   final String? body;
@@ -124,14 +140,21 @@ class Data {
     this.data,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        answer: asStringOrNull(json, 'answer'),
-        question: asStringOrNull(json, 'question'),
-        body: asStringOrNull(json, 'body'),
-        description: asStringOrNull(json, 'description'),
-        image: asIntOrNull(json, 'image'),
-        data: asListStringOrNull(json, 'data'),
-      );
+  factory Data.fromJson(Map<String, dynamic> json) {
+    final words = json.keys
+        .where((key) => key.isNumericOnly)
+        .map((key) => json[key])
+        .whereType<String>()
+        .toList();
+    return Data(
+      answer: asStringOrNull(json, 'answer'),
+      question: asStringOrNull(json, 'question'),
+      body: asStringOrNull(json, 'body'),
+      description: asStringOrNull(json, 'description'),
+      image: asIntOrNull(json, 'image'),
+      data: words,
+    );
+  }
 
   Map<String, dynamic> toJson({MediaItem? image}) => {
         if (answer != null) 'answer': answer,

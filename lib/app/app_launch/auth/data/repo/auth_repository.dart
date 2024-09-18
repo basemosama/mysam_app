@@ -8,7 +8,7 @@ import 'package:mysam_app/app/app_launch/auth/data/models/ui/user.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
-import 'package:mysam_app/core/utils/mapper_utilites.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 /// This is the repository where we should handle the data and return it to the controller.
@@ -190,8 +190,10 @@ class AuthRepository {
     }
   }
 
-  Future<void> saveLoginInfo(
-      {required String email, required String password}) {
+  Future<void> saveLoginInfo({
+    required String email,
+    required String password,
+  }) {
     return _preferenceManger.saveLoginInfo(email: email, password: password);
   }
 

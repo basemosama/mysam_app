@@ -12,9 +12,13 @@ class CreateContributionView extends GetView<CreateContributionController> {
         icon: const Icon(Icons.arrow_back_ios_new),
       ),
       floatingActionButton: Obx(() {
+        if (controller.isReceivedContributionStep.value) {
+          return const SizedBox.shrink();
+        }
         final isNextOrFinishButtonEnabled =
             controller.isNextOrFinishButtonEnabled;
         final isLastStep = controller.isLastStep;
+
         return CustomIconButton(
           onPressed: isNextOrFinishButtonEnabled
               ? controller.handleNextOrFinish
@@ -25,34 +29,45 @@ class CreateContributionView extends GetView<CreateContributionController> {
           ),
         );
       }),
-      child: Stack(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
-            child: Column(
-              children: [
-                Obx(() {
-                  return BuildStepperWidget(
-                    stepCount: controller.currentStepCount,
-                    currentStepIndex: controller.currentStepIndex.value,
-                  );
-                }),
-                SizedBox(height: 8.r),
-                Expanded(
-                  child: BuildContributionByTypeForum(controller: controller),
-                ),
-              ],
-            ),
-          ),
-          Obx(() {
-            final isLoading = controller.isLoading.value;
-            return LoadingOverlay(
-              isLoading: isLoading,
-              loadingText: AppTrans.loading,
-            );
-          }),
-        ],
-      ),
+      child: Obx(() {
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: !controller.isReceivedContributionStep.value
+              ? Stack(
+                  children: [
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
+                      child: Column(
+                        children: [
+                          Obx(() {
+                            return BuildStepperWidget(
+                              stepCount: controller.currentStepCount,
+                              currentStepIndex:
+                                  controller.currentStepIndex.value,
+                            );
+                          }),
+                          SizedBox(height: 8.r),
+                          Expanded(
+                            child: BuildContributionByTypeForum(
+                                controller: controller),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Obx(() {
+                      final isLoading = controller.isLoading.value;
+                      return LoadingOverlay(
+                        isLoading: isLoading,
+                        loadingText: AppTrans.loading,
+                      );
+                    }),
+                  ],
+                )
+              : BuildContributionReceivedContributionStep(
+                  controller: controller),
+        );
+      }),
     );
   }
 }

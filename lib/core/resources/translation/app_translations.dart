@@ -14,6 +14,9 @@ abstract class AppTrans {
   static const imageUrlHint = 'imageUrlHint';
   static const imageUrlRequired = 'imageUrlRequired';
   static const imagePickerFromUrlError = 'imagePickerFromUrlError';
+  static const String pending = 'pending';
+  static const String confirmed = 'confirmed';
+  static const String declined = 'declined';
 
   static const String poemContributionDescriptionLabel =
       'poemContributionDescriptionLabel';
@@ -292,4 +295,10 @@ abstract class AppTrans {
   static String agreeToTerms = 'agreeToTerms';
 
   static const loading = 'loading';
+
+  static const unknown = 'unknown';
+
+  static const contributionDetailsLabel = 'contributionDetailsLabel';
+
+  static String contributionReceived = 'contributionReceived';
 }

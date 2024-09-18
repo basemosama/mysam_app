@@ -5,7 +5,7 @@ import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/network/endpoints/endpoints.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
-import 'package:mysam_app/core/utils/mapper_utilites.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 class ApiHelper {

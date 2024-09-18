@@ -8,6 +8,8 @@ class ModernMeaningContribution extends Contribution {
     required super.documentId,
     required super.status,
     required super.relatedWord,
+    super.createdBy,
+    super.reviewedBy,
     super.createdAt,
     super.updatedAt,
     super.publishedAt,

@@ -23,7 +23,10 @@ class BuildRegisterBackButton extends GetView<RegisterController> {
             onPressed: () {
               controller.currentLoginMethod.value = null;
             },
-            icon: Icon(Icons.adaptive.arrow_back, color: context.colors.primary,),
+            icon: Icon(
+              Icons.adaptive.arrow_back,
+              color: context.colors.primary,
+            ),
           ),
         ),
       );

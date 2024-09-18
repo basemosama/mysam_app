@@ -71,4 +71,22 @@ class DarkColors extends AppColors {
 
   @override
   Color get filledColor => const Color(0xFFE5E5E5);
+
+  @override
+  Color get pendingBackgroundColor => Colors.yellow[700]!;
+
+  @override
+  Color get confirmedBackgroundColor => Colors.green[700]!;
+
+  @override
+  Color get declinedBackgroundColor => Colors.red[700]!;
+
+  @override
+  Color get onPendingBackgroundColor => Colors.white;
+
+  @override
+  Color get onConfirmedBackgroundColor => Colors.white;
+
+  @override
+  Color get onDeclinedBackgroundColor => Colors.white;
 }

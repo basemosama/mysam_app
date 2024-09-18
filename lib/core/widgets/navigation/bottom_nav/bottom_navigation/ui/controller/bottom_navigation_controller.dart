@@ -40,6 +40,10 @@ class CustomBottomNavigationController extends GetxController {
     required int index,
     required StatefulNavigationShell navigationShell,
   }) {
-    PlayxNavigation.goToBranch(index: index, navigationShell: navigationShell);
+    PlayxNavigation.goToBranch(
+      index: index,
+      navigationShell: navigationShell,
+      initialLocation: true,
+    );
   }
 }

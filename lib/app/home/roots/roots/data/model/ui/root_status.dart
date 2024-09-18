@@ -21,14 +21,14 @@ enum RootStatus {
 
   Color backgroundColor(BuildContext context) => switch (this) {
         raw => context.colors.outlineVariant,
-        hasConfirmedContribution => Colors.green,
-        hasNonConfirmedContribution => Colors.yellow,
+        hasConfirmedContribution => context.colors.confirmedBackgroundColor,
+        hasNonConfirmedContribution => context.colors.pendingBackgroundColor,
       };
 
   Color onBackgroundColor(BuildContext context) => switch (this) {
         raw => Colors.white,
-        hasConfirmedContribution => Colors.white,
-        hasNonConfirmedContribution => Colors.black,
+        hasConfirmedContribution => context.colors.onConfirmedBackgroundColor,
+        hasNonConfirmedContribution => context.colors.onPendingBackgroundColor,
       };
 
   String toShortString() {

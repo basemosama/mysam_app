@@ -53,16 +53,21 @@ abstract class AppNavigation {
   }
 
   static void navigateToRootDetails(Root root) {
-    PlayxNavigation.toNamed(Routes.rootDetails,
-        extra: root, pathParameters: {'id': root.documentId});
+    PlayxNavigation.toNamed(
+      Routes.rootDetails,
+      extra: root,
+      pathParameters: {'id': root.documentId},
+    );
   }
 
   static void navigateToContributions() {
     PlayxNavigation.toNamed(Routes.contributions);
   }
 
-  static void navigateToCreateContribution(
-      {required Root root, required ContributionType type}) {
+  static void navigateToCreateContribution({
+    required Root root,
+    required ContributionType type,
+  }) {
     PlayxNavigation.toNamed(Routes.createContribution, extra: [root, type]);
   }
 }

@@ -1,3 +1,5 @@
+import 'package:mysam_app/app/app_launch/auth/data/models/mapper/api_user_info_to_user_info_mapper.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/api/api_contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_related_word_type.dart';
@@ -21,6 +23,10 @@ extension ApiContributionToContributionMapper on ApiContribution {
         weight: relatedWordWeight,
         metadata: metaData,
       );
+
+  UserInfo? get createdByUser => user?.toUserInfo();
+
+  UserInfo? get reviewedByUser => reviewedBy?.toUserInfo();
 
   Contribution toContribution() {
     final type = ContributionType.fromString(this.type);
@@ -52,6 +58,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       relatedWord: relatedWordObj,
       question: data?.question ?? '',
       answer: data?.answer ?? '',
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -66,6 +74,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       relatedWord: relatedWordObj,
       body: data?.body ?? '',
       description: data?.description ?? '',
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -80,6 +90,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       relatedWord: relatedWordObj,
       body: data?.body ?? '',
       description: data?.description ?? '',
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -93,6 +105,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       status: ContributionStatus.fromString(contributionStatus),
       relatedWord: relatedWordObj,
       image: image,
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -106,6 +120,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       status: ContributionStatus.fromString(contributionStatus),
       relatedWord: relatedWordObj,
       synonyms: data?.data ?? [],
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -119,6 +135,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       status: ContributionStatus.fromString(contributionStatus),
       relatedWord: relatedWordObj,
       modernMeanings: data?.data ?? [],
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -132,6 +150,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       status: ContributionStatus.fromString(contributionStatus),
       relatedWord: relatedWordObj,
       slangWords: data?.data ?? [],
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -144,6 +164,8 @@ extension ApiContributionToContributionMapper on ApiContribution {
       documentId: documentId,
       status: ContributionStatus.fromString(contributionStatus),
       relatedWord: relatedWordObj,
+      createdBy: createdByUser,
+      reviewedBy: reviewedByUser,
       createdAt: contributionCreatedAt,
       updatedAt: contributionUpdatedAt,
       publishedAt: contributionPublishedAt,
@@ -201,6 +223,8 @@ extension ContributionToApiContributionMapper on Contribution {
       metaData: relatedWord.metadata,
       root: root?.toApiRoot(),
       type: type.toShortString(),
+      user: createdBy?.toApiUserInfo(),
+      reviewedBy: reviewedBy?.toApiUserInfo(),
       data: data,
       image: (this is PhotoContribution)
           ? (this as PhotoContribution).image

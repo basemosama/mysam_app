@@ -3,7 +3,7 @@ import 'package:mysam_app/app/home/roots/roots/data/model/mapper/api_root_to_roo
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/core/models/data_wrapper.dart';
 import 'package:mysam_app/core/models/mapper/api_response_to_data_wrapper.dart';
-import 'package:mysam_app/core/utils/mapper_utilites.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 class RootsRepository {

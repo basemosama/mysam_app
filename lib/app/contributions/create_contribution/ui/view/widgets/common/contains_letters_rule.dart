@@ -4,10 +4,10 @@ import 'package:playx/playx.dart';
 
 class ContainsLettersRule extends TextValidationRule {
   final String word;
-  ContainsLettersRule(
-      {String? error = AppTrans.shouldContainRootLettersError,
-      required this.word})
-      : super(error);
+  ContainsLettersRule({
+    String? error = AppTrans.shouldContainRootLettersError,
+    required this.word,
+  }) : super(error);
 
   @override
   bool isValid(String input) {
