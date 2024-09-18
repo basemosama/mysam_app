@@ -101,6 +101,12 @@ class AppPages {
       binding: SplashBinding(),
     ),
     PlayxRoute(
+      path: Paths.onboarding,
+      name: Routes.onboarding,
+      builder: (context, state) => OnBoardingView(),
+      binding: OnBoardingBinding(),
+    ),
+    PlayxRoute(
       path: Paths.login,
       name: Routes.login,
       builder: (context, state) => const LoginView(),
@@ -111,12 +117,6 @@ class AppPages {
       name: Routes.register,
       builder: (context, state) => const RegisterView(),
       binding: RegisterBinding(),
-    ),
-    PlayxRoute(
-      path: Paths.onboarding,
-      name: Routes.onboarding,
-      builder: (context, state) => OnBoardingView(),
-      binding: OnBoardingBinding(),
     ),
     _homeNavigationRoutes,
   ];

@@ -79,9 +79,11 @@ sealed class CreateContributionController extends GetxController {
 
   void handleNextOrFinish() {
     if (isLastStep) {
+      WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       createContribution();
     } else {
       currentStepIndex.value++;
+      WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       pageController.animateToPage(
         currentStepIndex.value,
         duration: const Duration(milliseconds: 300),

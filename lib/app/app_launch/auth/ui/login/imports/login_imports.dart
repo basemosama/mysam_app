@@ -10,6 +10,7 @@ import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/utils/alert.dart';
 import 'package:mysam_app/core/widgets/components/custom_elevated_button.dart';
+import 'package:mysam_app/core/widgets/components/custom_scaffold.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:mysam_app/core/widgets/components/text_field.dart';
 import 'package:mysam_app/core/widgets/loading_overlay.dart';
