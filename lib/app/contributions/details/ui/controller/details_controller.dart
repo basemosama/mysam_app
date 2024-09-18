@@ -26,6 +26,7 @@ class ContributionDetailsController extends GetxController {
       pageBuilder: (ctx) => ContributionDetailsView.buildPage(
         context: ctx,
         controller: controller,
+        contribution: contribution,
       ),
     );
     controller.onClose();
@@ -35,4 +36,6 @@ class ContributionDetailsController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
+  void editContribution() {}
 }

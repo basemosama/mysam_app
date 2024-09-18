@@ -79,12 +79,27 @@ class ContributionDetailsView extends StatelessWidget {
   static SliverWoltModalSheetPage buildPage({
     required BuildContext context,
     required ContributionDetailsController controller,
+    required Contribution contribution,
   }) {
     return CustomModal.buildCustomModalPage(
       title: controller.root.value,
       body: ContributionDetailsView(
         controller: controller,
       ),
+      leading: contribution.status == ContributionStatus.pending ||
+              contribution.status == ContributionStatus.declined
+          ? IconButton(
+              padding: EdgeInsets.symmetric(horizontal: 8.r, vertical: 8.r),
+              visualDensity: VisualDensity.comfortable,
+              onPressed: () {
+                controller.editContribution();
+              },
+              icon: Icon(
+                Icons.edit_outlined,
+                color: context.colors.onSurface,
+              ),
+            )
+          : null,
       onClosePressed: () {
         PlayxNavigation.pop();
       },

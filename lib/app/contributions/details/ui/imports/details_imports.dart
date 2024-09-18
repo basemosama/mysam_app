@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_status.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/contributions/contributions/ui/imports/contributions_imports.dart';
 import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
