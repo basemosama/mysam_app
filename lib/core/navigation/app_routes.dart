@@ -10,6 +10,8 @@ abstract class Routes {
   static const home = 'home';
   static const rootDetails = 'rootDetails';
   static const contributions = 'contributions';
+  static const myContributions = 'myContributions';
+
   static const createContribution = 'createContribution';
   static const profile = 'profile';
 }
@@ -24,6 +26,8 @@ abstract class Paths {
   static const rootDetails = 'roots/:id';
   static const home = '/home';
   static const contributions = '/contributions';
+  static const myContributions = '/my-contributions';
+
   static const createContribution = 'create';
   static const profile = '/profile';
 }

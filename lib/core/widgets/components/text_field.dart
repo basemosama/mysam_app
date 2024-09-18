@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/dimens/dimens.dart';
@@ -53,6 +55,8 @@ class CustomTextField extends StatefulWidget {
   final BorderRadius? borderRadius;
   final double? borderWidth;
   final void Function(String?)? onSubmitted;
+  final Duration? debounceDuration;
+  final bool debounceValidation;
 
   const CustomTextField({
     this.hint,
@@ -97,6 +101,8 @@ class CustomTextField extends StatefulWidget {
     this.borderRadius,
     this.borderWidth,
     this.onSubmitted,
+    this.debounceDuration,
+    this.debounceValidation = false,
   });
 
   @override
@@ -106,6 +112,8 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomFieldState extends State<CustomTextField> {
+  Timer? _debounceTimer;
+
   @override
   void initState() {
     super.initState();
@@ -118,7 +126,18 @@ class _CustomFieldState extends State<CustomTextField> {
       hintStyle: widget.hintStyle,
       maxLines: widget.maxLines,
       minLines: widget.minLines,
-      onChanged: widget.onChanged,
+      onChanged: (value) {
+        if (widget.debounceDuration != null) {
+          if (_debounceTimer?.isActive ?? false) {
+            _debounceTimer?.cancel();
+          }
+          _debounceTimer = Timer(widget.debounceDuration!, () {
+            widget.onChanged?.call(value);
+          });
+        } else {
+          widget.onChanged?.call(value);
+        }
+      },
       onTap: widget.onTap,
       icon: widget.icon,
       type: widget.type,
@@ -170,7 +189,20 @@ class _CustomFieldState extends State<CustomTextField> {
       borderColor: widget.borderColor,
       focusedBorderColor: widget.focusedBorderColor,
       formKey: widget.formKey,
-      onValidationChanged: widget.onValidationChanged,
+      onValidationChanged: (isValid) {
+        if (widget.onValidationChanged != null) {
+          if (widget.debounceValidation && widget.debounceDuration != null) {
+            if (_debounceTimer?.isActive ?? false) {
+              _debounceTimer?.cancel();
+            }
+            _debounceTimer = Timer(widget.debounceDuration!, () {
+              widget.onValidationChanged?.call(isValid);
+            });
+          } else {
+            widget.onValidationChanged?.call(isValid);
+          }
+        }
+      },
       textInputAction: widget.textInputAction,
       style: TextStyle(
         fontSize: Dimens.fieldTextSize,
@@ -217,5 +249,11 @@ class _CustomFieldState extends State<CustomTextField> {
         borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    super.dispose();
   }
 }

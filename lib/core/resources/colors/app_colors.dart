@@ -45,6 +45,9 @@ abstract class AppColors extends PlayxColors {
 
   Color get filledColor;
 
+  Color get primaryVariant;
+  Color get onPrimaryVariant;
+
   Color get pendingBackgroundColor;
   Color get confirmedBackgroundColor;
   Color get declinedBackgroundColor;

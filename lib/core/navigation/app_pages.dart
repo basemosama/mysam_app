@@ -2,8 +2,8 @@ import 'package:mysam_app/app/app_launch/auth/ui/login/imports/login_imports.dar
 import 'package:mysam_app/app/app_launch/auth/ui/register/imports/register_imports.dart';
 import 'package:mysam_app/app/app_launch/onboarding/ui/imports/onboarding_imports.dart';
 import 'package:mysam_app/app/app_launch/splash/ui/imports/splash_imports.dart';
-import 'package:mysam_app/app/contributions/contributions/ui/imports/contributions_imports.dart';
 import 'package:mysam_app/app/contributions/create_contribution/ui/imports/create_contribution_imports.dart';
+import 'package:mysam_app/app/contributions/my_contributions/ui/imports/my_contributions_imports.dart';
 import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
 import 'package:mysam_app/app/home/roots/roots/ui/imports/roots_imports.dart';
 import 'package:mysam_app/app/profile/ui/imports/profile_imports.dart';
@@ -48,11 +48,18 @@ class AppPages {
             binding: RootsBinding(),
             routes: [
               PlayxRoute(
-                path: Paths.rootDetails,
-                name: Routes.rootDetails,
-                builder: (ctx, state) => const RootDetailsView(),
-                binding: RootDetailsBinding(),
-              ),
+                  path: Paths.rootDetails,
+                  name: Routes.rootDetails,
+                  builder: (ctx, state) => const RootDetailsView(),
+                  binding: RootDetailsBinding(),
+                  routes: [
+                    PlayxRoute(
+                      path: Paths.createContribution,
+                      name: Routes.createContribution,
+                      builder: (ctx, state) => const CreateContributionView(),
+                      binding: CreateContributionBinding(),
+                    ),
+                  ]),
             ],
           ),
         ],
@@ -60,18 +67,10 @@ class AppPages {
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-            path: Paths.contributions,
-            name: Routes.contributions,
-            builder: (ctx, state) => const ContributionsView(),
-            binding: ContributionsBinding(),
-            routes: [
-              PlayxRoute(
-                path: Paths.createContribution,
-                name: Routes.createContribution,
-                builder: (ctx, state) => const CreateContributionView(),
-                binding: CreateContributionBinding(),
-              ),
-            ],
+            path: Paths.myContributions,
+            name: Routes.myContributions,
+            builder: (ctx, state) => MyContributionsView(),
+            binding: MyContributionsBinding(),
           ),
         ],
       ),

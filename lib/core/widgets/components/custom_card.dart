@@ -55,10 +55,10 @@ class CustomCard extends StatelessWidget {
                   : context.colors.surfaceContainerHigh
               : context.colors.surface),
       innerCardShadowMargin: innerCardShadowMargin,
-      shadowBorderRadius: shadowBorderRadius,
+      shadowBorderRadius: shadowBorderRadius ?? borderRadius,
       shape: shape ??
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: borderRadius ?? BorderRadius.circular(8.r),
           ),
       borderRadius: borderRadius ?? BorderRadius.circular(8.r),
       onPressed: onPressed,

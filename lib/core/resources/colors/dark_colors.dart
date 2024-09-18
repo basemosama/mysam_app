@@ -89,4 +89,10 @@ class DarkColors extends AppColors {
 
   @override
   Color get onDeclinedBackgroundColor => Colors.white;
+
+  @override
+  Color get primaryVariant => const Color(0XFFE8DEF8);
+
+  @override
+  Color get onPrimaryVariant => Colors.black;
 }

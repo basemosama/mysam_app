@@ -14,16 +14,15 @@ class NavigationUtils {
         Routes.settings,
       ];
 
-  static List<String> get routesBottomNav => [
-        Routes.home,
-        Routes.profile,
-        Routes.contributions,
-        Routes.settings,
-        Routes.rootDetails,
+  static List<String> get routesWithoutBottomNav => [
+        Routes.splash,
+        Routes.onboarding,
+        Routes.login,
+        Routes.register,
       ];
 
   static bool get showBottomNav =>
-      routesBottomNav.contains(PlayxNavigation.currentRouteName);
+      !routesWithoutBottomNav.contains(PlayxNavigation.currentRouteName);
 
   static bool get canShowDrawer => AppUtils.isMobile();
 

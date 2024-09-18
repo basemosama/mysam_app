@@ -14,46 +14,17 @@ abstract class Endpoints {
   static const profile = '/users/me';
   static const updateUser = '/users/edit-profile';
 
-//   **** create  contributions
-//
-//   POST /contributions/contribute
-//   body {
-//   root: 'string',
-//   type: 	'qa' | 'poem' | 'idiom',
-//   relatedWord: 'string',
-//   data: {
-//   //	based on the type of the contribution
-//   },
-// }
-//
-// qa data:
-// question*: string
-// answer*: string
-//
-// poem data:
-// body*: text
-// description: text
-//
-// idiom data:
-// body*: text
-// description: text
-
-//   moderators:
-//
-//   GET  /contributinos
-//   ****    GET contributinos with filters
-//
-//   GET  /contributinos?filters[contributionStatus]=not-confirmed
 //   *****
 //   confirm and decline contributinos
 //   PUT  /contributions/:id/confirm
 //   PUT  /contributions/:id/decline
 //
-
   static const roots = '/roots';
   static String rootDetails(String documentId) => '$roots/$documentId';
   static const contribute = '/contributions/contribute';
   static const contributions = '/contributions';
+
+  static const myContributions = '/my-contributions';
 
   static String confirmContribution(String documentId) =>
       '/contributions/$documentId/confirm';

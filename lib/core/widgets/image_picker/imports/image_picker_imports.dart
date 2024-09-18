@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mysam_app/core/models/icon_info.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/widgets/bottom_sheet/custom_modal.dart';

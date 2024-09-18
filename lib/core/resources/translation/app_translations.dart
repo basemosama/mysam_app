@@ -301,4 +301,10 @@ abstract class AppTrans {
   static const contributionDetailsLabel = 'contributionDetailsLabel';
 
   static String contributionReceived = 'contributionReceived';
+
+  static const myContributions = 'myContributions';
+
+  static const contributionStatusAll = 'contributionStatusAll';
+
+  static const noContributionsFound = 'noContributionsFound';
 }
