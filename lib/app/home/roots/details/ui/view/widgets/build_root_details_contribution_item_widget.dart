@@ -27,13 +27,8 @@ class BuildRootDetailsContributionItemWidget
                 SizedBox(height: 4.r),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0.r),
-                  child: CustomText(
-                    contribution.title,
-                    color: context.colors.subtitleTextColor,
-                    maxLines: 1,
-                    textOverflow: TextOverflow.ellipsis,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  child: BuildRootDetailsContributionItemByTypeWidget(
+                      contribution: contribution),
                 ),
               ],
             ),

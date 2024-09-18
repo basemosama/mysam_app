@@ -4,6 +4,7 @@ class BuildMyContributionsListItemWidget
     extends GetView<MyContributionsController> {
   final Contribution contribution;
   final bool showStatus;
+
   const BuildMyContributionsListItemWidget({
     required this.contribution,
     this.showStatus = false,
@@ -55,10 +56,16 @@ class BuildMyContributionsListItemWidget
                     BuildMyContributionsListItemFieldWidget(
                       label: AppTrans.keywordLabel,
                       subtitle: contribution.relatedWord.word,
+                      maxLines: 2,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 8.r, vertical: 4.r),
                     ),
                     BuildMyContributionsListItemFieldWidget(
                       label: AppTrans.keywordWeightLabel,
                       subtitle: contribution.relatedWord.weight,
+                      maxLines: 2,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 8.r, vertical: 4.r),
                     ),
                   ],
                 ),
@@ -103,7 +110,10 @@ class BuildMyContributionsListItemWidget
           ),
           BuildMyContributionsListItemFieldWidget(
             label: AppTrans.contributionDetailsLabel,
-            subtitle: contribution.title,
+            padding: EdgeInsets.symmetric(horizontal: 8.r, vertical: 4.r),
+            child: BuildMyContributionsContributionItemByTypeWidget(
+              contribution: contribution,
+            ),
           ),
         ],
       ),
