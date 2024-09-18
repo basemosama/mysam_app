@@ -17,6 +17,9 @@ class BuildContributionDetailsForumWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if ((subtitle == null || subtitle!.isEmpty) && child == null) {
+      return const SizedBox.shrink();
+    }
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 8.r,
