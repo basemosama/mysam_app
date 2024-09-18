@@ -4,6 +4,7 @@ import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribu
 import 'package:mysam_app/app/contributions/my_contributions/data/datasource/my_contributions_datasource.dart';
 import 'package:mysam_app/core/models/data_wrapper.dart';
 import 'package:mysam_app/core/models/mapper/api_response_to_data_wrapper.dart';
+import 'package:mysam_app/core/network/helper/api_helper.dart';
 import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
@@ -26,20 +27,24 @@ class MyContributionsRepository {
     ContributionStatus? status,
     CancelToken? cancelToken,
   }) async {
-    final res = await _datasource.getMyContributions(
-      page: page,
-      pageSize: pageSize,
-      search: search,
-      status: status,
-      cancelToken: cancelToken,
-    );
-    return res.mapDataAsyncInIsolate(
-      mapper: (response) async {
-        final contributions = response.toDataWrapperAndMapData(
-          mapper: (data) => data.map((e) => e.toContribution()).toList(),
-        );
-        return NetworkSuccess(contributions);
-      },
-    );
+    try {
+      final res = await _datasource.getMyContributions(
+        page: page,
+        pageSize: pageSize,
+        search: search,
+        status: status,
+        cancelToken: cancelToken,
+      );
+      return res.mapDataAsyncInIsolate(
+        mapper: (response) async {
+          final contributions = response.toDataWrapperAndMapData(
+            mapper: (data) => data.map((e) => e.toContribution()).toList(),
+          );
+          return NetworkSuccess(contributions);
+        },
+      );
+    } catch (e) {
+      return ApiHelper.unableToProcessError();
+    }
   }
 }

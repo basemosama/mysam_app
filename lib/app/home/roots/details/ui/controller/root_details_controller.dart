@@ -9,10 +9,13 @@ class RootDetailsController extends GetxController {
 
   final dataState = RxDataState<Root>(const DataState.initial());
 
+  final Completer<UserInfo?> savedUser = Completer();
+
   @override
   void onInit() {
     super.onInit();
     getRootDetails();
+    _getSavedUser();
   }
 
   Future<void> getRootDetails() async {
@@ -30,6 +33,11 @@ class RootDetailsController extends GetxController {
         dataState.value = DataState.fromNetworkError(error);
       },
     );
+  }
+
+  Future<void> _getSavedUser() async {
+    final user = await MyPreferenceManger.instance.getSavedUser();
+    savedUser.complete(user);
   }
 
   Future<void> refreshRoot() async {
@@ -54,14 +62,22 @@ class RootDetailsController extends GetxController {
     AppNavigation.navigateToCreateContribution(root: root, type: type);
   }
 
-  void handleContributionTap({
+  Future<void> handleContributionTap({
     required BuildContext context,
     required Contribution contribution,
-  }) {
+  }) async {
+    final user = await savedUser.future;
+    final showEdit = user!.documentId != null &&
+        contribution.createdBy?.documentId != null &&
+        user.documentId == contribution.createdBy!.documentId;
+
+    Fimber.d(
+        'showEdit: $showEdit : user :${user.documentId} : createdBy: ${contribution.createdBy?.documentId}');
     ContributionDetailsController.showModal(
       context: context,
       contribution: contribution,
       root: root,
+      showEdit: showEdit,
     );
   }
 }

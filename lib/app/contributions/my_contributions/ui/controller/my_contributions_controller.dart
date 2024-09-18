@@ -156,6 +156,7 @@ class MyContributionsController extends GetxController
       context: context,
       contribution: contribution,
       root: contribution.root!,
+      showEdit: true,
     );
   }
 

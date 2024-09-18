@@ -13,10 +13,12 @@ class ContributionDetailsController extends GetxController {
     super.onInit();
   }
 
-  static Future<void> showModal(
-      {required BuildContext context,
-      required Contribution contribution,
-      required Root root}) async {
+  static Future<void> showModal({
+    required BuildContext context,
+    required Contribution contribution,
+    required Root root,
+    required bool showEdit,
+  }) async {
     final controller = ContributionDetailsController(
       contribution: contribution,
       root: root,
@@ -27,15 +29,23 @@ class ContributionDetailsController extends GetxController {
         context: ctx,
         controller: controller,
         contribution: contribution,
+        showEdit: showEdit,
       ),
     );
     controller.onClose();
+  }
+
+  Future<void> editContribution() async {
+    PlayxNavigation.pop();
+    await Future.delayed(const Duration(milliseconds: 300));
+    AppNavigation.navigateToEditContribution(
+      contribution: contribution,
+      root: root,
+    );
   }
 
   @override
   void onClose() {
     super.onClose();
   }
-
-  void editContribution() {}
 }

@@ -3,6 +3,7 @@ import 'package:mysam_app/app/home/roots/roots/data/model/mapper/api_root_to_roo
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/core/models/data_wrapper.dart';
 import 'package:mysam_app/core/models/mapper/api_response_to_data_wrapper.dart';
+import 'package:mysam_app/core/network/helper/api_helper.dart';
 import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
@@ -21,18 +22,22 @@ class RootsRepository {
     required int page,
     String? searchText,
   }) async {
-    final res = await _remoteRootsDatasource.getRoots(
-      page: page,
-      searchText: searchText,
-    );
+    try {
+      final res = await _remoteRootsDatasource.getRoots(
+        page: page,
+        searchText: searchText,
+      );
 
-    return res.mapDataAsyncInIsolate(
-      mapper: (apiRootsResponse) async => NetworkSuccess(
-        DataWrapper(
-          data: apiRootsResponse.data.toRootList(),
-          pagination: apiRootsResponse.meta?.toPageInfo(),
+      return res.mapDataAsyncInIsolate(
+        mapper: (apiRootsResponse) async => NetworkSuccess(
+          DataWrapper(
+            data: apiRootsResponse.data.toRootList(),
+            pagination: apiRootsResponse.meta?.toPageInfo(),
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      return ApiHelper.unableToProcessError();
+    }
   }
 }

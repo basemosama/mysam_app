@@ -1,3 +1,4 @@
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/core/navigation/app_routes.dart';
@@ -68,7 +69,21 @@ abstract class AppNavigation {
     required Root root,
     required ContributionType type,
   }) {
-    PlayxNavigation.toNamed(Routes.createContribution,
-        extra: [root, type], pathParameters: {'id': root.documentId});
+    PlayxNavigation.toNamed(
+      Routes.createContribution,
+      extra: [root, type],
+      pathParameters: {'id': root.documentId},
+    );
+  }
+
+  static void navigateToEditContribution({
+    required Contribution contribution,
+    required Root root,
+  }) {
+    PlayxNavigation.toNamed(
+      Routes.editContribution,
+      extra: [contribution, root],
+      pathParameters: {'id': contribution.documentId},
+    );
   }
 }

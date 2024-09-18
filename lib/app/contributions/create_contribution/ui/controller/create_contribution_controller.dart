@@ -121,8 +121,9 @@ sealed class CreateContributionController extends GetxController {
     res.when(
       success: (contribution) {
         Alert.success(
-            message: AppTrans.contributionCreatedSuccessfully
-                .tr(args: [contribution.relatedWord.word]));
+          message: AppTrans.contributionCreatedSuccessfully
+              .tr(args: [contribution.relatedWord.word]),
+        );
         isLoading.value = false;
 
         isReceivedContributionStep.value = true;

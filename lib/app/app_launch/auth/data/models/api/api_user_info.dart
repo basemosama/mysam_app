@@ -57,7 +57,7 @@ class ApiUserInfo {
   factory ApiUserInfo.fromJson(dynamic json, {MediaItem? image}) {
     final map = json as Map<String, dynamic>;
     return ApiUserInfo(
-      documentId: asString(map, 'documentId'),
+      documentId: asStringOrNull(map, 'documentId')!,
       id: asIntOrNull(map, 'id'),
       username: asStringOrNull(map, 'username'),
       email: asStringOrNull(map, 'email'),
@@ -78,7 +78,7 @@ class ApiUserInfo {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    // map['documentId'] = documentId;
+    map['documentId'] = documentId;
     map['username'] = username;
     map['email'] = email;
     map['firstName'] = firstName;

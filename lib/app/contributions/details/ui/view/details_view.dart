@@ -80,13 +80,14 @@ class ContributionDetailsView extends StatelessWidget {
     required BuildContext context,
     required ContributionDetailsController controller,
     required Contribution contribution,
+    required bool showEdit,
   }) {
     return CustomModal.buildCustomModalPage(
       title: controller.root.value,
       body: ContributionDetailsView(
         controller: controller,
       ),
-      leading: contribution.status == ContributionStatus.pending ||
+      leading: showEdit && contribution.status == ContributionStatus.pending ||
               contribution.status == ContributionStatus.declined
           ? IconButton(
               padding: EdgeInsets.symmetric(horizontal: 8.r, vertical: 8.r),

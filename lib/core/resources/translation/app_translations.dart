@@ -307,4 +307,7 @@ abstract class AppTrans {
   static const contributionStatusAll = 'contributionStatusAll';
 
   static const noContributionsFound = 'noContributionsFound';
+
+  static const contributionEditedSuccessfully =
+      'contributionEditedSuccessfully';
 }
