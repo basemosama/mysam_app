@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:playx/playx.dart';
 
 class BuildModalPreviousButton extends StatelessWidget {
@@ -21,7 +22,7 @@ class BuildModalPreviousButton extends StatelessWidget {
           ? IconButton(
               padding: EdgeInsets.symmetric(horizontal: 8.r, vertical: 8.r),
               visualDensity: VisualDensity.comfortable,
-              icon: Icon(Icons.adaptive.arrow_back),
+              icon: Icon(Icons.adaptive.arrow_back,color:  context.colors.onSurface),
               onPressed: onPressed,
             )
           : const SizedBox.shrink();

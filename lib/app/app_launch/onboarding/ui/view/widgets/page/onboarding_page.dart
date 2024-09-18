@@ -19,6 +19,9 @@ class OnBoardingPage extends StatelessWidget {
           const BuildOnboardingPageIndicatorsWidget(),
           BuildOnboardingPageTitle(onBoarding: onboarding),
           BuildOnboardingPageSubtitle(onBoarding: onboarding),
+          SizedBox(
+            height: 8.r,
+          ),
         ],
       ),
     );

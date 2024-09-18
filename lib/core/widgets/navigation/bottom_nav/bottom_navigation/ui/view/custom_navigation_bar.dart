@@ -48,13 +48,13 @@ PlatformNavBar buildCustomNavigationBar({
     },
     cupertino: (context, _) {
       return CupertinoTabBarData(
-        activeColor: context.colors.secondaryContainer,
+        activeColor: context.colors.primary,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
               color: controller.currentIndex == 0
-                  ? context.colors.onSecondaryContainer
+                  ? context.colors.primary
                   : context.colors.subtitleTextColor,
             ),
             label: AppTrans.home.tr(context: context),
@@ -63,7 +63,7 @@ PlatformNavBar buildCustomNavigationBar({
             icon: Icon(
               Icons.star,
               color: controller.currentIndex == 1
-                  ? context.colors.onSecondaryContainer
+                  ? context.colors.primary
                   : context.colors.subtitleTextColor,
             ),
             label: AppTrans.contributions.tr(context: context),
@@ -84,7 +84,7 @@ Widget _buildProfileImage(
   return CircleAvatar(
     radius: 14,
     backgroundColor: controller.currentIndex == 3
-        ? context.colors.onSecondaryContainer
+        ?PlayxPlatform.isIOS? context.colors.primary: context.colors.onSecondaryContainer
         : context.colors.onSurface,
     child: CircleAvatar(
       radius: 13,
