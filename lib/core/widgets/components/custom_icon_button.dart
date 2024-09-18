@@ -64,7 +64,7 @@ class CustomIconButton extends StatelessWidget {
               CircleBorder(
                 side: borderSide ?? BorderSide.none,
               ),
-          backgroundColor: backgroundColor ?? context.colors.primary,
+          backgroundColor: backgroundColor ?? context.colors.onSurface,
         ),
         child: child ??
             (iconInfo != null
@@ -93,7 +93,7 @@ class CustomIconButton extends StatelessWidget {
             width: width,
             height: height,
             child: iconInfo.buildIconWidget(
-              color: color,
+              color: color ?? context.colors.surface,
             ),
           ),
         ),
@@ -105,7 +105,7 @@ class CustomIconButton extends StatelessWidget {
             width: 20.r,
             child: CenterLoading.adaptive(
               color: isEnabled
-                  ? context.colors.onPrimary
+                  ? context.colors.surface
                   : context.colors.subtitleTextColor,
               radius: 10.r,
               strokeWidth: 3.r,

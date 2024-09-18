@@ -87,11 +87,11 @@ class _FilterChipSelectorState<T> extends State<FilterChipSelector<T>> {
           borderRadius: Style.featureChipBorderRadius,
           side: BorderSide(
             color:
-                isSelected ? context.colors.onPrimary : context.colors.primary,
+                isSelected ? context.colors.surface : context.colors.onSurface,
           ),
         ),
         backgroundColor:
-            isSelected ? context.colors.primary : context.colors.surface,
+            isSelected ? context.colors.onSurface : context.colors.surface,
       ),
     );
   }

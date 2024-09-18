@@ -29,7 +29,7 @@ class BuildRegisterNameFieldWidget extends GetView<RegisterController> {
               prefix: Icon(
                 Icons.person,
                 size: 18.r,
-                color: context.colors.primary,
+                color: context.colors.onSurface,
               ),
               shouldAutoValidate: true,
               onValidationChanged: (isValid) {
@@ -63,7 +63,7 @@ class BuildRegisterNameFieldWidget extends GetView<RegisterController> {
               prefix: Icon(
                 Icons.person,
                 size: 18.r,
-                color: context.colors.primary,
+                color: context.colors.onSurface,
               ),
               shouldAutoValidate: true,
               onValidationChanged: (isValid) {

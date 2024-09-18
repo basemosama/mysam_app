@@ -15,10 +15,8 @@ class RootDetailsView extends GetView<RootDetailsController> {
           onPressed: () {
             controller.contributeToRoot(context: context);
           },
-          backgroundColor: context.colors.primaryVariant,
-          child: Icon(
+          child: const Icon(
             Icons.edit_outlined,
-            color: context.colors.onPrimaryVariant,
           ),
         ),
         child: RefreshIndicator(

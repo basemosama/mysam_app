@@ -55,7 +55,7 @@ class BuildOnboardingPageIllustration extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
-              color: context.colors.primary,
+              color: context.colors.onSurface,
             )),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.r),

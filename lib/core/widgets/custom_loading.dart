@@ -20,7 +20,7 @@ class CustomLoading extends StatelessWidget {
         height: context.height * .2,
         margin: margin,
         child: SpinKitPouringHourGlassRefined(
-          color: AppColors.primaryKey,
+          color: context.colors.primary,
           size: context.height * .1,
         ),
         // child: Lottie.asset(Assets.animations.loading),

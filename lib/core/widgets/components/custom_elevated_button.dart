@@ -76,10 +76,10 @@ class CustomElevatedButton extends StatelessWidget {
                 RoundedRectangleBorder(
                   borderRadius: borderRadius ?? Style.buttonBorderRadius,
                 ),
-            backgroundColor: color ?? context.colors.primary,
+            backgroundColor: color ?? context.colors.onSurface,
           ),
         ),
-        color: color ?? context.colors.primary,
+        color: color ?? context.colors.onSurface,
         cupertino: (ctx, _) => CupertinoElevatedButtonData(
           disabledColor: disabledBackground ??
               context.colors.disabledButtonBackgroundColor,
@@ -117,7 +117,7 @@ class CustomElevatedButton extends StatelessWidget {
           child: CustomText(
             label ?? '',
             color: isEnabled
-                ? context.colors.onPrimary
+                ? context.colors.surface
                 : context.colors.subtitleTextColor,
             fontSize: fontSize,
             fontWeight: fontWeight ?? FontWeight.w400,
@@ -133,7 +133,7 @@ class CustomElevatedButton extends StatelessWidget {
             width: 20.r,
             child: CenterLoading.adaptive(
               color: isEnabled
-                  ? context.colors.onPrimary
+                  ? context.colors.surface
                   : context.colors.subtitleTextColor,
               radius: 10.r,
               strokeWidth: 3.r,

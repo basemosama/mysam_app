@@ -25,7 +25,7 @@ class CreateContributionView extends GetView<CreateContributionController> {
               : null,
           child: Icon(
             isLastStep ? Icons.check : Icons.navigate_next,
-            color: context.colors.onPrimary,
+            color: context.colors.surface,
           ),
         );
       }),

@@ -13,23 +13,24 @@ class DarkColors extends AppColors {
   // );
 
   static final ColorScheme scheme = SeedColorScheme.fromSeeds(
-    primaryKey: Colors.black,
-    brightness: Brightness.dark,
-    tones: FlexTones.highContrast(Brightness.dark)
-        .onMainsUseBW()
-        .onSurfacesUseBW()
-        .surfacesUseBW(),
-  ).copyWith(
-    tertiary: Colors.grey[800],
-    primary: Colors.white,
-    secondary: Colors.grey[800],
-    surface: Colors.black,
-    onPrimary: Colors.black,
-    onSecondary: Colors.white,
-    onSurface: Colors.white,
-    outline: Colors.grey[400],
-    primaryContainer: Colors.white,
-  );
+          primaryKey: AppColors.primaryKey,
+          brightness: Brightness.dark,
+          tones: FlexTones.material(Brightness.dark)
+              .onMainsUseBW()
+              .onSurfacesUseBW()
+          // .surfacesUseBW(),
+          )
+      .copyWith(
+          // tertiary: Colors.grey[800],
+          // primary: Colors.white,
+          // secondary: Colors.grey[800],
+          // surface: Colors.black,
+          // onPrimary: Colors.black,
+          // onSecondary: Colors.white,
+          // onSurface: Colors.white,
+          // outline: Colors.grey[400],
+          // primaryContainer: Colors.white,
+          );
 
   DarkColors() : super(colorScheme: scheme);
 
@@ -70,7 +71,7 @@ class DarkColors extends AppColors {
   Color get onBackgroundGradient => onSurface;
 
   @override
-  Color get filledColor => const Color(0xFFE5E5E5);
+  Color get filledColor => const Color(0xFF6B6873);
 
   @override
   Color get pendingBackgroundColor => Colors.yellow[700]!;
@@ -82,7 +83,7 @@ class DarkColors extends AppColors {
   Color get declinedBackgroundColor => Colors.red[700]!;
 
   @override
-  Color get onPendingBackgroundColor => Colors.white;
+  Color get onPendingBackgroundColor => Colors.black;
 
   @override
   Color get onConfirmedBackgroundColor => Colors.white;

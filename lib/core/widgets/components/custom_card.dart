@@ -52,7 +52,7 @@ class CustomCard extends StatelessWidget {
           (AppUtils.isDarkMode()
               ? isChild
                   ? context.colors.surfaceContainerHighest
-                  : context.colors.surfaceContainerHigh
+                  : context.colors.surfaceContainer
               : context.colors.surface),
       innerCardShadowMargin: innerCardShadowMargin,
       shadowBorderRadius: shadowBorderRadius ?? borderRadius,

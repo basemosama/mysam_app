@@ -15,10 +15,12 @@ class BuildContributionDetailsQaContributionWidget extends StatelessWidget {
         BuildContributionDetailsForumWidget(
           label: AppTrans.questionLabel,
           subtitle: contribution.question,
+          labelColor: context.colors.onSurface,
         ),
         BuildContributionDetailsForumWidget(
           label: AppTrans.answerLabel,
           subtitle: contribution.answer,
+          labelColor: context.colors.onSurface,
         ),
       ],
     );

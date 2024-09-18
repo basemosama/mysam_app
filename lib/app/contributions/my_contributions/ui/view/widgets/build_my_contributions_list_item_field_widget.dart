@@ -10,6 +10,7 @@ class BuildMyContributionsListItemFieldWidget
   final String separator;
   final EdgeInsetsGeometry? padding;
   final int? maxLines;
+  final double? subtitleFontSize;
 
   const BuildMyContributionsListItemFieldWidget({
     required this.label,
@@ -20,6 +21,7 @@ class BuildMyContributionsListItemFieldWidget
     this.separator = ': ',
     this.padding,
     this.maxLines,
+    this.subtitleFontSize,
   });
 
   @override
@@ -53,7 +55,7 @@ class BuildMyContributionsListItemFieldWidget
                     text: separator,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: 14.sp,
+                      fontSize: subtitleFontSize ?? 14.sp,
                       color: context.colors.primary,
                       fontFamily: fontFamily,
                     ),

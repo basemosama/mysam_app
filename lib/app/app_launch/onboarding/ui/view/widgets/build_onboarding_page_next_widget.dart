@@ -7,17 +7,13 @@ class BuildOnboardingPageNextWidget extends GetView<OnBoardingController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 12.r, horizontal: 24.r),
-      child: ElevatedButton(
+      child: CustomIconButton(
         onPressed: controller.handleNextOrSkip,
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-          padding: EdgeInsets.all(16.r),
-          backgroundColor: context.colors.primary, // <-- Button color
-        ),
+        padding: EdgeInsets.all(16.r),
         child: Obx(() {
           return Icon(
             controller.isCompleted.value ? Icons.done : Icons.arrow_forward_ios,
-            color: context.colors.onPrimary,
+            color: context.colors.surface,
           );
         }),
       ),

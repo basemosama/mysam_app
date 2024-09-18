@@ -20,7 +20,8 @@ class BuildMyContributionsContributionItemBodyDescriptionContributionWidget
       label: body,
       subtitle: description,
       padding: EdgeInsets.zero,
-      labelColor: context.colors.primary.withOpacity(0.7),
+      labelColor: context.colors.onSurface,
+      subtitleFontSize: 12.sp,
       maxLines: 2,
     );
   }

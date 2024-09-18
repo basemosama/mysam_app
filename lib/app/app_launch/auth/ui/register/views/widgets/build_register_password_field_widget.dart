@@ -37,7 +37,7 @@ class BuildRegisterPasswordFieldWidget extends GetView<RegisterController> {
           ),
           prefix: Icon(
             Icons.lock,
-            color: context.colors.primary,
+            color: context.colors.onSurface,
             size: 18.r,
           ),
           onChanged: (text) {

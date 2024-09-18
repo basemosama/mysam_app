@@ -65,10 +65,9 @@ enum ContributionStatus {
       };
 
   Color indicatorColor(BuildContext context) => switch (this) {
-        all => context.colors.onPrimaryVariant,
-        // Yellow dark
-        pending => Color(0xFFFFA000),
-        confirmed => Color(0xFF00A86B),
-        declined => Color(0xFFD32F2F),
+        all => context.colors.primary,
+        pending => context.colors.pendingBackgroundColor,
+        confirmed => context.colors.confirmedBackgroundColor,
+        declined => context.colors.declinedBackgroundColor,
       };
 }

@@ -19,7 +19,7 @@ class BuildContributionDetailsBodyDescriptionContributionWidget
     return BuildContributionDetailsForumWidget(
       label: body,
       subtitle: description,
-      labelColor: context.colors.primary.withOpacity(0.7),
+      labelColor: context.colors.onSurface,
     );
     // return Column(
     //   mainAxisSize: MainAxisSize.min,

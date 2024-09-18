@@ -5,18 +5,18 @@ class BuildRegisterWithEmailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ColoredBox(
       color: context.colors.surface,
-      child: Column(
+      child: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const BuildRegisterTitleWidget(),
-          const BuildRegisterNameFieldWidget(),
-          const BuildRegisterEmailFieldWidget(),
-          const BuildRegisterPasswordFieldWidget(),
-          const BuildRegisterConfirmPasswordWidget(),
-          const BuildRegisterTermsWidget(),
-          const BuildRegisterButtonWidget(),
+          BuildRegisterTitleWidget(),
+          BuildRegisterNameFieldWidget(),
+          BuildRegisterEmailFieldWidget(),
+          BuildRegisterPasswordFieldWidget(),
+          BuildRegisterConfirmPasswordWidget(),
+          BuildRegisterTermsWidget(),
+          BuildRegisterButtonWidget(),
         ],
       ),
     );

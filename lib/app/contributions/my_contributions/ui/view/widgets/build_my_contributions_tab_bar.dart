@@ -26,10 +26,10 @@ class _BuildMyContributionsTabBarState
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: context.colors.primaryVariant.withOpacity(.6),
+      color: context.colors.surfaceContainerLow,
       child: TabBar(
         controller: controller.tabController,
-        padding: EdgeInsets.symmetric(horizontal: 4.r, vertical: 6.r),
+        padding: EdgeInsets.symmetric(horizontal: 4.r, vertical: 4.r),
         isScrollable: true,
         tabAlignment: TabAlignment.center,
         indicator: CustomTabIndicator(
@@ -38,6 +38,7 @@ class _BuildMyContributionsTabBarState
               .map((e) => e.indicatorColor(context))
               .toList(),
         ),
+        labelColor: context.colors.primary,
         indicatorSize: TabBarIndicatorSize.label,
         tabs: List.generate(
           ContributionStatus.availableValues.length,

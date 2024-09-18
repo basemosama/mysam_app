@@ -41,7 +41,7 @@ class BuildContributionDetailsForumWidget extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     fontSize: 14.sp,
                     isTranslatable: false,
-                    color: labelColor ?? context.colors.onSurface,
+                    color: labelColor ?? context.colors.primary,
                   ),
                 ),
               ),

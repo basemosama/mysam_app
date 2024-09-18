@@ -10,12 +10,14 @@ class BuildSettingsLanguageWidget extends GetView<SettingsController> {
         title: AppTrans.language,
         subtitle: controller.currentLocale.value?.name ?? '',
         icon: Icons.language,
-        onTap: () {
-          controller.showSettingsModalPageSheet(
-            context,
-            buildModalPage(controller: controller, context: context),
-          );
-        },
+
+        onTap: null,
+        //       () {
+        // controller.showSettingsModalPageSheet(
+        //   context,
+        //   buildModalPage(controller: controller, context: context),
+        // );
+        // },
       );
     });
   }

@@ -21,6 +21,8 @@ class SplashController extends FullLifeCycleController with FullLifeCycleMixin {
     // }
 
     await isAnimationCompleted.future;
+    AppNavigation.navigateFromSplashToOnBoarding();
+    return;
 
     if (!(await MyPreferenceManger.instance.isOnBoardingShown)) {
       AppNavigation.navigateFromSplashToOnBoarding();
