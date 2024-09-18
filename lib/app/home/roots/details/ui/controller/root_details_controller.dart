@@ -58,13 +58,10 @@ class RootDetailsController extends GetxController {
     required BuildContext context,
     required Contribution contribution,
   }) {
-    CustomModal.showPageModal(
+    ContributionDetailsController.showModal(
       context: context,
-      pageBuilder: (ctx) => RootDetailsContributionDetailsView.buildPage(
-        context: ctx,
-        root: root,
-        contribution: contribution,
-      ),
+      contribution: contribution,
+      root: root,
     );
   }
 }

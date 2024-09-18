@@ -1,14 +1,9 @@
-part of '../imports/root_details_imports.dart';
+part of '../imports/details_imports.dart';
 
-class RootDetailsContributionDetailsView extends StatelessWidget {
-  final Root root;
-  final Contribution contribution;
+class ContributionDetailsView extends StatelessWidget {
+  final ContributionDetailsController controller;
 
-  const RootDetailsContributionDetailsView({
-    required this.root,
-    required this.contribution,
-    super.key,
-  });
+  const ContributionDetailsView({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +20,8 @@ class RootDetailsContributionDetailsView extends StatelessWidget {
               vertical: 8.0.r,
             ),
             child: BuildRootDetailsContributionUserWidget(
-                contribution: contribution),
+              contribution: controller.contribution,
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -35,34 +31,38 @@ class RootDetailsContributionDetailsView extends StatelessWidget {
             child: Wrap(
               spacing: 8.0.r,
               children: [
-                BuildContributionTypeChip(contribution: contribution),
-                BuildContributionStatusChip(contribution: contribution),
+                BuildContributionTypeChip(
+                  contribution: controller.contribution,
+                ),
+                BuildContributionStatusChip(
+                  contribution: controller.contribution,
+                ),
               ],
             ),
           ),
-          BuildRootContributionDetailsItemWidget(
+          BuildContributionDetailsForumWidget(
             label: AppTrans.rootWordLabel,
-            subtitle: root.value,
+            subtitle: controller.root.value,
           ),
-          BuildRootContributionDetailsItemWidget(
+          BuildContributionDetailsForumWidget(
             label: AppTrans.keywordLabel,
-            subtitle: contribution.relatedWord.word,
+            subtitle: controller.contribution.relatedWord.word,
           ),
-          BuildRootContributionDetailsItemWidget(
+          BuildContributionDetailsForumWidget(
             label: AppTrans.keywordWeightLabel,
-            subtitle: contribution.relatedWord.weight,
+            subtitle: controller.contribution.relatedWord.weight,
           ),
-          BuildRootContributionDetailsItemWidget(
+          BuildContributionDetailsForumWidget(
             label: AppTrans.keywordTypeLabel,
-            subtitle: contribution.relatedWord.type?.displayName,
+            subtitle: controller.contribution.relatedWord.type?.displayName,
           ),
-          BuildRootContributionDetailsItemWidget(
+          BuildContributionDetailsForumWidget(
             label: AppTrans.keywordPropertiesLabel,
-            subtitle: contribution.relatedWord.metadata?.join(', '),
+            subtitle: controller.contribution.relatedWord.metadata?.join(', '),
           ),
-          BuildRootContributionDetailsItemWidget(
+          BuildContributionDetailsForumWidget(
             label: AppTrans.contributionDetailsLabel,
-            subtitle: contribution.title,
+            subtitle: controller.contribution.title,
           ),
         ]),
       ),
@@ -71,14 +71,12 @@ class RootDetailsContributionDetailsView extends StatelessWidget {
 
   static SliverWoltModalSheetPage buildPage({
     required BuildContext context,
-    required Root root,
-    required Contribution contribution,
+    required ContributionDetailsController controller,
   }) {
     return CustomModal.buildCustomModalPage(
-      title: root.value,
-      body: RootDetailsContributionDetailsView(
-        root: root,
-        contribution: contribution,
+      title: controller.root.value,
+      body: ContributionDetailsView(
+        controller: controller,
       ),
       onClosePressed: () {
         PlayxNavigation.pop();

@@ -1,14 +1,13 @@
-part of '../../imports/root_details_imports.dart';
+part of '../../imports/details_imports.dart';
 
-class BuildRootContributionDetailsItemWidget
-    extends GetView<RootDetailsController> {
+class BuildContributionDetailsForumWidget extends StatelessWidget {
   final String label;
   final Widget? endLabelWidget;
   final String? subtitle;
   final Widget? child;
   final bool includeSeparator;
 
-  const BuildRootContributionDetailsItemWidget({
+  const BuildContributionDetailsForumWidget({
     required this.label,
     this.subtitle,
     this.child,

@@ -26,7 +26,7 @@ class CustomPageScaffold extends StatelessWidget {
     this.padding,
     this.appBar,
     this.showBottomNav = true,
-    this.canShowDrawer = true,
+    this.canShowDrawer = false,
     this.canShowNavigationRail = false,
   });
 
@@ -116,7 +116,7 @@ class CustomPageScaffold extends StatelessWidget {
     required GoRouterState state,
     required StatefulNavigationShell navigationShell,
     bool showBottomNav = true,
-    bool canShowDrawer = true,
+    bool canShowDrawer = false,
     bool canShowNavigationRail = true,
   }) {
     return CupertinoPage(

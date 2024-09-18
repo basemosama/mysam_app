@@ -83,8 +83,10 @@ class MyContributionsController extends GetxController
     });
   }
 
-  Future<void> getContributions(
-      {required int page, required ContributionStatus status}) async {
+  Future<void> getContributions({
+    required int page,
+    required ContributionStatus status,
+  }) async {
     final search = searchText.value;
 
     final token = _updateCancelTokenByStatus(status);
@@ -143,18 +145,17 @@ class MyContributionsController extends GetxController
     _declinedCancelToken?.cancel();
   }
 
-  void handleContributionTap(
-      {required BuildContext context, required Contribution contribution}) {
+  void handleContributionTap({
+    required BuildContext context,
+    required Contribution contribution,
+  }) {
     if (contribution.root == null) {
       return;
     }
-    CustomModal.showPageModal(
+    ContributionDetailsController.showModal(
       context: context,
-      pageBuilder: (ctx) => RootDetailsContributionDetailsView.buildPage(
-        context: ctx,
-        root: contribution.root!,
-        contribution: contribution,
-      ),
+      contribution: contribution,
+      root: contribution.root!,
     );
   }
 
