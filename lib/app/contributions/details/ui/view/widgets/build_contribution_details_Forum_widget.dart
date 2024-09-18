@@ -12,7 +12,7 @@ class BuildContributionDetailsForumWidget extends StatelessWidget {
     this.subtitle,
     this.child,
     this.endLabelWidget,
-    this.includeSeparator = true,
+    this.includeSeparator = false,
   });
 
   @override
