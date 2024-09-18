@@ -7,6 +7,7 @@ class ContributionDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final properties = controller.contribution.relatedWord.metadata ?? [];
     return SliverPadding(
       padding: EdgeInsets.symmetric(
         horizontal: 4.0.r,
@@ -58,11 +59,17 @@ class ContributionDetailsView extends StatelessWidget {
           ),
           BuildContributionDetailsForumWidget(
             label: AppTrans.keywordPropertiesLabel,
-            subtitle: controller.contribution.relatedWord.metadata?.join(', '),
+            child: properties.isNotEmpty
+                ? BuildContributionDetailsWordsContributionWidget(
+                    words: properties,
+                  )
+                : null,
           ),
           BuildContributionDetailsForumWidget(
             label: AppTrans.contributionDetailsLabel,
-            subtitle: controller.contribution.title,
+            child: BuildContributionDetailsContributionByTypeWidget(
+              contribution: controller.contribution,
+            ),
           ),
         ]),
       ),

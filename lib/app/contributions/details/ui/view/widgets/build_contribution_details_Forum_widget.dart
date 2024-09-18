@@ -6,6 +6,7 @@ class BuildContributionDetailsForumWidget extends StatelessWidget {
   final String? subtitle;
   final Widget? child;
   final bool includeSeparator;
+  final Color? labelColor;
 
   const BuildContributionDetailsForumWidget({
     required this.label,
@@ -13,6 +14,7 @@ class BuildContributionDetailsForumWidget extends StatelessWidget {
     this.child,
     this.endLabelWidget,
     this.includeSeparator = false,
+    this.labelColor,
   });
 
   @override
@@ -39,6 +41,7 @@ class BuildContributionDetailsForumWidget extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     fontSize: 14.sp,
                     isTranslatable: false,
+                    color: labelColor ?? context.colors.onSurface,
                   ),
                 ),
               ),

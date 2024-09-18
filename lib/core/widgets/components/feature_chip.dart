@@ -14,6 +14,7 @@ class FeatureChip extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Widget? child;
   final double? width;
+  final TextStyle? style;
 
   const FeatureChip({
     this.label,
@@ -25,6 +26,7 @@ class FeatureChip extends StatelessWidget {
     this.imageUrl,
     this.child,
     this.width,
+    this.style,
   });
 
   @override
@@ -48,6 +50,7 @@ class FeatureChip extends StatelessWidget {
                   textAlign: TextAlign.center,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
+                  textStyle: style,
                 ),
           ),
           backgroundColor: backgroundColor,
