@@ -19,7 +19,10 @@ class RootDetailsRepository {
   Future<NetworkResult<Root>> getRootDetails(String documentId) async {
     final res = await _datasource.getRootDetails(documentId);
     return res.mapDataAsyncInIsolate(
-      mapper: (data) => NetworkSuccess(data.data.toRoot()),
+      mapper: (data) {
+        final root = data.data.toRoot();
+        return NetworkResult.success(root);
+      },
     );
   }
 }
