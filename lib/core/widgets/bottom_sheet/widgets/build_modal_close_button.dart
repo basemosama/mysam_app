@@ -14,7 +14,10 @@ class BuildModalCloseButton extends StatelessWidget {
     return IconButton(
       padding: EdgeInsets.symmetric(horizontal: 8.r, vertical: 8.r),
       visualDensity: VisualDensity.comfortable,
-      icon:  Icon(Icons.close, color: context.colors.onSurface,),
+      icon: Icon(
+        Icons.close,
+        color: context.colors.onSurface,
+      ),
       onPressed: onPressed,
     );
   }

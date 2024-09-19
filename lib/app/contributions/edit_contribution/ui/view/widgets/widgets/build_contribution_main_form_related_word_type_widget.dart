@@ -3,8 +3,10 @@ part of '../../../imports/edit_contribution_imports.dart';
 class BuildContributionMainFormRelatedWordTypeWidget extends StatelessWidget {
   final EditContributionController controller;
 
-  const BuildContributionMainFormRelatedWordTypeWidget(
-      {super.key, required this.controller,});
+  const BuildContributionMainFormRelatedWordTypeWidget({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {

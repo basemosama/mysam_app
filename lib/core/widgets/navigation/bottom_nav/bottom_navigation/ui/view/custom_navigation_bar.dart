@@ -84,7 +84,9 @@ Widget _buildProfileImage(
   return CircleAvatar(
     radius: 14,
     backgroundColor: controller.currentIndex == 3
-        ?PlayxPlatform.isIOS? context.colors.primary: context.colors.onSecondaryContainer
+        ? PlayxPlatform.isIOS
+            ? context.colors.primary
+            : context.colors.onSecondaryContainer
         : context.colors.onSurface,
     child: CircleAvatar(
       radius: 13,

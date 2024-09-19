@@ -13,7 +13,9 @@ class BuildRootDetailsContributionItemWidget
     return CustomCard(
       padding: EdgeInsets.symmetric(vertical: 16.r, horizontal: 12.r),
       onPressed: () => controller.handleContributionTap(
-          contribution: contribution, context: context,),
+        contribution: contribution,
+        context: context,
+      ),
       child: Row(
         children: [
           Expanded(
@@ -28,7 +30,8 @@ class BuildRootDetailsContributionItemWidget
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0.r),
                   child: BuildRootDetailsContributionItemByTypeWidget(
-                      contribution: contribution,),
+                    contribution: contribution,
+                  ),
                 ),
               ],
             ),

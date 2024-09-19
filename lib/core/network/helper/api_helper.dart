@@ -24,8 +24,12 @@ class ApiHelper {
   final _auth0DataSource = Auth0AuthDataSource();
 
   static NetworkResult<T> unableToProcessError<T>() =>
-      const NetworkResult.error(UnableToProcessException(
-          errorMessage: AppTrans.unableToProcess, statusCode: 400,),);
+      const NetworkResult.error(
+        UnableToProcessException(
+          errorMessage: AppTrans.unableToProcess,
+          statusCode: 400,
+        ),
+      );
 
   Future<NetworkResult<MediaItem>> uploadImage({
     required MediaItem image,

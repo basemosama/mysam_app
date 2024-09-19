@@ -69,35 +69,37 @@ class AppPages {
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-              path: Paths.myContributions,
-              name: Routes.myContributions,
-              builder: (ctx, state) => MyContributionsView(),
-              binding: MyContributionsBinding(),
-              routes: [
-                PlayxRoute(
-                  path: Paths.editContribution,
-                  name: Routes.editContribution,
-                  builder: (ctx, state) => const EditContributionView(),
-                  binding: EditContributionBinding(),
-                ),
-              ],),
+            path: Paths.myContributions,
+            name: Routes.myContributions,
+            builder: (ctx, state) => MyContributionsView(),
+            binding: MyContributionsBinding(),
+            routes: [
+              PlayxRoute(
+                path: Paths.editContribution,
+                name: Routes.editContribution,
+                builder: (ctx, state) => const EditContributionView(),
+                binding: EditContributionBinding(),
+              ),
+            ],
+          ),
         ],
       ),
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-              path: Paths.profile,
-              name: Routes.profile,
-              builder: (ctx, state) => const ProfileView(),
-              binding: ProfileBinding(),
-              routes: [
-                PlayxRoute(
-                  path: Paths.settings,
-                  name: Routes.settings,
-                  builder: (ctx, state) => const SettingsView(),
-                  binding: SettingsBinding(),
-                ),
-              ],),
+            path: Paths.profile,
+            name: Routes.profile,
+            builder: (ctx, state) => const ProfileView(),
+            binding: ProfileBinding(),
+            routes: [
+              PlayxRoute(
+                path: Paths.settings,
+                name: Routes.settings,
+                builder: (ctx, state) => const SettingsView(),
+                binding: SettingsBinding(),
+              ),
+            ],
+          ),
         ],
       ),
     ],

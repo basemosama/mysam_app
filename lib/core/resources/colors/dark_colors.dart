@@ -13,24 +13,21 @@ class DarkColors extends AppColors {
   // );
 
   static final ColorScheme scheme = SeedColorScheme.fromSeeds(
-          primaryKey: AppColors.primaryKey,
-          brightness: Brightness.dark,
-          tones: FlexTones.material(Brightness.dark)
-              .onMainsUseBW()
-              .onSurfacesUseBW(),
-          // .surfacesUseBW(),
-          )
-      .copyWith(
-          // tertiary: Colors.grey[800],
-          // primary: Colors.white,
-          // secondary: Colors.grey[800],
-          // surface: Colors.black,
-          // onPrimary: Colors.black,
-          // onSecondary: Colors.white,
-          // onSurface: Colors.white,
-          // outline: Colors.grey[400],
-          // primaryContainer: Colors.white,
-          );
+    primaryKey: AppColors.primaryKey,
+    brightness: Brightness.dark,
+    tones: FlexTones.material(Brightness.dark).onMainsUseBW().onSurfacesUseBW(),
+    // .surfacesUseBW(),
+  ).copyWith(
+      // tertiary: Colors.grey[800],
+      // primary: Colors.white,
+      // secondary: Colors.grey[800],
+      // surface: Colors.black,
+      // onPrimary: Colors.black,
+      // onSecondary: Colors.white,
+      // onSurface: Colors.white,
+      // outline: Colors.grey[400],
+      // primaryContainer: Colors.white,
+      );
 
   DarkColors() : super(colorScheme: scheme);
 

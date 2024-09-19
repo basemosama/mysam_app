@@ -28,32 +28,44 @@ class EditContributionBinding extends PlayxBinding {
         Get.put<EditContributionController>(controller);
       case ContributionType.idiom:
         final controller = EditIdiomContributionController(
-            contribution: contribution, root: root,);
+          contribution: contribution,
+          root: root,
+        );
         Get.put<EditIdiomContributionController>(controller);
         Get.put<EditContributionController>(controller);
       case ContributionType.modernMeaning:
         final controller = EditModernMeaningContributionController(
-            contribution: contribution, root: root,);
+          contribution: contribution,
+          root: root,
+        );
         Get.put<EditModernMeaningContributionController>(controller);
         Get.put<EditContributionController>(controller);
       case ContributionType.photo:
         final controller = EditPhotoContributionController(
-            contribution: contribution, root: root,);
+          contribution: contribution,
+          root: root,
+        );
         Get.put<EditPhotoContributionController>(controller);
         Get.put<EditContributionController>(controller);
       case ContributionType.poem:
         final controller = EditPoemContributionController(
-            contribution: contribution, root: root,);
+          contribution: contribution,
+          root: root,
+        );
         Get.put<EditPoemContributionController>(controller);
         Get.put<EditContributionController>(controller);
       case ContributionType.slang:
         final controller = EditSlangContributionController(
-            contribution: contribution, root: root,);
+          contribution: contribution,
+          root: root,
+        );
         Get.put<EditSlangContributionController>(controller);
         Get.put<EditContributionController>(controller);
       case ContributionType.synonyms:
         final controller = EditSynonymsContributionController(
-            contribution: contribution, root: root,);
+          contribution: contribution,
+          root: root,
+        );
         Get.put<EditSynonymsContributionController>(controller);
         Get.put<EditContributionController>(controller);
       case _:

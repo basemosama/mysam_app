@@ -20,13 +20,15 @@ class BuildOnboardingPageIllustration extends StatelessWidget {
       imageChild = ImageViewer.svgAsset(
         onBoarding.svgImageAsset!,
         width: context.width * .8,
-        height: PlayxPlatform.isIOS ?context.height * .35: context.height * .4,
+        height:
+            PlayxPlatform.isIOS ? context.height * .35 : context.height * .4,
       );
     } else if (onBoarding.hasImageAsset) {
       imageChild = ImageViewer.asset(
         onBoarding.imageAsset!,
         width: context.width * .85,
-        height: PlayxPlatform.isIOS ?context.height * .35: context.height * .4,
+        height:
+            PlayxPlatform.isIOS ? context.height * .35 : context.height * .4,
         fit: BoxFit.contain,
         errorBuilder: (
           ctx,
@@ -38,7 +40,8 @@ class BuildOnboardingPageIllustration extends StatelessWidget {
       imageChild = ImageViewer.cachedNetwork(
         onBoarding.imageUrlAsset!,
         width: context.width * .8,
-        height: PlayxPlatform.isIOS ?context.height * .35: context.height * .4,
+        height:
+            PlayxPlatform.isIOS ? context.height * .35 : context.height * .4,
         errorBuilder: (
           ctx,
           _,

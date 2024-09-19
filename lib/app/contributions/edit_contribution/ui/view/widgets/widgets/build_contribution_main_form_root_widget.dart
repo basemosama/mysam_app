@@ -3,8 +3,10 @@ part of '../../../imports/edit_contribution_imports.dart';
 class BuildContributionMainFormRootWidget extends StatelessWidget {
   final EditContributionController controller;
 
-  const BuildContributionMainFormRootWidget(
-      {super.key, required this.controller,});
+  const BuildContributionMainFormRootWidget({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
