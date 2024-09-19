@@ -19,11 +19,17 @@ class BuildProfileImageWidget extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: user.image?.url ?? '',
           fit: BoxFit.cover,
-          errorWidget: (context, url, error) => PlaceholderImageWidget(
-            path: Assets.images.profilePlaceholder,
+          errorWidget: (context, url, error) => ColoredBox(
+            color: context.colors.filledColor,
+            child: PlaceholderImageWidget(
+              path: Assets.images.profilePlaceholder,
+            ),
           ),
-          placeholder: (context, url) => PlaceholderImageWidget(
-            path: Assets.images.profilePlaceholder,
+          placeholder: (context, url) => ColoredBox(
+            color: context.colors.filledColor,
+            child: PlaceholderImageWidget(
+              path: Assets.images.profilePlaceholder,
+            ),
           ),
         ),
       ),

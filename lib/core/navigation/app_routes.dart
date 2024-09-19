@@ -16,6 +16,7 @@ abstract class Routes {
   static const profile = 'profile';
 
   static const editContribution = 'editContribution';
+  static const reviews = 'reviews';
 }
 
 /// app routes paths.
@@ -29,6 +30,7 @@ abstract class Paths {
   static const home = '/home';
   static const contributions = '/contributions';
   static const myContributions = '/my-contributions';
+  static const reviews = '/reviews';
 
   static const createContribution = 'create';
   static const editContribution = 'edit/:id';

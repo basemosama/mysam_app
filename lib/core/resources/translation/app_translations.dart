@@ -316,4 +316,6 @@ abstract class AppTrans {
 
   static const contributionEditedSuccessfully =
       'contributionEditedSuccessfully';
+
+  static const reviews = 'reviews';
 }

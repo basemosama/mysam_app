@@ -20,93 +20,38 @@ PlatformNavBar buildCustomNavigationBar({
         indicatorColor: context.colors.secondaryContainer,
         // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         backgroundColor: context.colors.surface,
-        items: [
-          NavigationDestination(
-            icon: Icon(
-              Icons.home_outlined,
-              color: controller.currentIndex == 0
-                  ? context.colors.onSecondaryContainer
-                  : context.colors.subtitleTextColor,
-            ),
-            label: AppTrans.home.tr(context: context),
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.star,
-              color: controller.currentIndex == 1
-                  ? context.colors.onSecondaryContainer
-                  : context.colors.subtitleTextColor,
-            ),
-            label: AppTrans.contributions.tr(context: context),
-          ),
-          NavigationDestination(
-            icon: _buildProfileImage(context: context, controller: controller),
-            label: AppTrans.profile.tr(context: context),
-          ),
-        ],
+        items: controller.items
+            .mapWithIndex(
+              (index, item) => NavigationDestination(
+                icon: item.iconWidget ??
+                    item.icon.buildIconWidget(
+                      color: controller.currentIndex == index
+                          ? context.colors.onSecondaryContainer
+                          : context.colors.subtitleTextColor,
+                    ),
+                label: item.label.tr(context: context),
+              ),
+            )
+            .toList(),
       );
     },
     cupertino: (context, _) {
       return CupertinoTabBarData(
         activeColor: context.colors.primary,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: controller.currentIndex == 0
-                  ? context.colors.primary
-                  : context.colors.subtitleTextColor,
-            ),
-            label: AppTrans.home.tr(context: context),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.star,
-              color: controller.currentIndex == 1
-                  ? context.colors.primary
-                  : context.colors.subtitleTextColor,
-            ),
-            label: AppTrans.contributions.tr(context: context),
-          ),
-          BottomNavigationBarItem(
-            icon: _buildProfileImage(context: context, controller: controller),
-            label: AppTrans.profile.tr(context: context),
-          ),
-        ],
+        items: controller.items
+            .mapWithIndex(
+              (index, item) => BottomNavigationBarItem(
+                icon: item.iconWidget ??
+                    item.icon.buildIconWidget(
+                      color: controller.currentIndex == index
+                          ? context.colors.primary
+                          : context.colors.subtitleTextColor,
+                    ),
+                label: item.label.tr(context: context),
+              ),
+            )
+            .toList(),
       );
     },
-  );
-}
-
-Widget _buildProfileImage(
-    {required BuildContext context,
-    required CustomBottomNavigationController controller}) {
-  return CircleAvatar(
-    radius: 14,
-    backgroundColor: controller.currentIndex == 3
-        ? PlayxPlatform.isIOS
-            ? context.colors.primary
-            : context.colors.onSecondaryContainer
-        : context.colors.onSurface,
-    child: CircleAvatar(
-      radius: 13,
-      backgroundColor: context.colors.surface,
-      child: ClipOval(
-        child: Obx(() {
-          final user = controller.userInfo.value;
-          return ImageViewer.cachedNetwork(
-            user?.image?.url ?? '',
-            errorBuilder: (context, error) => PlaceholderImageWidget(
-              path: Assets.images.profilePlaceholder,
-              padding: EdgeInsets.zero,
-            ),
-            placeholderBuilder: (context) => PlaceholderImageWidget(
-              path: Assets.images.profilePlaceholder,
-              padding: EdgeInsets.zero,
-            ),
-          );
-        }),
-      ),
-    ),
   );
 }

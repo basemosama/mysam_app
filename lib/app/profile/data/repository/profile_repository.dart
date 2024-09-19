@@ -21,13 +21,23 @@ class ProfileRepository {
 
   Future<NetworkResult<ProfileInfo>> getProfileInfo({
     String? jwtToken,
+    required bool saveUserInfo,
   }) async {
     final res = await _profileDataSource.getProfile(jwtToken: jwtToken);
-    return res.mapDataAsyncInIsolate(
+    final profileRes = await res.mapDataAsyncInIsolate(
       mapper: (data) async {
         return NetworkResult<ProfileInfo>.success(data.toProfileInfo());
       },
     );
+
+    if (profileRes is NetworkSuccess<ProfileInfo>) {
+      if (saveUserInfo) {
+        final userInfo = profileRes.data.userInfo;
+        await MyPreferenceManger.instance.saveUser(userInfo.toApiUserInfo());
+        await MyPreferenceManger.instance.saveUserRoleType(userInfo.role?.type);
+      }
+    }
+    return profileRes;
   }
 
   Future<NetworkResult<UserInfo>> updateProfileName({

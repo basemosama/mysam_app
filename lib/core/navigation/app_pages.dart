@@ -8,6 +8,7 @@ import 'package:mysam_app/app/contributions/my_contributions/ui/imports/my_contr
 import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
 import 'package:mysam_app/app/home/roots/roots/ui/imports/roots_imports.dart';
 import 'package:mysam_app/app/profile/ui/imports/profile_imports.dart';
+import 'package:mysam_app/app/reviews/ui/imports/reviews_imports.dart';
 import 'package:mysam_app/app/settings/ui/imports/settings_imports.dart';
 import 'package:mysam_app/core/navigation/app_routes.dart';
 import 'package:mysam_app/core/navigation/navigation_utils.dart';
@@ -63,6 +64,16 @@ class AppPages {
                 ],
               ),
             ],
+          ),
+        ],
+      ),
+      StatefulShellBranch(
+        routes: [
+          PlayxRoute(
+            path: Paths.reviews,
+            name: Routes.reviews,
+            builder: (ctx, state) => ReviewsView(),
+            binding: ReviewsBinding(),
           ),
         ],
       ),

@@ -38,8 +38,8 @@ abstract class ApiClient {
           'authorization': 'Bearer $token',
         };
       },
-      customQuery: () =>
-          {'locale': PlayxLocalization.currentLocale.toLanguageTag()},
+      // customQuery: () =>
+      //     {'locale': PlayxLocalization.currentLocale.toLanguageTag()},
       settings: const PlayxNetworkClientSettings(
         logSettings: PlayxNetworkLoggerSettings(
           responseBody: true,
