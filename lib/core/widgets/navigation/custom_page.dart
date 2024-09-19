@@ -52,34 +52,32 @@ class CustomPageScaffold extends StatelessWidget {
         }
         PlayxNavigation.offAllNamed(Routes.home);
       },
-      child: PlayxThemeSwitcher(
-        builder: (ctx, _) => Obx(
-          () {
-            final shouldShowBottomNav =
-                bottomNavController.showBottomNav.value && showBottomNav;
-            return PlatformScaffold(
-              backgroundColor: ctx.colors.surface,
-              body: Stack(
-                children: [
-                  scaffoldChild,
-                  Obx(() {
-                    return LoadingOverlay(
-                      isLoading: drawerController.isLoggingOut.value,
-                      loadingText: AppTrans.loggingOutText,
-                    );
-                  }),
-                ],
-              ),
-              key: ValueKey(navigationShell.currentIndex),
-              bottomNavBar: shouldShowBottomNav
-                  ? buildCustomNavigationBar(
-                      navigationShell: navigationShell,
-                      context: context,
-                    )
-                  : null,
-            );
-          },
-        ),
+      child: Obx(
+        () {
+          final shouldShowBottomNav =
+              bottomNavController.showBottomNav.value && showBottomNav;
+          return PlatformScaffold(
+            backgroundColor: context.colors.surface,
+            body: Stack(
+              children: [
+                scaffoldChild,
+                Obx(() {
+                  return LoadingOverlay(
+                    isLoading: drawerController.isLoggingOut.value,
+                    loadingText: AppTrans.loggingOutText,
+                  );
+                }),
+              ],
+            ),
+            key: ValueKey(navigationShell.currentIndex),
+            bottomNavBar: shouldShowBottomNav
+                ? buildCustomNavigationBar(
+                    navigationShell: navigationShell,
+                    context: context,
+                  )
+                : null,
+          );
+        },
       ),
     );
   }

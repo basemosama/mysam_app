@@ -109,6 +109,9 @@ class LoginController extends GetxController {
 
   void _navigateToHome() {
     Get.find<CustomBottomNavigationController>().getUserInfo();
+    if (Get.isRegistered<ProfileController>()) {
+      Get.find<ProfileController>().getUser();
+    }
     AppNavigation.navigateFromLoginToHome();
   }
 

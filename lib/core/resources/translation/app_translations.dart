@@ -21,6 +21,9 @@ abstract class AppTrans {
   static const String darkMode = 'darkMode';
   static const String editPassword = 'editPassword';
 
+  static const String updatedProfileNameSuccessMessage =
+      'updatedProfileNameSuccessMessage';
+
   static const String poemContributionDescriptionLabel =
       'poemContributionDescriptionLabel';
   static const String poemContributionHintLabel = 'poemContributionHintLabel';

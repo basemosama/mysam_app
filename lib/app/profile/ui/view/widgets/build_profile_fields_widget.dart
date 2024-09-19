@@ -32,7 +32,7 @@ class BuildProfileFieldsWidget extends GetView<ProfileController> {
             leadingIcon: IconInfo(
               icon: CupertinoIcons.person_alt_circle,
             ),
-            onTap: controller.editProfileName,
+            onTap: () => controller.editProfileName(context: context),
             trailingIcon: IconInfo(
               icon: Icons.edit_outlined,
             ),
