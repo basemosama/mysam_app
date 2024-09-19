@@ -4,13 +4,20 @@ import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root_status.dart';
 
 extension ApiRootToRootMapper on ApiRoot {
-  Root toRoot() {
+  Root toRoot({bool sortContributions = true}) {
+    final rootContributions =
+        contributions?.map((e) => e.toContribution()).toList();
+    if (sortContributions) {
+      rootContributions?.sort(
+        (a, b) => b.createdAt?.compareTo(a.createdAt ?? DateTime.now()) ?? 0,
+      );
+    }
     return Root(
       id: id,
       documentId: documentId,
       value: value,
       status: RootStatus.fromString(rootStatus),
-      contributions: contributions?.map((e) => e.toContribution()).toList(),
+      contributions: rootContributions,
       createdAt: createdAt != null ? DateTime.tryParse(createdAt!) : null,
       updatedAt: updatedAt != null ? DateTime.tryParse(updatedAt!) : null,
       publishedAt: publishedAt != null ? DateTime.tryParse(publishedAt!) : null,

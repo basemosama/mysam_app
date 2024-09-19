@@ -45,6 +45,9 @@ abstract class AppColors extends PlayxColors {
 
   Color get filledColor;
 
+  Color get primaryVariant;
+  Color get onPrimaryVariant;
+
   Color get pendingBackgroundColor;
   Color get confirmedBackgroundColor;
   Color get declinedBackgroundColor;
@@ -58,7 +61,7 @@ abstract class AppColors extends PlayxColors {
   ///Colors that needs to is used for each theme.
   static const Color blue = Colors.blue;
 
-  static const Color primaryKey = Colors.black;
+  static const Color primaryKey = Color(0xFF65558F);
 }
 
 extension AppColorsExtension on BuildContext {

@@ -18,7 +18,7 @@ class BuildLoginSaveLoginInfoWidget extends GetView<LoginController> {
               onChanged: (value) {
                 controller.saveLoginInfo.value = value ?? false;
               },
-              activeColor: context.colors.primary,
+              activeColor: context.colors.onSurface,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4.r),
               ),

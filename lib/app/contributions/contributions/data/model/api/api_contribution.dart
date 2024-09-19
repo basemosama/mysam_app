@@ -57,7 +57,7 @@ class ApiContribution {
     this.publishedAt,
   });
 
-  factory ApiContribution.fromJson(dynamic json) {
+  factory ApiContribution.fromJson(dynamic json, {ApiUserInfo? user}) {
     final data = json['data'];
 
     Data? dataObj;
@@ -82,7 +82,8 @@ class ApiContribution {
       relatedWordWeight: asStringOrNull(json, 'relatedWordWeight'),
       metaData: asListStringOrNull(json, 'metaData'),
       image: json['image'] != null ? MediaItem.fromJson(json['image']) : null,
-      user: json['user'] != null ? ApiUserInfo.fromJson(json['user']) : null,
+      user: user ??
+          (json['user'] != null ? ApiUserInfo.fromJson(json['user']) : null),
       reviewedBy: json['reviewedBy'] != null
           ? ApiUserInfo.fromJson(json['reviewedBy'])
           : null,

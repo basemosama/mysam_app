@@ -6,6 +6,7 @@ import 'package:playx/playx.dart';
 
 abstract class ApiClient {
   ApiClient._();
+
   static Future<String?> get apiToken async =>
       MyPreferenceManger.instance.token;
 
@@ -37,11 +38,15 @@ abstract class ApiClient {
           'authorization': 'Bearer $token',
         };
       },
-      logSettings: const LoggerSettings(
-        responseBody: true,
-        responseHeader: true,
+      customQuery: () =>
+          {'locale': PlayxLocalization.currentLocale.toLanguageTag()},
+      settings: const PlayxNetworkClientSettings(
+        logSettings: PlayxNetworkLoggerSettings(
+          responseBody: true,
+          responseHeader: true,
+        ),
+        exceptionMessages: CustomExceptionMessage(),
       ),
-      exceptionMessages: const CustomExceptionMessage(),
       // onUnauthorizedRequestReceived: (res) => _signOut(),
     );
   }

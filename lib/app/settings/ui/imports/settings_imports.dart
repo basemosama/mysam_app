@@ -11,6 +11,8 @@ import 'package:mysam_app/core/widgets/components/custom_card.dart';
 import 'package:mysam_app/core/widgets/components/custom_dialog.dart';
 import 'package:mysam_app/core/widgets/components/custom_scaffold.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
+import 'package:mysam_app/core/widgets/custom_app_bar.dart';
+import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
 import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
 

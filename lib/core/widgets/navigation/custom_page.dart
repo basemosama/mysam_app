@@ -26,13 +26,17 @@ class CustomPageScaffold extends StatelessWidget {
     this.padding,
     this.appBar,
     this.showBottomNav = true,
-    this.canShowDrawer = true,
+    this.canShowDrawer = false,
     this.canShowNavigationRail = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    final scaffoldChild = buildScaffoldChild(context);
+    final scaffoldChild = PlayxThemeSwitcher(
+      builder: (ctx, theme) {
+        return buildScaffoldChild(ctx);
+      },
+    );
 
     final canPop = !(NavigationUtils.mainRoutes
             .contains(PlayxNavigation.currentRouteName) &&
@@ -41,6 +45,9 @@ class CustomPageScaffold extends StatelessWidget {
     // Manage back button press for home routes
     // As it should navigate to home when pressed back button pressed on home routes
     // Then it can exit the app
+    final bottomNavController = Get.find<CustomBottomNavigationController>();
+    final drawerController = Get.find<CustomNavigationDrawerController>();
+
     return PopScope(
       canPop: canPop,
       onPopInvokedWithResult: (didPop, _) {
@@ -49,32 +56,33 @@ class CustomPageScaffold extends StatelessWidget {
         }
         PlayxNavigation.offAllNamed(Routes.home);
       },
-      child: Obx(() {
-        final bottomNavController =
-            Get.find<CustomBottomNavigationController>();
-        final drawerController = Get.find<CustomNavigationDrawerController>();
-        return PlatformScaffold(
-          body: Stack(
-            children: [
-              scaffoldChild,
-              Obx(() {
-                return LoadingOverlay(
-                  isLoading: drawerController.isLoggingOut.value,
-                  loadingText: AppTrans.loggingOutText,
-                );
-              }),
-            ],
-          ),
-          key: ValueKey(navigationShell.currentIndex),
-          backgroundColor: context.colors.surface,
-          bottomNavBar: bottomNavController.showBottomNav.value && showBottomNav
-              ? buildCustomNavigationBar(
-                  navigationShell: navigationShell,
-                  context: context,
-                )
-              : null,
-        );
-      }),
+      child: Obx(
+        () {
+          final shouldShowBottomNav =
+              bottomNavController.showBottomNav.value && showBottomNav;
+          return PlatformScaffold(
+            backgroundColor: context.colors.surface,
+            body: Stack(
+              children: [
+                scaffoldChild,
+                Obx(() {
+                  return LoadingOverlay(
+                    isLoading: drawerController.isLoggingOut.value,
+                    loadingText: AppTrans.loggingOutText,
+                  );
+                }),
+              ],
+            ),
+            key: ValueKey(navigationShell.currentIndex),
+            bottomNavBar: shouldShowBottomNav
+                ? buildCustomNavigationBar(
+                    navigationShell: navigationShell,
+                    context: context,
+                  )
+                : null,
+          );
+        },
+      ),
     );
   }
 
@@ -116,7 +124,7 @@ class CustomPageScaffold extends StatelessWidget {
     required GoRouterState state,
     required StatefulNavigationShell navigationShell,
     bool showBottomNav = true,
-    bool canShowDrawer = true,
+    bool canShowDrawer = false,
     bool canShowNavigationRail = true,
   }) {
     return CupertinoPage(

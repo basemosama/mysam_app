@@ -1,23 +1,27 @@
-part of '../../imports/root_details_imports.dart';
+part of '../../imports/details_imports.dart';
 
-class BuildRootContributionDetailsItemWidget
-    extends GetView<RootDetailsController> {
+class BuildContributionDetailsForumWidget extends StatelessWidget {
   final String label;
   final Widget? endLabelWidget;
   final String? subtitle;
   final Widget? child;
   final bool includeSeparator;
+  final Color? labelColor;
 
-  const BuildRootContributionDetailsItemWidget({
+  const BuildContributionDetailsForumWidget({
     required this.label,
     this.subtitle,
     this.child,
     this.endLabelWidget,
-    this.includeSeparator = true,
+    this.includeSeparator = false,
+    this.labelColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    if ((subtitle == null || subtitle!.isEmpty) && child == null) {
+      return const SizedBox.shrink();
+    }
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 8.r,
@@ -37,6 +41,7 @@ class BuildRootContributionDetailsItemWidget
                     fontWeight: FontWeight.w700,
                     fontSize: 14.sp,
                     isTranslatable: false,
+                    color: labelColor ?? context.colors.primary,
                   ),
                 ),
               ),

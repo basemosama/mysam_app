@@ -25,7 +25,7 @@ class BuildLoginBackButton extends GetView<LoginController> {
             },
             icon: Icon(
               Icons.adaptive.arrow_back,
-              color: context.colors.primary,
+              color: context.colors.onSurface,
             ),
           ),
         ),

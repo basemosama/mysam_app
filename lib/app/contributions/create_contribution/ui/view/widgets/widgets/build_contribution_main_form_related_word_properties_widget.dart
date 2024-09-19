@@ -38,7 +38,7 @@ class BuildContributionMainFormRelatedWordPropertiesWidget
                 },
                 icon: Icon(
                   Icons.add_circle_outline_outlined,
-                  color: context.colors.primary,
+                  color: context.colors.onSurface,
                 ),
               ),
             ],

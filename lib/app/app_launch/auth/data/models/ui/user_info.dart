@@ -60,4 +60,36 @@ class UserInfo {
   String toString() {
     return 'UserInfo{ id: $id, username: $username, email: $email, firstName: $firstName, lastName: $lastName, imageUrl: ${image?.url}, provider: $provider,confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, role: $role}';
   }
+
+  UserInfo copyWith({
+    int? id,
+    String? documentId,
+    String? username,
+    String? email,
+    String? firstName,
+    String? lastName,
+    MediaItem? image,
+    String? provider,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    Role? role,
+    bool? confirmed,
+    bool? blocked,
+  }) {
+    return UserInfo(
+      id: id ?? this.id,
+      documentId: documentId ?? this.documentId,
+      username: username ?? this.username,
+      email: email ?? this.email,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      image: image ?? this.image,
+      provider: provider ?? this.provider,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      role: role ?? this.role,
+      confirmed: confirmed ?? this.confirmed,
+      blocked: blocked ?? this.blocked,
+    );
+  }
 }

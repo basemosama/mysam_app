@@ -19,7 +19,7 @@ class BuildContributionMainFormRelatedWordWidget extends StatelessWidget {
         triggerMode: TooltipTriggerMode.tap,
         child: Icon(
           Icons.info,
-          color: context.colors.primary,
+          color: context.colors.onSurface,
         ),
       ),
       child: CustomTextField(

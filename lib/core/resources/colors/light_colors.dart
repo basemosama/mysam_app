@@ -8,21 +8,21 @@ class LightColors extends AppColors {
   // );
 
   static final ColorScheme scheme = SeedColorScheme.fromSeeds(
-    primaryKey: Colors.black,
-    tones: FlexTones.chroma(Brightness.light)
+    primaryKey: AppColors.primaryKey,
+    tones: FlexTones.material(Brightness.light)
         .onMainsUseBW()
         .onSurfacesUseBW()
         .surfacesUseBW(),
   ).copyWith(
-    primary: Colors.black,
-    secondary: Colors.grey[800],
-    surface: Colors.white,
-    onPrimary: Colors.white,
-    onSecondary: Colors.white,
-    onSurface: Colors.black,
-    outline: Colors.grey[400],
-    primaryContainer: Colors.black,
-  );
+      // primary: Colors.black,
+      // secondary: Colors.grey[800],
+      // surface: Colors.white,
+      // onPrimary: Colors.white,
+      // onSecondary: Colors.white,
+      // onSurface: Colors.black,
+      // outline: Colors.grey[400],
+      // primaryContainer: Colors.black,
+      );
 
   LightColors() : super(colorScheme: scheme);
 
@@ -82,4 +82,10 @@ class LightColors extends AppColors {
 
   @override
   Color get onDeclinedBackgroundColor => Colors.black;
+
+  @override
+  Color get primaryVariant => const Color(0XFFE8DEF8);
+
+  @override
+  Color get onPrimaryVariant => Colors.black;
 }

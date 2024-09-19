@@ -44,8 +44,6 @@ class ProfileDataSource {
     required ApiUserInfo user,
     String? jwtToken,
   }) async {
-    final token = jwtToken ?? MyPreferenceManger.instance.token;
-
     // bool isImageError = false;
     // if (updatedImage != null && updatedImage.id == null) {
     //   final uploadRes = await ApiHelper.instance.uploadImage(
@@ -61,12 +59,25 @@ class ProfileDataSource {
     //     },
     //   );
     // }
+    return updateProfileName(
+      firstName: user.firstName,
+      lastName: user.lastName,
+      jwtToken: jwtToken,
+    );
+  }
+
+  Future<NetworkResult<ApiUserInfo>> updateProfileName({
+    required String? firstName,
+    required String? lastName,
+    String? jwtToken,
+  }) async {
+    final token = jwtToken ?? await MyPreferenceManger.instance.token;
 
     return client.put(
       Endpoints.updateUser,
       body: {
-        'firstName': user.firstName,
-        'lastName': user.lastName,
+        'firstName': firstName,
+        'lastName': lastName,
         // if (!isImageError) 'image': updatedImage?.id,
       },
       headers: {

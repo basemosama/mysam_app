@@ -25,7 +25,7 @@ class BuildLoginRegisterNowWidget extends GetView<LoginController> {
               TextSpan(
                 text: AppTrans.registerNow.tr(context: context),
                 style: TextStyle(
-                  color: context.colors.onSurface,
+                  color: context.colors.primary,
                   fontSize: 16.sp,
                   fontFamily: fontFamily,
                   fontWeight: FontWeight.w500,

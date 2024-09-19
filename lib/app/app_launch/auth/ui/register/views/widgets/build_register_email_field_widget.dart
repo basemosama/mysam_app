@@ -23,7 +23,7 @@ class BuildRegisterEmailFieldWidget extends GetView<RegisterController> {
           ),
           prefix: Icon(
             Icons.email,
-            color: context.colors.primary,
+            color: context.colors.onSurface,
             size: 18.r,
           ),
           shouldAutoValidate: true,

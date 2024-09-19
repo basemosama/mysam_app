@@ -25,7 +25,7 @@ class BuildRegisterBackButton extends GetView<RegisterController> {
             },
             icon: Icon(
               Icons.adaptive.arrow_back,
-              color: context.colors.primary,
+              color: context.colors.onSurface,
             ),
           ),
         ),

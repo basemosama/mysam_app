@@ -31,7 +31,9 @@ class BuildPickImageFromUrlWidget extends StatelessWidget {
               ),
               child: CustomText.icon(
                 AppTrans.addImageFromUrlLabel,
-                icon: Icons.link,
+                icon: IconInfo(
+                  icon: Icons.link,
+                ),
                 color: context.colors.onSurface.withOpacity(.7),
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

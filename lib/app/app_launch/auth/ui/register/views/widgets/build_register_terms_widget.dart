@@ -22,7 +22,7 @@ class BuildRegisterTermsWidget extends GetView<RegisterController> {
                 onChanged: (value) {
                   controller.agreeToTerms.value = value ?? false;
                 },
-                activeColor: context.colors.primary,
+                activeColor: context.colors.onSurface,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4.r),
                 ),

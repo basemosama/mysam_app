@@ -73,4 +73,9 @@ sealed class Contribution {
           (this as ModernMeaningContribution).modernMeanings.join(', '),
         UnknownContribution _ => (this as UnknownContribution).relatedWord.word,
       };
+
+  @override
+  String toString() {
+    return 'Contribution{id: $id, documentId: $documentId, status: $status, relatedWord: $relatedWord, createdBy: $createdBy, reviewedBy: $reviewedBy, type: $type, root: $root, createdAt: $createdAt, updatedAt: $updatedAt, publishedAt: $publishedAt}';
+  }
 }

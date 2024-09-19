@@ -17,6 +17,12 @@ abstract class AppTrans {
   static const String pending = 'pending';
   static const String confirmed = 'confirmed';
   static const String declined = 'declined';
+  static const String editProfileName = 'editProfileName';
+  static const String darkMode = 'darkMode';
+  static const String editPassword = 'editPassword';
+
+  static const String updatedProfileNameSuccessMessage =
+      'updatedProfileNameSuccessMessage';
 
   static const String poemContributionDescriptionLabel =
       'poemContributionDescriptionLabel';
@@ -301,4 +307,13 @@ abstract class AppTrans {
   static const contributionDetailsLabel = 'contributionDetailsLabel';
 
   static String contributionReceived = 'contributionReceived';
+
+  static const myContributions = 'myContributions';
+
+  static const contributionStatusAll = 'contributionStatusAll';
+
+  static const noContributionsFound = 'noContributionsFound';
+
+  static const contributionEditedSuccessfully =
+      'contributionEditedSuccessfully';
 }

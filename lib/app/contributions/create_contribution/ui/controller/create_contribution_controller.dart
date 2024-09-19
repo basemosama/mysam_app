@@ -79,9 +79,11 @@ sealed class CreateContributionController extends GetxController {
 
   void handleNextOrFinish() {
     if (isLastStep) {
+      WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       createContribution();
     } else {
       currentStepIndex.value++;
+      WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       pageController.animateToPage(
         currentStepIndex.value,
         duration: const Duration(milliseconds: 300),
@@ -119,8 +121,9 @@ sealed class CreateContributionController extends GetxController {
     res.when(
       success: (contribution) {
         Alert.success(
-            message: AppTrans.contributionCreatedSuccessfully
-                .tr(args: [contribution.relatedWord.word]));
+          message: AppTrans.contributionCreatedSuccessfully
+              .tr(args: [contribution.relatedWord.word]),
+        );
         isLoading.value = false;
 
         isReceivedContributionStep.value = true;

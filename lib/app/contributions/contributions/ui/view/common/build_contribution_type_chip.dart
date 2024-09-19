@@ -15,6 +15,7 @@ class BuildContributionTypeChip extends StatelessWidget {
     return FeatureChip(
       label: contribution.type.displayName,
       width: width,
+      color: context.colors.onSurface,
     );
   }
 }

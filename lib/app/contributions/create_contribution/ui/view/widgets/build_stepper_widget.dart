@@ -41,7 +41,7 @@ class BuildStepperWidget extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: context.colors.primary,
+                      color: context.colors.onSurface,
                     ),
                   ),
                 ],
@@ -58,11 +58,11 @@ class BuildStepperWidget extends StatelessWidget {
                     child: BuildStepLineWidget(
                       height: 8.r,
                       strokeWidth: 3.r,
-                      lineColor: context.colors.primary,
+                      lineColor: context.colors.onSurface,
                       dashColor: currentStepIndex > i
-                          ? context.colors.primary
+                          ? context.colors.onSurface
                           : context.colors.filledColor,
-                      activeColor: context.colors.primary,
+                      activeColor: context.colors.onSurface,
                       isActive: currentStepIndex > i,
                       dashSpace: 9.r,
                     ),

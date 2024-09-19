@@ -13,7 +13,9 @@ class BuildRootDetailsContributionItemWidget
     return CustomCard(
       padding: EdgeInsets.symmetric(vertical: 16.r, horizontal: 12.r),
       onPressed: () => controller.handleContributionTap(
-          contribution: contribution, context: context),
+        contribution: contribution,
+        context: context,
+      ),
       child: Row(
         children: [
           Expanded(
@@ -27,12 +29,8 @@ class BuildRootDetailsContributionItemWidget
                 SizedBox(height: 4.r),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0.r),
-                  child: CustomText(
-                    contribution.title,
-                    color: context.colors.subtitleTextColor,
-                    maxLines: 1,
-                    textOverflow: TextOverflow.ellipsis,
-                    fontWeight: FontWeight.w500,
+                  child: BuildRootDetailsContributionItemByTypeWidget(
+                    contribution: contribution,
                   ),
                 ),
               ],

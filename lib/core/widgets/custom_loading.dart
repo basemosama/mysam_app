@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mysam_app/core/resources/assets/assets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/dimens/dimens.dart';
 import 'package:playx/playx.dart';
 
@@ -16,9 +17,13 @@ class CustomLoading extends StatelessWidget {
     // );
     return Center(
       child: Container(
-        height: context.height * .15,
+        height: context.height * .2,
         margin: margin,
-        child: Lottie.asset(Assets.animations.loading),
+        child: SpinKitPouringHourGlassRefined(
+          color: context.colors.primary,
+          size: context.height * .1,
+        ),
+        // child: Lottie.asset(Assets.animations.loading),
       ),
     );
   }
