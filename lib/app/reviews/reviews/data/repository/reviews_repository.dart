@@ -2,7 +2,7 @@ import 'package:mysam_app/app/contributions/contributions/data/model/mapper/api_
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_status.dart';
 import 'package:mysam_app/app/contributions/edit_contribution/data/repository/edit_contribution_repository.dart';
-import 'package:mysam_app/app/reviews/data/datasource/reviews_datasource.dart';
+import 'package:mysam_app/app/reviews/reviews/data/datasource/reviews_datasource.dart';
 import 'package:mysam_app/core/models/data_wrapper.dart';
 import 'package:mysam_app/core/models/mapper/api_response_to_data_wrapper.dart';
 import 'package:mysam_app/core/utils/mapper_utilities.dart';

@@ -6,7 +6,7 @@ import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribu
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/contributions/contributions/ui/imports/contributions_imports.dart';
 import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
-import 'package:mysam_app/app/reviews/data/repository/reviews_repository.dart';
+import 'package:mysam_app/app/reviews/reviews/data/repository/reviews_repository.dart';
 import 'package:mysam_app/core/navigation/app_navigation.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
