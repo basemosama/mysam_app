@@ -26,6 +26,6 @@ class RootDetailsView extends GetView<RootDetailsController> {
             onSuccess: (root) => BuildRootDetailsContent(root: root),
             onEmpty: (e) => const BuildEmptyRouteContributionsWidget(),
           ),
-        ));
+        ),);
   }
 }

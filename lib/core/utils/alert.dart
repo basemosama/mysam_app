@@ -104,7 +104,7 @@ abstract class Alert {
       margin = EdgeInsets.only(bottom: 60.r);
     }
     Fimber.d(
-        'MArgin :$margin :${PlayxNavigation.currentRouteName} => ${NavigationUtils.showBottomNav}');
+        'MArgin :$margin :${PlayxNavigation.currentRouteName} => ${NavigationUtils.showBottomNav}',);
     if (context != null) {
       final snackBar = SnackBar(
         margin: margin,

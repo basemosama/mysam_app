@@ -4,7 +4,7 @@ class BuildContributionMainFormRelatedWordWeightWidget extends StatelessWidget {
   final EditContributionController controller;
 
   const BuildContributionMainFormRelatedWordWeightWidget(
-      {super.key, required this.controller});
+      {super.key, required this.controller,});
 
   @override
   Widget build(BuildContext context) {

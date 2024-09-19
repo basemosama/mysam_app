@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_related_word_type.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/related_word.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/contributions/create_contribution/ui/imports/create_contribution_imports.dart';
@@ -22,8 +23,6 @@ import 'package:mysam_app/core/widgets/components/text_field.dart';
 import 'package:mysam_app/core/widgets/image_picker/imports/image_picker_imports.dart';
 import 'package:mysam_app/core/widgets/loading_overlay.dart';
 import 'package:playx/playx.dart';
-
-import '../../../contributions/data/model/ui/contribution_related_word_type.dart';
 
 part '../binding/edit_contribution_binding.dart';
 part '../controller/edit_contribution_controller.dart';

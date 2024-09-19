@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/types/contribution_type.dart';
 import 'package:mysam_app/app/contributions/contributions/ui/imports/contributions_imports.dart';
@@ -27,8 +28,6 @@ import 'package:mysam_app/core/widgets/components/feature_chip.dart';
 import 'package:mysam_app/core/widgets/custom_app_bar.dart';
 import 'package:mysam_app/core/widgets/place_holder_image.dart';
 import 'package:playx/playx.dart';
-
-import '../../../../../app_launch/auth/data/models/ui/user_info.dart';
 
 part '../binding/root_details_binding.dart';
 part '../controller/root_details_controller.dart';

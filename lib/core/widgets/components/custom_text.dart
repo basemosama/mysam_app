@@ -87,7 +87,7 @@ class CustomText extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 4.0.w),
                 child: icon?.buildIconWidget(
                   size: 20.r,
-                )),
+                ),),
           ),
           TextSpan(
             text: isTranslatable ? text.tr(context: context) : text,

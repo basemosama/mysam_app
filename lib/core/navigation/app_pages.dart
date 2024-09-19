@@ -80,7 +80,7 @@ class AppPages {
                   builder: (ctx, state) => const EditContributionView(),
                   binding: EditContributionBinding(),
                 ),
-              ]),
+              ],),
         ],
       ),
       StatefulShellBranch(
@@ -97,7 +97,7 @@ class AppPages {
                   builder: (ctx, state) => const SettingsView(),
                   binding: SettingsBinding(),
                 ),
-              ]),
+              ],),
         ],
       ),
     ],

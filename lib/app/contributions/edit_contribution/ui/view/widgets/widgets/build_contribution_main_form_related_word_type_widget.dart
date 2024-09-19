@@ -4,7 +4,7 @@ class BuildContributionMainFormRelatedWordTypeWidget extends StatelessWidget {
   final EditContributionController controller;
 
   const BuildContributionMainFormRelatedWordTypeWidget(
-      {super.key, required this.controller});
+      {super.key, required this.controller,});
 
   @override
   Widget build(BuildContext context) {

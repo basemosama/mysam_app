@@ -17,7 +17,7 @@ class DarkColors extends AppColors {
           brightness: Brightness.dark,
           tones: FlexTones.material(Brightness.dark)
               .onMainsUseBW()
-              .onSurfacesUseBW()
+              .onSurfacesUseBW(),
           // .surfacesUseBW(),
           )
       .copyWith(

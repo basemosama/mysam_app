@@ -71,8 +71,6 @@ class RootDetailsController extends GetxController {
         contribution.createdBy?.documentId != null &&
         user.documentId == contribution.createdBy!.documentId;
 
-    Fimber.d(
-        'showEdit: $showEdit : user :${user.documentId} : createdBy: ${contribution.createdBy?.documentId}');
     ContributionDetailsController.showModal(
       context: context,
       contribution: contribution,

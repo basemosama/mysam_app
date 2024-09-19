@@ -30,7 +30,7 @@ class BuildChooseContributionTypeWidget extends StatelessWidget {
 
   static SliverWoltModalSheetPage buildPage(
       {required BuildContext context,
-      Function(ContributionType)? onTypeSelected}) {
+      Function(ContributionType)? onTypeSelected,}) {
     return CustomModal.buildCustomModalPage(
       title: AppTrans.chooseContributionType,
       body: BuildChooseContributionTypeWidget(onTypeSelected: onTypeSelected),
