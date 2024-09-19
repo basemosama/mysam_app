@@ -1,3 +1,5 @@
+import 'package:mysam_app/core/network/api_client.dart';
+
 class ContributionsDatasource {
   static final ContributionsDatasource _instance =
       ContributionsDatasource._internal();
@@ -7,4 +9,6 @@ class ContributionsDatasource {
   }
 
   ContributionsDatasource._internal();
+
+  final _client = ApiClient.client;
 }

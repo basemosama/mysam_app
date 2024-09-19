@@ -14,7 +14,7 @@ enum UserRoleType {
   String get value {
     switch (this) {
       case UserRoleType.user:
-        return 'user';
+        return 'authenticated';
       case UserRoleType.moderator:
         return 'moderator';
     }

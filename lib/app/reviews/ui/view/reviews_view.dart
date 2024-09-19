@@ -5,9 +5,9 @@ class ReviewsView extends GetView<ReviewsController> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
+    return const CustomScaffold(
       title: AppTrans.reviews,
-      child: Container(),
+      child: BuildReviewsListWidget(),
     );
   }
 }

@@ -49,7 +49,15 @@ class SplashController extends FullLifeCycleController with FullLifeCycleMixin {
   }
 
   Future<void> _getProfileInfo() async {
-    await ProfileRepository().getProfileInfo(saveUserInfo: true);
+    final res = await ProfileRepository().getProfileInfo(saveUserInfo: true);
+    res.when(
+        success: (profileInfo) {
+          if (Get.isRegistered<CustomBottomNavigationController>()) {
+            Get.find<CustomBottomNavigationController>()
+                .getUserInfo(info: profileInfo);
+          }
+        },
+        error: (error) {});
     isProfileLoaded.complete(true);
   }
 

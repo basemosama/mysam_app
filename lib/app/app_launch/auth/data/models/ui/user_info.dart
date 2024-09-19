@@ -14,7 +14,6 @@ class UserInfo {
   final String? provider;
   final DateTime? createdAt;
   final DateTime? updatedAt;
-  final Role? role;
   final bool? confirmed;
   final bool? blocked;
 
@@ -31,7 +30,6 @@ class UserInfo {
     this.updatedAt,
     this.confirmed,
     this.blocked,
-    this.role,
   });
 
   String? getFullName({
@@ -58,7 +56,10 @@ class UserInfo {
 
   @override
   String toString() {
-    return 'UserInfo{ id: $id, username: $username, email: $email, firstName: $firstName, lastName: $lastName, imageUrl: ${image?.url}, provider: $provider,confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, role: $role}';
+    return 'UserInfo{ id: $id, username: $username, email: $email, '
+        'firstName: $firstName, lastName: $lastName, imageUrl: ${image?.url},'
+        ' provider: $provider,confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt,'
+        ' updatedAt: $updatedAt}';
   }
 
   UserInfo copyWith({
@@ -87,7 +88,6 @@ class UserInfo {
       provider: provider ?? this.provider,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
-      role: role ?? this.role,
       confirmed: confirmed ?? this.confirmed,
       blocked: blocked ?? this.blocked,
     );

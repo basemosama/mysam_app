@@ -72,7 +72,7 @@ class AppPages {
           PlayxRoute(
             path: Paths.reviews,
             name: Routes.reviews,
-            builder: (ctx, state) => ReviewsView(),
+            builder: (ctx, state) => const ReviewsView(),
             binding: ReviewsBinding(),
           ),
         ],

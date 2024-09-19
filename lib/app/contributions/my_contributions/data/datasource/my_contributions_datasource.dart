@@ -27,8 +27,8 @@ class MyContributionsDatasource {
     CancelToken? cancelToken,
   }) async {
     final query = {
-      'page': page,
-      'pageSize': pageSize,
+      'pagination[page]': page,
+      'pagination[pageSize]': pageSize,
       if (status != null && status != ContributionStatus.all)
         'filters[contributionStatus]': status.toShortString(),
       'populate': '*',

@@ -25,11 +25,12 @@ class CustomBottomNavigationController extends GetxController {
       navigationIndex: 0,
     ),
     CustomNavigationDestinationItem(
-        icon: IconInfo(
-          icon: Icons.edit_outlined,
-        ),
-        label: AppTrans.reviews,
-        navigationIndex: 1),
+      icon: IconInfo(
+        icon: Icons.edit_outlined,
+      ),
+      label: AppTrans.reviews,
+      navigationIndex: 1,
+    ),
     CustomNavigationDestinationItem(
       icon: IconInfo(
         icon: Icons.star_outline,
@@ -75,14 +76,17 @@ class CustomBottomNavigationController extends GetxController {
   Future<void> getUserInfo({ProfileInfo? info}) async {
     if (info != null) {
       userInfo.value = info.userInfo;
-      roleType.value = info.userInfo.role?.type;
+      roleType.value = info.role?.type;
       items.assignAll(
         roleType.value == UserRoleType.moderator ? _moderatorItems : _userItems,
       );
+      Fimber.d('User Role Type2: $roleType');
+
       return;
     }
     roleType.value = await MyPreferenceManger.instance.userRoleType;
     userInfo.value = await MyPreferenceManger.instance.getSavedUser();
+    Fimber.d('User Role Type: $roleType');
     items.assignAll(
       roleType.value == UserRoleType.moderator ? _moderatorItems : _userItems,
     );

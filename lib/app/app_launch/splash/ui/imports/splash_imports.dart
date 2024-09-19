@@ -11,6 +11,7 @@ import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:mysam_app/core/widgets/custom_loading.dart';
+import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
 import 'package:playx/playx.dart';
 
 part '../bindings/splash_binding.dart';

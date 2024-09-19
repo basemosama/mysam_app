@@ -34,7 +34,10 @@ class ProfileRepository {
       if (saveUserInfo) {
         final userInfo = profileRes.data.userInfo;
         await MyPreferenceManger.instance.saveUser(userInfo.toApiUserInfo());
-        await MyPreferenceManger.instance.saveUserRoleType(userInfo.role?.type);
+        final role = profileRes.data.role?.type;
+        if (role != null) {
+          await MyPreferenceManger.instance.saveUserRoleType(role);
+        }
       }
     }
     return profileRes;
