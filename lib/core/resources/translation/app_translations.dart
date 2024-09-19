@@ -17,6 +17,9 @@ abstract class AppTrans {
   static const String pending = 'pending';
   static const String confirmed = 'confirmed';
   static const String declined = 'declined';
+  static const String editProfileName = 'editProfileName';
+  static const String darkMode = 'darkMode';
+  static const String editPassword = 'editPassword';
 
   static const String poemContributionDescriptionLabel =
       'poemContributionDescriptionLabel';

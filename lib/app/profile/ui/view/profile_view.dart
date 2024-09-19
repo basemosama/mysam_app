@@ -5,9 +5,26 @@ class ProfileView extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScaffold(
-      child: Center(
-        child: CustomText('Profile'),
+    return CustomScaffold(
+      title: AppTrans.profile,
+      child: RxDataStateWidget(
+        rxData: controller.userDataState,
+        onSuccess: (user) => OptimizedScrollView(
+          child: Column(
+            children: [
+              BuildProfileImageWidget(
+                user: user,
+              ),
+              BuildProfileUserNameWidget(
+                user: user,
+              ),
+              BuildProfileUserEmailWidget(
+                user: user,
+              ),
+              const Expanded(child: BuildProfileFieldsWidget()),
+            ],
+          ),
+        ),
       ),
     );
   }

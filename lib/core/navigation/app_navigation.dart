@@ -86,4 +86,8 @@ abstract class AppNavigation {
       pathParameters: {'id': contribution.documentId},
     );
   }
+
+  static void navigateToSettings() {
+    PlayxNavigation.toNamed(Routes.settings);
+  }
 }

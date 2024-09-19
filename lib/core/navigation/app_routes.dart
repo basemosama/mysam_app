@@ -24,7 +24,7 @@ abstract class Paths {
   static const login = '/login';
   static const register = '/register';
   static const onboarding = '/onboarding';
-  static const settings = '/settings';
+  static const settings = 'settings';
   static const rootDetails = 'roots/:id';
   static const home = '/home';
   static const contributions = '/contributions';

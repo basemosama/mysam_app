@@ -86,17 +86,18 @@ class AppPages {
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-            path: Paths.settings,
-            name: Routes.settings,
-            builder: (ctx, state) => const SettingsView(),
-            binding: SettingsBinding(),
-          ),
-          PlayxRoute(
-            path: Paths.profile,
-            name: Routes.profile,
-            builder: (ctx, state) => const ProfileView(),
-            binding: ProfileBinding(),
-          ),
+              path: Paths.profile,
+              name: Routes.profile,
+              builder: (ctx, state) => const ProfileView(),
+              binding: ProfileBinding(),
+              routes: [
+                PlayxRoute(
+                  path: Paths.settings,
+                  name: Routes.settings,
+                  builder: (ctx, state) => const SettingsView(),
+                  binding: SettingsBinding(),
+                ),
+              ]),
         ],
       ),
     ],

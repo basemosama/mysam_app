@@ -40,6 +40,10 @@
   "darkTheme": "Dark",
   "dashboard": "Dashboard",
   "declined": "Rejected",
+  "editProfileName": "Edit Profile Name",
+  "darkMode": "Dark Mode",
+  "editPassword": "Edit Password",
+
   "defaultError": "Sorry, Something went wrong.",
   "descriptionHint": "Enter the description",
   "descriptionLabel": "Description",

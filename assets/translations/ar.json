@@ -29,6 +29,10 @@
   "confirmPasswordMatchError": "كلمتي المرور غير متوافقتان.",
   "confirmPasswordRequiredError": "يتوجب عليك إدخال كلمة المرور ثانية.",
   "confirmed": "مقبول",
+  "editProfileName": "تعديل اسم الملف الشخصي",
+  "darkMode": "الوضع الداكن",
+  "editPassword": "تعديل كلمة المرور",
+
   "conflict": "عذرًا ، لم يكتمل الطلب بسبب وجود تعارض.",
   "continueWithSocial": "المتابعة باستخدام",
   "contributionCreatedSuccessfully": "تم إنشاء الإسهام للكلمة {} بنجاح.",
