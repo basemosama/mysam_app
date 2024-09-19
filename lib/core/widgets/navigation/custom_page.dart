@@ -32,7 +32,11 @@ class CustomPageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scaffoldChild = buildScaffoldChild(context);
+    final scaffoldChild = PlayxThemeSwitcher(
+      builder: (ctx, theme) {
+        return buildScaffoldChild(ctx);
+      },
+    );
 
     final canPop = !(NavigationUtils.mainRoutes
             .contains(PlayxNavigation.currentRouteName) &&

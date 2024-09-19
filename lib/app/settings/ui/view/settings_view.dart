@@ -5,28 +5,24 @@ class SettingsView extends GetView<SettingsController> {
 
   @override
   Widget build(BuildContext context) {
-    return PlayxThemeSwitcher(
-      builder: (context, theme) {
-        return CustomScaffold(
-          title: AppTrans.settings,
-          leading: AppBarLeadingType.back,
-          child: CustomScrollView(
-            slivers: [
-              SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    SizedBox(height: 8.0.r),
-                    const BuildSettingsLanguageWidget(),
-                    const BuildSettingsThemeWidget(),
-                    const BuildSettingsLogOutWidget(),
-                    SizedBox(height: 16.0.r),
-                  ],
-                ),
-              ),
-            ],
+    return CustomScaffold(
+      title: AppTrans.settings,
+      leading: AppBarLeadingType.back,
+      child: CustomScrollView(
+        slivers: [
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SizedBox(height: 8.0.r),
+                const BuildSettingsLanguageWidget(),
+                const BuildSettingsThemeWidget(),
+                const BuildSettingsLogOutWidget(),
+                SizedBox(height: 16.0.r),
+              ],
+            ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 
