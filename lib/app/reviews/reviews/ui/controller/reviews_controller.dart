@@ -69,8 +69,15 @@ class ReviewsController extends GetxController {
 
   void refreshPagination() {
     cancelRequests();
-    pagingController.itemList = [];
+    final notifyPage = pagingController.value ==
+        const PagingState<int, Contribution>(
+          nextPageKey: 1,
+        );
+
     pagingController.refresh();
+    if (notifyPage) {
+      pagingController.notifyPageRequestListeners(1);
+    }
   }
 
   void cancelRequests() {

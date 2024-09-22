@@ -112,6 +112,16 @@ class LoginController extends GetxController {
     if (Get.isRegistered<ProfileController>()) {
       Get.find<ProfileController>().getUser();
     }
+    if (Get.isRegistered<RootsController>()) {
+      Get.find<RootsController>().refreshPagination();
+    }
+    if (Get.isRegistered<ReviewsController>()) {
+      Get.find<ReviewsController>().refreshPagination();
+    }
+    if (Get.isRegistered<MyContributionsController>()) {
+      Get.find<MyContributionsController>().refreshTabs();
+    }
+
     AppNavigation.navigateFromLoginToHome();
   }
 

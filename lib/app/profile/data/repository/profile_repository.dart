@@ -58,7 +58,9 @@ class ProfileRepository {
       final updatedUser = savedUser
               ?.copyWith(
                 firstName: res.data.firstName,
-                lastName: res.data.lastName,
+                lastName: res.data.lastName?.isNotEmpty == true
+                    ? res.data.lastName
+                    : null,
               )
               .toApiUserInfo() ??
           res.data;

@@ -32,8 +32,6 @@ class EditProfileController extends GetxController {
     final user = await MyPreferenceManger.instance.getSavedUser();
     firstNameController.text = user?.firstName ?? '';
     lastNameController.text = user?.lastName ?? '';
-    Fimber.d(
-        'User: $user => firstName: ${user?.firstName} lastName: ${user?.lastName}');
     isFirstNameValid.value = true;
     isLastNameValid.value = true;
     isFormValid.value = true;
