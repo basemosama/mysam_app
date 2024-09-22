@@ -4,31 +4,42 @@ import 'package:playx/playx.dart';
 class ApiResponse<T> {
   final T data;
   final ApiMeta? meta;
+  final String? message;
 
   ApiResponse({
     required this.data,
     this.meta,
+    this.message,
   });
 
   factory ApiResponse.fromJson({
     dynamic json,
     required T Function(dynamic) dataFromJson,
-  }) =>
-      ApiResponse(
-        data: dataFromJson(asMap(json as Map<String, dynamic>, 'data')),
-        meta: ApiMeta.fromJson(asMap(json, 'meta')),
-      );
+    String dataKey = 'data',
+  }) {
+    final map = json as Map<String, dynamic>;
+    Fimber.d('Data: :${map[dataKey]}');
+    final data = dataFromJson(map[dataKey]);
+
+    return ApiResponse(
+      data: data,
+      meta: json['meta'] != null ? ApiMeta.fromJson(asMap(json, 'meta')) : null,
+      message: asStringOrNull(json, 'message'),
+    );
+  }
 
   static ApiResponse<List<T>> createApiResponseFromJsonDataList<T>({
     dynamic json,
     required T Function(dynamic) dataFromJson,
+    String dataKey = 'data',
   }) {
     final map = json as Map<String, dynamic>;
-    final data = asList(map, 'data').map((e) => dataFromJson(e)).toList();
+    final data = asList(map, dataKey).map((e) => dataFromJson(e)).toList();
 
     return ApiResponse(
       data: data,
-      meta: ApiMeta.fromJson(asMap(map, 'meta')),
+      meta: json['meta'] != null ? ApiMeta.fromJson(asMap(json, 'meta')) : null,
+      message: asStringOrNull(json, 'message'),
     );
   }
 

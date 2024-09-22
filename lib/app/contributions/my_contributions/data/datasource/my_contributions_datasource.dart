@@ -31,7 +31,8 @@ class MyContributionsDatasource {
       'pagination[pageSize]': pageSize,
       if (status != null && status != ContributionStatus.all)
         'filters[contributionStatus]': status.toShortString(),
-      'populate': '*',
+      '[populate][0]': 'user',
+      '[populate][1]': 'image',
     };
 
     final user =

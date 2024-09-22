@@ -1,5 +1,4 @@
 import 'package:mysam_app/app/contributions/contributions/data/model/api/api_contribution.dart';
-import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
 import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution_status.dart';
 import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/network/endpoints/endpoints.dart';
@@ -31,6 +30,7 @@ class ReviewsDatasource {
       // if (status != null && status != ContributionStatus.all)
       'filters[contributionStatus]': ContributionStatus.pending.toShortString(),
       'populate': '*',
+      'sort': 'createdAt:desc',
     };
 
     return _client.get(
@@ -41,26 +41,6 @@ class ReviewsDatasource {
         dataFromJson: ApiContribution.fromJson,
       ),
       cancelToken: cancelToken,
-    );
-  }
-
-  //Accept contribution
-  Future<NetworkResult<ApiContribution>> acceptContribution({
-    required Contribution contribution,
-  }) {
-    return _client.put(
-      Endpoints.confirmContribution(contribution.documentId),
-      fromJson: ApiContribution.fromJson,
-    );
-  }
-
-  //Reject contribution
-  Future<NetworkResult<ApiContribution>> rejectContribution({
-    required Contribution contribution,
-  }) {
-    return _client.put(
-      Endpoints.declineContribution(contribution.documentId),
-      fromJson: ApiContribution.fromJson,
     );
   }
 }

@@ -38,39 +38,27 @@ class EditContributionView extends GetView<EditContributionController> {
           return AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             child: !controller.isReceivedContributionStep.value
-                ? Stack(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16.r,
-                          vertical: 8.r,
+                ? Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.r,
+                      vertical: 8.r,
+                    ),
+                    child: Column(
+                      children: [
+                        Obx(() {
+                          return BuildStepperWidget(
+                            stepCount: controller.currentStepCount,
+                            currentStepIndex: controller.currentStepIndex.value,
+                          );
+                        }),
+                        SizedBox(height: 8.r),
+                        Expanded(
+                          child: BuildContributionByTypeForum(
+                            controller: controller,
+                          ),
                         ),
-                        child: Column(
-                          children: [
-                            Obx(() {
-                              return BuildStepperWidget(
-                                stepCount: controller.currentStepCount,
-                                currentStepIndex:
-                                    controller.currentStepIndex.value,
-                              );
-                            }),
-                            SizedBox(height: 8.r),
-                            Expanded(
-                              child: BuildContributionByTypeForum(
-                                controller: controller,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Obx(() {
-                        final isLoading = controller.isLoading.value;
-                        return LoadingOverlay(
-                          isLoading: isLoading,
-                          loadingText: AppTrans.loading,
-                        );
-                      }),
-                    ],
+                      ],
+                    ),
                   )
                 : BuildContributionReceivedContributionStep(
                     controller: controller,

@@ -67,8 +67,11 @@ class CustomPageScaffold extends StatelessWidget {
                 scaffoldChild,
                 Obx(() {
                   return LoadingOverlay(
-                    isLoading: drawerController.isLoggingOut.value,
-                    loadingText: AppTrans.loggingOutText,
+                    isLoading: drawerController.isLoading.value ||
+                        drawerController.isLoggingOut.value,
+                    loadingText: drawerController.isLoggingOut.value
+                        ? AppTrans.loggingOutText
+                        : AppTrans.loading,
                   );
                 }),
               ],

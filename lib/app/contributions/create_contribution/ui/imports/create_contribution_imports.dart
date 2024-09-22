@@ -21,7 +21,7 @@ import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:mysam_app/core/widgets/components/filter_chip_selector.dart';
 import 'package:mysam_app/core/widgets/components/text_field.dart';
 import 'package:mysam_app/core/widgets/image_picker/imports/image_picker_imports.dart';
-import 'package:mysam_app/core/widgets/loading_overlay.dart';
+import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
 
 part '../binding/create_contribution_binding.dart';

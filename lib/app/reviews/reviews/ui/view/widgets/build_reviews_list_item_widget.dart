@@ -30,13 +30,14 @@ class BuildReviewsListItemWidget extends GetView<ReviewsController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 7,
+                flex: 9,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BuildRootDetailsContributionUserWidget(
-                        contribution: contribution),
+                      contribution: contribution,
+                    ),
                     BuildReviewsListItemFieldWidget(
                       label: AppTrans.rootWordLabel,
                       padding: EdgeInsets.symmetric(
@@ -64,7 +65,7 @@ class BuildReviewsListItemWidget extends GetView<ReviewsController> {
                 ),
               ),
               Expanded(
-                flex: 5,
+                flex: 6,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -87,9 +88,11 @@ class BuildReviewsListItemWidget extends GetView<ReviewsController> {
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 4.0.r,
+              vertical: 4.0.r,
             ),
             child: BuildReviewsContributionItemByTypeWidget(
-                contribution: contribution),
+              contribution: contribution,
+            ),
           ),
         ],
       ),

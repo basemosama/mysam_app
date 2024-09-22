@@ -84,6 +84,18 @@ class ReviewsController extends GetxController {
     if (contribution.root == null) {
       return;
     }
+    AppNavigation.navigateToReviewDetails(contribution);
+  }
+
+  void handleRootTap({
+    required BuildContext context,
+    required Contribution contribution,
+  }) {
+    if (contribution.root == null) {
+      return;
+    }
+
+    AppNavigation.navigateToRootDetails(contribution.root!);
   }
 
   @override
@@ -92,14 +104,5 @@ class ReviewsController extends GetxController {
     searchController.dispose();
     cancelRequests();
     super.onClose();
-  }
-
-  void handleRootTap(
-      {required BuildContext context, required Contribution contribution}) {
-    if (contribution.root == null) {
-      return;
-    }
-
-    AppNavigation.navigateToRootDetails(contribution.root!);
   }
 }

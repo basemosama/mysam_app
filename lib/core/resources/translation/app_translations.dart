@@ -20,6 +20,10 @@ abstract class AppTrans {
   static const String editProfileName = 'editProfileName';
   static const String darkMode = 'darkMode';
   static const String editPassword = 'editPassword';
+  static const String contributionAcceptedMessage =
+      'contributionAcceptedMessage';
+  static const String contributionDeclinedMessage =
+      'contributionDeclinedMessage';
 
   static const String updatedProfileNameSuccessMessage =
       'updatedProfileNameSuccessMessage';

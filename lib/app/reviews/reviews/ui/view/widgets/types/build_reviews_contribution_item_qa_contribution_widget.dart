@@ -13,7 +13,7 @@ class BuildReviewsContributionItemQaContributionWidget extends StatelessWidget {
       label: contribution.question,
       subtitle: contribution.answer,
       padding: EdgeInsets.zero,
-      labelColor: context.colors.subtitleTextColor,
+      labelColor: context.colors.onSurface,
       subtitleFontSize: 12.sp,
       maxLines: 2,
     );
