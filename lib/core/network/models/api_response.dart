@@ -18,7 +18,6 @@ class ApiResponse<T> {
     String dataKey = 'data',
   }) {
     final map = json as Map<String, dynamic>;
-    Fimber.d('Data: :${map[dataKey]}');
     final data = dataFromJson(map[dataKey]);
 
     return ApiResponse(

@@ -81,8 +81,6 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                     BuildPickImageFromUrlWidget(
                       onImageUrlPicked: (url) {
                         widget.onImageUrlPicked?.call(url);
-                        Fimber.d(
-                            'BuildImagePreview ImagePickerWidget: url: $url');
                         setState(() {
                           imageUrl = url;
                         });

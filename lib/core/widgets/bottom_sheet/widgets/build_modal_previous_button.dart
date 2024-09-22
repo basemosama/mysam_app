@@ -22,8 +22,10 @@ class BuildModalPreviousButton extends StatelessWidget {
           ? IconButton(
               padding: EdgeInsets.symmetric(horizontal: 8.r, vertical: 8.r),
               visualDensity: VisualDensity.comfortable,
-              icon: Icon(Icons.adaptive.arrow_back,
-                  color: context.colors.onSurface,),
+              icon: Icon(
+                Icons.adaptive.arrow_back,
+                color: context.colors.onSurface,
+              ),
               onPressed: onPressed,
             )
           : const SizedBox.shrink();

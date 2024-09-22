@@ -10,7 +10,6 @@ class BuildContributionByTypeForum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Fimber.i('BuildContributionByTypeForum: ${controller.contributionType}');
     return switch (controller.contributionType) {
       ContributionType.qa => CreateQaContributionView(
           controller: controller as CreateQaContributionController,

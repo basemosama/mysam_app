@@ -154,7 +154,6 @@ class AuthRepository {
       return saveApiUser(user: apiUser, loginMethod: loginMethod);
     } catch (e) {
       Sentry.captureException(e);
-      Fimber.e('Error in saveUser: $e');
 
       return false;
     }

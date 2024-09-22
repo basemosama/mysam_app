@@ -80,13 +80,10 @@ class CustomBottomNavigationController extends GetxController {
       items.assignAll(
         roleType.value == UserRoleType.moderator ? _moderatorItems : _userItems,
       );
-      Fimber.d('User Role Type2: $roleType');
-
       return;
     }
     roleType.value = await MyPreferenceManger.instance.userRoleType;
     userInfo.value = await MyPreferenceManger.instance.getSavedUser();
-    Fimber.d('User Role Type: $roleType');
     items.assignAll(
       roleType.value == UserRoleType.moderator ? _moderatorItems : _userItems,
     );

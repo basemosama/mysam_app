@@ -32,9 +32,8 @@ class MapUtils {
     try {
       final res = await compute(_mapAsync<T, S>, [data, mapper]);
       return res;
-    } catch (e, stacktrace) {
+    } catch (e) {
       // Handle errors occurring in the isolate
-      Fimber.e('Error in mapAsyncInIsolate: ', ex: e, stacktrace: stacktrace);
       throw Exception('Error in isolate: $e');
     }
   }

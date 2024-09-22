@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/preferences/env_manger.dart';
@@ -14,7 +15,9 @@ class AppConfig extends PlayXAppConfig {
   Future<void> boot() async {
     //USED FOR DEBUGGING
     WidgetsFlutterBinding.ensureInitialized();
-    Fimber.plantTree(DebugTree());
+    if (kDebugMode) {
+      Fimber.plantTree(DebugTree(useColors: true));
+    }
     Get.put<MyPreferenceManger>(MyPreferenceManger());
     Get.put<EnvManger>(EnvManger());
     final PlayxNetworkClient client = await ApiClient.createApiClient();

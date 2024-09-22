@@ -6,7 +6,6 @@ class EditContributionBinding extends PlayxBinding {
     final args = state.extra as List?;
     Contribution? contribution;
     Root? root;
-    Fimber.d('EditContributionBinding: args: $args');
     if (args != null && args.length == 2) {
       contribution = args.first as Contribution?;
       root = args.last as Root?;
@@ -16,7 +15,6 @@ class EditContributionBinding extends PlayxBinding {
       Alert.error(message: 'Invalid contribution');
       return;
     }
-    Fimber.d('EditContributionBinding:2 args: ${contribution.type}');
 
     switch (contribution.type) {
       case ContributionType.qa:

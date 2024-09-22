@@ -71,18 +71,19 @@ class AppPages {
       StatefulShellBranch(
         routes: [
           PlayxRoute(
-              path: Paths.reviews,
-              name: Routes.reviews,
-              builder: (ctx, state) => const ReviewsView(),
-              binding: ReviewsBinding(),
-              routes: [
-                PlayxRoute(
-                  path: Paths.reviewDetails,
-                  name: Routes.reviewDetails,
-                  builder: (ctx, state) => const ReviewDetailsView(),
-                  binding: ReviewDetailsBinding(),
-                ),
-              ],),
+            path: Paths.reviews,
+            name: Routes.reviews,
+            builder: (ctx, state) => const ReviewsView(),
+            binding: ReviewsBinding(),
+            routes: [
+              PlayxRoute(
+                path: Paths.reviewDetails,
+                name: Routes.reviewDetails,
+                builder: (ctx, state) => const ReviewDetailsView(),
+                binding: ReviewDetailsBinding(),
+              ),
+            ],
+          ),
         ],
       ),
       StatefulShellBranch(

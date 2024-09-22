@@ -8,7 +8,6 @@ class BuildImagePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Fimber.d('BuildImagePreview: file: $file, url: $url');
     return SizedBox(
       height: context.height * .3,
       child: Stack(
