@@ -82,7 +82,7 @@ class AppPages {
                   builder: (ctx, state) => const ReviewDetailsView(),
                   binding: ReviewDetailsBinding(),
                 ),
-              ]),
+              ],),
         ],
       ),
       StatefulShellBranch(

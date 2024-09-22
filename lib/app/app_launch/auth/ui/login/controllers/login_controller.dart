@@ -91,14 +91,14 @@ class LoginController extends GetxController {
     );
     result.when(
       success: (User user) async {
-        isLoading.value = false;
         if (saveLoginInfo.value) {
           await authRepository.saveLoginInfo(
             email: emailController.text,
             password: passwordController.text,
           );
         }
-        _navigateToHome();
+        await _navigateToHome();
+        isLoading.value = false;
       },
       error: (NetworkException exception) {
         isLoading.value = false;
@@ -107,8 +107,9 @@ class LoginController extends GetxController {
     );
   }
 
-  void _navigateToHome() {
-    Get.find<CustomBottomNavigationController>().getUserInfo();
+  Future<void> _navigateToHome() async {
+    await Get.find<CustomBottomNavigationController>().getUserInfo();
+
     if (Get.isRegistered<ProfileController>()) {
       Get.find<ProfileController>().getUser();
     }
