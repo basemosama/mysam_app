@@ -16,6 +16,7 @@ void main() async {
     envSettings: const PlayxEnvSettings(
       fileName: 'assets/env/keys.env',
     ),
+
     app: const MyApp(),
   );
 }
@@ -30,9 +31,8 @@ class MyApp extends StatelessWidget {
         builder: (context) {
           return PlayxPlatformApp(
             preferredOrientations: const [
-              DeviceOrientation.landscapeRight,
-              DeviceOrientation.landscapeLeft,
               DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown,
             ],
             navigationSettings: PlayxNavigationSettings.goRouter(
               goRouter: AppPages.router,
