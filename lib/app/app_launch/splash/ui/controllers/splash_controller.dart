@@ -4,6 +4,8 @@ class SplashController extends FullLifeCycleController with FullLifeCycleMixin {
   final isBiometricAuthEnabled = false;
   final Completer<bool> shouldUpdateApp = Completer();
   final Completer<bool> isAnimationCompleted = Completer();
+  final Completer<bool> isProfileLoaded = Completer();
+  final RxBool isLoading = false.obs;
 
   @override
   void onInit() {
@@ -20,18 +22,43 @@ class SplashController extends FullLifeCycleController with FullLifeCycleMixin {
     //   if (doesAppNeedUpdate) return;
     // }
 
+    final isLoggedIn = await ApiHelper.instance.isLoggedIn();
+    if (isLoggedIn) {
+      _getProfileInfo();
+    }
+
     await isAnimationCompleted.future;
-    if (!(await MyPreferenceManger.instance.isOnBoardingShown)) {
+
+    final isOnBoardingNotShown =
+        !(await MyPreferenceManger.instance.isOnBoardingShown);
+    if (isOnBoardingNotShown) {
       AppNavigation.navigateFromSplashToOnBoarding();
       return;
     }
 
-    if (!await AuthRepository().isLoggedIn(checkAuth0Credentials: false)) {
+    final isLoggedOut = await ApiHelper.instance.isLoggedOut();
+    if (isLoggedOut) {
       AppNavigation.navigateFormSplashToLogin();
       return;
     }
+    isLoading.value = true;
 
-    AppNavigation.navigateFormSplashToDashboard();
+    await isProfileLoaded.future;
+    isLoading.value = false;
+    AppNavigation.navigateFormSplashToHome();
+  }
+
+  Future<void> _getProfileInfo() async {
+    final res = await ProfileRepository().getProfileInfo(saveUserInfo: true);
+    res.when(
+        success: (profileInfo) {
+          if (Get.isRegistered<CustomBottomNavigationController>()) {
+            Get.find<CustomBottomNavigationController>()
+                .getUserInfo(info: profileInfo);
+          }
+        },
+        error: (error) {});
+    isProfileLoaded.complete(true);
   }
 
   // Future<void> handleAppUpdate() async {

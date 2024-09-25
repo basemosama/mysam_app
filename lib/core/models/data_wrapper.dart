@@ -8,4 +8,10 @@ class DataWrapper<T> {
     required this.data,
     this.pagination,
   });
+
+  bool get isLastPage =>
+      pagination == null ||
+      (pagination!.page >= pagination!.pageCount) ||
+      pagination!.pageCount == 0 ||
+      (data is List && (data as List).isEmpty);
 }

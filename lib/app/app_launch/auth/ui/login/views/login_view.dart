@@ -6,68 +6,82 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: OptimizedScrollView(
-        child: SafeArea(
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 4.r,
-                        horizontal: 4.r,
-                      ),
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          // const BuildLoginSubtitleWidget(),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4.0.r),
-                            child: const BuildLoginLottieAnimation(),
+    return BackButtonListener(
+      onBackButtonPressed: () async {
+        if (controller.currentLoginMethod.value == LoginMethod.email) {
+          controller.currentLoginMethod.value = null;
+          return true;
+        } else {
+          return false;
+        }
+      },
+      child: Scaffold(
+        body: OptimizedScrollView(
+          child: SafeArea(
+            child: Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0.r),
+                  child: Column(
+                    children: [
+                      const BuildLoginBackButton(),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 4.r,
+                            horizontal: 4.r,
                           ),
-
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                const BuildLoginTitleWidget(),
-                                const BuildLoginPromptWidget(),
-                                SizedBox(height: 4.r),
-                                Obx(() {
-                                  return AnimatedSwitcher(
-                                    duration: const Duration(milliseconds: 350),
-                                    child: controller
-                                                .currentLoginMethod.value ==
-                                            LoginMethod.email
-                                        ? const BuildLoginWithEmailWidget()
-                                        : const BuildChooseLoginMethodWidget(),
-                                  );
-                                }),
-                              ],
-                            ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              SizedBox(height: 8.r),
+                              const BuildLoginLottieAnimation(),
+                              SizedBox(height: 24.r),
+                              Obx(() {
+                                return AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 500),
+                                  transitionBuilder: (
+                                    Widget child,
+                                    Animation<double> animation,
+                                  ) {
+                                    return SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: const Offset(1, 0),
+                                        end: Offset.zero,
+                                      ).animate(animation),
+                                      child: child,
+                                    );
+                                  },
+                                  child: controller.currentLoginMethod.value ==
+                                          LoginMethod.email
+                                      ? const BuildLoginWithEmailWidget()
+                                      : const BuildChooseLoginMethodWidget(),
+                                );
+                              }),
+                              SizedBox(height: 12.r),
+                              const BuildLoginRegisterNowWidget(),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: AppVersion(
-                      textStyle: TextStyle(
-                        color: context.colors.onSurface,
-                        fontSize: 12.sp,
-                        fontFamily: fontFamily,
+                      SizedBox(height: 4.r),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        child: AppVersion(
+                          textStyle: TextStyle(
+                            color: context.colors.onSurface,
+                            fontSize: 12.sp,
+                            fontFamily: fontFamily,
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(height: 8.r),
+                    ],
                   ),
-                  SizedBox(height: 12.r),
-                ],
-              ),
-              const BuildLoginLoadingOverlay(),
-            ],
+                ),
+                const BuildLoginLoadingOverlay(),
+              ],
+            ),
           ),
         ),
       ),

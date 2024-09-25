@@ -79,6 +79,8 @@ class CustomModal {
   static SliverWoltModalSheetPage buildCustomModalPage({
     required String title,
     required Widget body,
+    Widget? leading,
+    Widget? trailing,
     bool isSliver = true,
     bool hasSabGradient = true,
     ValueNotifier<bool>? showModalTopBar,
@@ -93,7 +95,6 @@ class CustomModal {
   }) {
     final showTopBar = showModalTopBar?.value ?? true;
 
-    Fimber.d('onPreviousPressed :$onPreviousPressed');
     final modalBody = onPreviousPressed == null
         ? body
         : PopScope(
@@ -124,17 +125,19 @@ class CustomModal {
             ),
             hasTopBarLayer: showTopBar,
             isTopBarLayerAlwaysVisible: showTopBar,
-            trailingNavBarWidget: onClosePressed == null
-                ? null
-                : BuildModalCloseButton(
-                    onPressed: onClosePressed,
-                  ),
-            leadingNavBarWidget: onPreviousPressed == null
-                ? null
-                : BuildModalPreviousButton(
-                    onPressed: onPreviousPressed,
-                    showPreviousButton: showPreviousButton,
-                  ),
+            trailingNavBarWidget: trailing ??
+                (onClosePressed == null
+                    ? null
+                    : BuildModalCloseButton(
+                        onPressed: onClosePressed,
+                      )),
+            leadingNavBarWidget: leading ??
+                (onPreviousPressed == null
+                    ? null
+                    : BuildModalPreviousButton(
+                        onPressed: onPreviousPressed,
+                        showPreviousButton: showPreviousButton,
+                      )),
             mainContentSliversBuilder: (context) {
               return [
                 modalBody,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/style/style.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:playx/playx.dart';
 
 class FilterChipSelector<T> extends StatefulWidget {
@@ -38,7 +39,8 @@ class _FilterChipSelectorState<T> extends State<FilterChipSelector<T>> {
       width: double.infinity,
       padding: Style.mediumPadding,
       child: Wrap(
-        spacing: 6,
+        spacing: 16.r,
+        alignment: WrapAlignment.center,
         children: List.generate(widget.items.length, (index) {
           final item = widget.items[index];
           return _buildChip(
@@ -63,20 +65,33 @@ class _FilterChipSelectorState<T> extends State<FilterChipSelector<T>> {
   }) {
     return InkWell(
       onTap: onTap,
+      borderRadius: Style.featureChipBorderRadius,
       child: Chip(
-        label: Text(
-          label,
-          style: TextStyle(
-            color: isSelected
-                ? context.colors.onPrimary
-                : context.colors.onChipBackgroundColor,
-            fontSize: 14.sp,
+        label: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.0.r,
+          ),
+          child: isSelected
+              ? CustomText(
+                  label,
+                  color: context.colors.onPrimary,
+                  fontSize: 14.sp,
+                )
+              : CustomText(
+                  label,
+                  color: context.colors.onSurface,
+                  fontSize: 14.sp,
+                ),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: Style.featureChipBorderRadius,
+          side: BorderSide(
+            color:
+                isSelected ? context.colors.surface : context.colors.onSurface,
           ),
         ),
-        shape: Style.featureChipRoundedRectangleBorder,
-        backgroundColor: isSelected
-            ? context.colors.primary
-            : context.colors.chipBackgroundColor,
+        backgroundColor:
+            isSelected ? context.colors.onSurface : context.colors.surface,
       ),
     );
   }

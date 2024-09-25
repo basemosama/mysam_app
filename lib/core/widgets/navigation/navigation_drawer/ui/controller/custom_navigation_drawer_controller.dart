@@ -3,6 +3,7 @@ part of '../imports/custom_navigation_drawer_imports.dart';
 class CustomNavigationDrawerController extends GetxController {
   int currentIndex = 0;
   final isLoggingOut = false.obs;
+  final isLoading = false.obs;
   CustomBottomNavigationController get bottomNavController =>
       Get.find<CustomBottomNavigationController>();
 
@@ -28,7 +29,7 @@ class CustomNavigationDrawerController extends GetxController {
   Future<void> handleLogout() async {
     updateLoginStatus(isLoggingOut: true);
     try {
-      await AuthRepository().logout(logOutFromAuth0: false);
+      await ApiHelper.instance.logout();
     } catch (e) {
       Alert.error(message: e.toString());
     }
@@ -41,5 +42,13 @@ class CustomNavigationDrawerController extends GetxController {
   void updateLoginStatus({required bool isLoggingOut}) {
     this.isLoggingOut.value = isLoggingOut;
     bottomNavController.showBottomNav.value = !isLoggingOut;
+  }
+
+  void updateLoadingStatus(
+      {bool hideBottomNavOnLoading = true, required bool isLoading}) {
+    this.isLoading.value = isLoading;
+    if (hideBottomNavOnLoading) {
+      bottomNavController.showBottomNav.value = !isLoading;
+    }
   }
 }

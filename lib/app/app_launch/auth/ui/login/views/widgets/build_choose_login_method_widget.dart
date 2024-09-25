@@ -2,22 +2,20 @@ part of '../../imports/login_imports.dart';
 
 class BuildChooseLoginMethodWidget extends GetView<LoginController> {
   const BuildChooseLoginMethodWidget();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        const BuildLoginTitleWidget(),
+        SizedBox(height: 14.r),
         ...List.generate(
           controller.loginMethods.length,
-          (i) => Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0.r),
-            child: BuildLoginMethodButton(
-              method: controller.loginMethods[i],
-            ),
+          (i) => BuildLoginMethodButton(
+            method: controller.loginMethods[i],
           ),
         ),
-        SizedBox(height: 8.r),
-        // const BuildLoginRegisterNowWidget(),
       ],
     );
   }

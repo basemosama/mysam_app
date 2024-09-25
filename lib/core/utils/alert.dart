@@ -99,8 +99,13 @@ abstract class Alert {
     bool isMessageTranslatable = true,
   }) {
     final context = NavigationUtils.navigationContext;
+    EdgeInsetsGeometry? margin;
+    if (PlayxPlatform.isCupertino) {
+      margin = EdgeInsets.only(bottom: 60.r);
+    }
     if (context != null) {
       final snackBar = SnackBar(
+        margin: margin,
         content: CustomText(
           message,
           color: Colors.white,

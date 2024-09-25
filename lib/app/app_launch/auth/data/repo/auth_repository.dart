@@ -1,15 +1,20 @@
 import 'package:mysam_app/app/app_launch/auth/data/data_sources/auth0_auth_data_source.dart';
-import 'package:mysam_app/app/app_launch/auth/data/data_sources/test_auth_data_source.dart';
-import 'package:mysam_app/app/app_launch/auth/data/models/api_user.dart';
-import 'package:mysam_app/app/app_launch/auth/data/models/login_method.dart';
-import 'package:mysam_app/app/app_launch/auth/data/models/user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/data_sources/remote_auth_data_source.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/mapper/api_user_to_user_mapper.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/login_method.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_role_type.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
 /// This is the repository where we should handle the data and return it to the controller.
 class AuthRepository {
-  final TestAuthDataSource _dataSource = TestAuthDataSource();
+  final RemoteAuthDataSource _remoteDataSource = RemoteAuthDataSource();
   final _auth0DataSource = Auth0AuthDataSource();
 
   final MyPreferenceManger _preferenceManger = MyPreferenceManger.instance;
@@ -22,11 +27,32 @@ class AuthRepository {
 
   AuthRepository._internal();
 
-  Future<NetworkResult<ApiUser>> loginViaAuth0({
+  Future<NetworkResult<User>> loginViaAuth0({
     LoginMethod method = LoginMethod.auth0Web,
+    bool saveUser = true,
   }) async {
-    final res = await _auth0DataSource.login(method: method);
-    return handleSavingUser(res);
+    try {
+      final res = await _auth0DataSource.login(method: method);
+
+      if (saveUser) {
+        return _handleSavingUser(result: res, loginMethod: method);
+      }
+
+      return res.mapDataAsyncInIsolate(
+        mapper: (data) {
+          return NetworkResult<User>.success(data.toUser());
+        },
+      );
+    } catch (e) {
+      Fimber.e('Error in loginViaAuth0: $e');
+      Sentry.captureException(e);
+      return const NetworkResult<User>.error(
+        UnableToProcessException(
+          errorMessage: AppTrans.unableToProcess,
+          statusCode: 400,
+        ),
+      );
+    }
   }
 
   Future<bool> get isAuthenticatedViaAuth0 async {
@@ -34,23 +60,13 @@ class AuthRepository {
     return res;
   }
 
-  Future<bool> isLoggedIn({bool checkAuth0Credentials = true}) async {
-    if (checkAuth0Credentials) {
-      return await _auth0DataSource.isLoggedIn && _preferenceManger.isLoggedIn;
-    }
-    return _preferenceManger.isLoggedIn;
-  }
-
-  Future<bool> isLoggedOut({bool checkAuth0Credentials = true}) async =>
-      !(await isLoggedIn(checkAuth0Credentials: checkAuth0Credentials));
-
-  Future<ApiUser?> getAuth0AuthedUser() async {
+  Future<User?> getAuth0AuthedUser() async {
     final res = await _auth0DataSource.getCredentials();
     if (res != null) {
-      final user = ApiUser(
-        jwt: res.accessToken,
-        user: User(
-          id: res.idToken,
+      final user = User(
+        jwtToken: res.accessToken,
+        info: UserInfo(
+          documentId: res.idToken,
           username: res.idToken,
           email: res.idToken,
           provider: res.idToken,
@@ -61,80 +77,133 @@ class AuthRepository {
     return null;
   }
 
-  Future<NetworkResult<ApiUser>> loginViaEmailAndPassword({
+  Future<NetworkResult<User>> loginViaEmailAndPassword({
     required String email,
     required String password,
   }) async {
-    final NetworkResult<ApiUser> result =
-        await _auth0DataSource.loginByEmailAndPassword(
-      userNameOrEmail: email,
-      password: password,
-    );
-    return handleSavingUser(result);
+    try {
+      final NetworkResult<ApiUser> result = await _remoteDataSource.login(
+        email: email,
+        password: password,
+      );
+      return _handleSavingUser(result: result, loginMethod: LoginMethod.email);
+    } catch (e) {
+      Fimber.e('Error in loginViaEmailAndPassword: $e');
+      Sentry.captureException(e);
+      return const NetworkResult<User>.error(
+        UnableToProcessException(
+          errorMessage: AppTrans.unableToProcess,
+          statusCode: 400,
+        ),
+      );
+    }
   }
 
-  Future<NetworkResult<ApiUser>> register({
-    required String username,
+  Future<NetworkResult<User>> register({
+    required String firstName,
+    required String lastName,
     required String email,
     required String password,
   }) async {
-    final res = await _dataSource.register(
-      email: email,
-      password: password,
-    );
-    return handleSavingUser(res);
+    try {
+      final res = await _remoteDataSource.register(
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      );
+      return _handleSavingUser(result: res, loginMethod: LoginMethod.email);
+    } catch (e) {
+      Fimber.e('Error in register: $e');
+      Sentry.captureException(e);
+      return const NetworkResult<User>.error(
+        UnableToProcessException(
+          errorMessage: AppTrans.unableToProcess,
+          statusCode: 400,
+        ),
+      );
+    }
   }
 
-  Future<NetworkResult<ApiUser>> otpLogin({
-    required String phoneNumber,
+  Future<bool> saveApiUser({
+    required ApiUser user,
+    LoginMethod? loginMethod,
   }) async {
-    final result = await _dataSource.otpLogin(
-      phoneNumber: phoneNumber,
-    );
-    return handleSavingUser(result);
+    final String token = user.jwt;
+    final ApiUserInfo info = user.userInfo;
+
+    await _preferenceManger.saveToken(token);
+    await _preferenceManger.saveUser(info);
+    final role = user.role?.type != null
+        ? UserRoleType.fromString(user.role!.type)
+        : null;
+    await _preferenceManger.saveUserRoleType(role);
+    if (loginMethod != null) {
+      await _preferenceManger.saveLoginMethod(loginMethod);
+    }
+    return true;
   }
 
-  Future<NetworkResult<ApiUser>> verifyOtpCode({required String pin}) async {
-    final NetworkResult<ApiUser> result = await _dataSource.verifyOtpCode(
-      pin: pin,
-    );
-    return handleSavingUser(result);
+  Future<bool> saveUser({
+    required User user,
+    LoginMethod? loginMethod,
+  }) async {
+    try {
+      final ApiUser apiUser =
+          await user.mapAsyncInIsolate((e) => e.toApiUser());
+      return saveApiUser(user: apiUser, loginMethod: loginMethod);
+    } catch (e) {
+      Sentry.captureException(e);
+
+      return false;
+    }
   }
 
-  NetworkResult<ApiUser> handleSavingUser(NetworkResult<ApiUser> result) {
-    result.when(
-      success: (ApiUser userData) async {
-        final String? token = userData.jwt;
-        final User? user = userData.user;
-        if (token != null) {
-          await _preferenceManger.saveToken(token);
-          if (user != null) {
-            await _preferenceManger.saveUser(user);
-          }
-        } else {
-          return const NetworkResult.error(
-            EmptyResponseException(
-              errorMessage: AppTrans.emptyResponse,
-              statusCode: 400,
-            ),
+  Future<NetworkResult<User>> _handleSavingUser({
+    required NetworkResult<ApiUser> result,
+    required LoginMethod loginMethod,
+  }) async {
+    try {
+      if (result is NetworkError<ApiUser>) {
+        return NetworkResult.error(result.error);
+      } else {
+        final data = (result as NetworkSuccess<ApiUser>).data;
+        final bool saved =
+            await saveApiUser(user: data, loginMethod: loginMethod);
+        if (!saved) {
+          return const NetworkResult<User>.error(
+            UnexpectedErrorException(errorMessage: AppTrans.emptyResponse),
           );
         }
-      },
-      error: (NetworkException exception) {},
-    );
 
-    return result;
+        return result.mapDataAsyncInIsolate(
+          mapper: (data) async {
+            return NetworkResult.success(data.toUser());
+          },
+        );
+      }
+    } catch (e) {
+      Fimber.e('Error in saving user: $e');
+      Sentry.captureException(e);
+      return const NetworkResult<User>.error(
+        UnableToProcessException(
+          errorMessage: AppTrans.unableToProcess,
+          statusCode: 400,
+        ),
+      );
+    }
   }
 
-  Future<void> logout({bool logOutFromAuth0 = true}) async {
-    await _preferenceManger.signOut();
-    await Future.delayed(const Duration(seconds: 2));
-    if (logOutFromAuth0) {
-      try {
-        await _auth0DataSource.logout();
-      } catch (e) {
-        Sentry.captureException(e);
-      }
-    }
+  Future<void> saveLoginInfo({
+    required String email,
+    required String password,
+  }) {
+    return _preferenceManger.saveLoginInfo(email: email, password: password);
+  }
+
+  Future<({String? email, String? password})> getLoginInfo() async {
+    final email = await _preferenceManger.getSavedEmail();
+    final password = await _preferenceManger.getSavedPassword();
+    return (email: email, password: password);
   }
 }

@@ -22,6 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
   final OutlinedBorder? shape;
 
   final double? width;
+  final FontWeight? fontWeight;
 
   const CustomElevatedButton({
     this.margin,
@@ -38,17 +39,16 @@ class CustomElevatedButton extends StatelessWidget {
     this.shape,
     this.labelFont,
     this.color,
+    this.fontWeight,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: margin ??
-          EdgeInsets.only(
-            right: 14.w,
-            left: 14.w,
-            top: 11.h,
-            bottom: 11.h,
+          EdgeInsets.symmetric(
+            horizontal: 12.r,
+            vertical: 12.r,
           ),
       width: width,
       child: PlatformElevatedButton(
@@ -60,8 +60,8 @@ class CustomElevatedButton extends StatelessWidget {
             : null,
         padding: padding ??
             EdgeInsets.symmetric(
-              horizontal: 8.w,
-              vertical: 16.h,
+              horizontal: 12.r,
+              vertical: 20.r,
             ),
         material: (ctx, _) => MaterialElevatedButtonData(
           style: ElevatedButton.styleFrom(
@@ -69,24 +69,24 @@ class CustomElevatedButton extends StatelessWidget {
                 context.colors.disabledButtonBackgroundColor,
             padding: padding ??
                 EdgeInsets.symmetric(
-                  horizontal: 8.w,
-                  vertical: 18.h,
+                  horizontal: 12.r,
+                  vertical: 20.r,
                 ),
             shape: shape ??
                 RoundedRectangleBorder(
                   borderRadius: borderRadius ?? Style.buttonBorderRadius,
                 ),
-            backgroundColor: color ?? context.colors.primary,
+            backgroundColor: color ?? context.colors.onSurface,
           ),
         ),
-        color: color ?? context.colors.primary,
+        color: color ?? context.colors.onSurface,
         cupertino: (ctx, _) => CupertinoElevatedButtonData(
           disabledColor: disabledBackground ??
               context.colors.disabledButtonBackgroundColor,
           padding: padding ??
               EdgeInsets.symmetric(
-                horizontal: 8.w,
-                vertical: 18.h,
+                horizontal: 12.r,
+                vertical: 20.r,
               ),
           borderRadius: borderRadius ?? Style.buttonBorderRadius,
         ),
@@ -117,10 +117,10 @@ class CustomElevatedButton extends StatelessWidget {
           child: CustomText(
             label ?? '',
             color: isEnabled
-                ? context.colors.onPrimary
+                ? context.colors.surface
                 : context.colors.subtitleTextColor,
             fontSize: fontSize,
-            fontWeight: FontWeight.w400,
+            fontWeight: fontWeight ?? FontWeight.w400,
             font: labelFont,
             isTranslatable: isLabelTranslatable,
           ),
@@ -133,7 +133,7 @@ class CustomElevatedButton extends StatelessWidget {
             width: 20.r,
             child: CenterLoading.adaptive(
               color: isEnabled
-                  ? context.colors.onPrimary
+                  ? context.colors.surface
                   : context.colors.subtitleTextColor,
               radius: 10.r,
               strokeWidth: 3.r,

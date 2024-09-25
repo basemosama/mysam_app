@@ -5,7 +5,13 @@ import 'package:playx/playx.dart';
 class PlaceholderImageWidget extends StatelessWidget {
   final String? path;
   final EdgeInsetsGeometry? padding;
-  const PlaceholderImageWidget({super.key, this.path, this.padding});
+  final Color? color;
+  const PlaceholderImageWidget({
+    super.key,
+    this.path,
+    this.padding,
+    this.color,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,6 +19,7 @@ class PlaceholderImageWidget extends StatelessWidget {
           padding ?? EdgeInsets.symmetric(horizontal: 8.0.r, vertical: 8.0.r),
       child: ImageViewer.svgAsset(
         path ?? Assets.images.placeholder,
+        color: color,
       ),
     );
   }

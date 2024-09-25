@@ -5,25 +5,30 @@ class BuildLoginRegisterNowWidget extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: 10.h,
-      ),
-      child: InkWell(
-        onTap: controller.navigateToRegister,
+    return InkWell(
+      onTap: controller.navigateToRegister,
+      borderRadius: BorderRadius.circular(8.r),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 8.r,
+        ),
         child: RichText(
           text: TextSpan(
             text: AppTrans.dontHaveAccountText.tr(context: context),
             style: TextStyle(
-              color: context.colors.onSurface,
-              fontSize: 14.sp,
+              color: context.colors.subtitleTextColor,
+              fontSize: 16.sp,
+              fontFamily: fontFamily,
+              fontWeight: FontWeight.w500,
             ),
             children: <TextSpan>[
               TextSpan(
                 text: AppTrans.registerNow.tr(context: context),
                 style: TextStyle(
-                  color: context.colors.onSurface,
-                  fontSize: 14.sp,
+                  color: context.colors.primary,
+                  fontSize: 16.sp,
+                  fontFamily: fontFamily,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

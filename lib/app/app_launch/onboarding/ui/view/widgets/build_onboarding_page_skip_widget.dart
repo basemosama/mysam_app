@@ -5,13 +5,21 @@ class BuildOnboardingPageSkipWidget extends GetView<OnBoardingController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return CustomElevatedButton(
-        width: context.width * .35,
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
-        onPressed: controller.handleNextOrSkip,
-        label: controller.isCompleted.value ? AppTrans.skip : AppTrans.next,
-      );
-    });
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 12.r, horizontal: 12.r),
+      child: Obx(() {
+        return AnimatedOpacity(
+          opacity: controller.isCompleted.value ? 0.0 : 1.0,
+          duration: 250.milliseconds,
+          child: TextButton(
+            onPressed: controller.handleSkip,
+            child: CustomText(
+              AppTrans.skip,
+              color: context.colors.onSurface,
+            ),
+          ),
+        );
+      }),
+    );
   }
 }

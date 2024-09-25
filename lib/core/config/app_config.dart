@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mysam_app/app/wishlist/data/datasource/db/local_wishlist_data_source.dart';
-import 'package:mysam_app/core/database/app_database.dart';
 import 'package:mysam_app/core/network/api_client.dart';
 import 'package:mysam_app/core/preferences/env_manger.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
+import 'package:mysam_app/core/utils/app_utils.dart';
 import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
 import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
@@ -16,22 +15,21 @@ class AppConfig extends PlayXAppConfig {
   Future<void> boot() async {
     //USED FOR DEBUGGING
     WidgetsFlutterBinding.ensureInitialized();
-    Fimber.plantTree(DebugTree());
+    if (kDebugMode) {
+      Fimber.plantTree(DebugTree(useColors: true));
+    }
     Get.put<MyPreferenceManger>(MyPreferenceManger());
     Get.put<EnvManger>(EnvManger());
     final PlayxNetworkClient client = await ApiClient.createApiClient();
     Get.put<PlayxNetworkClient>(client);
 
-    final database = await AppDatabase.create();
-
-    if (kDebugMode) {
-      database.runTestWebApp();
-    }
-
-    final localWishlistDataSource =
-        LocalWishlistDataSource(wishlistDao: database.wishlistDao);
-    Get.put<AppDatabase>(database);
-    Get.put<LocalWishlistDataSource>(localWishlistDataSource);
+    AppUtils.setupTimeAgoMessages();
+    // final database = await AppDatabase.create();
+    //
+    // if (kDebugMode) {
+    //   database.runTestWebApp();
+    // }
+    //
     Get.put<CustomNavigationDrawerController>(
       CustomNavigationDrawerController(),
     );

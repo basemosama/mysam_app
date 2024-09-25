@@ -59,9 +59,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>sms</string>
-      <string>tel</string>
+
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>The app might need access to gallery to upload custom images. </string>
+
+<key>NSCameraUsageDescription</key>
+        <string>The app might need access to camera to upload custom images. </string>
 </dict>
 </plist>

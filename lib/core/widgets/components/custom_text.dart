@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:mysam_app/core/models/icon_info.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:playx/playx.dart';
@@ -18,8 +19,7 @@ class CustomText extends StatelessWidget {
   final CustomTextStyle style;
   final TextStyle? textStyle;
   final String? font;
-  final IconData? icon;
-  final Color? iconColor;
+  final IconInfo? icon;
   final bool isTranslatable;
   final TextDecoration? decoration;
   const CustomText(
@@ -36,12 +36,11 @@ class CustomText extends StatelessWidget {
     this.font,
     this.isTranslatable = true,
     this.decoration,
-  })  : icon = null,
-        iconColor = null;
+  }) : icon = null;
 
   const CustomText.icon(
     this.text, {
-    required IconData this.icon,
+    this.icon,
     this.color,
     this.fontSize,
     this.fontWeight,
@@ -52,7 +51,6 @@ class CustomText extends StatelessWidget {
     this.style = CustomTextStyle.bodyLarge,
     this.textStyle,
     this.font,
-    this.iconColor,
     this.isTranslatable = true,
     this.decoration,
   });
@@ -87,9 +85,7 @@ class CustomText extends StatelessWidget {
           WidgetSpan(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 4.0.w),
-              child: Icon(
-                icon,
-                color: iconColor ?? color ?? context.colors.onSurface,
+              child: icon?.buildIconWidget(
                 size: 20.r,
               ),
             ),
@@ -140,14 +136,14 @@ enum CustomTextStyle {
       };
 
   FontWeight get fontWeight => switch (this) {
-        displayLarge => FontWeight.w400,
-        displayMedium => FontWeight.w400,
-        displaySmall => FontWeight.w400,
-        headlineLarge => FontWeight.w400,
-        headlineMedium => FontWeight.w400,
-        headlineSmall => FontWeight.w400,
-        titleLarge => FontWeight.w400,
-        titleMedium => FontWeight.w500,
+        displayLarge => FontWeight.w800,
+        displayMedium => FontWeight.w800,
+        displaySmall => FontWeight.w800,
+        headlineLarge => FontWeight.w800,
+        headlineMedium => FontWeight.w800,
+        headlineSmall => FontWeight.w800,
+        titleLarge => FontWeight.w700,
+        titleMedium => FontWeight.w700,
         titleSmall => FontWeight.w500,
         bodyLarge => FontWeight.w400,
         bodyMedium => FontWeight.w400,

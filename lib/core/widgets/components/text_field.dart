@@ -1,9 +1,12 @@
 // ignore_for_file: file_names
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/dimens/dimens.dart';
 import 'package:mysam_app/core/resources/style/style.dart';
+import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:playx/playx.dart';
 
 /// This is a custom text field to have same behavior on whole application.
@@ -47,11 +50,19 @@ class CustomTextField extends StatefulWidget {
   final EdgeInsets? scrollPadding;
 
   final Iterable<String>? autoFillHints;
+  final EdgeInsets? contentPadding;
+  final TextStyle? hintStyle;
+  final BorderRadius? borderRadius;
+  final double? borderWidth;
+  final void Function(String?)? onSubmitted;
+  final Duration? debounceDuration;
+  final bool debounceValidation;
 
   const CustomTextField({
     this.hint,
     this.maxLines = 1,
     this.minLines = 1,
+    this.hintStyle,
     this.onChanged,
     this.onTap,
     this.icon,
@@ -86,6 +97,12 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.scrollPadding,
     this.autoFillHints,
+    this.contentPadding,
+    this.borderRadius,
+    this.borderWidth,
+    this.onSubmitted,
+    this.debounceDuration,
+    this.debounceValidation = false,
   });
 
   @override
@@ -95,6 +112,8 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomFieldState extends State<CustomTextField> {
+  Timer? _debounceTimer;
+
   @override
   void initState() {
     super.initState();
@@ -103,10 +122,22 @@ class _CustomFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return OptimizedTextField(
-      hint: widget.hint,
+      hint: widget.hint?.tr(context: context),
+      hintStyle: widget.hintStyle,
       maxLines: widget.maxLines,
       minLines: widget.minLines,
-      onChanged: widget.onChanged,
+      onChanged: (value) {
+        if (widget.debounceDuration != null) {
+          if (_debounceTimer?.isActive ?? false) {
+            _debounceTimer?.cancel();
+          }
+          _debounceTimer = Timer(widget.debounceDuration!, () {
+            widget.onChanged?.call(value);
+          });
+        } else {
+          widget.onChanged?.call(value);
+        }
+      },
       onTap: widget.onTap,
       icon: widget.icon,
       type: widget.type,
@@ -116,6 +147,7 @@ class _CustomFieldState extends State<CustomTextField> {
       nextFocus: widget.nextFocus,
       scrollPadding: widget.scrollPadding,
       autoFillHints: widget.autoFillHints,
+      onSubmitted: widget.onSubmitted,
       prefix: widget.prefixIcon != null
           ? Padding(
               padding: EdgeInsets.symmetric(
@@ -140,7 +172,7 @@ class _CustomFieldState extends State<CustomTextField> {
               ),
             )
           : widget.suffix,
-      label: widget.label,
+      label: widget.label?.tr(context: context),
       read: widget.read,
       obscureText: widget.obscureText,
       enabled: widget.enabled,
@@ -157,44 +189,71 @@ class _CustomFieldState extends State<CustomTextField> {
       borderColor: widget.borderColor,
       focusedBorderColor: widget.focusedBorderColor,
       formKey: widget.formKey,
-      onValidationChanged: widget.onValidationChanged,
+      onValidationChanged: (isValid) {
+        if (widget.onValidationChanged != null) {
+          if (widget.debounceValidation && widget.debounceDuration != null) {
+            if (_debounceTimer?.isActive ?? false) {
+              _debounceTimer?.cancel();
+            }
+            _debounceTimer = Timer(widget.debounceDuration!, () {
+              widget.onValidationChanged?.call(isValid);
+            });
+          } else {
+            widget.onValidationChanged?.call(isValid);
+          }
+        }
+      },
       textInputAction: widget.textInputAction,
       style: TextStyle(
         fontSize: Dimens.fieldTextSize,
         color: widget.textColor ?? context.colors.onSurface,
+        fontFamily: fontFamily,
       ),
       labelStyle: TextStyle(
         color: widget.labelColor ?? context.colors.onSurface,
         fontSize: Dimens.fieldTextSize,
+        fontFamily: fontFamily,
       ),
-      contentPadding: EdgeInsets.only(
-        top: 15.0.h,
-        bottom: 15.0.h,
-        right: 15.0.w,
-        left: 15.0.w,
-      ),
+      contentPadding: widget.contentPadding ??
+          EdgeInsets.only(
+            top: 15.0.r,
+            bottom: 15.0.r,
+            right: 15.0.r,
+            left: 15.0.r,
+          ),
       hintColor: widget.hintColor ?? PlayxColors.grey,
       enabledBorder: OutlineInputBorder(
-        borderRadius: Style.fieldBorderRadius,
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
         borderSide: BorderSide(
           color: widget.borderColor ?? PlayxColors.grey,
+          width: widget.borderWidth ?? 1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: widget.focusedBorderColor ?? PlayxColors.grey,
-          width: .5,
+          width: widget.borderWidth ?? 1,
         ),
-        borderRadius: Style.fieldBorderRadius,
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(color: widget.borderColor ?? PlayxColors.grey),
-        borderRadius: Style.fieldBorderRadius,
+        borderSide: BorderSide(
+          color: widget.borderColor ?? PlayxColors.grey,
+          width: widget.borderWidth ?? 1,
+        ),
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.red),
-        borderRadius: Style.fieldBorderRadius,
+        borderSide:
+            BorderSide(color: Colors.red, width: widget.borderWidth ?? 1),
+        borderRadius: widget.borderRadius ?? Style.fieldBorderRadius,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    super.dispose();
   }
 }

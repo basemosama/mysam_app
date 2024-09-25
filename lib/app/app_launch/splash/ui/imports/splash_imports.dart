@@ -1,14 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mysam_app/app/app_launch/auth/data/repo/auth_repository.dart';
+import 'package:mysam_app/app/profile/data/repository/profile_repository.dart';
 import 'package:mysam_app/core/navigation/app_navigation.dart';
+import 'package:mysam_app/core/network/helper/api_helper.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/assets/assets.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
 import 'package:mysam_app/core/resources/translation/app_locale_config.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/widgets/components/custom_text.dart';
+import 'package:mysam_app/core/widgets/custom_loading.dart';
+import 'package:mysam_app/core/widgets/navigation/bottom_nav/bottom_navigation/ui/imports/bottom_navigation_imports.dart';
 import 'package:playx/playx.dart';
 
 part '../bindings/splash_binding.dart';

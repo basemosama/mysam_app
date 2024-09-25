@@ -32,25 +32,28 @@ class SettingsController extends GetxController {
     XTheme theme, {
     BuildContext? context,
   }) async {
+    final bottomNavController = Get.find<CustomBottomNavigationController>();
+    bottomNavController.showBottomNav.value = false;
     PlayxNavigation.pop();
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 300));
     await PlayxTheme.updateTo(
       theme,
-      animation: PlayxThemeClipperAnimation(),
+      animation: PlayxThemeAnimation.clipper(),
     );
     currentTheme.value = theme;
+    bottomNavController.showBottomNav.value = true;
   }
 
   Future<void> handleLogOutTap() async {
     drawerController.updateLoginStatus(isLoggingOut: true);
     try {
-      await AuthRepository().logout(logOutFromAuth0: false);
+      await ApiHelper.instance.logout();
     } catch (e) {
       Alert.error(message: e.toString());
     }
     await Future.delayed(const Duration(milliseconds: 200));
-    AppNavigation.navigateToSplash();
     drawerController.updateLoginStatus(isLoggingOut: false);
+    AppNavigation.navigateToSplash();
   }
 
   Future<void> showSettingsModalSheet(

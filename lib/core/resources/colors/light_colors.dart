@@ -8,12 +8,21 @@ class LightColors extends AppColors {
   // );
 
   static final ColorScheme scheme = SeedColorScheme.fromSeeds(
-    primaryKey: Colors.white,
-    tones: FlexTones.chroma(Brightness.light)
+    primaryKey: AppColors.primaryKey,
+    tones: FlexTones.material(Brightness.light)
         .onMainsUseBW()
         .onSurfacesUseBW()
         .surfacesUseBW(),
-  );
+  ).copyWith(
+      // primary: Colors.black,
+      // secondary: Colors.grey[800],
+      // surface: Colors.white,
+      // onPrimary: Colors.white,
+      // onSecondary: Colors.white,
+      // onSurface: Colors.black,
+      // outline: Colors.grey[400],
+      // primaryContainer: Colors.black,
+      );
 
   LightColors() : super(colorScheme: scheme);
 
@@ -24,7 +33,7 @@ class LightColors extends AppColors {
   Color? get chipBackgroundColor => Colors.grey;
 
   @override
-  Color? get subtitleTextColor => Colors.grey[600];
+  Color? get subtitleTextColor => const Color(0xFF808080);
 
   @override
   Color? get buttonBackgroundColor => primary;
@@ -52,4 +61,31 @@ class LightColors extends AppColors {
 
   @override
   Color get onBackgroundGradient => onSurface;
+
+  @override
+  Color get filledColor => const Color(0xFFE5E5E5);
+
+  @override
+  Color get pendingBackgroundColor => const Color(0xFFFDE047);
+
+  @override
+  Color get confirmedBackgroundColor => const Color(0xFF22C55E);
+
+  @override
+  Color get declinedBackgroundColor => Colors.red[300]!;
+
+  @override
+  Color get onPendingBackgroundColor => Colors.black;
+
+  @override
+  Color get onConfirmedBackgroundColor => Colors.black;
+
+  @override
+  Color get onDeclinedBackgroundColor => Colors.black;
+
+  @override
+  Color get primaryVariant => const Color(0XFFE8DEF8);
+
+  @override
+  Color get onPrimaryVariant => Colors.black;
 }

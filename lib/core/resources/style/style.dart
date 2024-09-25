@@ -4,13 +4,13 @@ import 'package:playx/playx.dart';
 abstract class Style {
   Style._();
 
-  static BorderRadius featureChipBorderRadius = BorderRadius.circular(16.r);
+  static BorderRadius featureChipBorderRadius = BorderRadius.circular(8.r);
 
   static BorderRadius fieldBorderRadius = BorderRadius.circular(16.r);
 
   static BorderRadius dialogBorderRadius = BorderRadius.circular(16.r);
 
-  static BorderRadius buttonBorderRadius = BorderRadius.circular(30.r);
+  static BorderRadius buttonBorderRadius = BorderRadius.circular(12.r);
 
   static RoundedRectangleBorder featureChipRoundedRectangleBorder =
       RoundedRectangleBorder(

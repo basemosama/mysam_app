@@ -8,7 +8,14 @@ class BuildLoginButtonWidget extends GetView<LoginController> {
     return Obx(() {
       return CustomElevatedButton(
         onPressed: controller.isFormValid.value ? controller.login : null,
-        label: AppTrans.loginText,
+        child: CustomText(
+          AppTrans.loginText,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w700,
+          color: controller.isFormValid.value
+              ? context.colors.onPrimary
+              : context.colors.subtitleTextColor,
+        ),
       );
     });
   }

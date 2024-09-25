@@ -11,11 +11,15 @@ import 'package:playx/playx.dart';
 class EmptyDataWidget extends OrientationWidget {
   final VoidCallback? onRetryClicked;
   final String? error;
+  final bool isScrollable;
+  final Color? errorColor;
 
   const EmptyDataWidget({
     super.key,
     this.onRetryClicked,
     this.error,
+    this.isScrollable = true,
+    this.errorColor,
   });
 
   @override
@@ -47,6 +51,7 @@ class EmptyDataWidget extends OrientationWidget {
                         textAlign: TextAlign.center,
                         fontWeight: FontWeight.w400,
                         fontSize: AppUtils.isMobile() ? 16.sp : 20.sp,
+                        color: errorColor,
                       ),
                     ),
                     if (onRetryClicked != null) ...[
@@ -74,45 +79,49 @@ class EmptyDataWidget extends OrientationWidget {
 
   @override
   Widget buildPortrait(BuildContext context) {
-    return Padding(
+    final child = Padding(
       padding: EdgeInsets.all(4.0.r),
-      child: OptimizedScrollView(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Lottie.asset(
-                Assets.animations.noDataAnimation,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Lottie.asset(
+              Assets.animations.noDataAnimation,
+            ),
+            SizedBox(
+              height: 6.r,
+            ),
+            Padding(
+              padding: EdgeInsets.all(4.0.r),
+              child: CustomText(
+                error ?? AppTrans.emptyResponse.tr(context: context),
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.w400,
+                fontSize: AppUtils.isMobile() ? 16.sp : 20.sp,
+                color: errorColor,
               ),
-              SizedBox(
-                height: 6.r,
-              ),
-              Padding(
-                padding: EdgeInsets.all(4.0.r),
-                child: CustomText(
-                  error ?? AppTrans.emptyResponse.tr(context: context),
-                  textAlign: TextAlign.center,
-                  fontWeight: FontWeight.w400,
-                  fontSize: AppUtils.isMobile() ? 16.sp : 20.sp,
-                ),
-              ),
-              if (onRetryClicked != null) ...[
-                SizedBox(
-                  height: AppUtils.isMobile() ? 4.r : 15.r,
-                ),
-                CustomElevatedButton(
-                  color: context.colors.primary,
-                  onPressed: onRetryClicked,
-                  label: AppTrans.retryText.tr(context: context),
-                ),
-              ],
+            ),
+            if (onRetryClicked != null) ...[
               SizedBox(
                 height: AppUtils.isMobile() ? 4.r : 15.r,
               ),
+              CustomElevatedButton(
+                color: context.colors.primary,
+                onPressed: onRetryClicked,
+                label: AppTrans.retryText.tr(context: context),
+              ),
             ],
-          ),
+            SizedBox(
+              height: AppUtils.isMobile() ? 4.r : 15.r,
+            ),
+          ],
         ),
       ),
     );
+    return isScrollable
+        ? OptimizedScrollView(
+            child: child,
+          )
+        : child;
   }
 }

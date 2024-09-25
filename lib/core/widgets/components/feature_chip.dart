@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mysam_app/core/models/icon_info.dart';
 import 'package:mysam_app/core/resources/style/style.dart';
+import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:playx/playx.dart';
 
 class FeatureChip extends StatelessWidget {
   final String? label;
-  final IconData? icon;
+  final IconInfo? icon;
   final String? svgIcon;
   final String? imageUrl;
   final Color? backgroundColor;
   final Color? color;
   final EdgeInsetsGeometry? padding;
+  final Widget? child;
+  final double? width;
+  final TextStyle? style;
 
   const FeatureChip({
     this.label,
@@ -19,6 +24,9 @@ class FeatureChip extends StatelessWidget {
     this.backgroundColor,
     this.padding,
     this.imageUrl,
+    this.child,
+    this.width,
+    this.style,
   });
 
   @override
@@ -28,62 +36,27 @@ class FeatureChip extends StatelessWidget {
       child: Padding(
         padding: padding ??
             EdgeInsets.symmetric(
-              horizontal: 2.w,
+              horizontal: 2.r,
             ),
         child: Chip(
           shape: Style.featureChipRoundedRectangleBorder,
-          label: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (icon != null ||
-                  svgIcon?.isNotEmpty == true ||
-                  imageUrl?.isNotEmpty == true) ...[
-                SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: icon != null
-                      ? IconViewer(
-                          icon: icon,
-                          iconColor: color,
-                          width: 16,
-                          height: 16,
-                          iconSize: 18,
-                        )
-                      : svgIcon?.isNotEmpty == true
-                          ? IconViewer.svg(svgIcon: svgIcon)
-                          : imageUrl?.isNotEmpty == true
-                              ? Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                      image: CachedNetworkImageProvider(
-                                        imageUrl!,
-                                      ),
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
+          label: SizedBox(
+            width: width,
+            child: child ??
+                CustomText.icon(
+                  label ?? '',
+                  icon: icon,
+                  color: color,
+                  textAlign: TextAlign.center,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  textStyle: style,
                 ),
-                SizedBox(
-                  width: 4.w,
-                ),
-              ],
-              Text(
-                label ?? '',
-                style: TextStyle(color: color),
-              ),
-            ],
           ),
           backgroundColor: backgroundColor,
-          padding: EdgeInsets.symmetric(
-            horizontal: 4.w,
-          ),
+          padding: EdgeInsets.zero,
           labelPadding:
-              padding ?? EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+              padding ?? EdgeInsets.symmetric(horizontal: 8.r, vertical: 2.r),
         ),
       ),
     );

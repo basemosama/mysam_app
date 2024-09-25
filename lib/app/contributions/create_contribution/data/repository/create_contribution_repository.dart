@@ -1,0 +1,34 @@
+import 'package:mysam_app/app/contributions/contributions/data/model/mapper/api_contribution_to_contribution_mapper.dart';
+import 'package:mysam_app/app/contributions/contributions/data/model/ui/contribution.dart';
+import 'package:mysam_app/app/contributions/create_contribution/data/datasource/create_contribution_datasource.dart';
+import 'package:mysam_app/core/network/helper/api_helper.dart';
+import 'package:mysam_app/core/utils/mapper_utilities.dart';
+import 'package:playx/playx.dart';
+
+class CreateContributionRepository {
+  static final CreateContributionRepository _instance =
+      CreateContributionRepository._internal();
+
+  factory CreateContributionRepository() {
+    return _instance;
+  }
+
+  CreateContributionRepository._internal();
+
+  final _datasource = CreateContributionDatasource();
+
+  Future<NetworkResult<Contribution>> createContribution({
+    required Contribution contribution,
+  }) async {
+    try {
+      final con =
+          await contribution.mapAsyncInIsolate((e) => e.toApiContribution());
+      final res = await _datasource.createContribution(contribution: con);
+      return res.mapDataAsyncInIsolate(
+        mapper: (e) => NetworkSuccess(e.toContribution()),
+      );
+    } catch (e) {
+      return ApiHelper.unableToProcessError();
+    }
+  }
+}

@@ -3,6 +3,125 @@
 /// for example we can get app name by using AppTrans.appName.tr
 // ignore: avoid_classes_with_only_static_members
 abstract class AppTrans {
+  AppTrans._();
+  static const String contributionCreatedSuccessfully =
+      'contributionCreatedSuccessfully';
+  static const cancel = 'cancel';
+  static const addImageLabel = 'addImageLabel';
+  static const captureImageLabel = 'captureImageLabel';
+  static const orLabel = 'orLabel';
+  static const addImageFromUrlLabel = 'addImageFromUrlLabel';
+  static const imageUrlHint = 'imageUrlHint';
+  static const imageUrlRequired = 'imageUrlRequired';
+  static const imagePickerFromUrlError = 'imagePickerFromUrlError';
+  static const String pending = 'pending';
+  static const String confirmed = 'confirmed';
+  static const String declined = 'declined';
+  static const String editProfileName = 'editProfileName';
+  static const String darkMode = 'darkMode';
+  static const String editPassword = 'editPassword';
+  static const String contributionAcceptedMessage =
+      'contributionAcceptedMessage';
+  static const String contributionDeclinedMessage =
+      'contributionDeclinedMessage';
+
+  static const String updatedProfileNameSuccessMessage =
+      'updatedProfileNameSuccessMessage';
+
+  static const String poemContributionDescriptionLabel =
+      'poemContributionDescriptionLabel';
+  static const String poemContributionHintLabel = 'poemContributionHintLabel';
+  static const String poemContributionDescriptionRequiredError =
+      'poemContributionDescriptionRequiredError';
+  static const String poemContributionBodyLabel = 'poemContributionBodyLabel';
+  static const String poemContributionBodyHint = 'poemContributionBodyHint';
+  static const String poemContributionBodyRequiredError =
+      'poemContributionBodyRequiredError';
+  static const String idiomContributionDescriptionLabel =
+      'idiomContributionDescriptionLabel';
+  static const String idiomContributionHintLabel = 'idiomContributionHintLabel';
+  static const String idiomContributionDescriptionRequiredError =
+      'idiomContributionDescriptionRequiredError';
+  static const String idiomContributionBodyLabel = 'idiomContributionBodyLabel';
+  static const String idiomContributionBodyHint = 'idiomContributionBodyHint';
+  static const String idiomContributionBodyRequiredError =
+      'idiomContributionBodyRequiredError';
+  static const String modernMeaningContributionLabel =
+      'modernMeaningContributionLabel';
+  static const String modernMeaningContributionHint =
+      'modernMeaningContributionHint';
+  static const String modernMeaningContributionRequiredError =
+      'modernMeaningContributionRequiredError';
+  static const String synonymsContributionLabel = 'synonymsContributionLabel';
+  static const String synonymsContributionHint = 'synonymsContributionHint';
+  static const String synonymsContributionRequiredError =
+      'synonymsContributionRequiredError';
+  static const String slangContributionLabel = 'slangContributionLabel';
+  static const String slangContributionHint = 'slangContributionHint';
+  static const String slangContributionRequiredError =
+      'slangContributionRequiredError';
+  static const String photoContributionLabel = 'photoContributionLabel';
+  static const String photoContributionRequiredError =
+      'photoContributionRequiredError';
+  static const String photoContributionHint = 'photoContributionHint';
+
+  static const String chooseContributionType = 'chooseContributionType';
+  static const String qaContribution = 'qaContribution';
+  static const String poemContribution = 'poemContribution';
+  static const String idiomContribution = 'idiomContribution';
+  static const String synonymsContribution = 'synonymsContribution';
+  static const String modernMeaningContribution = 'modernMeaningContribution';
+  static const String slangContribution = 'slangContribution';
+  static const String photoContribution = 'photoContribution';
+  static const String nameLabel = 'nameLabel';
+  static const String nameHint = 'nameHint';
+  static const String nameRequired = 'nameRequired';
+  static const String firstNameLabel = 'firstNameLabel';
+  static const String firstNameHint = 'firstNameHint';
+  static const String firstNameRequired = 'firstNameRequired';
+  static const String keywordTooltip = 'keywordTooltip';
+  static const String shouldContainRootLettersError =
+      'shouldContainRootLettersError';
+  static const String shouldContainsKeywordError = 'shouldContainsKeywordError';
+
+  static const String lastNameLabel = 'lastNameLabel';
+  static const String lastNameHint = 'lastNameHint';
+  static const String lastNameRequired = 'lastNameRequired';
+
+  static const String rootWordLabel = 'rootWordLabel';
+  static const String keywordLabel = 'keywordLabel';
+  static const String keywordWeightLabel = 'keywordWeightLabel';
+  static const String keywordTypeLabel = 'keywordTypeLabel';
+  static const String verbLabel = 'verbLabel';
+  static const String nounLabel = 'nounLabel';
+  static const String keywordPropertiesLabel = 'keywordPropertiesLabel';
+  static const String questionLabel = 'questionLabel';
+  static const String answerLabel = 'answerLabel';
+  static const String topicLabel = 'topicLabel';
+  static const String descriptionLabel = 'descriptionLabel';
+  static const String synonymsLabel = 'synonymsLabel';
+
+  static const String rootWordHint = 'rootWordHint';
+  static const String keywordHint = 'keywordHint';
+  static const String keywordWeightHint = 'keywordWeightHint';
+  static const String keywordTypeHint = 'keywordTypeHint';
+  static const String verbHint = 'verbHint';
+  static const String nounHint = 'nounHint';
+  static const String keywordPropertiesHint = 'keywordPropertiesHint';
+  static const String questionHint = 'questionHint';
+  static const String answerHint = 'answerHint';
+  static const String topicHint = 'topicHint';
+  static const String descriptionHint = 'descriptionHint';
+  static const String synonymsHint = 'synonymsHint';
+  static const String keywordRequiredError = 'keywordRequiredError';
+  static const String keywordWeightRequiredError = 'keywordWeightRequiredError';
+  static const String keywordTypeRequiredError = 'keywordTypeRequiredError';
+  static const String questionRequiredError = 'questionRequiredError';
+  static const String answerRequiredError = 'answerRequiredError';
+  static const String topicRequiredError = 'topicRequiredError';
+  static const String descriptionRequiredError = 'descriptionRequiredError';
+  static const String synonymsRequiredError = 'synonymsRequiredError';
+
   static const appName = 'appName';
   static const requestCancelled = 'requestCancelled';
   static const unauthorizedRequest = 'unauthorizedRequest';
@@ -160,4 +279,47 @@ abstract class AppTrans {
   static const loginPrompt = 'loginPrompt';
 
   static const loginTitle = 'loginTitle';
+
+  static const emailOrPasswordIncorrect = 'emailOrPasswordIncorrect';
+
+  static const continueWithSocial = 'continueWithSocial';
+
+  static const registerSubtitle = 'registerSubtitle';
+
+  static const registerTitle = 'registerTitle';
+
+  static const registeringText = 'registeringText';
+
+  static const contributions = 'contributions';
+
+  static const profile = 'profile';
+
+  static const searchRootsHint = 'searchRootsHint';
+
+  static const noRootsFound = 'noRootsFound';
+
+  static const noRootContributionsYet = 'noRootContributionsYet';
+
+  static String saveLoginInfo = 'saveLoginInfo';
+
+  static String agreeToTerms = 'agreeToTerms';
+
+  static const loading = 'loading';
+
+  static const unknown = 'unknown';
+
+  static const contributionDetailsLabel = 'contributionDetailsLabel';
+
+  static String contributionReceived = 'contributionReceived';
+
+  static const myContributions = 'myContributions';
+
+  static const contributionStatusAll = 'contributionStatusAll';
+
+  static const noContributionsFound = 'noContributionsFound';
+
+  static const contributionEditedSuccessfully =
+      'contributionEditedSuccessfully';
+
+  static const reviews = 'reviews';
 }

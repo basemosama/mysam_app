@@ -11,6 +11,7 @@ class CustomScaffold extends StatelessWidget {
   final PlatformAppBar? appBar;
   final Widget? floatingActionButton;
   final AppBarLeadingType leading;
+  final Widget? leadingWidget;
   final bool useSafeArea;
   final bool includeThemeSwitchingArea;
 
@@ -21,6 +22,7 @@ class CustomScaffold extends StatelessWidget {
     this.appBar,
     this.floatingActionButton,
     this.leading = AppBarLeadingType.none,
+    this.leadingWidget,
     this.useSafeArea = true,
     this.includeThemeSwitchingArea = true,
     super.key,
@@ -45,8 +47,12 @@ class CustomScaffold extends StatelessWidget {
             title: title ?? AppTrans.appName,
             context: context,
             leading: leading,
+            leadingWidget: leadingWidget,
           ),
       body: useSafeArea ? SafeArea(child: scaffoldChild) : scaffoldChild,
+      material: (context, platform) => MaterialScaffoldData(
+        floatingActionButton: floatingActionButton,
+      ),
       backgroundColor: context.colors.surface,
     );
 

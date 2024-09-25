@@ -63,13 +63,6 @@ android {
         multiDexEnabled true
 
     }
-    // Tell Gradle to exclude the objectbox-android dependency
-    // that is added by objectbox_flutter_libs for debug builds.
-    configurations {
-        debugImplementation {
-            exclude group: 'io.objectbox', module: 'objectbox-android'
-        }
-    }
 
 
     signingConfigs {
@@ -118,7 +111,6 @@ dependencies {
     // e.g. check https://github.com/objectbox/objectbox-dart/releases
     // Warning: when ObjectBox for Dart updates check if <version>
     // needs to be updated.
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.0.0")
     implementation 'com.android.support:multidex:1.0.1'
 
 }

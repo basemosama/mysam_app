@@ -17,71 +17,40 @@ PlatformNavBar buildCustomNavigationBar({
     },
     material3: (context, platform) {
       return MaterialNavigationBarData(
-          indicatorColor: context.colors.primary,
-          // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-          // backgroundColor: context.colors.surface,
-          items: [
-            NavigationDestination(
-              icon: Icon(
-                Icons.dashboard,
-                color: controller.currentIndex == 0
-                    ? context.colors.onPrimary
-                    : context.colors.onSurface,
+        indicatorColor: context.colors.secondaryContainer,
+        // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        backgroundColor: context.colors.surface,
+        items: controller.items
+            .mapWithIndex(
+              (index, item) => NavigationDestination(
+                icon: item.iconWidget ??
+                    item.icon.buildIconWidget(
+                      color: controller.currentIndex == index
+                          ? context.colors.onSecondaryContainer
+                          : context.colors.subtitleTextColor,
+                    ),
+                label: item.label.tr(context: context),
               ),
-              label: AppTrans.dashboard.tr(context: context),
-            ),
-            NavigationDestination(
-              icon: Icon(
-                Icons.favorite_border,
-                color: controller.currentIndex == 1
-                    ? context.colors.onPrimary
-                    : context.colors.onSurface,
-              ),
-              label: AppTrans.wishlist.tr(context: context),
-            ),
-            NavigationDestination(
-              icon: Icon(
-                Icons.settings,
-                color: controller.currentIndex == 2
-                    ? context.colors.onPrimary
-                    : context.colors.onSurface,
-              ),
-              label: AppTrans.settings.tr(context: context),
-            ),
-          ]);
+            )
+            .toList(),
+      );
     },
     cupertino: (context, _) {
       return CupertinoTabBarData(
         activeColor: context.colors.primary,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.dashboard,
-              color: controller.currentIndex == 0
-                  ? context.colors.primary
-                  : context.colors.onSurface,
-            ),
-            label: AppTrans.dashboard.tr(context: context),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite_border,
-              color: controller.currentIndex == 1
-                  ? context.colors.onPrimary
-                  : context.colors.onSurface,
-            ),
-            label: AppTrans.wishlist.tr(context: context),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              color: controller.currentIndex == 2
-                  ? context.colors.primary
-                  : context.colors.onSurface,
-            ),
-            label: AppTrans.settings.tr(context: context),
-          ),
-        ],
+        items: controller.items
+            .mapWithIndex(
+              (index, item) => BottomNavigationBarItem(
+                icon: item.iconWidget ??
+                    item.icon.buildIconWidget(
+                      color: controller.currentIndex == index
+                          ? context.colors.primary
+                          : context.colors.subtitleTextColor,
+                    ),
+                label: item.label.tr(context: context),
+              ),
+            )
+            .toList(),
       );
     },
   );

@@ -12,6 +12,7 @@ class SplashBinding extends PlayxBinding {
   Future<void> onExit(
     BuildContext context,
   ) async {
+    await Future.delayed(const Duration(milliseconds: 500));
     if (Get.isRegistered<SplashController>()) {
       Get.delete<SplashController>();
     }

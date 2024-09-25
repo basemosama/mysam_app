@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/navigation/navigation_utils.dart';
@@ -23,26 +21,10 @@ enum AppBarLeadingType {
         return Builder(
           builder: (context) {
             return IconButton(
-              icon: GetPlatform.isIOS && context.locale.languageCode == 'ar'
-                  ? Transform(
-                      transform: Matrix4.identity()..rotateZ(pi),
-                      alignment: Alignment.center,
-                      // Center point as half the size of the child
-                      child: Icon(
-                        GetPlatform.isIOS
-                            ? CupertinoIcons.back
-                            : Icons.arrow_back,
-                        color: context.colors.primary,
-                        textDirection:
-                            GetPlatform.isIOS ? TextDirection.ltr : null,
-                      ),
-                    )
-                  : Icon(
-                      GetPlatform.isIOS
-                          ? CupertinoIcons.back
-                          : Icons.arrow_back,
-                      color: context.colors.primary,
-                    ),
+              icon: Icon(
+                GetPlatform.isIOS ? CupertinoIcons.back : Icons.arrow_back,
+                color: context.colors.onSurface,
+              ),
               onPressed: () {
                 PlayxNavigation.pop();
               },
@@ -90,12 +72,13 @@ enum AppBarLeadingType {
 PlatformAppBar buildAppBar({
   required String title,
   AppBarLeadingType leading = AppBarLeadingType.drawerOrRail,
+  Widget? leadingWidget,
   required BuildContext context,
 }) {
   return PlatformAppBar(
     // toolbarHeight: dimens.appBarHeight,
     automaticallyImplyLeading: false,
-    leading: leading.buildWidget(context),
+    leading: leadingWidget ?? leading.buildWidget(context),
     title: CustomText(
       title,
       fontSize: 16,

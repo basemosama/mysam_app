@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:mysam_app/core/resources/theme/dark_theme.dart';
 import 'package:playx/playx.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 /// Class for app utilities that will be used in the app.
 class AppUtils {
@@ -25,6 +26,27 @@ class AppUtils {
     final double height = ScreenUtil().screenHeight;
     final shortestSide = min(width.abs(), height.abs());
     return shortestSide < 600;
+  }
+
+  static String getFormattedTimeAgo({DateTime? time}) {
+    if (time == null) {
+      return '';
+    }
+    return timeago.format(
+      time,
+      locale: PlayxLocalization.currentLocale.toLanguageTag(),
+    );
+  }
+
+  static void setupTimeAgoMessages() {
+    timeago.setLocaleMessages(
+      'ar',
+      timeago.ArMessages(),
+    );
+    timeago.setLocaleMessages(
+      'en',
+      timeago.EnMessages(),
+    );
   }
 }
 
