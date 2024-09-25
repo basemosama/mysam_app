@@ -44,7 +44,8 @@ sealed class EditContributionController extends GetxController {
 
   Worker? _mainFormValidator;
 
-  final isLoading = false.obs;
+  CustomNavigationDrawerController get _drawerController =>
+      Get.find<CustomNavigationDrawerController>();
 
   bool get isNextOrFinishButtonEnabled {
     switch (currentStepIndex.value) {
@@ -107,10 +108,13 @@ sealed class EditContributionController extends GetxController {
 
   void handleBack() {
     if (currentStepIndex.value == 0 || isReceivedContributionStep.value) {
-      PlayxNavigation.pop();
       if (Get.isRegistered<RootDetailsController>()) {
         Get.find<RootDetailsController>().refreshRoot();
       }
+      if (Get.isRegistered<ReviewDetailsController>()) {
+        Get.find<ReviewDetailsController>().refreshContribution();
+      }
+      PlayxNavigation.pop();
     } else {
       currentStepIndex.value--;
       pageController.animateToPage(
@@ -127,7 +131,7 @@ sealed class EditContributionController extends GetxController {
   Contribution createContributionModel();
 
   Future<void> editContribution() async {
-    isLoading.value = true;
+    _drawerController.updateLoadingStatus(isLoading: true);
     final contribution = createContributionModel();
     final res = await _repository.editContribution(contribution: contribution);
     res.when(
@@ -136,13 +140,13 @@ sealed class EditContributionController extends GetxController {
           message: AppTrans.contributionEditedSuccessfully
               .tr(args: [contribution.relatedWord.word]),
         );
-        isLoading.value = false;
+        _drawerController.updateLoadingStatus(isLoading: false);
 
         isReceivedContributionStep.value = true;
       },
       error: (error) {
         Alert.error(message: error.message);
-        isLoading.value = false;
+        _drawerController.updateLoadingStatus(isLoading: false);
       },
     );
   }

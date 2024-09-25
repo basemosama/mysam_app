@@ -39,7 +39,8 @@ sealed class CreateContributionController extends GetxController {
 
   Worker? _mainFormValidator;
 
-  final isLoading = false.obs;
+  CustomNavigationDrawerController get _drawerController =>
+      Get.find<CustomNavigationDrawerController>();
 
   bool get isNextOrFinishButtonEnabled {
     switch (currentStepIndex.value) {
@@ -114,7 +115,8 @@ sealed class CreateContributionController extends GetxController {
   Contribution createContributionModel();
 
   Future<void> createContribution() async {
-    isLoading.value = true;
+    _drawerController.updateLoadingStatus(isLoading: true);
+
     final contribution = createContributionModel();
     final res =
         await _repository.createContribution(contribution: contribution);
@@ -124,13 +126,13 @@ sealed class CreateContributionController extends GetxController {
           message: AppTrans.contributionCreatedSuccessfully
               .tr(args: [contribution.relatedWord.word]),
         );
-        isLoading.value = false;
+        _drawerController.updateLoadingStatus(isLoading: false);
 
         isReceivedContributionStep.value = true;
       },
       error: (error) {
         Alert.error(message: error.message);
-        isLoading.value = false;
+        _drawerController.updateLoadingStatus(isLoading: false);
       },
     );
   }

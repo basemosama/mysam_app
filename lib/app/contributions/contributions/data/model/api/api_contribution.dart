@@ -68,7 +68,6 @@ class ApiContribution {
         data,
       );
     }
-
     return ApiContribution(
       id: asIntOrNull(json as Map<String, dynamic>, 'id')!,
       documentId: asStringOrNull(json, 'documentId')!,

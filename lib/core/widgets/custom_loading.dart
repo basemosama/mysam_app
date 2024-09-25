@@ -6,8 +6,12 @@ import 'package:playx/playx.dart';
 
 class CustomLoading extends StatelessWidget {
   final EdgeInsetsGeometry margin;
+  final double? height;
+  final double? size;
   const CustomLoading({
     this.margin = const EdgeInsets.only(bottom: Dimens.bottomNavBarHeight),
+    this.height,
+    this.size,
   });
 
   @override
@@ -17,11 +21,11 @@ class CustomLoading extends StatelessWidget {
     // );
     return Center(
       child: Container(
-        height: context.height * .2,
+        height: height ?? context.height * .2,
         margin: margin,
         child: SpinKitPouringHourGlassRefined(
           color: context.colors.primary,
-          size: context.height * .1,
+          size: size ?? context.height * .1,
         ),
         // child: Lottie.asset(Assets.animations.loading),
       ),

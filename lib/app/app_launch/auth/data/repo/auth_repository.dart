@@ -6,6 +6,7 @@ import 'package:mysam_app/app/app_launch/auth/data/models/mapper/api_user_to_use
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/login_method.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/user.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_role_type.dart';
 import 'package:mysam_app/core/preferences/preference_manger.dart';
 import 'package:mysam_app/core/resources/translation/app_translations.dart';
 import 'package:mysam_app/core/utils/mapper_utilities.dart';
@@ -133,6 +134,10 @@ class AuthRepository {
 
     await _preferenceManger.saveToken(token);
     await _preferenceManger.saveUser(info);
+    final role = user.role?.type != null
+        ? UserRoleType.fromString(user.role!.type)
+        : null;
+    await _preferenceManger.saveUserRoleType(role);
     if (loginMethod != null) {
       await _preferenceManger.saveLoginMethod(loginMethod);
     }
@@ -149,7 +154,6 @@ class AuthRepository {
       return saveApiUser(user: apiUser, loginMethod: loginMethod);
     } catch (e) {
       Sentry.captureException(e);
-      Fimber.e('Error in saveUser: $e');
 
       return false;
     }

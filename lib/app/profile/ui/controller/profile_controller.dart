@@ -43,7 +43,7 @@ class ProfileController extends GetxController {
       Alert.error(message: e.toString());
     }
     await Future.delayed(const Duration(milliseconds: 200));
-    AppNavigation.navigateToSplash();
     drawerController.updateLoginStatus(isLoggingOut: false);
+    AppNavigation.navigateToSplash();
   }
 }

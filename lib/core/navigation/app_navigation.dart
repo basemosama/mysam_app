@@ -90,4 +90,16 @@ abstract class AppNavigation {
   static void navigateToSettings() {
     PlayxNavigation.toNamed(Routes.settings);
   }
+
+  static void navigateToReviewDetails(Contribution contribution) {
+    PlayxNavigation.toNamed(
+      Routes.reviewDetails,
+      extra: contribution,
+      pathParameters: {'id': contribution.documentId},
+    );
+  }
+
+  static void navigateToReviews() {
+    PlayxNavigation.offAllNamed(Routes.reviews);
+  }
 }

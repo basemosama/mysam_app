@@ -76,10 +76,7 @@ class MyContributionsController extends GetxController
     _getContributionsWorker = everAll([
       searchText,
     ], (_) {
-      refreshPagination(status: ContributionStatus.all);
-      refreshPagination(status: ContributionStatus.pending);
-      refreshPagination(status: ContributionStatus.confirmed);
-      refreshPagination(status: ContributionStatus.declined);
+      refreshTabs();
     });
   }
 
@@ -115,10 +112,24 @@ class MyContributionsController extends GetxController
     );
   }
 
+  void refreshTabs() {
+    refreshPagination(status: ContributionStatus.all);
+    refreshPagination(status: ContributionStatus.pending);
+    refreshPagination(status: ContributionStatus.confirmed);
+    refreshPagination(status: ContributionStatus.declined);
+  }
+
   void refreshPagination({required ContributionStatus status}) {
     cancelRequests();
-    pagingControllerByStatus(status).itemList = [];
+    final notifyPage = pagingControllerByStatus(status).value ==
+        const PagingState<int, Contribution>(
+          nextPageKey: 1,
+        );
+
     pagingControllerByStatus(status).refresh();
+    if (notifyPage) {
+      pagingControllerByStatus(status).notifyPageRequestListeners(1);
+    }
   }
 
   CancelToken _updateCancelTokenByStatus(ContributionStatus status) {

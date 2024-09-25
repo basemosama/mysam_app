@@ -14,10 +14,6 @@ abstract class Endpoints {
   static const profile = '/users/me';
   static const updateUser = '/users/edit-profile';
 
-//   *****
-//   confirm and decline contributinos
-//   PUT  /contributions/:id/confirm
-//   PUT  /contributions/:id/decline
 //
   static const roots = '/roots';
   static String rootDetails(String documentId) => '$roots/$documentId';
@@ -34,4 +30,7 @@ abstract class Endpoints {
 
   static String declineContribution(String documentId) =>
       '/contributions/$documentId/decline';
+
+  static String contributionDetails(String contributionId) =>
+      '/contributions/$contributionId';
 }

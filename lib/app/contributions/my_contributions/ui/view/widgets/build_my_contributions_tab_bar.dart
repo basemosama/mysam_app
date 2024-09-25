@@ -53,7 +53,9 @@ class _BuildMyContributionsTabBarState
 
   @override
   void dispose() {
-    controller.tabController.removeListener(_listenToTabController);
+    if (Get.isRegistered<MyContributionsController>()) {
+      controller.tabController.removeListener(_listenToTabController);
+    }
     super.dispose();
   }
 }

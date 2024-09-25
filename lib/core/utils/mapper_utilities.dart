@@ -32,9 +32,8 @@ class MapUtils {
     try {
       final res = await compute(_mapAsync<T, S>, [data, mapper]);
       return res;
-    } catch (e, stacktrace) {
+    } catch (e) {
       // Handle errors occurring in the isolate
-      print('Error in mapAsyncInIsolate: $e, stack: $stacktrace');
       throw Exception('Error in isolate: $e');
     }
   }
@@ -66,7 +65,7 @@ extension NetworkResultMapExt<T> on NetworkResult<T> {
   }) async {
     switch (this) {
       case NetworkSuccess():
-        return await mapper((this as NetworkSuccess<T>).data);
+        return mapper((this as NetworkSuccess<T>).data);
       case NetworkError():
         final error = (this as NetworkError<T>).error;
         return NetworkError<S>(error);
@@ -77,11 +76,10 @@ extension NetworkResultMapExt<T> on NetworkResult<T> {
     required Mapper<T, NetworkResult<S>> mapper,
   }) async {
     try {
-      return await MapUtils.mapAsyncInIsolate(this,
-          (NetworkResult<T> res) async {
+      return MapUtils.mapAsyncInIsolate(this, (NetworkResult<T> res) async {
         switch (res) {
           case NetworkSuccess():
-            return await mapper(res.data);
+            return mapper(res.data);
           case NetworkError():
             return NetworkError<S>(res.error);
         }
@@ -95,26 +93,12 @@ extension NetworkResultMapExt<T> on NetworkResult<T> {
     required Mapper<T, S> success,
     required Mapper<NetworkException, S> error,
   }) async {
-    return await MapUtils.mapAsyncInIsolate(this, (NetworkResult<T> res) async {
+    return MapUtils.mapAsyncInIsolate(this, (NetworkResult<T> res) async {
       switch (res) {
         case NetworkSuccess():
           return await success(res.data);
         case NetworkError():
           return await error(res.error);
-      }
-    });
-  }
-
-  Future<S> mapAsync2<S>({
-    required Mapper<NetworkSuccess<T>, S> success,
-    required Mapper<NetworkError<T>, S> error,
-  }) async {
-    return await MapUtils.mapAsync(this, (NetworkResult<T> res) async {
-      switch (res) {
-        case NetworkSuccess():
-          return await success(res);
-        case NetworkError():
-          return await error(res);
       }
     });
   }

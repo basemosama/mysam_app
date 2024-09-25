@@ -10,6 +10,7 @@ import 'package:mysam_app/app/contributions/create_contribution/ui/view/widgets/
 import 'package:mysam_app/app/contributions/edit_contribution/data/repository/edit_contribution_repository.dart';
 import 'package:mysam_app/app/home/roots/details/ui/imports/root_details_imports.dart';
 import 'package:mysam_app/app/home/roots/roots/data/model/ui/root.dart';
+import 'package:mysam_app/app/reviews/review_details/ui/imports/review_details_imports.dart';
 import 'package:mysam_app/core/models/media_item.dart';
 import 'package:mysam_app/core/resources/assets/assets.dart';
 import 'package:mysam_app/core/resources/colors/app_colors.dart';
@@ -21,7 +22,7 @@ import 'package:mysam_app/core/widgets/components/custom_text.dart';
 import 'package:mysam_app/core/widgets/components/filter_chip_selector.dart';
 import 'package:mysam_app/core/widgets/components/text_field.dart';
 import 'package:mysam_app/core/widgets/image_picker/imports/image_picker_imports.dart';
-import 'package:mysam_app/core/widgets/loading_overlay.dart';
+import 'package:mysam_app/core/widgets/navigation/navigation_drawer/ui/imports/custom_navigation_drawer_imports.dart';
 import 'package:playx/playx.dart';
 
 part '../binding/edit_contribution_binding.dart';

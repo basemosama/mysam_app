@@ -12,12 +12,14 @@ class EmptyDataWidget extends OrientationWidget {
   final VoidCallback? onRetryClicked;
   final String? error;
   final bool isScrollable;
+  final Color? errorColor;
 
   const EmptyDataWidget({
     super.key,
     this.onRetryClicked,
     this.error,
     this.isScrollable = true,
+    this.errorColor,
   });
 
   @override
@@ -49,6 +51,7 @@ class EmptyDataWidget extends OrientationWidget {
                         textAlign: TextAlign.center,
                         fontWeight: FontWeight.w400,
                         fontSize: AppUtils.isMobile() ? 16.sp : 20.sp,
+                        color: errorColor,
                       ),
                     ),
                     if (onRetryClicked != null) ...[
@@ -95,6 +98,7 @@ class EmptyDataWidget extends OrientationWidget {
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w400,
                 fontSize: AppUtils.isMobile() ? 16.sp : 20.sp,
+                color: errorColor,
               ),
             ),
             if (onRetryClicked != null) ...[

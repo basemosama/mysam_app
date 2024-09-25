@@ -97,20 +97,32 @@ class RegisterController extends GetxController {
       password: passwordController.text,
     );
     result.when(
-      success: (User user) {
+      success: (User user) async {
         _navigateToHome();
       },
       error: (NetworkException exception) {
         Alert.error(message: exception.message);
+        isLoading.value = false;
       },
     );
-    isLoading.value = false;
   }
 
-  void _navigateToHome() {
-    isLoading.value = false;
-    Get.find<CustomBottomNavigationController>().getUserInfo();
+  Future<void> _navigateToHome() async {
+    await Get.find<CustomBottomNavigationController>().getUserInfo();
 
+    if (Get.isRegistered<ProfileController>()) {
+      Get.find<ProfileController>().getUser();
+    }
+    if (Get.isRegistered<RootsController>()) {
+      Get.find<RootsController>().refreshPagination();
+    }
+    if (Get.isRegistered<ReviewsController>()) {
+      Get.find<ReviewsController>().refreshPagination();
+    }
+    if (Get.isRegistered<MyContributionsController>()) {
+      Get.find<MyContributionsController>().refreshTabs();
+    }
+    isLoading.value = false;
     AppNavigation.navigateFromRegisterToHome();
   }
 

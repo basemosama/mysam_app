@@ -4,6 +4,7 @@ import 'package:mysam_app/app/app_launch/auth/data/models/api/api_user_info.dart
 import 'package:mysam_app/app/app_launch/auth/data/models/mapper/api_user_info_to_user_info_mapper.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/login_method.dart';
 import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_info.dart';
+import 'package:mysam_app/app/app_launch/auth/data/models/ui/user_role_type.dart';
 import 'package:mysam_app/core/utils/mapper_utilities.dart';
 import 'package:playx/playx.dart';
 
@@ -17,6 +18,7 @@ class MyPreferenceManger {
   final String _loginMethodKey = 'login_method';
   final String _savedEmailKey = 'saved_email';
   final String _savedPasswordKey = 'saved_password';
+  final String _userRoleTypeKey = 'user_role_type';
 
   Future<bool> get isLoggedIn async =>
       (await PlayxSecurePrefs.getString(_tokenKey)).isNotEmpty;
@@ -39,8 +41,23 @@ class MyPreferenceManger {
     await PlayxSecurePrefs.setString(_tokenKey, jwt);
   }
 
+  Future<UserRoleType?> get userRoleType async {
+    final role = await PlayxSecurePrefs.maybeGetString(_userRoleTypeKey);
+    return role == null ? null : UserRoleType.fromString(role);
+  }
+
+  Future<void> saveUserRoleType(UserRoleType? role) async {
+    final value = role?.value;
+    if (value == null) {
+      return PlayxSecurePrefs.remove(_userRoleTypeKey);
+    }
+    return PlayxSecurePrefs.setString(_userRoleTypeKey, value);
+  }
+
   Future<void> saveUser(ApiUserInfo user) async {
-    final String userString = jsonEncode(user);
+    final savedUser = await getSavedUser();
+    final updatedUser = user.copyWith(image: savedUser?.image);
+    final String userString = jsonEncode(updatedUser);
     return PlayxSecurePrefs.setString(_userKey, userString);
   }
 

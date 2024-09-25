@@ -16,7 +16,7 @@ class SettingsView extends GetView<SettingsController> {
                 SizedBox(height: 8.0.r),
                 const BuildSettingsLanguageWidget(),
                 const BuildSettingsThemeWidget(),
-                const BuildSettingsLogOutWidget(),
+                // const BuildSettingsLogOutWidget(),
                 SizedBox(height: 16.0.r),
               ],
             ),

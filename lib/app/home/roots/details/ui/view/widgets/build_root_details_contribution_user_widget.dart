@@ -37,12 +37,15 @@ class BuildRootDetailsContributionUserWidget extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8.r),
-            CustomText(
-              contribution.createdBy?.getFullName(fallbackAsEmail: false) ??
-                  AppTrans.unknown,
-              color: context.colors.onSurface,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w700,
+            Expanded(
+              child: CustomText(
+                contribution.createdBy?.getFullName(fallbackAsEmail: false) ??
+                    AppTrans.unknown,
+                color: context.colors.onSurface,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w700,
+                maxLines: 2,
+              ),
             ),
           ],
         ),
@@ -52,6 +55,7 @@ class BuildRootDetailsContributionUserWidget extends StatelessWidget {
           color: context.colors.subtitleTextColor,
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
+          maxLines: 2,
         ),
       ],
     );
